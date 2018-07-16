@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"John Lewis"
+		]
+	},
+	"matomoanalytics-desc": "Integrates analytics from Matomo and MediaWiki",
+}
