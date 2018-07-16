@@ -4,9 +4,20 @@
 	"url": "https://github.com/miraheze/MatomoAnalytics",
 	"descriptionmsg": "matomoanalytics-desc",
 	"type": "specialpage",
+	"AvailableRights": [
+		"noanalytics"
+	],
 	"MessagesDirs": {
 		"MatomoAnalytics": [
 			"i18n"
+		]
+	},
+	"AutoloadClasses": {
+		"MatomoAnalyticsHooks": "includes/MatomoAnalyticsHooks.php"
+	},
+	"Hooks": {
+		"SkinAfterBottomScripts": [
+			"MatomoAnalyticsHooks::matomoScript"
 		]
 	},
 	"manifest_version": 1
