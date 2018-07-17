@@ -1,6 +1,17 @@
 <?php
 
 class MatomoAnalyticsHooks {
+	public static function matomoAnalyticsSchemaUpdates( DatabaseUpdater $updater ) {
+		global $wgMatomoAnalyticsUseDB, $wgMatomoAnalyticsDatabase, $wgDBname;
+
+		if ( $wgMatomoAnalyticsUseDB && $wgMatomoAnalyticsDatabase === $wgDBname ) {
+			$updater->addExtensionTable( 'matomo',
+				__DIR__ . '/../sql/matomo.sql' );
+		}
+
+		return true;
+	}
+
 	/**
 	* Function to add Matomo JS to all MediaWiki pages
 	*

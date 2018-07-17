@@ -16,9 +16,18 @@
 		"MatomoAnalyticsHooks": "includes/MatomoAnalyticsHooks.php"
 	},
 	"Hooks": {
+		"LoadExtensionSchemaUpdates": [
+			"MatomoAnalyticsHookss::matomoAnalyticsSchemaUpdates"
+		],
 		"SkinAfterBottomScripts": [
 			"MatomoAnalyticsHooks::matomoScript"
 		]
+	},
+	"config": {
+		"MatomoAnaltyicsDatabase": false,
+		"MatomoAnalyticsServerURL": false,
+		"MatomoAnalyticsSiteID": 1,
+		"MatomoAnalyticsUseDB": false
 	},
 	"manifest_version": 1
 }
