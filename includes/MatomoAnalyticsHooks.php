@@ -27,7 +27,7 @@ class MatomoAnalyticsHooks {
 			$wgMatomoAnalyticsSiteID = 1;
 		}
 
-		if ( $wgUser->isAllowed( 'noanalytics' ) {
+		if ( $wgUser->isAllowed( 'noanalytics' ) ) {
 			$text .= '<!-- MatomoAnalytics: User right noanalytics is assigned. -->';
 		} else {
 			$id = strval( $wgMatomoAnalyticsSiteID );
