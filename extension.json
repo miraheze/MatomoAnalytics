@@ -13,6 +13,7 @@
 		]
 	},
 	"AutoloadClasses": {
+		"MatomoAnalytics": "includes/MatomoAnalytics.php",
 		"MatomoAnalyticsHooks": "includes/MatomoAnalyticsHooks.php"
 	},
 	"Hooks": {
@@ -27,6 +28,7 @@
 		"MatomoAnaltyicsDatabase": false,
 		"MatomoAnalyticsServerURL": false,
 		"MatomoAnalyticsSiteID": 1,
+		"MatomoAnalyticsTokenAuth": false,
 		"MatomoAnalyticsUseDB": false
 	},
 	"manifest_version": 1
