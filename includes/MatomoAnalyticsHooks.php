@@ -30,7 +30,7 @@ class MatomoAnalyticsHooks {
 	* @return bool
 	*/
 	public function matomoScript( $skin, &$text = '' ) {
-		global $wgMatomoAnalyticsServerURL, $wgMatomoAnalytisSiteID, $wgUser, $wgDBname;
+		global $wgMatomoAnalyticsServerURL, $wgMatomoAnalyticsSiteID, $wgUser, $wgDBname;
 		if ( !$wgMatomoAnalyticsSiteID ) {
 			$wgMatomoAnalyticsSiteID = 1;
 		}
