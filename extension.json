@@ -25,7 +25,7 @@
 		]
 	},
 	"config": {
-		"MatomoAnaltyicsDatabase": false,
+		"MatomoAnalyticsDatabase": false,
 		"MatomoAnalyticsServerURL": false,
 		"MatomoAnalyticsSiteID": 1,
 		"MatomoAnalyticsTokenAuth": false,
