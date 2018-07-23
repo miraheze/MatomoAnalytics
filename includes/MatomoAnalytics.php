@@ -30,6 +30,31 @@ class MatomoAnalytics {
 		return $sitejson->value;
 	}
 
+	public static function deleteSite( $dbname ) {
+		global $wgMatomoAnalyticsServerURL, $wgMatomoAnalyticsUseDB, $wgMatomoAnalyticsDatabase, $wgMatomoAnalyticsTokenAuth;
+
+		$siteid = MatomoAnalytics::getSiteID( $dbname );
+
+		$queryapi = $wgMatomoAnalyticsServerURL;
+		$queryapi .= '?modules=API&format=json&method=SitesManager.deleteSite';
+		$queryapi .= "&idSite=$siteid";
+		$queryapi .= "&token_auth=$wgMatomoAnalyticsTokenAuth";
+
+		$sitereply = file_get_contents( $queryapi );
+
+		if ( $wgMatomoAnalyticsUseDB ) {
+			$dbw = wfGetDB( DB_MASTER, array(), $wgMatomoAnalyticsDatabase );
+
+			$dbw->delete(
+				'matomo',
+				array( 'matomo_id' => $siteid ),
+				__METHOD__
+			);
+		}
+
+		return true;
+	}
+
 	public static function getSiteID( $dbname ) {
 		global $wgMatomoAnalyticsUseDB, $wgMatomoAnalyticsDatabase, $wgMatomoAnalyticsSiteID;
 

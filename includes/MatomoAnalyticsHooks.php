@@ -12,6 +12,14 @@ class MatomoAnalyticsHooks {
 		return true;
 	}
 
+	public function wikiCreation( $dbname ) {
+		MatomoAnalytics::addSite( $dbname );
+	}
+
+	public function wikiDeletion( $dbname ) {
+		MatomoAnalytics::deleteSite( $dbname );
+	}
+
 	/**
 	* Function to add Matomo JS to all MediaWiki pages
 	*

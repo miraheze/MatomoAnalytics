@@ -17,6 +17,12 @@
 		"MatomoAnalyticsHooks": "includes/MatomoAnalyticsHooks.php"
 	},
 	"Hooks": {
+		"CreateWikiCreation": [
+			"MatomoAnalyticsHooks::wikiCreation"
+		],
+		"CreateWikiDeletion": [
+			"MatomoAnalyticsHooks::wikiDeletion"
+		],
 		"LoadExtensionSchemaUpdates": [
 			"MatomoAnalyticsHooks::matomoAnalyticsSchemaUpdates"
 		],
