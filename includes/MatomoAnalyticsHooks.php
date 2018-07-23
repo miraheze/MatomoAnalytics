@@ -49,7 +49,7 @@ class MatomoAnalyticsHooks {
 				_paq.push(["trackPageView"]);
 				_paq.push(["enableLinkTracking"]);
 				(function() {
-					var u = "{$serverurl}/";
+					var u = {$serverurl};
 					_paq.push(["setTrackerUrl", u + "piwik.php"]);
 					_paq.push(['setDocumentTitle', {$dbname} + " - " + {$jstitle}]);
 					_paq.push(["setSiteId", "{$id}"]);
