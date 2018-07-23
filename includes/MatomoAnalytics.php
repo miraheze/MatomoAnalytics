@@ -13,9 +13,9 @@ class MatomoAnalytics {
 		$queryapi .= "&token_auth=$wgMatomoAnalyticsTokenAuth";
 
 		$sitereply = file_get_contents($queryapi);
-		$sitecontent = unseralize($sitereply);
+		$sitejson = json_decode( $sitereply );
 
-		return $sitecontent['value'];
+		return $sitejson->value;
 	}
 
 }
