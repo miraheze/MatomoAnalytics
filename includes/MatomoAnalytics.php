@@ -30,4 +30,20 @@ class MatomoAnalytics {
 		return $sitejson->value;
 	}
 
+	public static function getSiteID( $dbname ) {
+		global $wgMatomoAnalyticsUseDB, $wgMatomoAnalyticsDatabase, $wgMatomoAnalyticsSiteID;
+
+		if ( $wgMatomoAnalyticsUseDB ) {
+			$row = wfGetDB( DB_SLAVE, array(), $wgMatomoAnalyticsDatabase )->selectRow(
+				'matomo',
+				array ( 'matomo_id' ),
+				array ( 'matomo_wiki' => $dbname ),
+				__METHOD__
+			);
+
+			return $row->matomo_id;
+		} else {
+			return $wgMatomoAnalyticsSiteID;
+		}
+	}
 }
