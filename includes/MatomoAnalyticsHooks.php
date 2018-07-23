@@ -30,18 +30,12 @@ class MatomoAnalyticsHooks {
 	* @return bool
 	*/
 	public function matomoScript( $skin, &$text = '' ) {
-		global $wgMatomoAnalyticsServerURL, $wgMatomoAnalyticsSiteID, $wgUser, $wgDBname;
-
-		if ( $wgMatomoAnalyticsUseDB ) {
-			$wgMatomoAnalyticsSiteID = MatomoAnalytics::getSiteID( $wgDBname );
-		} elseif ( !$wgMatomoAnalyticsSiteID ) {
-			$wgMatomoAnalyticsSiteID = 1;
-		}
+		global $wgMatomoAnalyticsServerURL, $wgUser, $wgDBname;
 
 		if ( $wgUser->isAllowed( 'noanalytics' ) ) {
 			$text .= '<!-- MatomoAnalytics: User right noanalytics is assigned. -->';
 		} else {
-			$id = strval( $wgMatomoAnalyticsSiteID );
+			$id = strval( MatomoAnalytics::getSiteID( $wgDBname ) );
 			$serverurl = Xml::encodeJsVar( $wgMatomoAnalyticsServerURL );
 			$title = $skin->getRelevantTitle();
 			$jstitle = Xml::encodeJsVar( $title->getPrefixedText() );
