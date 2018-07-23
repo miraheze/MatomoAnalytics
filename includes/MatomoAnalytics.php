@@ -15,6 +15,18 @@ class MatomoAnalytics {
 		$sitereply = file_get_contents($queryapi);
 		$sitejson = json_decode( $sitereply );
 
+		if ( $wgMatomoAnalyticsUseDB ) {
+			$dbw = wfGetDB( DB_MASTER, array(), $wgMatomoAnalyticsDatabase );
+			$dbw->insert(
+				'matomo',
+				array(
+					'matomo_id' => $sitejson->value,
+					'matomo_wiki' => $dbname,
+				),
+				__METHOD__
+			);
+		}
+
 		return $sitejson->value;
 	}
 
