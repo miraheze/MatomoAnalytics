@@ -1,6 +1,11 @@
 <?php
 
 class MatomoAnalyticsHooks {
+        public static function onRegistration() {
+                global $wgMatomoId, $wgDBname;
+                $wgMatomoId = MatomoAnalytics::getSiteID( $wgDBname );
+        }
+
 	public static function matomoAnalyticsSchemaUpdates( DatabaseUpdater $updater ) {
 		global $wgMatomoAnalyticsUseDB, $wgMatomoAnalyticsDatabase, $wgDBname;
 
@@ -30,12 +35,12 @@ class MatomoAnalyticsHooks {
 	* @return bool
 	*/
 	public function matomoScript( $skin, &$text = '' ) {
-		global $wgMatomoAnalyticsServerURL, $wgUser, $wgDBname;
+		global $wgMatomoAnalyticsServerURL, $wgUser, $wgDBname, $wgMatomoId;
 
 		if ( $wgUser->isAllowed( 'noanalytics' ) ) {
 			$text .= '<!-- MatomoAnalytics: User right noanalytics is assigned. -->';
 		} else {
-			$id = strval( MatomoAnalytics::getSiteID( $wgDBname ) );
+			$id = strval( $wgMatomoId );
 			$serverurl = Xml::encodeJsVar( $wgMatomoAnalyticsServerURL );
 			$title = $skin->getRelevantTitle();
 			$jstitle = Xml::encodeJsVar( $title->getPrefixedText() );
