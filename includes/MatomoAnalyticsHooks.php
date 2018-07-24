@@ -2,7 +2,7 @@
 
 class MatomoAnalyticsHooks {
         public static function onRegistration() {
-                global $wgDBname;
+                global $wgDBname, $wgMatomoAnalyticsID;
                 $wgMatomoAnalyticsID = MatomoAnalytics::getSiteID( $wgDBname );
         }
 
