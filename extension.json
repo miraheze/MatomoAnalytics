@@ -4,6 +4,7 @@
 	"url": "https://github.com/miraheze/MatomoAnalytics",
 	"descriptionmsg": "matomoanalytics-desc",
 	"type": "specialpage",
+	"callback": "MatomoAnalyticsHooks::onRegistration",
 	"AvailableRights": [
 		"noanalytics"
 	],

@@ -59,7 +59,8 @@ class MatomoAnalytics {
 		global $wgMatomoAnalyticsUseDB, $wgMatomoAnalyticsDatabase, $wgMatomoAnalyticsSiteID;
 
 		if ( $wgMatomoAnalyticsUseDB ) {
-			$row = wfGetDB( DB_SLAVE, array(), $wgMatomoAnalyticsDatabase )->selectRow(
+			$dbr = wfGetDB( DB_SLAVE, array(), $wgMatomoAnalyticsDatabase );
+			$row = $dbr->selectRow(
 				'matomo',
 				array ( 'matomo_id' ),
 				array ( 'matomo_wiki' => $dbname ),
