@@ -41,7 +41,7 @@ class MatomoAnalyticsHooks {
 			$text .= '<!-- MatomoAnalytics: User right noanalytics is assigned. -->';
 		} else {
 			$id = strval( $wgMatomoAnalyticsID );
-			$serverurl = Xml::encodeJsVar( $wgMatomoAnalyticsServerURL );
+			$serverurl = $wgMatomoAnalyticsServerURL;
 			$title = $skin->getRelevantTitle();
 			$jstitle = Xml::encodeJsVar( $title->getPrefixedText() );
 			$dbname = Xml::encodeJsVar( $wgDBname );
@@ -54,7 +54,7 @@ class MatomoAnalyticsHooks {
 				_paq.push(["trackPageView"]);
 				_paq.push(["enableLinkTracking"]);
 				(function() {
-					var u = {$serverurl};
+					var u = "{$serverurl}";
 					_paq.push(["setTrackerUrl", u + "piwik.php"]);
 					_paq.push(['setDocumentTitle', {$dbname} + " - " + {$jstitle}]);
 					_paq.push(["setSiteId", "{$id}"]);
@@ -66,7 +66,7 @@ class MatomoAnalyticsHooks {
 				<!-- End Piwik Code -->
 				<!-- Piwik Image Tracker -->
 				<noscript>
-					<img src={$serverurl} + "piwik.php?idsite={$id}&amp;rec=1&amp;action_name={$urltitle}" style="border:0" alt="" />
+					<img src="{$serverurl}piwik.php?idsite={$id}&amp;rec=1&amp;action_name={$urltitle}" style="border:0" alt="" />
 				</noscript>
 				<!-- End Piwik -->
 SCRIPT;
