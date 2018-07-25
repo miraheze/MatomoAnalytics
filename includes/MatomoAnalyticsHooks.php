@@ -17,11 +17,11 @@ class MatomoAnalyticsHooks {
 		return true;
 	}
 
-	public static function wikiCreation( $dbname ) {
+	public function wikiCreation( $dbname ) {
 		MatomoAnalytics::addSite( $dbname );
 	}
 
-	public static function wikiDeletion( $dbname ) {
+	public function wikiDeletion( $dbname ) {
 		MatomoAnalytics::deleteSite( $dbname );
 	}
 
