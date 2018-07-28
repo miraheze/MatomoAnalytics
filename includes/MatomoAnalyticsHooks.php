@@ -35,7 +35,7 @@ class MatomoAnalyticsHooks {
 	* @return bool
 	*/
 	public function matomoScript( $skin, &$text = '' ) {
-		global $wgMatomoAnalyticsServerURL, $wgUser, $wgDBname, $wgMatomoAnalyticsID;
+		global $wgMatomoAnalyticsServerURL, $wgUser, $wgDBname, $wgMatomoAnalyticsID, $wgMatomoAnalyticsSiteID;
 
 		if ( $wgUser->isAllowed( 'noanalytics' ) ) {
 			$text .= '<!-- MatomoAnalytics: User right noanalytics is assigned. -->';
