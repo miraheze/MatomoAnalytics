@@ -35,13 +35,13 @@ class MatomoAnalyticsHooks {
 	* @return bool
 	*/
 	public function matomoScript( $skin, &$text = '' ) {
-		global $wgMatomoAnalyticsServerURL, $wgUser, $wgDBname, $wgMatomoAnalyticsID, $wgMatomoAnalyticsSiteID;
+		global $wgMatomoAnalyticsServerURL, $wgUser, $wgDBname, $wgMatomoAnalyticsID, $wgMatomoAnalyticsGlobalID;
 
 		if ( $wgUser->isAllowed( 'noanalytics' ) ) {
 			$text .= '<!-- MatomoAnalytics: User right noanalytics is assigned. -->';
 		} else {
 			$id = strval( $wgMatomoAnalyticsID );
-			$defaultId = strval( $wgMatomoAnalyticsSiteID );
+			$globalId = strval( $wgMatomoAnalyticsGlobalID );
 			$serverurl = $wgMatomoAnalyticsServerURL;
 			$title = $skin->getRelevantTitle();
 			$jstitle = Xml::encodeJsVar( $title->getPrefixedText() );
@@ -60,7 +60,7 @@ class MatomoAnalyticsHooks {
 					_paq.push(['setDocumentTitle', {$dbname} + " - " + {$jstitle}]);
 					_paq.push(["setSiteId", "{$id}"]);
 					_paq.push(["setCustomVariable", 1, "userType", "{$userType}", "visit"]);
-					_paq.push(['addTracker', u + "piwik.php", {$defaultId}]);
+					_paq.push(['addTracker', u + "piwik.php", {$globalId}]);
 					var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
 					g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
 				})();
