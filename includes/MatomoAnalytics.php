@@ -93,4 +93,8 @@ class MatomoAnalytics {
 
 		return $arrayout;
 	}
+
+	public static function getDeviceTypes( $dbname ) {
+		return self::getAPIData( $dbname, 'DevicesDetection.getType', 'month', 'label', 'nb_visits' );
+	}
 }
