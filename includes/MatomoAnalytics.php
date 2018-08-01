@@ -36,7 +36,7 @@ class MatomoAnalytics {
 		$siteid = MatomoAnalytics::getSiteID( $dbname );
 
 		$queryapi = $wgMatomoAnalyticsServerURL;
-		$queryapi .= '?modules=API&format=json&method=SitesManager.deleteSite';
+		$queryapi .= '?module=API&format=json&method=SitesManager.deleteSite';
 		$queryapi .= "&idSite=$siteid";
 		$queryapi .= "&token_auth=$wgMatomoAnalyticsTokenAuth";
 
@@ -71,5 +71,26 @@ class MatomoAnalytics {
 		} else {
 			return $wgMatomoAnalyticsSiteID;
 		}
+	}
+
+	private static function getAPIData( $dbname, $module, $period, $jsonlabel, $jsondata ) {
+		global $wgMatomoAnalyticsServerURL, $wgMatomoAnalyticsTokenAuth;
+
+		$siteid = MatomoAnalytics::getSiteID( $dbname );
+
+		$queryapi = $wgMatomoAnalyticsServerURL;
+		$queryapi .= '?module=API&format=json&date=yesterday';
+		$queryapi .= "&method=$module&period=$period&idSite=$siteid";
+		$queryapi .= "&token_auth=$wgMatomoAnalyticsTokenAuth";
+
+		$sitereply = file_get_contents( $queryapi );
+		$json = json_decode( $sitereply, true );
+		$arrayout = [];
+
+		foreach ( $json as $key => $val ) {
+			$arrayout[$val[$jsonlabel]] = $val[$jsondata];
+		}
+
+		return $arrayout;
 	}
 }
