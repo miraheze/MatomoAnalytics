@@ -69,9 +69,7 @@ class MatomoAnalyticsHooks {
 				</script>
 				<!-- End Piwik Code -->
 				<!-- Piwik Image Tracker -->
-				<noscript>
-					<img src="{$serverurl}piwik.php?idsite={$id}&amp;rec=1&amp;action_name={$urltitle}" style="border:0" alt="" />
-				</noscript>
+				<noscript><p><img src="{$serverurl}piwik.php?idsite={$id}&amp;rec=1&amp;action_name={$urltitle}" style="border:0;" alt="" /></p></noscript>
 				<!-- End Piwik -->
 SCRIPT;
 		}
