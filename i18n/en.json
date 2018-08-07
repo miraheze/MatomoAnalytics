@@ -4,5 +4,9 @@
 			"John Lewis"
 		]
 	},
-	"matomoanalytics-desc": "Integrates analytics from Matomo and MediaWiki"
+	"analytics": "MatomoAnalytics",
+	"matomoanalytics-desc": "Integrates analytics from Matomo and MediaWiki",
+	"matomoanalytics-header": "You can use the form below to select different statistics to view that we store using Matomo.",
+	"matomoanalytics-form-stat1": "Statistic 1",
+	"matomoanalytics-form-stat2": "Statistic 2"
 }

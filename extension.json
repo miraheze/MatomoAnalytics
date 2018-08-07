@@ -15,7 +15,11 @@
 	},
 	"AutoloadClasses": {
 		"MatomoAnalytics": "includes/MatomoAnalytics.php",
-		"MatomoAnalyticsHooks": "includes/MatomoAnalyticsHooks.php"
+		"MatomoAnalyticsHooks": "includes/MatomoAnalyticsHooks.php",
+		"SpecialAnalytics": "includes/SpecialAnalytics.php"
+	},
+	"SpecialPages": {
+		"Analytics": "SpecialAnalytics"
 	},
 	"Hooks": {
 		"CreateWikiCreation": [
