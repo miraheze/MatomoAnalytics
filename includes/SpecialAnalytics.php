@@ -92,7 +92,7 @@ class SpecialAnalytics extends SpecialPage {
 			case 'browser':
 				$statarray = MatomoAnalytics::getBrowserTypes( $wgDBname );
 				break;
-			case 'device':
+			case 'devices':
 				$statarray = MatomoAnalytics::getDeviceTypes( $wgDBname );
 				break;
 			case 'referrer':
