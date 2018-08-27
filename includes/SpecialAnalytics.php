@@ -60,7 +60,7 @@ class SpecialAnalytics extends SpecialPage {
 					'type' => 'info',
 					'label' => $label,
 					'default' => (string)$value,
-					'section' => 'matomoanalytics-form-stat1',
+					'section' => 'form-stat1',
 				];
 			}
 
@@ -71,11 +71,11 @@ class SpecialAnalytics extends SpecialPage {
 					'type' => 'info',
 					'label' => $label,
 					'default' => (string)$value,
-					'section' => 'matomoanalytics-form-stat2',
+					'section' => 'form-stat2',
 				];
 			}
 
-			$statForm = HTMLForm::factory( 'ooui', $statDescriptor, $this->getContext() );
+			$statForm = HTMLForm::factory( 'ooui', $statDescriptor, $this->getContext(), 'matomoanalytics' );
 			$statForm->setSubmitCallback( [ $this, 'dummyHandler' ] )->setMethod( 'get' )->setFormIdentifier( 'statForm' )->suppressDefaultSubmit()->prepareForm()->show();
 		}
 
