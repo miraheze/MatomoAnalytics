@@ -39,7 +39,7 @@
 		"MatomoAnalyticsDatabase": false,
 		"MatomoAnalyticsServerURL": false,
 		"MatomoAnalyticsSiteID": 1,
-		"MatomoAnalyticsGlobalID": false,
+		"MatomoAnalyticsGlobalID": null,
 		"MatomoAnalyticsTokenAuth": false,
 		"MatomoAnalyticsUseDB": false
 	},
