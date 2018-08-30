@@ -41,7 +41,7 @@ class MatomoAnalyticsHooks {
 			$text .= '<!-- MatomoAnalytics: User right noanalytics is assigned. -->';
 		} else {
 			$id = strval( $wgMatomoAnalyticsID );
-			$globalId = $wgMatomoAnalyticsGlobalID ?? 'false';
+			$globalId = $wgMatomoAnalyticsGlobalID ? $wgMatomoAnalyticsGlobalID : 'false';
 			$serverurl = $wgMatomoAnalyticsServerURL;
 			$title = $skin->getRelevantTitle();
 			$jstitle = Xml::encodeJsVar( $title->getPrefixedText() );
