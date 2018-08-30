@@ -41,6 +41,7 @@ class MatomoAnalyticsHooks {
 			$text .= '<!-- MatomoAnalytics: User right noanalytics is assigned. -->';
 		} else {
 			$id = strval( $wgMatomoAnalyticsID );
+			$globalId = $wgMatomoAnalyticsGlobalID ?? false;
 			$serverurl = $wgMatomoAnalyticsServerURL;
 			$title = $skin->getRelevantTitle();
 			$jstitle = Xml::encodeJsVar( $title->getPrefixedText() );
@@ -55,7 +56,7 @@ class MatomoAnalyticsHooks {
 				_paq.push(["enableLinkTracking"]);
 				(function() {
 					var u = "{$serverurl}";
-					var globalId = {$wgMatomoAnalyticsGlobalID};
+					var globalId = {$globalId};
 					_paq.push(["setTrackerUrl", u + "piwik.php"]);
 					_paq.push(['setDocumentTitle', {$dbname} + " - " + {$jstitle}]);
 					_paq.push(["setSiteId", "{$id}"]);
