@@ -49,7 +49,7 @@ class MatomoAnalyticsHooks {
 			$urltitle = $title->getPrefixedURL();
 			$userType = $wgUser->isLoggedIn() ? "User" : "Anonymous";
 			$text .= <<<SCRIPT
-				<!-- Piwik -->
+				<!-- Matomo -->
 				<script type="text/javascript">
 				var _paq = _paq || [];
 				_paq.push(["trackPageView"]);
@@ -68,10 +68,10 @@ class MatomoAnalyticsHooks {
 					g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
 				})();
 				</script>
-				<!-- End Piwik Code -->
-				<!-- Piwik Image Tracker -->
+				<!-- End Matomo Code -->
+				<!-- Matomo Image Tracker -->
 				<noscript><p><img src="{$serverurl}piwik.php?idsite={$id}&amp;rec=1&amp;action_name={$urltitle}" style="border:0;" alt="" /></p></noscript>
-				<!-- End Piwik -->
+				<!-- End Matomo -->
 SCRIPT;
 		}
 
