@@ -25,6 +25,10 @@ class MatomoAnalyticsHooks {
 		MatomoAnalytics::deleteSite( $dbname );
 	}
 
+	public static function wikiRename( $dbw, $old, $new ) {
+		MatomoAnalytics::renameSite( $old, $new );
+	}
+
 	/**
 	* Function to add Matomo JS to all MediaWiki pages
 	*
