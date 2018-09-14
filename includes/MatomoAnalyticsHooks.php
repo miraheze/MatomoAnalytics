@@ -21,7 +21,7 @@ class MatomoAnalyticsHooks {
 		MatomoAnalytics::addSite( $dbname );
 	}
 
-	public static function wikiDeletion( $dbname ) {
+	public static function wikiDeletion( $dbw, $dbname ) {
 		MatomoAnalytics::deleteSite( $dbname );
 	}
 
