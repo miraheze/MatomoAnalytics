@@ -100,7 +100,9 @@ class MatomoAnalytics {
 			if ( !isset( $row->matomo_id ) ) {
 				wfDebugLog( 'MatomoAnalytics', "could not find {$dbname} in matomo table" );
 
-				return false
+				// Because site has not been found in the matomo table
+				// lets put a 0 to prevent it throwing errors.
+				return 0;
 			} else {
 				return $row->matomo_id;
 			}
