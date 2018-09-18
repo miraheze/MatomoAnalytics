@@ -97,7 +97,15 @@ class MatomoAnalytics {
 				__METHOD__
 			);
 
-			return $row->matomo_id;
+			if ( !isset( $row->matomo_id ) ) {
+				// default to $wgMatomoAnalyticsSiteID if it carn't find wiki
+				// in the db.
+				wfDebugLog( 'MatomoAnalytics', "could not find {$dbname} in matomo table" );
+
+				return $wgMatomoAnalyticsSiteID;
+			} else {
+				return $row->matomo_id;
+			}
 		} else {
 			return $wgMatomoAnalyticsSiteID;
 		}
