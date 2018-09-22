@@ -7,47 +7,63 @@ class MatomoAnalytics {
 	public static function addSite( $dbname ) {
 		global $wgMatomoAnalyticsServerURL, $wgMatomoAnalyticsUseDB, $wgMatomoAnalyticsDatabase, $wgMatomoAnalyticsTokenAuth;
 
-		$queryapi = $wgMatomoAnalyticsServerURL;
-		$queryapi .= '?module=API&format=json&method=SitesManager.addSite';
-		$queryapi .= "&siteName=$dbname";
-		$queryapi .= "&token_auth=$wgMatomoAnalyticsTokenAuth";
-
-		$sitereply = file_get_contents($queryapi);
-		$sitejson = json_decode( $sitereply );
+		$siteReply = Http::get(
+			wfAppendQuery(
+				$wgMatomoAnalyticsServerURL,
+				[
+					'module' => 'API',
+					'format' => 'json',
+					'method' => 'SitesManager.addSite',
+					'siteName' => $dbname,
+					'token_auth' => $wgMatomoAnalyticsTokenAuth
+				]
+			),
+			[],
+			__METHOD__ 
+		);
+		$siteJson = FormatJson::decode( $siteReply, true );
 
 		if ( $wgMatomoAnalyticsUseDB ) {
-			$dbw = wfGetDB( DB_MASTER, array(), $wgMatomoAnalyticsDatabase );
+			$dbw = wfGetDB( DB_MASTER, [], $wgMatomoAnalyticsDatabase );
 			$dbw->insert(
 				'matomo',
-				array(
-					'matomo_id' => $sitejson->value,
+				[
+					'matomo_id' => $siteJson['value'],
 					'matomo_wiki' => $dbname,
-				),
+				],
 				__METHOD__
 			);
 		}
 
-		return $sitejson->value;
+		return $siteJson['value'];
 	}
 
 	public static function deleteSite( $dbname ) {
 		global $wgMatomoAnalyticsServerURL, $wgMatomoAnalyticsUseDB, $wgMatomoAnalyticsDatabase, $wgMatomoAnalyticsTokenAuth;
 
-		$siteid = MatomoAnalytics::getSiteID( $dbname );
-
-		$queryapi = $wgMatomoAnalyticsServerURL;
-		$queryapi .= '?module=API&format=json&method=SitesManager.deleteSite';
-		$queryapi .= "&idSite=$siteid";
-		$queryapi .= "&token_auth=$wgMatomoAnalyticsTokenAuth";
-
-		$sitereply = file_get_contents( $queryapi );
+		$siteId = MatomoAnalytics::getSiteID( $dbname );
+		
+		$siteReply = Http::get(
+			wfAppendQuery(
+				$wgMatomoAnalyticsServerURL,
+				[
+					'module' => 'API',
+					'format' => 'json',
+					'method' => 'SitesManager.deleteSite',
+					'idSite' => $siteId,
+					'token_auth' => $wgMatomoAnalyticsTokenAuth
+				]
+			),
+			[],
+			__METHOD__ 
+		);
 
 		if ( $wgMatomoAnalyticsUseDB ) {
-			$dbw = wfGetDB( DB_MASTER, array(), $wgMatomoAnalyticsDatabase );
+			$dbw = wfGetDB( DB_MASTER, [], $wgMatomoAnalyticsDatabase );
 
 			$dbw->delete(
 				'matomo',
-				array( 'matomo_id' => $siteid ),
+				[ 'matomo_id' => $siteId ],
 				__METHOD__
 			);
 		}
@@ -58,29 +74,40 @@ class MatomoAnalytics {
 	public static function renameSite( $old, $new ) {
 		global $wgMatomoAnalyticsServerURL, $wgMatomoAnalyticsUseDB, $wgMatomoAnalyticsDatabase, $wgMatomoAnalyticsTokenAuth;
 
-		$siteid = MatomoAnalytics::getSiteID( $old );
+		$siteId = MatomoAnalytics::getSiteID( $old );
+		
+		$siteReply = Http::get(
+			wfAppendQuery(
+				$wgMatomoAnalyticsServerURL,
+				[
+					'module' => 'API',
+					'format' => 'json',
+					'method' => 'SitesManager.updateSite',
+					'idSite' => $siteId,
+					'siteName' => $new,
+					'token_auth' => $wgMatomoAnalyticsTokenAuth
+				]
+			),
+			[],
+			__METHOD__ 
+		);
 
-		$queryapi = $wgMatomoAnalyticsServerURL;
-		$queryapi .= '?module=API&format=json&method=SitesManager.updateSite';
-		$queryapi .= "&idSite=$siteid&siteName=$new";
-		$queryapi .= "&token_auth=$wgMatomoAnalyticsTokenAuth";
-
-		$sitereply = file_get_contents( $queryapi );
 
 		if ( $wgMatomoAnalyticsUseDB ) {
-			$dbw = wfGetDB( DB_MASTER, array(), $wgMatomoAnalyticsDatabase );
+			$dbw = wfGetDB( DB_MASTER, [], $wgMatomoAnalyticsDatabase );
 
 			$dbw->update(
 				'matomo',
-				array( 'matomo_wiki' => $new ),
-				array( 'matomo_id' => $siteid ),
+				[ 'matomo_wiki' => $new ],
+				[ 'matomo_id' => $siteId ],
 				__METHOD__
 			);
 		}
 
-		if ( $siteid === MatomoAnalytics::getSiteID( $new ) ) {
+		if ( $siteId === MatomoAnalytics::getSiteID( $new ) ) {
 			return true;
 		} else {
+			// FIXME: throw exception
 			return 'Error in renaming Matomo references';
 		}
 	}
@@ -88,23 +115,23 @@ class MatomoAnalytics {
 	public static function getSiteID( $dbname ) {
 		global $wgMatomoAnalyticsUseDB, $wgMatomoAnalyticsDatabase, $wgMatomoAnalyticsSiteID;
 
-		if ( $wgMatomoAnalyticsUseDB ) {
-			$dbr = wfGetDB( DB_SLAVE, array(), $wgMatomoAnalyticsDatabase );
-			$row = $dbr->selectRow(
+		if ( $wgMatomoAnalyticsUseDB ) {	
+			$dbr = wfGetDB( DB_REPLICA, [], $wgMatomoAnalyticsDatabase );
+			$id = $dbr->selectField(
 				'matomo',
-				array ( 'matomo_id' ),
-				array ( 'matomo_wiki' => $dbname ),
+				'matomo_id',
+				[ 'matomo_wiki' => $dbname ],
 				__METHOD__
 			);
 
-			if ( !isset( $row->matomo_id ) ) {
+			if ( !isset( $id ) ) {
 				wfDebugLog( 'MatomoAnalytics', "could not find {$dbname} in matomo table" );
 
 				// Because site has not been found in the matomo table
 				// lets put a 0 to prevent it throwing errors.
 				return (int)0;
 			} else {
-				return $row->matomo_id;
+				return $id;
 			}
 		} else {
 			return $wgMatomoAnalyticsSiteID;
@@ -114,18 +141,27 @@ class MatomoAnalytics {
 	private static function getAPIData( $dbname, $module, $period = 'month', $jsonlabel = 'label', $jsondata = 'nb_visits' ) {
 		global $wgMatomoAnalyticsServerURL, $wgMatomoAnalyticsTokenAuth;
 
-		$siteid = MatomoAnalytics::getSiteID( $dbname );
-
-		$queryapi = $wgMatomoAnalyticsServerURL;
-		$queryapi .= '?module=API&format=json&date=yesterday';
-		$queryapi .= "&method=$module&period=$period&idSite=$siteid";
-		$queryapi .= "&token_auth=$wgMatomoAnalyticsTokenAuth";
-
-		$sitereply = file_get_contents( $queryapi );
-		$json = json_decode( $sitereply, true );
+		$siteReply = Http::get(
+			wfAppendQuery(
+				$wgMatomoAnalyticsServerURL,
+				[
+					'module' => 'API',
+					'format' => 'json',
+					'date' => 'yesterday',
+					'method' => $module,
+					'period' => $period,
+					'idSite' => MatomoAnalytics::getSiteID( $dbname ),
+					'token_auth' => $wgMatomoAnalyticsTokenAuth
+				]
+			),
+			[],
+			__METHOD__ 
+		);
+		$siteJson = FormatJson::decode( $siteReply, true );
+		
 		$arrayout = [];
 
-		foreach ( $json as $key => $val ) {
+		foreach ( $siteJson as $key => $val ) {
 			$arrayout[$val[$jsonlabel]] = $val[$jsondata];
 		}
 

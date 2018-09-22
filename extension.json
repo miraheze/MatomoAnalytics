@@ -1,6 +1,6 @@
 {
 	"name": "MatomoAnalytics",
-	"author": "John Lewis",
+	"author": [ "John Lewis", "Southparkfan" ],
 	"url": "https://github.com/miraheze/MatomoAnalytics",
 	"descriptionmsg": "matomoanalytics-desc",
 	"type": "specialpage",
