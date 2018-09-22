@@ -1,7 +1,7 @@
 <?php
 class MatomoAnalytics {
 	// Cache site ID
-	public $siteId = array();
+	public $siteId = [];
 	
 	private function __construct( $dbname ) {
 		$this->dbname = $dbname;
@@ -31,7 +31,7 @@ class MatomoAnalytics {
 			$dbw->insert(
 				'matomo',
 				[
-					'matomo_id' => $siteJson->value,
+					'matomo_id' => $siteJson['value'],
 					'matomo_wiki' => $dbname,
 				],
 				__METHOD__
@@ -75,29 +75,42 @@ class MatomoAnalytics {
 	public static function renameSite( $old, $new ) {
 		global $wgMatomoAnalyticsServerURL, $wgMatomoAnalyticsUseDB, $wgMatomoAnalyticsDatabase, $wgMatomoAnalyticsTokenAuth;
 
-		$siteid = MatomoAnalytics::getSiteID( $old );
+		$siteId = MatomoAnalytics::getSiteID( $old );
+		
+		$siteReply = Http::get(
+			wfAppendQuery(
+				$wgMatomoAnalyticsServerURL,
+				[
+					'module' => 'API',
+					'format' => 'json',
+					'method' => 'SitesManager.updateSite',
+					'idSite' => $siteId,
+					'siteName' => $new,
+					'token_auth' => $wgMatomoAnalyticsTokenAuth
+				]
+			),
+			[],
+			__METHOD__ 
+		);
 
-		$queryapi = $wgMatomoAnalyticsServerURL;
-		$queryapi .= '?module=API&format=json&method=SitesManager.updateSite';
-		$queryapi .= "&idSite=$siteid&siteName=$new";
-		$queryapi .= "&token_auth=$wgMatomoAnalyticsTokenAuth";
-
-		$sitereply = file_get_contents( $queryapi );
 
 		if ( $wgMatomoAnalyticsUseDB ) {
-			$dbw = wfGetDB( DB_MASTER, array(), $wgMatomoAnalyticsDatabase );
+			$dbw = wfGetDB( DB_MASTER, [], $wgMatomoAnalyticsDatabase );
 
 			$dbw->update(
 				'matomo',
-				array( 'matomo_wiki' => $new ),
-				array( 'matomo_id' => $siteid ),
+				[ 'matomo_wiki' => $new ],
+				[ 'matomo_id' => $siteid ],
 				__METHOD__
 			);
+			
+			$dbw->close();
 		}
 
-		if ( $siteid === MatomoAnalytics::getSiteID( $new ) ) {
+		if ( $siteId === MatomoAnalytics::getSiteID( $new ) ) {
 			return true;
 		} else {
+			// FIXME: throw exception
 			return 'Error in renaming Matomo references';
 		}
 	}
