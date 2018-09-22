@@ -72,25 +72,63 @@ class MatomoAnalytics {
 		return true;
 	}
 
+	public static function renameSite( $old, $new ) {
+		global $wgMatomoAnalyticsServerURL, $wgMatomoAnalyticsUseDB, $wgMatomoAnalyticsDatabase, $wgMatomoAnalyticsTokenAuth;
+
+		$siteid = MatomoAnalytics::getSiteID( $old );
+
+		$queryapi = $wgMatomoAnalyticsServerURL;
+		$queryapi .= '?module=API&format=json&method=SitesManager.updateSite';
+		$queryapi .= "&idSite=$siteid&siteName=$new";
+		$queryapi .= "&token_auth=$wgMatomoAnalyticsTokenAuth";
+
+		$sitereply = file_get_contents( $queryapi );
+
+		if ( $wgMatomoAnalyticsUseDB ) {
+			$dbw = wfGetDB( DB_MASTER, array(), $wgMatomoAnalyticsDatabase );
+
+			$dbw->update(
+				'matomo',
+				array( 'matomo_wiki' => $new ),
+				array( 'matomo_id' => $siteid ),
+				__METHOD__
+			);
+		}
+
+		if ( $siteid === MatomoAnalytics::getSiteID( $new ) ) {
+			return true;
+		} else {
+			return 'Error in renaming Matomo references';
+		}
+	}
+
 	public static function getSiteID( $dbname ) {
 		global $wgMatomoAnalyticsUseDB, $wgMatomoAnalyticsDatabase, $wgMatomoAnalyticsSiteID;
 
 		if ( $wgMatomoAnalyticsUseDB ) {
 			if ( isset( $this->siteId[$dbname] ) ) {
 				return $this->siteId[$dbname];
-			} else {
+			} else {	
 				$dbr = wfGetDB( DB_REPLICA, [], $wgMatomoAnalyticsDatabase );
-				$row = $dbr->selectRow(
+				$id = $dbr->selectField(
 					'matomo',
-					[ 'matomo_id' ],
+					'matomo_id',
 					[ 'matomo_wiki' => $dbname ],
 					__METHOD__
 				);
 				$dbr->close();
 
-				$this->siteId[$dbname] = $row->matomo_id;
-				
-				return $this->siteId[$dbname];
+				if ( !isset( $id ) ) {
+					wfDebugLog( 'MatomoAnalytics', "could not find {$dbname} in matomo table" );
+
+					// Because site has not been found in the matomo table
+					// lets put a 0 to prevent it throwing errors.
+					return (int)0;
+				} else {
+					$this->siteId[$dbname] = $id;
+
+					return $id;
+				}
 			}
 		} else {
 			return $wgMatomoAnalyticsSiteID;

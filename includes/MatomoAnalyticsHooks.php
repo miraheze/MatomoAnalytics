@@ -21,8 +21,12 @@ class MatomoAnalyticsHooks {
 		MatomoAnalytics::addSite( $dbname );
 	}
 
-	public static function wikiDeletion( $dbname ) {
+	public static function wikiDeletion( $dbw, $dbname ) {
 		MatomoAnalytics::deleteSite( $dbname );
+	}
+
+	public static function wikiRename( $dbw, $old, $new ) {
+		MatomoAnalytics::renameSite( $old, $new );
 	}
 
 	/**
@@ -41,6 +45,7 @@ class MatomoAnalyticsHooks {
 			$text .= '<!-- MatomoAnalytics: User right noanalytics is assigned. -->';
 		} else {
 			$id = strval( $wgMatomoAnalyticsID );
+			$globalId = $wgMatomoAnalyticsGlobalID ? $wgMatomoAnalyticsGlobalID : 'false';
 			$serverurl = $wgMatomoAnalyticsServerURL;
 			$title = $skin->getRelevantTitle();
 			$jstitle = Xml::encodeJsVar( $title->getPrefixedText() );
@@ -48,14 +53,14 @@ class MatomoAnalyticsHooks {
 			$urltitle = $title->getPrefixedURL();
 			$userType = $wgUser->isLoggedIn() ? "User" : "Anonymous";
 			$text .= <<<SCRIPT
-				<!-- Piwik -->
+				<!-- Matomo -->
 				<script type="text/javascript">
 				var _paq = _paq || [];
 				_paq.push(["trackPageView"]);
 				_paq.push(["enableLinkTracking"]);
 				(function() {
 					var u = "{$serverurl}";
-					var globalId = {$wgMatomoAnalyticsGlobalID};
+					var globalId = {$globalId};
 					_paq.push(["setTrackerUrl", u + "piwik.php"]);
 					_paq.push(['setDocumentTitle', {$dbname} + " - " + {$jstitle}]);
 					_paq.push(["setSiteId", "{$id}"]);
@@ -67,10 +72,10 @@ class MatomoAnalyticsHooks {
 					g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
 				})();
 				</script>
-				<!-- End Piwik Code -->
-				<!-- Piwik Image Tracker -->
+				<!-- End Matomo Code -->
+				<!-- Matomo Image Tracker -->
 				<noscript><p><img src="{$serverurl}piwik.php?idsite={$id}&amp;rec=1&amp;action_name={$urltitle}" style="border:0;" alt="" /></p></noscript>
-				<!-- End Piwik -->
+				<!-- End Matomo -->
 SCRIPT;
 		}
 

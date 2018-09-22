@@ -28,6 +28,9 @@
 		"CreateWikiDeletion": [
 			"MatomoAnalyticsHooks::wikiDeletion"
 		],
+		"CreateWikiRename": [
+			"MatomoAnalyticsHooks::wikiRename"
+		],
 		"LoadExtensionSchemaUpdates": [
 			"MatomoAnalyticsHooks::matomoAnalyticsSchemaUpdates"
 		],
