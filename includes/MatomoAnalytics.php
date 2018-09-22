@@ -1,8 +1,5 @@
 <?php
 class MatomoAnalytics {
-	// Cache site ID
-	public $siteId = [];
-	
 	private function __construct( $dbname ) {
 		$this->dbname = $dbname;
 	}
@@ -38,12 +35,14 @@ class MatomoAnalytics {
 			);
 		}
 
-		return $sitejson['value'];
+		return $siteJson['value'];
 	}
 
 	public static function deleteSite( $dbname ) {
 		global $wgMatomoAnalyticsServerURL, $wgMatomoAnalyticsUseDB, $wgMatomoAnalyticsDatabase, $wgMatomoAnalyticsTokenAuth;
 
+		$siteId = MatomoAnalytics::getSiteID( $dbname );
+		
 		$siteReply = Http::get(
 			wfAppendQuery(
 				$wgMatomoAnalyticsServerURL,
@@ -51,7 +50,7 @@ class MatomoAnalytics {
 					'module' => 'API',
 					'format' => 'json',
 					'method' => 'SitesManager.deleteSite',
-					'idSite' => MatomoAnalytics::getSiteID( $dbname ),
+					'idSite' => $siteId,
 					'token_auth' => $wgMatomoAnalyticsTokenAuth
 				]
 			),
@@ -64,7 +63,7 @@ class MatomoAnalytics {
 
 			$dbw->delete(
 				'matomo',
-				[ 'matomo_id' => $siteid ],
+				[ 'matomo_id' => $siteId ],
 				__METHOD__
 			);
 		}
@@ -100,11 +99,9 @@ class MatomoAnalytics {
 			$dbw->update(
 				'matomo',
 				[ 'matomo_wiki' => $new ],
-				[ 'matomo_id' => $siteid ],
+				[ 'matomo_id' => $siteId ],
 				__METHOD__
 			);
-			
-			$dbw->close();
 		}
 
 		if ( $siteId === MatomoAnalytics::getSiteID( $new ) ) {
@@ -118,30 +115,23 @@ class MatomoAnalytics {
 	public static function getSiteID( $dbname ) {
 		global $wgMatomoAnalyticsUseDB, $wgMatomoAnalyticsDatabase, $wgMatomoAnalyticsSiteID;
 
-		if ( $wgMatomoAnalyticsUseDB ) {
-			if ( isset( $this->siteId[$dbname] ) ) {
-				return $this->siteId[$dbname];
-			} else {	
-				$dbr = wfGetDB( DB_REPLICA, [], $wgMatomoAnalyticsDatabase );
-				$id = $dbr->selectField(
-					'matomo',
-					'matomo_id',
-					[ 'matomo_wiki' => $dbname ],
-					__METHOD__
-				);
-				$dbr->close();
+		if ( $wgMatomoAnalyticsUseDB ) {	
+			$dbr = wfGetDB( DB_REPLICA, [], $wgMatomoAnalyticsDatabase );
+			$id = $dbr->selectField(
+				'matomo',
+				'matomo_id',
+				[ 'matomo_wiki' => $dbname ],
+				__METHOD__
+			);
 
-				if ( !isset( $id ) ) {
-					wfDebugLog( 'MatomoAnalytics', "could not find {$dbname} in matomo table" );
+			if ( !isset( $id ) ) {
+				wfDebugLog( 'MatomoAnalytics', "could not find {$dbname} in matomo table" );
 
-					// Because site has not been found in the matomo table
-					// lets put a 0 to prevent it throwing errors.
-					return (int)0;
-				} else {
-					$this->siteId[$dbname] = $id;
-
-					return $id;
-				}
+				// Because site has not been found in the matomo table
+				// lets put a 0 to prevent it throwing errors.
+				return (int)0;
+			} else {
+				return $id;
 			}
 		} else {
 			return $wgMatomoAnalyticsSiteID;
