@@ -9,5 +9,5 @@
 	"matomoanalytics-header": "You can use the form below to select different statistics to view that we store using Matomo.",
 	"matomoanalytics-form-stat1": "Statistic 1",
 	"matomoanalytics-form-stat2": "Statistic 2",
-	"right-noanalytics": "Not be tracked via Matomo",
+	"right-noanalytics": "Not be tracked via Matomo"
 }
