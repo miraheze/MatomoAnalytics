@@ -1,6 +1,9 @@
 {
 	"name": "MatomoAnalytics",
-	"author": [ "John Lewis", "Southparkfan" ],
+	"author": [
+		"John Lewis",
+		"Southparkfan"
+	],
 	"url": "https://github.com/miraheze/MatomoAnalytics",
 	"descriptionmsg": "matomoanalytics-desc",
 	"type": "specialpage",
@@ -39,12 +42,36 @@
 		]
 	},
 	"config": {
-		"MatomoAnalyticsDatabase": false,
-		"MatomoAnalyticsServerURL": false,
-		"MatomoAnalyticsSiteID": 1,
-		"MatomoAnalyticsGlobalID": false,
-		"MatomoAnalyticsTokenAuth": false,
-		"MatomoAnalyticsUseDB": false
+		"MatomoAnalyticsDatabase": {
+			"description": "String. Database that the 'matomo' table is in.",
+			"public": true,
+			"value": false
+		},
+		"MatomoAnalyticsServerURL": {
+			"description": "String. URL of the server to use for API queries.",
+			"public": true,
+			"value": false
+		},
+		"MatomoAnalyticsSiteID": {
+			"description": "Integer. If not using database, the site number to add all monitoring to.",
+			"public": true,
+			"value": 1
+		},
+		"MatomoAnalyticsGlobalID": {
+			"description": "Integer. If tracking more than one site, this is an ID to attach to all wikis for central aggregate statistics.",
+			"public": true,
+			"value": false
+		},
+		"MatomoAnalyticsTokenAuth": {
+			"description": "String. The API Token for authentication when making requests for data.",
+			"public": false,
+			"value": false
+		},
+		"MatomoAnalyticsUseDB": {
+			"description": "Boolean. Whether or not to use the database for tracking site IDs.",
+			"public": true,
+			"value": false
+		}
 	},
-	"manifest_version": 1
+	"manifest_version": 2
 }
