@@ -74,6 +74,11 @@ class MatomoAnalyticsHooks {
 				</script>
 				<!-- End Matomo Code -->
 				<!-- Matomo Image Tracker -->
+				<?php
+				if ( $globalId ) {
+					<noscript><p><img src="{$serverurl}piwik.php?idsite={$globalId}&amp;rec=1&amp;action_name={$urltitle}" style="border:0;" alt="" /></p></noscript>
+				}
+				?>
 				<noscript><p><img src="{$serverurl}piwik.php?idsite={$id}&amp;rec=1&amp;action_name={$urltitle}" style="border:0;" alt="" /></p></noscript>
 				<!-- End Matomo -->
 SCRIPT;
