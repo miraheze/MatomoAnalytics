@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Reception123"
+		]
+	},
+	"analytics": "MatomoAnalytics",
+	"matomoanalytics-desc": "Integra análises de Matomo e MediaWiki",
+	"matomoanalytics-header": "Você pode usar o formulário abaixo para selecionar diferentes estatísticas para ver que armazenamos usando o Matomo..",
+	"matomoanalytics-form-stat1": "Estatística 1",
+	"matomoanalytics-form-stat2": "Estatística 2"
+	"right-noanalytics": "Não ser rastreado via Matomo"
+}
