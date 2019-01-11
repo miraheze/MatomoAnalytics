@@ -38,7 +38,7 @@ class MatomoAnalyticsHooks {
 	* @param string &$text Output text.
 	* @return bool
 	*/
-	public function matomoScript( $skin, &$text = '' ) {
+	public static function matomoScript( $skin, &$text = '' ) {
 		global $wgMatomoAnalyticsServerURL, $wgUser, $wgDBname, $wgMatomoAnalyticsID, $wgMatomoAnalyticsGlobalID;
 
 		if ( $wgUser->isAllowed( 'noanalytics' ) ) {
