@@ -99,10 +99,10 @@ class SpecialAnalytics extends SpecialPage {
 				$statarray = MatomoAnalytics::getDeviceTypes( $wgDBname );
 				break;
 			case 'operatingsystem':
-				$statearray = MatomoAnalytics::getOSVersion( $wgDBname );
+				$statarray = MatomoAnalytics::getOSVersion( $wgDBname );
 				break;
 			case 'resolution':
-				$statearray = MatomoAnalytics::getResolution( $wgDBname );
+				$statarray = MatomoAnalytics::getResolution( $wgDBname );
 				break;
 			case 'referrer':
 				$statarray = MatomoAnalytics::getReferrerType( $wgDBname );
