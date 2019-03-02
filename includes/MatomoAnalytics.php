@@ -183,6 +183,16 @@ class MatomoAnalytics {
 	public static function getDeviceTypes( $dbname ) {
 		return self::getAPIData( $dbname, 'DevicesDetection.getType' );
 	}
+	
+	// Returns number of visits from a version of an operating system (Windows, Mac, Linux etc.)
+	public static function getOSVersion( $dbname ) {
+		return self::getAPIData( $dbname, 'DevicesDetection.getOsVersions' );
+	}
+	
+	// Returns number of visits from a type of screen resolution (1920x1080, 1366x768 etc.)
+	public static function getResolution( $dbname ) {
+		return self::getAPIData ( $dbanme, 'Resolution.getResolution' );
+	}
 
 	// Returns number of visits from a type of refereer (Search Engine, Websites etc.)
 	public static function getReferrerType( $dbname ) {
@@ -247,5 +257,10 @@ class MatomoAnalytics {
 	// Returns percentage of visit shares by total number of visits.
 	public static function getVisitsCountPercentage( $dbname ) {
 		return self::getAPIData( $dbname, 'VisitorInterest.getNumberOfVisitsByVisitCount', $jsondata = 'nb_visits_percentage' );
+	}
+	
+	// Returns number of monthly unique visits.
+	public static function getUniqueVisits( $dbname ) {
+		return self::getAPIData( $dbname, 'VisitsSummary.getUniqueVisitors' );
 	}
 }

@@ -16,6 +16,8 @@ class SpecialAnalytics extends SpecialPage {
 		$options = [
 			'browser' => 'Browser Usage',
 			'devices' => 'Device Usage',
+			'operatingsystem' => 'Operating System',
+			'resolution' => 'Resolution',
 			'referrer' => 'Site Referrers',
 			'search' => 'Search Engine Keywords',
 			'social' => 'Social Network Referrals',
@@ -28,6 +30,7 @@ class SpecialAnalytics extends SpecialPage {
 			'visitduration' => 'Length of Visits',
 			'visitpass' => 'Time Between Visits',
 			'visitcount' => 'Visits By User',
+			'uniquevisits' => 'Unique Visits',
 		];
 
 		$optionDescriptor = [
@@ -95,6 +98,12 @@ class SpecialAnalytics extends SpecialPage {
 			case 'devices':
 				$statarray = MatomoAnalytics::getDeviceTypes( $wgDBname );
 				break;
+			case 'operatingsystem':
+				$statearray = MatomoAnalytics::getOSVersion( $wgDBname );
+				break;
+			case 'resolution':
+				$statearray = MatomoAnalytics::getResolution( $wgDBname );
+				break;
 			case 'referrer':
 				$statarray = MatomoAnalytics::getReferrerType( $wgDBname );
 				break;
@@ -130,6 +139,9 @@ class SpecialAnalytics extends SpecialPage {
 				break;
 			case 'visitcount':
 				$statarray = MatomoAnalytics::getVisitsCount( $wgDBname );
+				break;
+			case 'uniquevisits':
+				$statearray = MatomoAnalytics::getUniqueVisits( $wgDBname );
 				break;
 		}
 
