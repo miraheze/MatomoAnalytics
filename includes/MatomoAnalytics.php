@@ -191,7 +191,7 @@ class MatomoAnalytics {
 	
 	// Returns number of visits from a type of screen resolution (1920x1080, 1366x768 etc.)
 	public static function getResolution( $dbname ) {
-		return self::getAPIData ( $dbanme, 'Resolution.getResolution' );
+		return self::getAPIData( $dbanme, 'Resolution.getResolution' );
 	}
 
 	// Returns number of visits from a type of refereer (Search Engine, Websites etc.)
