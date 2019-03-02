@@ -141,7 +141,7 @@ class SpecialAnalytics extends SpecialPage {
 				$statarray = MatomoAnalytics::getVisitsCount( $wgDBname );
 				break;
 			case 'uniquevisits':
-				$statearray = MatomoAnalytics::getUniqueVisits( $wgDBname );
+				$statarray = MatomoAnalytics::getUniqueVisits( $wgDBname );
 				break;
 		}
 
