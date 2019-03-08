@@ -30,7 +30,6 @@ class SpecialAnalytics extends SpecialPage {
 			'visitduration' => 'Length of Visits',
 			'visitpass' => 'Time Between Visits',
 			'visitcount' => 'Visits By User',
-			'uniquevisits' => 'Unique Visits',
 		];
 
 		$optionDescriptor = [
@@ -139,9 +138,6 @@ class SpecialAnalytics extends SpecialPage {
 				break;
 			case 'visitcount':
 				$statarray = MatomoAnalytics::getVisitsCount( $wgDBname );
-				break;
-			case 'uniquevisits':
-				$statarray = MatomoAnalytics::getUniqueVisits( $wgDBname );
 				break;
 		}
 
