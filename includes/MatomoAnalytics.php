@@ -19,7 +19,7 @@ class MatomoAnalytics {
 				]
 			),
 			[],
-			__METHOD__ 
+			__METHOD__
 		);
 		$siteJson = FormatJson::decode( $siteReply, true );
 
@@ -42,7 +42,7 @@ class MatomoAnalytics {
 		global $wgMatomoAnalyticsServerURL, $wgMatomoAnalyticsUseDB, $wgMatomoAnalyticsDatabase, $wgMatomoAnalyticsTokenAuth;
 
 		$siteId = MatomoAnalytics::getSiteID( $dbname );
-		
+
 		$siteReply = Http::get(
 			wfAppendQuery(
 				$wgMatomoAnalyticsServerURL,
@@ -55,7 +55,7 @@ class MatomoAnalytics {
 				]
 			),
 			[],
-			__METHOD__ 
+			__METHOD__
 		);
 
 		if ( $wgMatomoAnalyticsUseDB ) {
@@ -75,7 +75,7 @@ class MatomoAnalytics {
 		global $wgMatomoAnalyticsServerURL, $wgMatomoAnalyticsUseDB, $wgMatomoAnalyticsDatabase, $wgMatomoAnalyticsTokenAuth;
 
 		$siteId = MatomoAnalytics::getSiteID( $old );
-		
+
 		$siteReply = Http::get(
 			wfAppendQuery(
 				$wgMatomoAnalyticsServerURL,
@@ -89,7 +89,7 @@ class MatomoAnalytics {
 				]
 			),
 			[],
-			__METHOD__ 
+			__METHOD__
 		);
 
 
@@ -115,7 +115,7 @@ class MatomoAnalytics {
 	public static function getSiteID( $dbname ) {
 		global $wgMatomoAnalyticsUseDB, $wgMatomoAnalyticsDatabase, $wgMatomoAnalyticsSiteID;
 
-		if ( $wgMatomoAnalyticsUseDB ) {	
+		if ( $wgMatomoAnalyticsUseDB ) {
 			$dbr = wfGetDB( DB_REPLICA, [], $wgMatomoAnalyticsDatabase );
 			$id = $dbr->selectField(
 				'matomo',
@@ -138,7 +138,7 @@ class MatomoAnalytics {
 		}
 	}
 
-	private static function getAPIData( $dbname, $module, $period = 'month', $jsonlabel = 'label', $jsondata = 'nb_visits' ) {
+	private static function getAPIData( $dbname, $module, $period = 'month', $jsonlabel = 'label', $jsondata = 'nb_visits', $flat = false ) {
 		global $wgMatomoAnalyticsServerURL, $wgMatomoAnalyticsTokenAuth;
 
 		$siteReply = Http::get(
@@ -155,14 +155,18 @@ class MatomoAnalytics {
 				]
 			),
 			[],
-			__METHOD__ 
+			__METHOD__
 		);
 		$siteJson = FormatJson::decode( $siteReply, true );
-		
+
 		$arrayout = [];
 
 		foreach ( $siteJson as $key => $val ) {
-			$arrayout[$val[$jsonlabel]] = $val[$jsondata];
+			if ( $flat ) {
+				$arrayout[$key] = $val;
+			} else {
+				$arrayout[$val[$jsonlabel]] = $val[$jsondata];
+			}
 		}
 
 		return $arrayout;
@@ -183,12 +187,12 @@ class MatomoAnalytics {
 	public static function getDeviceTypes( $dbname ) {
 		return self::getAPIData( $dbname, 'DevicesDetection.getType' );
 	}
-	
+
 	// Returns number of visits from a version of an operating system (Windows, Mac, Linux etc.)
 	public static function getOSVersion( $dbname ) {
 		return self::getAPIData( $dbname, 'DevicesDetection.getOsVersions' );
 	}
-	
+
 	// Returns number of visits from a type of screen resolution (1920x1080, 1366x768 etc.)
 	public static function getResolution( $dbname ) {
 		return self::getAPIData( $dbname, 'Resolution.getResolution' );
@@ -261,6 +265,6 @@ class MatomoAnalytics {
 
 	// Returns number of monthly unique visits.
 	public static function getUniqueVisits( $dbname ) {
-		return self::getAPIData( $dbname, 'VisitsSummary.getUniqueVisitors', $jsondata = 'value' );
+		return self::getAPIData( $dbname, 'VisitsSummary.getUniqueVisitors', $jsondata = 'value', $flat = true );
 	}
 }
