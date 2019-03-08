@@ -258,9 +258,9 @@ class MatomoAnalytics {
 	public static function getVisitsCountPercentage( $dbname ) {
 		return self::getAPIData( $dbname, 'VisitorInterest.getNumberOfVisitsByVisitCount', $jsondata = 'nb_visits_percentage' );
 	}
-	
+
 	// Returns number of monthly unique visits.
 	public static function getUniqueVisits( $dbname ) {
-		return self::getAPIData( $dbname, 'VisitsSummary.getUniqueVisitors' );
+		return self::getAPIData( $dbname, 'VisitsSummary.getUniqueVisitors', $jsondata = 'value' );
 	}
 }
