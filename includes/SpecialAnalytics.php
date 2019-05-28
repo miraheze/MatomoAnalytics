@@ -1,11 +1,11 @@
 <?php
 
 class SpecialAnalytics extends SpecialPage {
-	function __construct() {
+        public function __construct() {
 		parent::__construct( 'Analytics' );
 	}
 
-	function execute( $par ) {
+	public function execute( $par ) {
 		$this->setHeaders();
 		$this->outputHeader();
 
@@ -83,7 +83,7 @@ class SpecialAnalytics extends SpecialPage {
 
 	}
 
-	function dummyHandler( $formData ) {
+	public function dummyHandler( $formData ) {
 		return false;
 	}
 
