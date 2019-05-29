@@ -1,5 +1,8 @@
 == ChangeLog for MatomoAnalytics ==
 
+=== 1.0.1 (30-05-2019) ===
+* Drop unnecessary variable assignments.
+
 === 1.0.0 (29-05-2019) ===
 * Turn extension into a versioned project.
 * Redesign whole code base (essentially an initial commit).

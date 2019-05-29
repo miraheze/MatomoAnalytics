@@ -20,6 +20,7 @@ class MatomoAnalytics {
 			[],
 			__METHOD__
 		);
+
 		$siteJson = FormatJson::decode( $siteReply, true );
 
 		if ( $config->get( 'MatomoAnalyticsUseDB' ) ) {
@@ -42,7 +43,7 @@ class MatomoAnalytics {
 
 		$siteId = static::getSiteID( $dbname );
 
-		$siteReply = Http::get(
+		Http::get(
 			wfAppendQuery(
 				$config->get( 'MatomoAnalyticsServerURL' ),
 				[
@@ -75,7 +76,7 @@ class MatomoAnalytics {
 
 		$siteId = static::getSiteID( $old );
 
-		$siteReply = Http::get(
+		Http::get(
 			wfAppendQuery(
 				$config->get( 'MatomoAnalyticsServerURL' ),
 				[
