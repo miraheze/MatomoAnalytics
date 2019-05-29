@@ -1,15 +1,18 @@
 <?php
 
+use MediaWiki\MediaWikiServices;
+
 class MatomoAnalyticsHooks {
         public static function onRegistration() {
-                global $wgDBname, $wgMatomoAnalyticsID;
-                $wgMatomoAnalyticsID = MatomoAnalytics::getSiteID( $wgDBname );
+                global $wgMatomoAnalyticsID;
+		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
+                $wgMatomoAnalyticsID = MatomoAnalytics::getSiteID( $config->get( 'DBname' ) );
         }
 
 	public static function matomoAnalyticsSchemaUpdates( DatabaseUpdater $updater ) {
-		global $wgMatomoAnalyticsUseDB, $wgMatomoAnalyticsDatabase, $wgDBname;
+		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
 
-		if ( $wgMatomoAnalyticsUseDB && $wgMatomoAnalyticsDatabase === $wgDBname ) {
+		if ( $config->get( 'MatomoAnalyticsUseDB' ) && $config->get( 'MatomoAnalyticsDatabase' ) === $config->get( 'DBname' ) ) {
 			$updater->addExtensionTable( 'matomo',
 				__DIR__ . '/../sql/matomo.sql' );
 		}
@@ -39,19 +42,20 @@ class MatomoAnalyticsHooks {
 	* @return bool
 	*/
 	public static function matomoScript( $skin, &$text = '' ) {
-		global $wgMatomoAnalyticsServerURL, $wgUser, $wgDBname, $wgMatomoAnalyticsID, $wgMatomoAnalyticsGlobalID;
+		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
+		$user = RequestContext::getMain()->getUser();
 
-		if ( $wgUser->isAllowed( 'noanalytics' ) ) {
+		if ( $user->isAllowed( 'noanalytics' ) ) {
 			$text .= '<!-- MatomoAnalytics: User right noanalytics is assigned. -->';
 		} else {
-			$id = strval( $wgMatomoAnalyticsID );
-			$globalId = $wgMatomoAnalyticsGlobalID ? $wgMatomoAnalyticsGlobalID : 'false';
-			$serverurl = $wgMatomoAnalyticsServerURL;
+			$id = strval( $config->get( 'MatomoAnalyticsID' ) );
+			$globalId = (string)$config->get( 'MatomoAnalyticsGlobalID' );
+			$serverurl = $config->get( 'MatomoAnalyticsServerURL' );
 			$title = $skin->getRelevantTitle();
 			$jstitle = Xml::encodeJsVar( $title->getPrefixedText() );
-			$dbname = Xml::encodeJsVar( $wgDBname );
+			$dbname = Xml::encodeJsVar( $config->get( 'DBname' ) );
 			$urltitle = $title->getPrefixedURL();
-			$userType = $wgUser->isLoggedIn() ? "User" : "Anonymous";
+			$userType = $user->isLoggedIn() ? "User" : "Anonymous";
 			$text .= <<<SCRIPT
 				<!-- Matomo -->
 				<script type="text/javascript">

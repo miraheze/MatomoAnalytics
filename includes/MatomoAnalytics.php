@@ -1,21 +1,20 @@
 <?php
-class MatomoAnalytics {
-	private function __construct( $dbname ) {
-		$this->dbname = $dbname;
-	}
 
+use MediaWiki\MediaWikiServices;
+
+class MatomoAnalytics {
 	public static function addSite( $dbname ) {
-		global $wgMatomoAnalyticsServerURL, $wgMatomoAnalyticsUseDB, $wgMatomoAnalyticsDatabase, $wgMatomoAnalyticsTokenAuth;
+		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
 
 		$siteReply = Http::get(
 			wfAppendQuery(
-				$wgMatomoAnalyticsServerURL,
+				$config->get( 'MatomoAnalyticsServerURL' ),
 				[
 					'module' => 'API',
 					'format' => 'json',
 					'method' => 'SitesManager.addSite',
 					'siteName' => $dbname,
-					'token_auth' => $wgMatomoAnalyticsTokenAuth
+					'token_auth' => $config->get( 'MatomoAnalyticsTokenAuth' )
 				]
 			),
 			[],
@@ -23,8 +22,8 @@ class MatomoAnalytics {
 		);
 		$siteJson = FormatJson::decode( $siteReply, true );
 
-		if ( $wgMatomoAnalyticsUseDB ) {
-			$dbw = wfGetDB( DB_MASTER, [], $wgMatomoAnalyticsDatabase );
+		if ( $config->get( 'MatomoAnalyticsUseDB' ) ) {
+			$dbw = wfGetDB( DB_MASTER, [], $config->get( 'MatomoAnalyticsDatabase' ) );
 			$dbw->insert(
 				'matomo',
 				[
@@ -39,27 +38,27 @@ class MatomoAnalytics {
 	}
 
 	public static function deleteSite( $dbname ) {
-		global $wgMatomoAnalyticsServerURL, $wgMatomoAnalyticsUseDB, $wgMatomoAnalyticsDatabase, $wgMatomoAnalyticsTokenAuth;
+		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
 
-		$siteId = MatomoAnalytics::getSiteID( $dbname );
+		$siteId = static::getSiteID( $dbname );
 
 		$siteReply = Http::get(
 			wfAppendQuery(
-				$wgMatomoAnalyticsServerURL,
+				$config->get( 'MatomoAnalyticsServerURL' ),
 				[
 					'module' => 'API',
 					'format' => 'json',
 					'method' => 'SitesManager.deleteSite',
 					'idSite' => $siteId,
-					'token_auth' => $wgMatomoAnalyticsTokenAuth
+					'token_auth' => $config->get( 'MatomoAnalyticsTokenAuth' )
 				]
 			),
 			[],
 			__METHOD__
 		);
 
-		if ( $wgMatomoAnalyticsUseDB ) {
-			$dbw = wfGetDB( DB_MASTER, [], $wgMatomoAnalyticsDatabase );
+		if ( $config->get( 'MatomoAnalyticsUseDB' ) ) {
+			$dbw = wfGetDB( DB_MASTER, [], $config->get( 'MatomoAnalyticsDatabase' ) );
 
 			$dbw->delete(
 				'matomo',
@@ -72,20 +71,20 @@ class MatomoAnalytics {
 	}
 
 	public static function renameSite( $old, $new ) {
-		global $wgMatomoAnalyticsServerURL, $wgMatomoAnalyticsUseDB, $wgMatomoAnalyticsDatabase, $wgMatomoAnalyticsTokenAuth;
+		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
 
-		$siteId = MatomoAnalytics::getSiteID( $old );
+		$siteId = static::getSiteID( $old );
 
 		$siteReply = Http::get(
 			wfAppendQuery(
-				$wgMatomoAnalyticsServerURL,
+				$config->get( 'MatomoAnalyticsServerURL' ),
 				[
 					'module' => 'API',
 					'format' => 'json',
 					'method' => 'SitesManager.updateSite',
 					'idSite' => $siteId,
 					'siteName' => $new,
-					'token_auth' => $wgMatomoAnalyticsTokenAuth
+					'token_auth' => $config->get( 'MatomoAnalyticsTokenAuth' )
 				]
 			),
 			[],
@@ -93,8 +92,8 @@ class MatomoAnalytics {
 		);
 
 
-		if ( $wgMatomoAnalyticsUseDB ) {
-			$dbw = wfGetDB( DB_MASTER, [], $wgMatomoAnalyticsDatabase );
+		if ( $config->get( 'MatomoAnalyticsUseDB' ) ) {
+			$dbw = wfGetDB( DB_MASTER, [], $config->get( 'MatomoAnalyticsDatabase' ) );
 
 			$dbw->update(
 				'matomo',
@@ -104,19 +103,18 @@ class MatomoAnalytics {
 			);
 		}
 
-		if ( $siteId === MatomoAnalytics::getSiteID( $new ) ) {
+		if ( $siteId === static::getSiteID( $new ) ) {
 			return true;
 		} else {
-			// FIXME: throw exception
-			return 'Error in renaming Matomo references';
+			throw new MWException( 'Error in renaming Matomo references' );
 		}
 	}
 
 	public static function getSiteID( $dbname ) {
-		global $wgMatomoAnalyticsUseDB, $wgMatomoAnalyticsDatabase, $wgMatomoAnalyticsSiteID;
+		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
 
-		if ( $wgMatomoAnalyticsUseDB ) {
-			$dbr = wfGetDB( DB_REPLICA, [], $wgMatomoAnalyticsDatabase );
+		if ( $config->get( 'MatomoAnalyticsUseDB' ) ) {
+			$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'MatomoAnalyticsDatabase' ) );
 			$id = $dbr->selectField(
 				'matomo',
 				'matomo_id',
@@ -134,132 +132,7 @@ class MatomoAnalytics {
 				return $id;
 			}
 		} else {
-			return $wgMatomoAnalyticsSiteID;
+			return $config->get( 'MatomoAnalyticsSiteID' );
 		}
-	}
-
-	private static function getAPIData( $dbname, $module, $period = 'month', $jsonlabel = 'label', $jsondata = 'nb_visits', $flat = false ) {
-		global $wgMatomoAnalyticsServerURL, $wgMatomoAnalyticsTokenAuth;
-
-		$siteReply = Http::get(
-			wfAppendQuery(
-				$wgMatomoAnalyticsServerURL,
-				[
-					'module' => 'API',
-					'format' => 'json',
-					'date' => 'yesterday',
-					'method' => $module,
-					'period' => $period,
-					'idSite' => MatomoAnalytics::getSiteID( $dbname ),
-					'token_auth' => $wgMatomoAnalyticsTokenAuth
-				]
-			),
-			[],
-			__METHOD__
-		);
-		$siteJson = FormatJson::decode( $siteReply, true );
-
-		$arrayout = [];
-
-		foreach ( $siteJson as $key => $val ) {
-			if ( $flat ) {
-				$arrayout[$key] = $val;
-			} else {
-				$arrayout[$val[$jsonlabel]] = $val[$jsondata];
-			}
-		}
-
-		return $arrayout;
-	}
-
-	/*
-	 * Below are a lot of functions that return arrays of data from Matomo APIs.
-	 * Each function has a comment above it that states what it gets.
-	 * This data can be manipulated by anyone, however they want.
-	 */
-
-	// Returns number of visits from a browser (Chrome, Firefox, Edge etc.)
-	public static function getBrowserTypes( $dbname ) {
-		return self::getAPIData( $dbname, 'DevicesDetection.getBrowsers' );
-	}
-
-	// Returns number of visits from a type of device (Desktop, Smartphone etc.)
-	public static function getDeviceTypes( $dbname ) {
-		return self::getAPIData( $dbname, 'DevicesDetection.getType' );
-	}
-
-	// Returns number of visits from a version of an operating system (Windows, Mac, Linux etc.)
-	public static function getOSVersion( $dbname ) {
-		return self::getAPIData( $dbname, 'DevicesDetection.getOsVersions' );
-	}
-
-	// Returns number of visits from a type of screen resolution (1920x1080, 1366x768 etc.)
-	public static function getResolution( $dbname ) {
-		return self::getAPIData( $dbname, 'Resolution.getResolution' );
-	}
-
-	// Returns number of visits from a type of refereer (Search Engine, Websites etc.)
-	public static function getReferrerType( $dbname ) {
-		return self::getAPIData( $dbname, 'Referrers.getReferrerType' );
-	}
-
-	// Returns list of search terms and number of times they were used.
-	public static function getSearchKeywords( $dbname ) {
-		return self::getAPIData( $dbname, 'Referrers.getKeywords' );
-	}
-
-	// Returns number of visits from a social network.
-	public static function getSocialReferrals( $dbname ) {
-		return self::getAPIData( $dbname, 'Referrers.getSocials' );
-	}
-
-	// Returns number of visits that started from another website.
-	public static function getWebsiteReferrals( $dbname ) {
-		return self::getAPIData( $dbname, 'Referrers.getWebsites' );
-	}
-
-	// Returns number of visits per continent.
-	public static function getUsersContinent( $dbname ) {
-		return self::getAPIData( $dbname, 'UserCountry.getContinent' );
-	}
-
-	// Returns number of visits per country.
-	public static function getUsersCountry( $dbname ) {
-		return self::getAPIData( $dbname, 'UserCountry.getCountry' );
-	}
-
-	// Returns number of visits per day.
-	public static function getVisitsByDay( $dbname ) {
-		return self::getAPIData( $dbname, 'VisitTime.getByDayOfWeek' );
-	}
-
-	// Returns number of visits started per each server hour (24 hours, server timezone).
-	public static function getVisitsPerServerHour( $dbname ) {
-		return self::getAPIData( $dbname, 'VisitTime.getVisitInformationPerServerTime' );
-	}
-
-	// Returns page groupings for visit sessions (1 pages, 2-3 pages, 4-5 pages etc.).
-	public static function getVisitPages( $dbname ) {
-		return self::getAPIData( $dbname, 'VisitorInterest.getNumberOfVisitsPerPage' );
-	}
-
-	// Returns time groupings for visit sessions (0-10s, 11-60s, 1-5m etc.).
-	public static function getVisitDurations( $dbname ) {
-		return self::getAPIData( $dbname, 'VisitorInterest.getNumberOfVisitsPerVisitDuration' );
-	}
-
-	// Returns number of days passed between visit sessions (first visit, 0 days, 1 day, 2 days etc.).
-	public static function getVisitDaysPassed( $dbname ) {
-		return self::getAPIData( $dbname, 'VisitorInterest.getNumberOfVisitsByDaysSinceLast' );
-	}
-
-	// Returns number of visits grouped by total number of visits.
-	public static function getVisitsCount( $dbname ) {
-		return self::getAPIData( $dbname, 'VisitorInterest.getNumberOfVisitsByVisitCount' );
-	}
-
-	// Returns percentage of visit shares by total number of visits.
-	public static function getVisitsCountPercentage( $dbname ) {
-		return self::getAPIData( $dbname, 'VisitorInterest.getNumberOfVisitsByVisitCount', $jsondata = 'nb_visits_percentage' );
 	}
 }
