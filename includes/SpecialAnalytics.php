@@ -1,11 +1,11 @@
 <?php
 
 class SpecialAnalytics extends SpecialPage {
-	function __construct() {
+        public function __construct() {
 		parent::__construct( 'Analytics' );
 	}
 
-	function execute( $par ) {
+	public function execute( $par ) {
 		$this->setHeaders();
 		$this->outputHeader();
 
@@ -14,7 +14,7 @@ class SpecialAnalytics extends SpecialPage {
 		$out->addModules( 'ext.matomoanalytics.oouiform' );
 
 		$analyticsViewer = new MatomoAnalyticsViewer();
-		$htmlForm = $analyticsViewer->getForm();
+		$htmlForm = $analyticsViewer->getForm( $this->getContext() );
 		$sectionTitles = $htmlForm->getFormSections();
 
 		$sectTabs = [];

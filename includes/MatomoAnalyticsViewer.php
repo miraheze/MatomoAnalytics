@@ -22,12 +22,11 @@ class MatomoAnalyticsViewer {
 			'website' => $mA->getWebsiteReferrals(),
 			'continent' => $mA->getUsersContinent(),
 			'country' => $mA->getUsersCountry(),
-			'visitday' => $mA->getVistsByDay(),
+			'visitday' => $mA->getVisitsByDay(),
 			'visithour' => $mA->getVisitsPerServerHour(),
 			'visitpages' => $mA->getVisitPages(),
 			'visitduration' => $mA->getVisitDurations(),
-			'visitpass' => $mA->getVisitDaysPassed(),
-			'visitcount' => $mA->getVisitsCount()
+			'visitpass' => $mA->getVisitDaysPassed()
 		];
 
 		foreach ( $descriptorData as $type => $data ) {
@@ -47,7 +46,7 @@ class MatomoAnalyticsViewer {
 	public function getForm(
 		IContextSource $context
 	) {
-		$formDescriptor = $this->getFormDescriptor();
+		$formDescriptor = $this->getFormDescriptor( $context );
 
 		$htmlForm = new MatomoAnalyticsOOUIForm( $formDescriptor, $context, 'matomoanalytics-labels' );
 

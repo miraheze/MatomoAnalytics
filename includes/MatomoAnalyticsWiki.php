@@ -39,31 +39,36 @@ class MatomoAnalyticsWiki {
 
 		foreach ( $siteJson as $key => $val ) {
 			if ( $flat ) {
-				$arrayOut[$key] = (string)$val;
+				$arrayOut[$key] = ( $val ) ? $val : '-';
 			} else {
-				$arrayOut[$val[$jsonLabel]] = (string)$val[$jsonData];
+				$arrayOut[$val[$jsonLabel]] = ( $val[$jsonData] ) ? $val[$jsonData] : '-';
 			}
 		}
 
 		return $arrayOut;
 	}
 
-	// Number of visits per brwoser type
+	// Visits per browser type
 	public function getBrowserTypes() {
+		return $this->getData( 'DevicesDetection.getBrowsers' );
+	}
+
+	// Visits by devices
+	public function getDeviceTypes() {
 		return $this->getData( 'DevicesDetection.getType' );
 	}
 
-	// Number of visits by OS
+	// Visits by OS
 	public function getOSVersion() {
 		return $this->getData( 'DevicesDetection.getOsVersions' );
 	}
 
-	// Number of visits by screen resolution
+	// Visits by screen resolution
 	public function getResolution() {
 		return $this->getData( 'Resolution.getResolution' );
 	}
 
-	// Number of visits by referrer
+	// Visits by referrer
 	public function getReferrerType() {
 		return $this->getData( 'Referrers.getReferrerType' );
 	}
@@ -73,19 +78,19 @@ class MatomoAnalyticsWiki {
 		return $this->getData( 'Referrers.getKeywords' );
 	}
 
-	// Number of visits by social network
-	public function getSocialReferrerals() {
+	// Visits by social network
+	public function getSocialReferrals() {
 		return $this->getData( 'Referrers.getSocials' );
 	}
 
 	// Visits from another website
-	public function getWebsiteReferrerals() {
+	public function getWebsiteReferrals() {
 		return $this->getData( 'Referrers.getWebsites' );
 	}
 
 	// Visits per continent
 	public function getUsersContinent() {
-		return $this->getData( 'UserCountry.getConintent' );
+		return $this->getData( 'UserCountry.getContinent' );
 	}
 
 	// Visits per country
@@ -103,7 +108,7 @@ class MatomoAnalyticsWiki {
 		$matomoData = $this->getData( 'VisitTime.getVisitInformationPerServerTime' );
 
 		$returnData = [];
-		foreach ( $returnData as $hour => $count ) {
+		foreach ( $matomoData as $hour => $count ) {
 			$labelHour = "{$hour}:00:00 - {$hour}:59:59";
 			$returnData[$labelHour] = $count;
 		}

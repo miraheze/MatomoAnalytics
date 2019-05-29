@@ -5,6 +5,7 @@
 		"Southparkfan"
 	],
 	"url": "https://github.com/miraheze/MatomoAnalytics",
+	"version": "1.0.0",
 	"descriptionmsg": "matomoanalytics-desc",
 	"type": "specialpage",
 	"callback": "MatomoAnalyticsHooks::onRegistration",
@@ -19,6 +20,9 @@
 	"AutoloadClasses": {
 		"MatomoAnalytics": "includes/MatomoAnalytics.php",
 		"MatomoAnalyticsHooks": "includes/MatomoAnalyticsHooks.php",
+		"MatomoAnalyticsOOUIForm": "includes/MatomoAnalyticsOOUIForm.php",
+		"MatomoAnalyticsViewer": "includes/MatomoAnalyticsViewer.php",
+		"MatomoAnalyticsWiki": "includes/MatomoAnalyticsWiki.php",
 		"SpecialAnalytics": "includes/SpecialAnalytics.php"
 	},
 	"SpecialPages": {
@@ -40,6 +44,24 @@
 		"SkinAfterBottomScripts": [
 			"MatomoAnalyticsHooks::matomoScript"
 		]
+	},
+	"ResourceModules": {
+		"ext.matomoanalytics.oouiform": {
+			"scripts": [
+				"ext.matomoanalytics.oouiform.edit.ooui.js",
+				"ext.matomoanalytics.oouiform.ooui.js"
+			],
+			"styles": "ext.matomoanalytics.oouiform.ooui.less",
+			"dependencies": [
+				"oojs-ui",
+				"mediawiki.editfont.styles"
+			],
+			"targets": [ "desktop", "mobile" ]
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "modules",
+		"remoteExtPath": "MatomoAnalytics/modules"
 	},
 	"config": {
 		"MatomoAnalyticsDatabase": {
