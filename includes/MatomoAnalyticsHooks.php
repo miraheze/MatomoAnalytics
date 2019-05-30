@@ -3,12 +3,6 @@
 use MediaWiki\MediaWikiServices;
 
 class MatomoAnalyticsHooks {
-        public static function onRegistration() {
-                global $wgMatomoAnalyticsID;
-		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
-                $wgMatomoAnalyticsID = MatomoAnalytics::getSiteID( $config->get( 'DBname' ) );
-        }
-
 	public static function matomoAnalyticsSchemaUpdates( DatabaseUpdater $updater ) {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
 
@@ -44,11 +38,12 @@ class MatomoAnalyticsHooks {
 	public static function matomoScript( $skin, &$text = '' ) {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
 		$user = RequestContext::getMain()->getUser();
+		$mAId = MatomoAnalytics::getSiteID( $config->get( 'DBname' ) );
 
 		if ( $user->isAllowed( 'noanalytics' ) ) {
 			$text .= '<!-- MatomoAnalytics: User right noanalytics is assigned. -->';
 		} else {
-			$id = strval( $config->get( 'MatomoAnalyticsID' ) );
+			$id = strval( $mAId );
 			$globalId = (string)$config->get( 'MatomoAnalyticsGlobalID' );
 			$serverurl = $config->get( 'MatomoAnalyticsServerURL' );
 			$title = $skin->getRelevantTitle();

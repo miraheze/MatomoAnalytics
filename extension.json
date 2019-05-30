@@ -8,7 +8,6 @@
 	"version": "1.0.1",
 	"descriptionmsg": "matomoanalytics-desc",
 	"type": "specialpage",
-	"callback": "MatomoAnalyticsHooks::onRegistration",
 	"AvailableRights": [
 		"noanalytics"
 	],
