@@ -29,6 +29,7 @@ class MatomoAnalyticsViewer {
 			'visitpass' => $mA->getVisitDaysPassed()
 		];
 
+		$formDescriptor = [];
 		foreach ( $descriptorData as $type => $data ) {
 			foreach ( $data as $label => $value ) {
 				$formDescriptor["{$type}-{$label}"] = [
