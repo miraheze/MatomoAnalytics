@@ -64,7 +64,6 @@ class MatomoAnalyticsHooks {
 					_paq.push(['setDocumentTitle', {$dbname} + " - " + {$jstitle}]);
 					_paq.push(["setSiteId", "{$id}"]);
 					_paq.push(["setCustomVariable", 1, "userType", "{$userType}", "visit"]);
-					_paq.push(['setAPIUrl', u]);
 					if ( globalId ) {
 					    _paq.push(['addTracker', u + "piwik.php", globalId]);
 					}
