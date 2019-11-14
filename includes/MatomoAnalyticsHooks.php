@@ -68,7 +68,7 @@ class MatomoAnalyticsHooks {
 					    _paq.push(['addTracker', u + "piwik.php", globalId]);
 					}
 					var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
-					g.defer=true; g.async=true; g.src=u+"piwik.min.js"; s.parentNode.insertBefore(g,s);
+					g.defer=true; g.async=true; g.src=u+"js/index.php"; s.parentNode.insertBefore(g,s);
 				})();
 				</script>
 				<!-- End Matomo Code -->
