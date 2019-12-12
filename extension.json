@@ -92,6 +92,11 @@
 			"description": "Boolean. Whether or not to use the database for tracking site IDs.",
 			"public": true,
 			"value": false
+		},
+		"MatomoAnalyticsDisableJS": {
+			"description": "Boolean. Whether or not to add Javascript tracking code to pages.",
+			"public": true,
+			"value": false
 		}
 	},
 	"ConfigRegistry": {
