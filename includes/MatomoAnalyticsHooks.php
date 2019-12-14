@@ -37,6 +37,12 @@ class MatomoAnalyticsHooks {
 	*/
 	public static function matomoScript( $skin, &$text = '' ) {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
+
+		// Check if JS tracking is disabled and bow out early
+		if ( $config->get( 'MatomoAnalyticsDisableJS' ) === true ) {
+			return true;
+		}
+
 		$user = RequestContext::getMain()->getUser();
 		$mAId = MatomoAnalytics::getSiteID( $config->get( 'DBname' ) );
 
