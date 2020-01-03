@@ -99,7 +99,7 @@
 			"value": false
 		},
 		"MatomoAnalyticsDisableCookie": {
-			"description": "Boolean. Whether or not to disable cookies being set by matomo.",
+			"description": "Boolean. Whether or not to disable cookies being set by Matomo.",
 			"public": true,
 			"value": false
 		}
