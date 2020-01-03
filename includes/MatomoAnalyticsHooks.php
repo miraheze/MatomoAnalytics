@@ -45,6 +45,8 @@ class MatomoAnalyticsHooks {
 
 		$user = RequestContext::getMain()->getUser();
 		$mAId = MatomoAnalytics::getSiteID( $config->get( 'DBname' ) );
+		
+		$cookieDisable = $config->get( 'MatomoAnalyticsDisableCookie' ) === true;
 
 		if ( $user->isAllowed( 'noanalytics' ) ) {
 			$text .= '<!-- MatomoAnalytics: User right noanalytics is assigned. -->';
@@ -57,10 +59,14 @@ class MatomoAnalyticsHooks {
 			$dbname = Xml::encodeJsVar( $config->get( 'DBname' ) );
 			$urltitle = $title->getPrefixedURL();
 			$userType = $user->isLoggedIn() ? "User" : "Anonymous";
+			$cookieDisable = (boolean)$config->get( 'MatomoAnalyticsDisableCookie' );
 			$text .= <<<SCRIPT
 				<!-- Matomo -->
 				<script type="text/javascript">
 				var _paq = _paq || [];
+				if ( {$cookieDisable} ) {
+					_paq.push(['disableCookies']);
+				}
 				_paq.push(["trackPageView"]);
 				_paq.push(["enableLinkTracking"]);
 				(function() {
