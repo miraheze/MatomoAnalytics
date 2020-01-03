@@ -5,7 +5,7 @@
 		"Southparkfan"
 	],
 	"url": "https://github.com/miraheze/MatomoAnalytics",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"descriptionmsg": "matomoanalytics-desc",
 	"type": "specialpage",
 	"AvailableRights": [
@@ -95,6 +95,11 @@
 		},
 		"MatomoAnalyticsDisableJS": {
 			"description": "Boolean. Whether or not to add Javascript tracking code to pages.",
+			"public": true,
+			"value": false
+		},
+		"MatomoAnalyticsDisableCookie": {
+			"description": "Boolean. Whether or not to disable cookies being set by matomo.",
 			"public": true,
 			"value": false
 		}

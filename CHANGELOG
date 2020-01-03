@@ -1,5 +1,8 @@
 == ChangeLog for MatomoAnalytics ==
 
+=== 1.0.3 (03-01-2020) ===
+* Adds `$wgMatomoAnalyticsDisableCookie` to allow disabling cookies set by Matomo. Useful in the European Union.
+
 === 1.0.2 (30-05-2019) ===
 * Adds `$wgMatomoAnalyticsDisableJS` to allow disabling of JS tracking code globally.
 
