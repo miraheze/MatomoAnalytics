@@ -139,7 +139,7 @@ class MatomoAnalytics {
 				// lets put a 0 to prevent it throwing errors.
 				return (int)0;
 			} else {
-				(int)$cache->set( $key, $id, rand( 84600, 88200 ) )
+				(int)$cache->set( $key, $id, rand( 84600, 88200 ) );
 				return $id;
 			}
 		} else {
