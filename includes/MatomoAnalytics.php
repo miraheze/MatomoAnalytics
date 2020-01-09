@@ -115,6 +115,13 @@ class MatomoAnalytics {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
 
 		if ( $config->get( 'MatomoAnalyticsUseDB' ) ) {
+			$cache = ObjectCache::getLocalClusterInstance();
+			$key = $cache->makeKey( 'matomo', 'id' );
+			$cacheId = $cache->get( $key );
+			if ( $cacheId ) {
+				return $cacheId;
+			}
+
 			$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'MatomoAnalyticsDatabase' ) );
 			$id = $dbr->selectField(
 				'matomo',
@@ -130,6 +137,7 @@ class MatomoAnalytics {
 				// lets put a 0 to prevent it throwing errors.
 				return (int)0;
 			} else {
+				$cache->set( $key, $id );
 				return $id;
 			}
 		} else {
