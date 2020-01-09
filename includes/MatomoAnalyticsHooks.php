@@ -9,6 +9,12 @@ class MatomoAnalyticsHooks {
 		if ( $config->get( 'MatomoAnalyticsUseDB' ) && $config->get( 'MatomoAnalyticsDatabase' ) === $config->get( 'DBname' ) ) {
 			$updater->addExtensionTable( 'matomo',
 				__DIR__ . '/../sql/matomo.sql' );
+
+			$updater->modifyTable(
+ 				'matomo',
+  				__DIR__ . '/../sql/patches/patch-matomo-add-indexes.sql',
+ 				true
+ 			);
 		}
 
 		return true;
