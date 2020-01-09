@@ -115,8 +115,6 @@ class MatomoAnalytics {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
 
 		if ( $config->get( 'MatomoAnalyticsUseDB' ) ) {
-
-
 			$cache = ObjectCache::getLocalClusterInstance();
 			$key = $cache->makeKey( 'matomo', 'id' );
 			$cacheVersion = $cache->get( $key );
@@ -139,7 +137,7 @@ class MatomoAnalytics {
 				// lets put a 0 to prevent it throwing errors.
 				return (int)0;
 			} else {
-				(int)$cache->set( $key, $id, rand( 84600, 88200 ) );
+				$cache->set( $key, $id );
 				return $id;
 			}
 		} else {
