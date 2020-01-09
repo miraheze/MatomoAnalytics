@@ -117,9 +117,9 @@ class MatomoAnalytics {
 		if ( $config->get( 'MatomoAnalyticsUseDB' ) ) {
 			$cache = ObjectCache::getLocalClusterInstance();
 			$key = $cache->makeKey( 'matomo', 'id' );
-			$cacheVersion = $cache->get( $key );
-			if ( $cacheVersion ) {
-				return $cacheVersion;
+			$cacheId = $cache->get( $key );
+			if ( $cacheId ) {
+				return $cacheId;
 			}
 
 			$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'MatomoAnalyticsDatabase' ) );
