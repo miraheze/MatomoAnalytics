@@ -5,10 +5,12 @@ use MediaWiki\MediaWikiServices;
 class MatomoAnalytics {
 	public static function addSite( $dbname ) {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
+		
+		$matomoUrl = $config->get( 'MatomoAnalyticsServerURL' )
 
 		$siteReply = Http::get(
 			wfAppendQuery(
-				$config->get( 'MatomoAnalyticsServerURL' ),
+				$matomoUrl,
 				[
 					'module' => 'API',
 					'format' => 'json',
@@ -22,6 +24,14 @@ class MatomoAnalytics {
 		);
 
 		$siteJson = FormatJson::decode( $siteReply, true );
+		
+		// Do not fail hard incase of matomo issues,
+		// rather log a message.
+		if ( !$siteJson || !$siteJson['value'] ) {
+			wfDebugLog( 'MatomoAnalytics',
+				"Failed to add {$wgDBname} to {$matomoUrl}. The value returned from matomo is {$siteJson['value']}." );
+			return;
+		}
 
 		if ( $config->get( 'MatomoAnalyticsUseDB' ) ) {
 			$dbw = wfGetDB( DB_MASTER, [], $config->get( 'MatomoAnalyticsDatabase' ) );
