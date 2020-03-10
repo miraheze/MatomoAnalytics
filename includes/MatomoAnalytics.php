@@ -6,7 +6,7 @@ class MatomoAnalytics {
 	public static function addSite( $dbname ) {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
 		
-		$matomoUrl = $config->get( 'MatomoAnalyticsServerURL' )
+		$matomoUrl = $config->get( 'MatomoAnalyticsServerURL' );
 
 		$siteReply = Http::get(
 			wfAppendQuery(
