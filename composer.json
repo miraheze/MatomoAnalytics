@@ -1,35 +1,35 @@
 {
-  "name": "mediawiki/matomoanalytics",
-  "type": "mediawiki-extension",
-  "description": "The MatomoAnalytics extension inserts tracking code for the Matomo analytics platform.",
-  "homepage": "https://www.mediawiki.org/wiki/Extension:MatomoAnalytics",
-  "license": "GPL-3.0-or-later",
-  "require": {
-    "composer/installers": ">=1.0.1"
-  },
-  "config": {
-    "prepend-autoloader": false,
-    "optimize-autoloader": true
-  },
-  "require-dev": {
-    "jakub-onderka/php-parallel-lint": "1.0.0",
-    "jakub-onderka/php-console-highlighter": "0.3.2",
-    "mediawiki/mediawiki-codesniffer": "28.0.0",
-    "mediawiki/minus-x": "0.3.1",
-    "mediawiki/mediawiki-phan-config": "0.6.1"
-  },
-  "scripts": {
-    "fix": [
-      "phpcbf",
-      "minus-x fix ."
-    ],
-    "test": [
-      "parallel-lint . --exclude vendor --exclude node_modules",
-      "phpcs -p -s",
-      "minus-x check ."
-    ]
-  },
-  "extra": {
-    "phan-taint-check-plugin": "2.0.1"
-  }
+	"name": "mediawiki/matomoanalytics",
+	"type": "mediawiki-extension",
+	"description": "The MatomoAnalytics extension inserts tracking code for the Matomo analytics platform.",
+	"homepage": "https://www.mediawiki.org/wiki/Extension:MatomoAnalytics",
+	"license": "GPL-3.0-or-later",
+	"require": {
+		"composer/installers": ">=1.0.1"
+	},
+	"config": {
+		"prepend-autoloader": false,
+		"optimize-autoloader": true
+	},
+	"require-dev": {
+		"jakub-onderka/php-parallel-lint": "1.0.0",
+		"jakub-onderka/php-console-highlighter": "0.3.2",
+		"mediawiki/mediawiki-codesniffer": "28.0.0",
+		"mediawiki/minus-x": "0.3.1",
+		"mediawiki/mediawiki-phan-config": "0.6.1"
+	},
+	"scripts": {
+		"fix": [
+			"phpcbf",
+			"minus-x fix ."
+		],
+		"test": [
+			"parallel-lint . --exclude vendor --exclude node_modules",
+			"phpcs -p -s",
+			"minus-x check ."
+		]
+	},
+	"extra": {
+		"phan-taint-check-plugin": "2.0.1"
+	}
 }
