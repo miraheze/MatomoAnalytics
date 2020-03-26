@@ -4,7 +4,7 @@
 			"Reception123"
 		]
 	},
-	"analytics": "MatomoAnalytics",
+	"matomoanalytics": "MatomoAnalytics",
 	"matomoanalytics-desc": "Integrează analitica de la Matomo si MediaWiki",
 	"matomoanalytics-header": "Puteți utiliza formularul de mai jos pentru a selecta statistici diferite pentru a vedea că stocăm folosind Matomo.",
 	"matomoanalytics-form-stat1": "Statistica 1",
