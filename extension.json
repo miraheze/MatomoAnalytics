@@ -22,7 +22,7 @@
 		"MatomoAnalyticsOOUIForm": "includes/MatomoAnalyticsOOUIForm.php",
 		"MatomoAnalyticsViewer": "includes/MatomoAnalyticsViewer.php",
 		"MatomoAnalyticsWiki": "includes/MatomoAnalyticsWiki.php",
-		"SpecialAnalytics": "includes/SpecialAnalytics.php"
+		"SpecialMatomoAnalytics": "includes/SpecialMatomoAnalytics.php"
 	},
 	"SpecialPages": {
 		"Analytics": "SpecialAnalytics"
