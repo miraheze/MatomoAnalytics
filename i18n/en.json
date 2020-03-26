@@ -4,7 +4,7 @@
 			"John Lewis"
 		]
 	},
-	"analytics": "MatomoAnalytics",
+	"matomoanalytics": "MatomoAnalytics",
 	"matomoanalytics-desc": "Integrates analytics from Matomo and MediaWiki",
 	"matomoanalytics-header": "You can use the tabs below to select different statistics to view that we store using Matomo. All data is collected over the past 30 days starting from yesterday (updated daily).",
 	"matomoanalytics-labels-browser": "Browsers",
