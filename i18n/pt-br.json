@@ -4,7 +4,7 @@
 			"Eduaddad"
 		]
 	},
-	"analytics": "MatomoAnalytics",
+	"matomoanalytics": "MatomoAnalytics",
 	"matomoanalytics-desc": "Integra análises de Matomo e MediaWiki",
 	"matomoanalytics-header": "Você pode usar o formulário abaixo para selecionar diferentes estatísticas para ver que armazenamos usando o Matomo..",
 	"matomoanalytics-form-stat1": "Estatística 1",
