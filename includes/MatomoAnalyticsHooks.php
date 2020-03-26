@@ -35,7 +35,7 @@ class MatomoAnalyticsHooks {
 	/**
 	* Function to add Matomo JS to all MediaWiki pages
 	*
-	* Adds exclusion for users with 'noanalytics' userright
+	* Adds exclusion for users with 'matomoanalytics-noanalytics' userright
 	*
 	* @param Skin $skin Skin object
 	* @param string &$text Output text.
@@ -54,8 +54,8 @@ class MatomoAnalyticsHooks {
 		
 		$cookieDisable = $config->get( 'MatomoAnalyticsDisableCookie' ) === true;
 
-		if ( $user->isAllowed( 'noanalytics' ) ) {
-			$text .= '<!-- MatomoAnalytics: User right noanalytics is assigned. -->';
+		if ( $user->isAllowed( 'matomoanalytics-noanalytics' ) ) {
+			$text .= '<!-- MatomoAnalytics: User right matomoanalytics-noanalytics is assigned. -->';
 		} else {
 			$id = strval( $mAId );
 			$globalId = (string)$config->get( 'MatomoAnalyticsGlobalID' );
