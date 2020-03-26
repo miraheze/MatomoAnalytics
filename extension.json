@@ -9,7 +9,7 @@
 	"descriptionmsg": "matomoanalytics-desc",
 	"type": "specialpage",
 	"AvailableRights": [
-		"noanalytics"
+		"matomoanalytics-noanalytics"
 	],
 	"MessagesDirs": {
 		"MatomoAnalytics": [
