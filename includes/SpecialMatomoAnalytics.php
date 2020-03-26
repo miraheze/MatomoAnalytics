@@ -1,8 +1,8 @@
 <?php
 
-class SpecialAnalytics extends SpecialPage {
+class SpecialMatomoAnalytics extends SpecialPage {
         public function __construct() {
-		parent::__construct( 'Analytics' );
+		parent::__construct( 'MatomoAnalytics' );
 	}
 
 	public function execute( $par ) {
