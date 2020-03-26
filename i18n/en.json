@@ -22,5 +22,5 @@
 	"matomoanalytics-labels-visitpages": "Unique Pages",
 	"matomoanalytics-labels-visitpass": "Time Passed",
 	"matomoanalytics-labels-website": "Websites",
-	"right-noanalytics": "Not be tracked via Matomo"
+	"right-matomoanalytics-noanalytics": "Not be tracked via Matomo"
 }
