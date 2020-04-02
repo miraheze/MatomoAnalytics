@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Neptune, the Mystic"
+		]
+	},
+	"labels-browser": "Preglednici",
+	"labels-continent": "Kontinenti",
+	"labels-country": "Država",
+	"labels-devices": "Uređaji",
+	"labels-social": "Društvene mreže",
+	"labels-visitday": "Dani",
+	"labels-visitduration": "Trajanje",
+	"labels-visithour": "Sati",
+	"labels-visitpages": "Pojedinačne stranice",
+	"labels-website": "Mrežna mjesta"
+}

@@ -1,13 +1,27 @@
 {
 	"@metadata": {
 		"authors": [
-			"Eduaddad"
+			"Eduaddad",
+			"Eduardo Addad de Oliveira"
 		]
 	},
 	"analytics": "MatomoAnalytics",
-	"matomoanalytics-desc": "Integra análises de Matomo e MediaWiki",
-	"matomoanalytics-header": "Você pode usar o formulário abaixo para selecionar diferentes estatísticas para ver que armazenamos usando o Matomo..",
-	"matomoanalytics-form-stat1": "Estatística 1",
-	"matomoanalytics-form-stat2": "Estatística 2",
+	"desc": "Integra análises de Matomo e MediaWiki",
+	"header": "Você pode usar o formulário abaixo para selecionar diferentes estatísticas para ver que armazenamos usando o Matomo..",
+	"labels-browser": "Navegadores",
+	"labels-continent": "Continentes",
+	"labels-country": "País",
+	"labels-devices": "Dispositivos",
+	"labels-os": "SO",
+	"labels-referrer": "Referências ao site",
+	"labels-resolution": "Resolução",
+	"labels-search": "Procurar palavras-chave",
+	"labels-social": "Redes sociais",
+	"labels-visitday": "Dias",
+	"labels-visitduration": "Duração",
+	"labels-visithour": "Horas",
+	"labels-visitpages": "Páginas exclusivas",
+	"labels-visitpass": "Tempo passou",
+	"labels-website": "Sites",
 	"right-noanalytics": "Não ser rastreado via Matomo"
 }

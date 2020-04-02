@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sourav Halder",
+			"আফতাবুজ্জামান"
+		]
+	},
+	"analytics": "মাতোমো অ্যানালিটিক্স",
+	"desc": "মাতোমো এবং মিডিয়াউইকি থেকে বিশ্লেষণগুলি সংহত করে",
+	"header": "আমরা মাতোমো ব্যবহার করে সঞ্চয় করি তা দেখতে বিভিন্ন পরিসংখ্যান নির্বাচন করতে আপনি নীচের ট্যাবগুলি ব্যবহার করতে পারেন।  গতকাল (দৈনিক আপডেট) থেকে শুরু করে গত ৩০ দিনের মধ্যে সমস্ত ডেটা সংগ্রহ করা হয়।",
+	"labels-browser": "ব্রাউজার",
+	"labels-continent": "মহাদেশে",
+	"labels-country": "দেশ",
+	"labels-devices": "ডিভাইস",
+	"labels-os": "ওএস",
+	"labels-referrer": "সাইট রেফারেলস",
+	"labels-resolution": "সমাধান",
+	"labels-social": "সামাজিক যোগাযোগ",
+	"labels-visitday": "দিন",
+	"labels-visitduration": "স্থিতিকাল",
+	"labels-visithour": "ঘণ্টা",
+	"labels-visitpages": "স্বতন্ত্র পৃষ্ঠাগুলি",
+	"right-noanalytics": "মাতোমো দিয়ে ট্র্যাক করা যাবে না"
+}

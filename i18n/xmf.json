@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Narazeni"
+		]
+	},
+	"labels-browser": "ბრაუზერეფი",
+	"labels-country": "ქიანა",
+	"labels-devices": "მონწყილობეფი",
+	"labels-resolution": "რეზოლუცია",
+	"labels-social": "სოციალური რშვილეფი",
+	"labels-visitday": "დღალეფი",
+	"labels-visitduration": "განწეობა",
+	"labels-visithour": "სათეფი",
+	"labels-visitpass": "ბორჯი მუკულირი რე",
+	"labels-website": "ვებ-ხასჷლეფი"
+}

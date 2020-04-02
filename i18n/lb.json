@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"labels-browser": "Browseren",
+	"labels-continent": "Kontinenter",
+	"labels-country": "Land",
+	"labels-devices": "Apparater",
+	"labels-resolution": "Léisung",
+	"labels-search": "Schlësselwierder sichen",
+	"labels-social": "Sozial Reseauen",
+	"labels-visitday": "Deeg",
+	"labels-visitduration": "Dauer",
+	"labels-visithour": "Stonnen",
+	"labels-website": "Internetsitten"
+}

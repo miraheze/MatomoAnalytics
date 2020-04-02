@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kly"
+		]
+	},
+	"analytics": "MatomoAnalytics",
+	"desc": "整合 Matomo 與 MediaWiki 的分析",
+	"header": "您可以使用以下的分頁來選擇查看我們使用 Matomo 儲存的各統計內容。所有資料是收集自從昨天算起的過去 30 天（每日更新）。",
+	"labels-browser": "瀏覽器",
+	"labels-continent": "洲別",
+	"labels-country": "國家",
+	"labels-devices": "裝置",
+	"labels-os": "作業系統",
+	"labels-referrer": "站台推薦",
+	"labels-resolution": "分析",
+	"labels-search": "搜尋關鍵字",
+	"labels-social": "社交網路",
+	"labels-visitday": "日",
+	"labels-visitduration": "期間",
+	"labels-visithour": "時",
+	"labels-visitpages": "唯一頁面",
+	"labels-visitpass": "時間流逝",
+	"labels-website": "網站",
+	"right-noanalytics": "無法經由 Matomo 追蹤"
+}

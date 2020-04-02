@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vishwanatha Badikana"
+		]
+	},
+	"analytics": "ಮ್ಯಾಟೊಮೊ ವಿಶ್ಲೇಷಣೆ",
+	"desc": "ಮ್ಯಾಟೊಮೊ ಬುಕ್ಕೊ ಮೀಡಿಯಾವಿಕಿಡ್ ವಿಶ್ಲೇಷಣೆನ್ಯ ಸಂಯೋಜಿಸವುಂಡು",
+	"header": "ಈರ್ ತಿರ್ತ್‌ದ ಮಾಟೊಮೊನು ಆಯ್ಕೆಮಲ್ತ್‌ದ್ ತೂಯರ್ ಬೇತೆ ಬೇತೆ ಲೆಕ್ಕಾಚಾರೊಡು ಅಯಿನ್ ಗಳಸ್‌ಲೆ.  ಕರಿನ ೩೦ ದಿನೊಡ್ದ್ ಕೋಡೆ ಮುಟ್ಟದ ಆಯ್ಕೆ ಆದುಂಡು(ಯಾಪೊಲ ಪೊಸತಾಪುಂಡು).",
+	"labels-browser": "ಬ್ರೌಸರ್‌ಲು",
+	"labels-continent": "ಖಂಡೊಲು",
+	"labels-country": "ದೇಸೊ",
+	"labels-devices": "ಡಿವೈಸ್‌ಲು",
+	"labels-os": "ಓಎಸ್",
+	"labels-referrer": "ಜಾಗೆದ ಉಲ್ಲೇಕೊ",
+	"labels-resolution": "ರೆಸಲ್ಯೂಶನ್",
+	"labels-search": "ಕೀಬೋರ್ಡ್‌ನ್ ನಾಡ್‌ಲೆ",
+	"labels-social": "ಸಾಮಾಜಿಕ ಜಾಲತಾನೊ",
+	"labels-visitday": "ದಿನೊಲು",
+	"labels-visitduration": "ಪೊರ್ತು",
+	"labels-visithour": "ಗಂಟೆಲು",
+	"labels-visitpages": "ಇಸಿಸ್ಟೊ ಪುಟೊ",
+	"labels-visitpass": "ಪೊರ್ತು ಕರಿಂಡ್",
+	"labels-website": "ವೆಬ್‌ಸೈಟುಲು",
+	"right-noanalytics": "ಮ್ಯಾಟೊಮೊದ ಮೂಲಕ ಪತ್ತೆ ಮಲ್ಪೆರೆ ಆಪುಜಿ"
+}

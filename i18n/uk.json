@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Piramidion"
+		]
+	},
+	"analytics": "MatomoAnalytics",
+	"desc": "Інтегрує аналітику з Matomo та MediaWiki",
+	"header": "Можете скористатися вкладками нижче, щоб вибрати для перегляду різну статистику, яку ми зберігаємо за допомогою Matomo. Усі дані збираються за останні 30 днів, починаючи від вчора (оновлюються щоденно).",
+	"labels-browser": "Браузери",
+	"labels-continent": "Континенти",
+	"labels-country": "Країна",
+	"labels-devices": "Пристрої",
+	"labels-os": "ОС",
+	"labels-referrer": "Референти сайтів",
+	"labels-resolution": "Роздільність",
+	"labels-search": "Пошукові запити",
+	"labels-social": "Соцмережі",
+	"labels-visitday": "Дні",
+	"labels-visitduration": "Тривалість",
+	"labels-visithour": "Години",
+	"labels-visitpages": "Унікальні сторінки",
+	"labels-visitpass": "Час, що минув",
+	"labels-website": "Веб-сайти",
+	"right-noanalytics": "Не відстежуватися через Matomo"
+}

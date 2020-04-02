@@ -1,12 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"John Lewis"
+			"John Lewis",
+			"Robby"
 		]
 	},
-	"analytics": "MatomoAnalytics",
-	"matomoanalytics-desc": "Integrates analytics from Matomo and MediaWiki",
-	"matomoanalytics-header": "Information to show on Special:Analytics",
-	"matomoanalytics-form-stat1": "Header for Statistic 1",
-	"matomoanalytics-form-stat2": "Header for Statistic 2"
+	"desc": "Integrates analytics from Matomo and MediaWiki",
+	"header": "Information to show on Special:Analytics",
+	"labels-country": "{{identical|Country}}",
+	"labels-visitday": "{{Identical|Day}}",
+	"labels-visitduration": "{{identical|Duration}}",
+	"labels-visithour": "{{identical|Hour}}"
 }

@@ -1,12 +1,27 @@
 {
 	"@metadata": {
 		"authors": [
-			"Reception123"
+			"Reception123",
+			"Gomoko"
 		]
 	},
 	"analytics": "MatomoAnalytics",
-	"matomoanalytics-desc": "Intègre les analytiques de Matomo et MediaWiki",
-	"matomoanalytics-header": "Vous pouvez utiliser le formulaire ci-dessous pour sélectionner des différentes statistiques à afficher de Matomo.",
-	"matomoanalytics-form-stat1": "Statistique 1",
-	"matomoanalytics-form-stat2": "Statistique 2"
+	"desc": "Intègre les analytiques de Matomo et MediaWiki",
+	"header": "Vous pouvez utiliser le formulaire ci-dessous pour sélectionner des différentes statistiques à afficher de Matomo.",
+	"labels-browser": "Navigateurs",
+	"labels-continent": "Continents",
+	"labels-country": "Pays",
+	"labels-devices": "Appareils",
+	"labels-os": "OS",
+	"labels-referrer": "Référents de site",
+	"labels-resolution": "Résolution",
+	"labels-search": "Mots-clés de recherche",
+	"labels-social": "Réseaux sociaux",
+	"labels-visitday": "Jours",
+	"labels-visitduration": "Durée",
+	"labels-visithour": "Heures",
+	"labels-visitpages": "Pages uniques",
+	"labels-visitpass": "Temps passé",
+	"labels-website": "Sites web",
+	"right-noanalytics": "Ne pas tracer via Matomo"
 }

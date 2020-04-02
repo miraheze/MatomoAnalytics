@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Iñaki LL"
+		]
+	},
+	"analytics": "MatomoAnalytics",
+	"desc": "Matomo eta MediaWikiko analisiak integratzen ditu",
+	"header": "Beheko fitxak erabil ditzakezu Matomo erabiliz biltegiratzen ditugun askotariko estatistikak aukeratu eta ikusteko. Datu guztiak azken 30 egunetan biltzen dira, atzodanik hasita (egunero eguneratzen da).",
+	"labels-browser": "Nabigatzaileak",
+	"labels-country": "Herrialdea",
+	"labels-devices": "Gailuak",
+	"labels-os": "SE",
+	"labels-referrer": "Webgunerako bideraketak",
+	"labels-resolution": "Bereizmena",
+	"labels-search": "Bilaketako gako hitzak",
+	"labels-social": "Sare sozialak",
+	"labels-visitday": "Egunak",
+	"labels-visitduration": "Iraupena",
+	"labels-visithour": "Orduak",
+	"labels-visitpass": "Joandako denbora",
+	"labels-website": "Webguneak",
+	"right-noanalytics": "Matomo bidezko jarraipenik gabe"
+}

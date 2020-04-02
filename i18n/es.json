@@ -1,12 +1,25 @@
 {
 	"@metadata": {
 		"authors": [
-			"Reception123"
+			"Reception123",
+			"Fitoschido"
 		]
 	},
-	"analytics": "MatomoAnalytics",
-	"matomoanalytics-desc": "Integra analitica de Matomo y MediaWiki",
-	"matomoanalytics-header": "Puede usar el formulario abajo para seleccionar diferentes estadísticas con Matomo.",
-	"matomoanalytics-form-stat1": "Estadística 1",
-	"matomoanalytics-form-stat2": "Estadística 2"
+	"desc": "Integra análisis de Matomo y MediaWiki",
+	"header": "Pueden utilizarse las pestañas siguientes para seleccionar estadísticas distintas provenientes de Matomo. Todos los datos recopilados corresponden a los 30 días anteriores a partir de ayer (se actualiza diariamente).",
+	"labels-browser": "Navegadores",
+	"labels-continent": "Continentes",
+	"labels-country": "País",
+	"labels-devices": "Dispositivos",
+	"labels-os": "SO",
+	"labels-referrer": "Referentes a sitio",
+	"labels-resolution": "Resolución",
+	"labels-search": "Palabras clave de búsqueda",
+	"labels-social": "Redes sociales",
+	"labels-visitday": "Días",
+	"labels-visitduration": "Duración",
+	"labels-visithour": "Horas",
+	"labels-visitpages": "Páginas individuales",
+	"labels-visitpass": "Tiempo transcurrido",
+	"labels-website": "Sitios web"
 }

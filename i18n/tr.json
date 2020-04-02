@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"BaRaN6161 TURK"
+		]
+	},
+	"analytics": "MatomoAnalytics",
+	"desc": "Matomo ve MediaWiki'den analitiği entegre eder",
+	"header": "Matomo kullanarak kaydettiğimiz farklı istatistikleri seçmek için aşağıdaki sekmeleri kullanabilirsiniz. Tüm veriler dünden başlayarak son 30 gün içinde toplanır (günlük olarak güncellenir).",
+	"labels-browser": "Tarayıcılar",
+	"labels-continent": "Kıtalar",
+	"labels-country": "Ülke",
+	"labels-devices": "Cihazlar",
+	"labels-os": "İS",
+	"labels-referrer": "Site Tavsiyeleri",
+	"labels-resolution": "Çözüm",
+	"labels-search": "Arama Kelimeleri",
+	"labels-social": "Sosyal Ağlar",
+	"labels-visitday": "Günler",
+	"labels-visitduration": "Süre",
+	"labels-visithour": "Saatler",
+	"labels-visitpages": "Benzersiz Sayfalar",
+	"labels-visitpass": "Zaman Geçti",
+	"labels-website": "Web siteler",
+	"right-noanalytics": "Matomo üzerinden izlenmez"
+}
