@@ -4,15 +4,15 @@
 			"Robby"
 		]
 	},
-	"labels-browser": "Browseren",
-	"labels-continent": "Kontinenter",
-	"labels-country": "Land",
-	"labels-devices": "Apparater",
-	"labels-resolution": "Léisung",
-	"labels-search": "Schlësselwierder sichen",
-	"labels-social": "Sozial Reseauen",
-	"labels-visitday": "Deeg",
-	"labels-visitduration": "Dauer",
-	"labels-visithour": "Stonnen",
-	"labels-website": "Internetsitten"
+	"matomoanalytics-labels-browser": "Browseren",
+	"matomoanalytics-labels-continent": "Kontinenter",
+	"matomoanalytics-labels-country": "Land",
+	"matomoanalytics-labels-devices": "Apparater",
+	"matomoanalytics-labels-resolution": "Léisung",
+	"matomoanalytics-labels-search": "Schlësselwierder sichen",
+	"matomoanalytics-labels-social": "Sozial Reseauen",
+	"matomoanalytics-labels-visitday": "Deeg",
+	"matomoanalytics-labels-visitduration": "Dauer",
+	"matomoanalytics-labels-visithour": "Stonnen",
+	"matomoanalytics-labels-website": "Internetsitten"
 }

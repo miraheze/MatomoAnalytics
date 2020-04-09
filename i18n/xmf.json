@@ -4,14 +4,14 @@
 			"Narazeni"
 		]
 	},
-	"labels-browser": "ბრაუზერეფი",
-	"labels-country": "ქიანა",
-	"labels-devices": "მონწყილობეფი",
-	"labels-resolution": "რეზოლუცია",
-	"labels-social": "სოციალური რშვილეფი",
-	"labels-visitday": "დღალეფი",
-	"labels-visitduration": "განწეობა",
-	"labels-visithour": "სათეფი",
-	"labels-visitpass": "ბორჯი მუკულირი რე",
-	"labels-website": "ვებ-ხასჷლეფი"
+	"matomoanalytics-labels-browser": "ბრაუზერეფი",
+	"matomoanalytics-labels-country": "ქიანა",
+	"matomoanalytics-labels-devices": "მონწყილობეფი",
+	"matomoanalytics-labels-resolution": "რეზოლუცია",
+	"matomoanalytics-labels-social": "სოციალური რშვილეფი",
+	"matomoanalytics-labels-visitday": "დღალეფი",
+	"matomoanalytics-labels-visitduration": "განწეობა",
+	"matomoanalytics-labels-visithour": "სათეფი",
+	"matomoanalytics-labels-visitpass": "ბორჯი მუკულირი რე",
+	"matomoanalytics-labels-website": "ვებ-ხასჷლეფი"
 }

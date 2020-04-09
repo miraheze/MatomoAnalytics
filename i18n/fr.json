@@ -1,27 +1,27 @@
 {
 	"@metadata": {
 		"authors": [
-			"Reception123",
-			"Gomoko"
+			"Gomoko",
+			"Reception123"
 		]
 	},
 	"analytics": "MatomoAnalytics",
-	"desc": "Intègre les analytiques de Matomo et MediaWiki",
-	"header": "Vous pouvez utiliser le formulaire ci-dessous pour sélectionner des différentes statistiques à afficher de Matomo.",
-	"labels-browser": "Navigateurs",
-	"labels-continent": "Continents",
-	"labels-country": "Pays",
-	"labels-devices": "Appareils",
-	"labels-os": "OS",
-	"labels-referrer": "Référents de site",
-	"labels-resolution": "Résolution",
-	"labels-search": "Mots-clés de recherche",
-	"labels-social": "Réseaux sociaux",
-	"labels-visitday": "Jours",
-	"labels-visitduration": "Durée",
-	"labels-visithour": "Heures",
-	"labels-visitpages": "Pages uniques",
-	"labels-visitpass": "Temps passé",
-	"labels-website": "Sites web",
+	"matomoanalytics-desc": "Intègre les analytiques de Matomo et MediaWiki",
+	"matomoanalytics-header": "Vous pouvez utiliser le formulaire ci-dessous pour sélectionner des différentes statistiques à afficher de Matomo.",
+	"matomoanalytics-labels-browser": "Navigateurs",
+	"matomoanalytics-labels-continent": "Continents",
+	"matomoanalytics-labels-country": "Pays",
+	"matomoanalytics-labels-devices": "Appareils",
+	"matomoanalytics-labels-os": "OS",
+	"matomoanalytics-labels-referrer": "Référents de site",
+	"matomoanalytics-labels-resolution": "Résolution",
+	"matomoanalytics-labels-search": "Mots-clés de recherche",
+	"matomoanalytics-labels-social": "Réseaux sociaux",
+	"matomoanalytics-labels-visitday": "Jours",
+	"matomoanalytics-labels-visitduration": "Durée",
+	"matomoanalytics-labels-visithour": "Heures",
+	"matomoanalytics-labels-visitpages": "Pages uniques",
+	"matomoanalytics-labels-visitpass": "Temps passé",
+	"matomoanalytics-labels-website": "Sites web",
 	"right-noanalytics": "Ne pas tracer via Matomo"
 }

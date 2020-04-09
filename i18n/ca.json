@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido"
+		]
+	},
+	"matomoanalytics-labels-browser": "Navegadors",
+	"matomoanalytics-labels-country": "País",
+	"matomoanalytics-labels-devices": "Dispositius",
+	"matomoanalytics-labels-os": "SO",
+	"matomoanalytics-labels-referrer": "Referents al lloc",
+	"matomoanalytics-labels-resolution": "Resolució",
+	"matomoanalytics-labels-search": "Paraules clau de cerca",
+	"matomoanalytics-labels-social": "Xarxes socials",
+	"matomoanalytics-labels-visitday": "Dies",
+	"matomoanalytics-labels-visitduration": "Durada",
+	"matomoanalytics-labels-visithour": "Hores",
+	"matomoanalytics-labels-visitpass": "Temps transcorregut",
+	"matomoanalytics-labels-website": "Llocs web"
+}

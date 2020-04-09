@@ -1,12 +1,19 @@
 {
 	"@metadata": {
 		"authors": [
+			"FF11",
 			"Reception123"
 		]
 	},
-	"analytics": "MatomoAnalytics",
 	"matomoanalytics-desc": "Integriert Analytik von Matomo und MediaWiki",
 	"matomoanalytics-header": "Sie können das folgende Formular verwenden um verschiedene Statistiken auszuwählen mit Matomo.",
-	"matomoanalytics-form-stat1": "Statistik 1",
-	"matomoanalytics-form-stat2": "Statistik 2"
+	"matomoanalytics-labels-browser": "Browser",
+	"matomoanalytics-labels-continent": "Kontinente",
+	"matomoanalytics-labels-devices": "Geräte",
+	"matomoanalytics-labels-social": "Soziale Netvwerke",
+	"matomoanalytics-labels-visitday": "Tage",
+	"matomoanalytics-labels-visitduration": "Dauer",
+	"matomoanalytics-labels-visithour": "Stunden",
+	"matomoanalytics-labels-visitpass": "Vergangene Zeit",
+	"matomoanalytics-labels-website": "Websiten"
 }

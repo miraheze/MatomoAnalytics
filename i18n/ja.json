@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kkairri"
+		]
+	},
+	"matomoanalytics-desc": "Matomo と MediaWiki の統計を統合する",
+	"matomoanalytics-header": "以下のタブから、Matomo を使って収集している様々な統計が表示できます。すべてのデータは30日前から昨日までに収集されています（毎日更新）。",
+	"matomoanalytics-labels-browser": "ブラウザ",
+	"matomoanalytics-labels-continent": "大陸",
+	"matomoanalytics-labels-country": "国",
+	"matomoanalytics-labels-devices": "端末",
+	"matomoanalytics-labels-os": "OS",
+	"matomoanalytics-labels-referrer": "リファラ",
+	"matomoanalytics-labels-resolution": "解像度",
+	"matomoanalytics-labels-search": "検索キーワード",
+	"matomoanalytics-labels-social": "SNS",
+	"matomoanalytics-labels-visitday": "日",
+	"matomoanalytics-labels-visitduration": "期間",
+	"matomoanalytics-labels-visithour": "時間",
+	"matomoanalytics-labels-visitpages": "ユニークなページ数",
+	"matomoanalytics-labels-visitpass": "経過時間",
+	"matomoanalytics-labels-website": "ウェブサイト",
+	"right-noanalytics": "Matomo を使って追跡されていません"
+}

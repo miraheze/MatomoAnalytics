@@ -1,25 +1,25 @@
 {
 	"@metadata": {
 		"authors": [
-			"Reception123",
-			"Fitoschido"
+			"Fitoschido",
+			"Reception123"
 		]
 	},
-	"desc": "Integra análisis de Matomo y MediaWiki",
-	"header": "Pueden utilizarse las pestañas siguientes para seleccionar estadísticas distintas provenientes de Matomo. Todos los datos recopilados corresponden a los 30 días anteriores a partir de ayer (se actualiza diariamente).",
-	"labels-browser": "Navegadores",
-	"labels-continent": "Continentes",
-	"labels-country": "País",
-	"labels-devices": "Dispositivos",
-	"labels-os": "SO",
-	"labels-referrer": "Referentes a sitio",
-	"labels-resolution": "Resolución",
-	"labels-search": "Palabras clave de búsqueda",
-	"labels-social": "Redes sociales",
-	"labels-visitday": "Días",
-	"labels-visitduration": "Duración",
-	"labels-visithour": "Horas",
-	"labels-visitpages": "Páginas individuales",
-	"labels-visitpass": "Tiempo transcurrido",
-	"labels-website": "Sitios web"
+	"matomoanalytics-desc": "Integra análisis de Matomo y MediaWiki",
+	"matomoanalytics-header": "Pueden utilizarse las pestañas siguientes para seleccionar estadísticas distintas provenientes de Matomo. Todos los datos recopilados corresponden a los 30 días anteriores a partir de ayer (se actualiza diariamente).",
+	"matomoanalytics-labels-browser": "Navegadores",
+	"matomoanalytics-labels-continent": "Continentes",
+	"matomoanalytics-labels-country": "País",
+	"matomoanalytics-labels-devices": "Dispositivos",
+	"matomoanalytics-labels-os": "SO",
+	"matomoanalytics-labels-referrer": "Referentes a sitio",
+	"matomoanalytics-labels-resolution": "Resolución",
+	"matomoanalytics-labels-search": "Palabras clave de búsqueda",
+	"matomoanalytics-labels-social": "Redes sociales",
+	"matomoanalytics-labels-visitday": "Días",
+	"matomoanalytics-labels-visitduration": "Duración",
+	"matomoanalytics-labels-visithour": "Horas",
+	"matomoanalytics-labels-visitpages": "Páginas individuales",
+	"matomoanalytics-labels-visitpass": "Tiempo transcurrido",
+	"matomoanalytics-labels-website": "Sitios web"
 }

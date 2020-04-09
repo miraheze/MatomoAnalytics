@@ -4,14 +4,14 @@
 			"Ykhwong"
 		]
 	},
-	"labels-browser": "브라우저",
-	"labels-country": "국가",
-	"labels-devices": "장치",
-	"labels-os": "OS",
-	"labels-search": "검색 키워드",
-	"labels-social": "소셜 네트워크",
-	"labels-visitday": "일",
-	"labels-visitduration": "기간",
-	"labels-visithour": "시간",
-	"labels-website": "웹사이트"
+	"matomoanalytics-labels-browser": "브라우저",
+	"matomoanalytics-labels-country": "국가",
+	"matomoanalytics-labels-devices": "장치",
+	"matomoanalytics-labels-os": "OS",
+	"matomoanalytics-labels-search": "검색 키워드",
+	"matomoanalytics-labels-social": "소셜 네트워크",
+	"matomoanalytics-labels-visitday": "일",
+	"matomoanalytics-labels-visitduration": "기간",
+	"matomoanalytics-labels-visithour": "시간",
+	"matomoanalytics-labels-website": "웹사이트"
 }

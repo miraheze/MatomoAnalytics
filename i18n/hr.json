@@ -4,14 +4,14 @@
 			"Neptune, the Mystic"
 		]
 	},
-	"labels-browser": "Preglednici",
-	"labels-continent": "Kontinenti",
-	"labels-country": "Država",
-	"labels-devices": "Uređaji",
-	"labels-social": "Društvene mreže",
-	"labels-visitday": "Dani",
-	"labels-visitduration": "Trajanje",
-	"labels-visithour": "Sati",
-	"labels-visitpages": "Pojedinačne stranice",
-	"labels-website": "Mrežna mjesta"
+	"matomoanalytics-labels-browser": "Preglednici",
+	"matomoanalytics-labels-continent": "Kontinenti",
+	"matomoanalytics-labels-country": "Država",
+	"matomoanalytics-labels-devices": "Uređaji",
+	"matomoanalytics-labels-social": "Društvene mreže",
+	"matomoanalytics-labels-visitday": "Dani",
+	"matomoanalytics-labels-visitduration": "Trajanje",
+	"matomoanalytics-labels-visithour": "Sati",
+	"matomoanalytics-labels-visitpages": "Pojedinačne stranice",
+	"matomoanalytics-labels-website": "Mrežna mjesta"
 }

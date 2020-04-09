@@ -4,14 +4,21 @@
 			"Fulup"
 		]
 	},
-	"labels-browser": "Merdeerioù",
-	"labels-country": "Bro",
-	"labels-devices": "Ardivinkoù",
-	"labels-os": "OS",
-	"labels-resolution": "Diskoulm",
-	"labels-social": "Rouedadoù sokioal",
-	"labels-visitday": "Deizioù",
-	"labels-visitduration": "Pad",
-	"labels-visithour": "Eurioù",
-	"labels-website": "Lec'hiennoù"
+	"analytics": "MatomoAnalytics",
+	"matomoanalytics-labels-browser": "Merdeerioù",
+	"matomoanalytics-labels-continent": "Kevandirioù",
+	"matomoanalytics-labels-country": "Bro",
+	"matomoanalytics-labels-devices": "Ardivinkoù",
+	"matomoanalytics-labels-os": "OS",
+	"matomoanalytics-labels-referrer": "Tud dave al lec'hienn",
+	"matomoanalytics-labels-resolution": "Diskoulm",
+	"matomoanalytics-labels-search": "Gerioù-alc'hwez evit klask.",
+	"matomoanalytics-labels-social": "Rouedadoù sokioal",
+	"matomoanalytics-labels-visitday": "Deizioù",
+	"matomoanalytics-labels-visitduration": "Pad",
+	"matomoanalytics-labels-visithour": "Eurioù",
+	"matomoanalytics-labels-visitpages": "Pajennoù a-unan",
+	"matomoanalytics-labels-visitpass": "Amzer aet hebioù",
+	"matomoanalytics-labels-website": "Lec'hiennoù",
+	"right-noanalytics": "Arbat heuliañ dre vMatomo"
 }

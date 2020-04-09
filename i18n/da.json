@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Saederup92"
+		]
+	},
+	"matomoanalytics-labels-country": "Land",
+	"matomoanalytics-labels-devices": "Enheder",
+	"matomoanalytics-labels-visitday": "Dage",
+	"matomoanalytics-labels-visithour": "Timer",
+	"matomoanalytics-labels-visitpages": "Unikke sider"
+}

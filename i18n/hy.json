@@ -4,9 +4,9 @@
 			"Kareyac"
 		]
 	},
-	"labels-country": "Երկիր",
-	"labels-visitday": "Օրեր",
-	"labels-visitduration": "Տևողություն",
-	"labels-visithour": "Ժամեր",
-	"labels-website": "Կայքեր"
+	"matomoanalytics-labels-country": "Երկիր",
+	"matomoanalytics-labels-visitday": "Օրեր",
+	"matomoanalytics-labels-visitduration": "Տևողություն",
+	"matomoanalytics-labels-visithour": "Ժամեր",
+	"matomoanalytics-labels-website": "Կայքեր"
 }

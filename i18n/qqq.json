@@ -5,10 +5,10 @@
 			"Robby"
 		]
 	},
-	"desc": "Integrates analytics from Matomo and MediaWiki",
-	"header": "Information to show on Special:Analytics",
-	"labels-country": "{{identical|Country}}",
-	"labels-visitday": "{{Identical|Day}}",
-	"labels-visitduration": "{{identical|Duration}}",
-	"labels-visithour": "{{identical|Hour}}"
+	"matomoanalytics-desc": "Integrates analytics from Matomo and MediaWiki",
+	"matomoanalytics-header": "Information to show on Special:Analytics",
+	"matomoanalytics-labels-country": "{{identical|Country}}",
+	"matomoanalytics-labels-visitday": "{{Identical|Day}}",
+	"matomoanalytics-labels-visitduration": "{{identical|Duration}}",
+	"matomoanalytics-labels-visithour": "{{identical|Hour}}"
 }
