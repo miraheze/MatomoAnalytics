@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joao Xavier"
+		]
+	},
+	"matomoanalytics-desc": "Kontenas analize de Matomo e Mediawiki",
+	"matomoanalytics-labels-browser": "Reto-navigili",
+	"matomoanalytics-labels-continent": "Kontinenti",
+	"matomoanalytics-labels-country": "Lando",
+	"matomoanalytics-labels-os": "Operacala sistemo",
+	"matomoanalytics-labels-search": "Serchar klefovorti",
+	"matomoanalytics-labels-social": "Sociala reti",
+	"matomoanalytics-labels-visitday": "Dii",
+	"matomoanalytics-labels-visitduration": "Durado",
+	"matomoanalytics-labels-visithour": "Hori",
+	"matomoanalytics-labels-visitpages": "Individuala pagini",
+	"matomoanalytics-labels-visitpass": "Tempo pasinta",
+	"matomoanalytics-labels-website": "Retositui"
+}
