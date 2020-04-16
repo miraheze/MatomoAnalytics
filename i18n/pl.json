@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Rail"
+		]
+	},
+	"analytics": "Dane analityczne Matomo",
+	"matomoanalytics-desc": "Integruje dane analityczne z Matomo i MediaWiki",
+	"matomoanalytics-header": "Możesz użyć poniższych zakładek do przeglądania różnych statystyk gromadzonych z użyciem Matomo. Dane są gromadzone na przestrzeni ostatnich 30 dni od wczoraj (lista odświeża się codziennie).",
+	"matomoanalytics-labels-browser": "Przeglądarki",
+	"matomoanalytics-labels-continent": "Kontynenty",
+	"matomoanalytics-labels-country": "Kraj",
+	"matomoanalytics-labels-devices": "Urządzenia",
+	"matomoanalytics-labels-os": "Systemy operacyjne",
+	"matomoanalytics-labels-referrer": "Kierujące strony",
+	"matomoanalytics-labels-resolution": "Rozdzielczość",
+	"matomoanalytics-labels-search": "Wyszukiwane słowa kluczowe",
+	"matomoanalytics-labels-social": "Sieci społecznościowe",
+	"matomoanalytics-labels-visitday": "Dni",
+	"matomoanalytics-labels-visitduration": "Trwanie sesji",
+	"matomoanalytics-labels-visithour": "Godziny",
+	"matomoanalytics-labels-visitpages": "Unikatowe strony",
+	"matomoanalytics-labels-visitpass": "Miniony czas",
+	"matomoanalytics-labels-website": "Strony internetowe",
+	"right-noanalytics": "Nie bycie śledzonym przez Matomo"
+}
