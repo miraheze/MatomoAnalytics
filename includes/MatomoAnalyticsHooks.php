@@ -54,7 +54,8 @@ class MatomoAnalyticsHooks {
 		
 		$cookieDisable = $config->get( 'MatomoAnalyticsDisableCookie' ) === true;
 
-		if ( $user->isAllowed( 'noanalytics' ) ) {
+		$permissionManager = MediaWikiServices::getInstance()->getPermissionManager();
+		if ( $permissionManager->userHasRight( $user, 'noanalytics' ) ) {
 			$text .= '<!-- MatomoAnalytics: User right noanalytics is assigned. -->';
 		} else {
 			$id = strval( $mAId );
