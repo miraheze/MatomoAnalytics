@@ -58,13 +58,14 @@ class MatomoAnalyticsHooks {
 		} else {
 			$id = strval( $mAId );
 			$globalId = (string)$config->get( 'MatomoAnalyticsGlobalID' );
+			$globalIdInt = (int)$globalId;
 			$serverurl = $config->get( 'MatomoAnalyticsServerURL' );
 			$title = $skin->getRelevantTitle();
 			$jstitle = Xml::encodeJsVar( $title->getPrefixedText() );
 			$dbname = Xml::encodeJsVar( $config->get( 'DBname' ) );
 			$urltitle = $title->getPrefixedURL();
 			$userType = $user->isLoggedIn() ? "User" : "Anonymous";
-			$cookieDisable = (boolean)$config->get( 'MatomoAnalyticsDisableCookie' );
+			$cookieDisable = (int)$config->get( 'MatomoAnalyticsDisableCookie' );
 			$text .= <<<SCRIPT
 				<!-- Matomo -->
 				<script type="text/javascript">
@@ -76,13 +77,12 @@ class MatomoAnalyticsHooks {
 				_paq.push(["enableLinkTracking"]);
 				(function() {
 					var u = "{$serverurl}";
-					var globalId = {$globalId};
 					_paq.push(["setTrackerUrl", u + "piwik.php"]);
 					_paq.push(['setDocumentTitle', {$dbname} + " - " + {$jstitle}]);
 					_paq.push(["setSiteId", "{$id}"]);
 					_paq.push(["setCustomVariable", 1, "userType", "{$userType}", "visit"]);
-					if ( globalId ) {
-					    _paq.push(['addTracker', u + "piwik.php", globalId]);
+					if ( {$globalIdInt} ) {
+					    _paq.push(['addTracker', u + "piwik.php", {$globalId}]);
 					}
 					var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
 					g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
