@@ -51,8 +51,6 @@ class MatomoAnalyticsHooks {
 
 		$user = RequestContext::getMain()->getUser();
 		$mAId = MatomoAnalytics::getSiteID( $config->get( 'DBname' ) );
-		
-		$cookieDisable = $config->get( 'MatomoAnalyticsDisableCookie' ) === true;
 
 		$permissionManager = MediaWikiServices::getInstance()->getPermissionManager();
 		if ( $permissionManager->userHasRight( $user, 'noanalytics' ) ) {
