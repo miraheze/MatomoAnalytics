@@ -58,7 +58,7 @@ class MatomoAnalyticsHooks {
 		} else {
 			$id = strval( $mAId );
 			$globalId = (string)$config->get( 'MatomoAnalyticsGlobalID' );
-			$globalIdInt = (int)$config->get( 'MatomoAnalyticsGlobalID' );
+			$globalIdInt = (int)$globalId;
 			$serverurl = $config->get( 'MatomoAnalyticsServerURL' );
 			$title = $skin->getRelevantTitle();
 			$jstitle = Xml::encodeJsVar( $title->getPrefixedText() );
