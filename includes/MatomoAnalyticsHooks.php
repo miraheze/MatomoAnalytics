@@ -10,10 +10,9 @@ class MatomoAnalyticsHooks {
 			$updater->addExtensionTable( 'matomo',
 				__DIR__ . '/../sql/matomo.sql' );
 
-			$updater->modifyTable(
+			$updater->modifyExtensionTable(
  				'matomo',
-  				__DIR__ . '/../sql/patches/patch-matomo-add-indexes.sql',
- 				true
+  				__DIR__ . '/../sql/patches/patch-matomo-add-indexes.sql'
  			);
 		}
 
