@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kkairri"
+			"Kkairri",
+			"そらたこ"
 		]
 	},
+	"analytics": "Matomo分析",
 	"matomoanalytics-desc": "Matomo と MediaWiki の統計を統合する",
 	"matomoanalytics-header": "以下のタブから、Matomo を使って収集している様々な統計が表示できます。すべてのデータは30日前から昨日までに収集されています（毎日更新）。",
 	"matomoanalytics-labels-browser": "ブラウザ",
@@ -18,7 +20,7 @@
 	"matomoanalytics-labels-visitday": "日",
 	"matomoanalytics-labels-visitduration": "期間",
 	"matomoanalytics-labels-visithour": "時間",
-	"matomoanalytics-labels-visitpages": "ユニークなページ数",
+	"matomoanalytics-labels-visitpages": "訪問別のページ数",
 	"matomoanalytics-labels-visitpass": "経過時間",
 	"matomoanalytics-labels-website": "ウェブサイト",
 	"right-noanalytics": "Matomo を使って追跡されていません"
