@@ -15,7 +15,7 @@ class ModifyMatomo extends Maintenance {
 
 	public function execute() {
 		if ( $this->getOption( 'remove' ) ) {
-			MatomoAnalyticsHooks::wikiDeletion( $wgDBname );
+			MatomoAnalyticsHooks::wikiDeletion( null, $wgDBname );
 		} else {
 			MatomoAnalyticsHooks::wikiCreation( $wgDBname );
 		}
