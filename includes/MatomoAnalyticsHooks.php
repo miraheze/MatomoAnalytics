@@ -72,24 +72,24 @@ class MatomoAnalyticsHooks {
 				if ( {$cookieDisable} ) {
 					_paq.push(['disableCookies']);
 				}
-				_paq.push(["trackPageView"]);
-				_paq.push(["enableLinkTracking"]);
+				_paq.push(['trackPageView']);
+				_paq.push(['enableLinkTracking']);
 				(function() {
 					var u = "{$serverurl}";
-					_paq.push(["setTrackerUrl", u + "piwik.php"]);
+					_paq.push(['setTrackerUrl', u+'matomo.php']);
 					_paq.push(['setDocumentTitle', {$dbname} + " - " + {$jstitle}]);
-					_paq.push(["setSiteId", "{$id}"]);
-					_paq.push(["setCustomVariable", 1, "userType", "{$userType}", "visit"]);
+					_paq.push(['setSiteId', {$id}]);
+					_paq.push(['setCustomVariable', 1, 'userType', "{$userType}", "visit"]);
 					if ( {$globalIdInt} ) {
-					    _paq.push(['addTracker', u + "piwik.php", {$globalId}]);
+					    _paq.push(['addTracker', u + 'matomo.php', {$globalId}]);
 					}
-					var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
-					g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+					var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+					g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
 				})();
 				</script>
 				<!-- End Matomo Code -->
 				<!-- Matomo Image Tracker -->
-				<noscript><p><img src="{$serverurl}piwik.php?idsite={$id}&amp;rec=1&amp;action_name={$urltitle}" style="border:0;" alt="" /></p></noscript>
+				<noscript><p><img src="{$serverurl}matomo.php?idsite={$id}&amp;rec=1&amp;action_name={$urltitle}" style="border:0;" alt="" /></p></noscript>
 				<!-- End Matomo -->
 SCRIPT;
 		}
