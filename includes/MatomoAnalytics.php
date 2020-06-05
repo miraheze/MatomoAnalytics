@@ -1,12 +1,13 @@
 <?php
 
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Http\HttpRequestFactory;
 
 class MatomoAnalytics {
 	public static function addSite( $dbname ) {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
 
-		$siteReply = Http::get(
+		$siteReply = HttpRequestFactory::get(
 			wfAppendQuery(
 				$config->get( 'MatomoAnalyticsServerURL' ),
 				[
@@ -43,7 +44,7 @@ class MatomoAnalytics {
 
 		$siteId = static::getSiteID( $dbname );
 
-		Http::get(
+		HttpRequestFactory::get(
 			wfAppendQuery(
 				$config->get( 'MatomoAnalyticsServerURL' ),
 				[
@@ -76,7 +77,7 @@ class MatomoAnalytics {
 
 		$siteId = static::getSiteID( $old );
 
-		Http::get(
+		HttpRequestFactory::get(
 			wfAppendQuery(
 				$config->get( 'MatomoAnalyticsServerURL' ),
 				[
