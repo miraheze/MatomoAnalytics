@@ -19,7 +19,7 @@ class MatomoAnalyticsWiki {
 	) {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
 
-		$siteReply = HttpRequestFactory::get(
+		$siteReply = MediaWikiServices::getInstance()->getHttpRequestFactory()->get(
 			wfAppendQuery(
 				$config->get( 'MatomoAnalyticsServerURL' ),
 				[
