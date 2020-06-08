@@ -25,14 +25,18 @@ class MatomoAnalytics {
 
 		if ( $config->get( 'MatomoAnalyticsUseDB' ) ) {
 			$dbw = wfGetDB( DB_MASTER, [], $config->get( 'MatomoAnalyticsDatabase' ) );
-			$dbw->insert(
-				'matomo',
-				[
-					'matomo_id' => $siteJson['value'],
-					'matomo_wiki' => $dbname,
-				],
-				__METHOD__
-			);
+			try {
+				$dbw->insert(
+					'matomo',
+					[
+						'matomo_id' => $siteJson['value'],
+						'matomo_wiki' => $dbname,
+					],
+					__METHOD__
+				);
+			} catch ( Exception $e ) {
+				return null;
+			}
 		}
 
 		return $siteJson['value'];
