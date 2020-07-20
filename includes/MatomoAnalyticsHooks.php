@@ -68,7 +68,7 @@ class MatomoAnalyticsHooks {
 			$text .= <<<SCRIPT
 				<!-- Matomo -->
 				<script type="text/javascript">
-				var _paq = _paq || [];
+				var _paq = window._paq = window._paq || [];
 				if ( {$cookieDisable} ) {
 					_paq.push(['disableCookies']);
 				}
@@ -84,7 +84,7 @@ class MatomoAnalyticsHooks {
 					    _paq.push(['addTracker', u + 'matomo.php', {$globalId}]);
 					}
 					var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-					g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+					g.type='text/javascript'; g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
 				})();
 				</script>
 				<!-- End Matomo Code -->
