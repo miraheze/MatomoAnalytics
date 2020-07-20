@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Alireza Ivaz"
+			"Alireza Ivaz",
+			"Huji"
 		]
 	},
 	"analytics": "تجزیه‌گر ماتومو",
@@ -19,7 +20,7 @@
 	"matomoanalytics-labels-visitday": "روزها",
 	"matomoanalytics-labels-visitduration": "مدت",
 	"matomoanalytics-labels-visithour": "ساعت‌ها",
-	"matomoanalytics-labels-visitpages": "برگه‌های یکتا",
+	"matomoanalytics-labels-visitpages": "صفحه‌های یکتا",
 	"matomoanalytics-labels-visitpass": "گذشت زمان",
 	"matomoanalytics-labels-website": "تارنماها",
 	"right-noanalytics": "با ماتومو پیگیری نمی‌شود"
