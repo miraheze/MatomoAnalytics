@@ -1,5 +1,8 @@
 == ChangeLog for MatomoAnalytics ==
 
+=== 1.0.4 (20-07-2020) ===
+* Updates Matomo javascript to the version used in Matomo 3.14.0.
+
 === 1.0.3 (03-01-2020) ===
 * Adds `$wgMatomoAnalyticsDisableCookie` to allow disabling cookies set by Matomo. Useful in the European Union.
 
