@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jon Harald Søby"
+		]
+	},
+	"analytics": "MatomoAnalytics",
+	"matomoanalytics-desc": "Integrerer analyse fra Matomo og MediaWiki",
+	"matomoanalytics-header": "Du kan bruke fanene nedenfor for å velge forskjellig statistikk å vise som vi lagrer med Matomo. Alle data samles over de siste 30 dagene fra og med i går (oppdateres daglig).",
+	"matomoanalytics-labels-browser": "Nettlesere",
+	"matomoanalytics-labels-continent": "Kontinenter",
+	"matomoanalytics-labels-country": "Land",
+	"matomoanalytics-labels-devices": "Enheter",
+	"matomoanalytics-labels-os": "OS",
+	"matomoanalytics-labels-referrer": "Sidehenvisninger",
+	"matomoanalytics-labels-resolution": "Oppløsning",
+	"matomoanalytics-labels-search": "Søkeord",
+	"matomoanalytics-labels-social": "Sosiale nettverk",
+	"matomoanalytics-labels-visitday": "Dager",
+	"matomoanalytics-labels-visitduration": "Varighet",
+	"matomoanalytics-labels-visithour": "Timer",
+	"matomoanalytics-labels-visitpages": "Unike sider",
+	"matomoanalytics-labels-visitpass": "Tid som har gått",
+	"matomoanalytics-labels-website": "Nettsteder",
+	"right-noanalytics": "Skal ikke spores via Matomo"
+}
