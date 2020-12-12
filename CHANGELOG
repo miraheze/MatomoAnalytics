@@ -1,5 +1,8 @@
 == ChangeLog for MatomoAnalytics ==
 
+=== 1.0.5.1 (12-12-2020) ===
+* Fix config name wgMatomoAnalyticsForGetRequest -> wgMatomoAnalyticsForceGetRequest.
+
 === 1.0.5 (12-12-2020) ===
 * Introduce wgMatomoAnalyticsForGetRequest config to force GET requests and reverts back to matomo 3 way of tracking.
 

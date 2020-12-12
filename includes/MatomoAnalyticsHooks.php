@@ -65,7 +65,7 @@ class MatomoAnalyticsHooks {
 			$urltitle = $title->getPrefixedURL();
 			$userType = $user->isLoggedIn() ? "User" : "Anonymous";
 			$cookieDisable = (int)$config->get( 'MatomoAnalyticsDisableCookie' );
-			$forceGetRequest = (int)$config->get( 'MatomoAnalyticsForGetRequest' );
+			$forceGetRequest = (int)$config->get( 'MatomoAnalyticsForceGetRequest' );
 			$text .= <<<SCRIPT
 				<!-- Matomo -->
 				<script type="text/javascript">
