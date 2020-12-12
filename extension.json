@@ -5,7 +5,7 @@
 		"Southparkfan"
 	],
 	"url": "https://github.com/miraheze/MatomoAnalytics",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"descriptionmsg": "matomoanalytics-desc",
 	"type": "specialpage",
 	"AvailableRights": [
@@ -100,6 +100,11 @@
 		},
 		"MatomoAnalyticsDisableCookie": {
 			"description": "Boolean. Whether or not to disable cookies being set by Matomo.",
+			"public": true,
+			"value": false
+		},
+		"MatomoAnalyticsForGetRequest": {
+			"description": "Boolean. Whether or not you want to foce GET requests which also disables beacon. Reverts back to matomo 3 behaviour of tracking.",
 			"public": true,
 			"value": false
 		}
