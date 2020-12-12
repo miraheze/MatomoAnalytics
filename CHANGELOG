@@ -1,5 +1,8 @@
 == ChangeLog for MatomoAnalytics ==
 
+=== 1.0.5 (12-12-2020) ===
+* Introduce wgMatomoAnalyticsForGetRequest config to force GET requests and reverts back to matomo 3 way of tracking.
+
 === 1.0.4 (20-07-2020) ===
 * Updates Matomo javascript to the version used in Matomo 3.14.0.
 
