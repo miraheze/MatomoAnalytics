@@ -65,12 +65,16 @@ class MatomoAnalyticsHooks {
 			$urltitle = $title->getPrefixedURL();
 			$userType = $user->isLoggedIn() ? "User" : "Anonymous";
 			$cookieDisable = (int)$config->get( 'MatomoAnalyticsDisableCookie' );
+			$forceGetRequest = (int)$config->get( 'MatomoAnalyticsForGetRequest' );
 			$text .= <<<SCRIPT
 				<!-- Matomo -->
 				<script type="text/javascript">
 				var _paq = window._paq = window._paq || [];
 				if ( {$cookieDisable} ) {
 					_paq.push(['disableCookies']);
+				}
+				if ( {$forceGetRequest} ) {
+					_paq.push(['setRequestMethod', 'GET']);
 				}
 				_paq.push(['trackPageView']);
 				_paq.push(['enableLinkTracking']);
