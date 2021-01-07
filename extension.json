@@ -16,6 +16,9 @@
 			"i18n"
 		]
 	},
+	"ExtensionMessagesFiles": {
+		"MatomoAnalyticsAliases": "MatomoAnalytics.i18n.alias.php"
+	},
 	"AutoloadClasses": {
 		"MatomoAnalytics": "includes/MatomoAnalytics.php",
 		"MatomoAnalyticsHooks": "includes/MatomoAnalyticsHooks.php",
