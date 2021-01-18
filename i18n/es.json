@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Fitoschido",
+			"Jakeukalane",
 			"Reception123"
 		]
 	},
+	"analytics": "MatomoAnalytics",
 	"matomoanalytics-desc": "Integra análisis de Matomo y MediaWiki",
 	"matomoanalytics-header": "Pueden utilizarse las pestañas siguientes para seleccionar estadísticas distintas provenientes de Matomo. Todos los datos recopilados corresponden a los 30 días anteriores a partir de ayer (se actualiza diariamente).",
 	"matomoanalytics-labels-browser": "Navegadores",
@@ -21,5 +23,6 @@
 	"matomoanalytics-labels-visithour": "Horas",
 	"matomoanalytics-labels-visitpages": "Páginas individuales",
 	"matomoanalytics-labels-visitpass": "Tiempo transcurrido",
-	"matomoanalytics-labels-website": "Sitios web"
+	"matomoanalytics-labels-website": "Sitios web",
+	"right-noanalytics": "No es rastreado a través de Matomo"
 }
