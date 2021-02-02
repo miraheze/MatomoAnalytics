@@ -12,7 +12,7 @@ class MatomoAnalyticsWiki {
 
 	private function getData(
 		string $module,
-		string $period = 'month',
+		string $period = 'day',
 		string $jsonLabel = 'label',
 		string $jsonData = 'nb_visits',
 		bool $flat = false
@@ -25,7 +25,7 @@ class MatomoAnalyticsWiki {
 				[
 					'module' => 'API',
 					'format' => 'json',
-					'date' => 'yesterday',
+					'date' => 'last30',
 					'method' => $module,
 					'period' => $period,
 					'idSite' => $this->siteId,
