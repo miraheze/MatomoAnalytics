@@ -70,6 +70,10 @@ class MatomoAnalytics {
 				[ 'matomo_id' => $siteId ],
 				__METHOD__
 			);
+
+			$cache = ObjectCache::getLocalClusterInstance();
+			$key = $cache->makeKey( 'matomo', 'id' );
+			$cache->delete( $key );
 		}
 
 		return true;
@@ -106,6 +110,10 @@ class MatomoAnalytics {
 				[ 'matomo_id' => $siteId ],
 				__METHOD__
 			);
+
+			$cache = ObjectCache::getLocalClusterInstance();
+			$key = $cache->makeKey( 'matomo', 'id' );
+			$cache->delete( $key );
 		}
 
 		if ( $siteId === static::getSiteID( $new ) ) {
@@ -142,6 +150,7 @@ class MatomoAnalytics {
 				return (int)0;
 			} else {
 				$cache->set( $key, $id );
+
 				return $id;
 			}
 		} else {
