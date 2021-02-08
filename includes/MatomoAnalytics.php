@@ -70,6 +70,8 @@ class MatomoAnalytics {
 				[ 'matomo_id' => $siteId ],
 				__METHOD__
 			);
+
+			static::deleteCacheId();
 		}
 
 		return true;
@@ -106,6 +108,8 @@ class MatomoAnalytics {
 				[ 'matomo_id' => $siteId ],
 				__METHOD__
 			);
+
+			static::deleteCacheId();
 		}
 
 		if ( $siteId === static::getSiteID( $new ) ) {
@@ -120,8 +124,7 @@ class MatomoAnalytics {
 
 		if ( $config->get( 'MatomoAnalyticsUseDB' ) ) {
 			$cache = ObjectCache::getLocalClusterInstance();
-			$key = $cache->makeKey( 'matomo', 'id' );
-			$cacheId = $cache->get( $key );
+			$cacheId = static::getCachedId();
 			if ( $cacheId ) {
 				return $cacheId;
 			}
@@ -141,11 +144,30 @@ class MatomoAnalytics {
 				// lets put a 0 to prevent it throwing errors.
 				return (int)0;
 			} else {
-				$cache->set( $key, $id );
+				static::setCacheId( $id );
+
 				return $id;
 			}
 		} else {
 			return $config->get( 'MatomoAnalyticsSiteID' );
 		}
+	}
+
+	public static function getCachedId() {
+		$cache = ObjectCache::getLocalClusterInstance();
+		$key = $cache->makeKey( 'matomo', 'id' );
+		return $cache->get( $key );
+	}
+
+	public static function setCacheId( $id ) {
+		$cache = ObjectCache::getLocalClusterInstance();
+		$key = $cache->makeKey( 'matomo', 'id' );
+		$cache->set( $key, $id );
+	}
+
+	public static function deleteCacheId() {
+		$cache = ObjectCache::getLocalClusterInstance();
+		$key = $cache->makeKey( 'matomo', 'id' );
+		$cache->delete( $key );
 	}
 }
