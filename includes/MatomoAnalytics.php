@@ -3,10 +3,18 @@
 use MediaWiki\MediaWikiServices;
 
 class MatomoAnalytics {
-	public static function addSite( $dbname ) {
-		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
+	private $config;
+	private $httpRequestFactory;
 
-		$siteReply = MediaWikiServices::getInstance()->getHttpRequestFactory()->get(
+	public function __construct() {
+		$this->config = MediaWikiServices::getInstance()->getConfigFactory();
+		$this->httpRequestFactory = MediaWikiServices::getInstance()->getHttpRequestFactory();
+	}
+
+	public static function addSite( $dbname ) {
+		$config = $this->config->makeConfig( 'matomoanalytics' );
+
+		$siteReply = $this->httpRequestFactory->get(
 			wfAppendQuery(
 				$config->get( 'MatomoAnalyticsServerURL' ),
 				[
@@ -43,11 +51,11 @@ class MatomoAnalytics {
 	}
 
 	public static function deleteSite( $dbname ) {
-		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
+		$config = $this->config->makeConfig( 'matomoanalytics' );
 
 		$siteId = static::getSiteID( $dbname );
 
-		MediaWikiServices::getInstance()->getHttpRequestFactory()->get(
+		$this->httpRequestFactory->get(
 			wfAppendQuery(
 				$config->get( 'MatomoAnalyticsServerURL' ),
 				[
@@ -76,11 +84,11 @@ class MatomoAnalytics {
 	}
 
 	public static function renameSite( $old, $new ) {
-		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
+		$config = $this->config->makeConfig( 'matomoanalytics' );
 
 		$siteId = static::getSiteID( $old );
 
-		MediaWikiServices::getInstance()->getHttpRequestFactory()->get(
+		$this->httpRequestFactory->get(
 			wfAppendQuery(
 				$config->get( 'MatomoAnalyticsServerURL' ),
 				[
@@ -115,13 +123,11 @@ class MatomoAnalytics {
 		}
 	}
 
-	public static function getSiteID( $dbname ) {
-		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
+	public static function getSiteID( string $dbname ) {
+		$config = $this->config->makeConfig( 'matomoanalytics' );
 
 		if ( $config->get( 'MatomoAnalyticsUseDB' ) ) {
-			$cache = ObjectCache::getLocalClusterInstance();
-			$key = $cache->makeKey( 'matomo', 'id' );
-			$cacheId = $cache->get( $key );
+			$cacheId = self::getCachedId();
 			if ( $cacheId ) {
 				return $cacheId;
 			}
@@ -147,5 +153,11 @@ class MatomoAnalytics {
 		} else {
 			return $config->get( 'MatomoAnalyticsSiteID' );
 		}
+	}
+
+	public static function getCachedId() {
+		$cache = ObjectCache::getLocalClusterInstance();
+		$key = $cache->makeKey( 'matomo', 'id' );
+		return $cache->get( $key );
 	}
 }
