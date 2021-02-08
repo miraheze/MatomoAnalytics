@@ -1,5 +1,8 @@
 == ChangeLog for MatomoAnalytics ==
 
+=== 1.0.5.2 (08-02-2021) ===
+* Delete cache when deleting or renaming wikis.
+
 === 1.0.5.1 (12-12-2020) ===
 * Fix config name wgMatomoAnalyticsForGetRequest -> wgMatomoAnalyticsForceGetRequest.
 
