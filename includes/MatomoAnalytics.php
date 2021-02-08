@@ -3,10 +3,12 @@
 use MediaWiki\MediaWikiServices;
 
 class MatomoAnalytics {
+	private $cache;
 	private $config;
 	private $httpRequestFactory;
 
 	public function __construct() {
+		$this->cache = ObjectCache::getLocalClusterInstance();
 		$this->config = MediaWikiServices::getInstance()->getConfigFactory();
 		$this->httpRequestFactory = MediaWikiServices::getInstance()->getHttpRequestFactory();
 	}
@@ -78,6 +80,8 @@ class MatomoAnalytics {
 				[ 'matomo_id' => $siteId ],
 				__METHOD__
 			);
+			
+			static::deleteCacheId();
 		}
 
 		return true;
@@ -114,6 +118,8 @@ class MatomoAnalytics {
 				[ 'matomo_id' => $siteId ],
 				__METHOD__
 			);
+			
+			static::deleteCacheId();
 		}
 
 		if ( $siteId === static::getSiteID( $new ) ) {
@@ -147,7 +153,7 @@ class MatomoAnalytics {
 				// lets put a 0 to prevent it throwing errors.
 				return (int)0;
 			} else {
-				$cache->set( $key, $id );
+				static::setCacheId( $id );
 				return $id;
 			}
 		} else {
@@ -156,8 +162,17 @@ class MatomoAnalytics {
 	}
 
 	public static function getCachedId() {
-		$cache = ObjectCache::getLocalClusterInstance();
-		$key = $cache->makeKey( 'matomo', 'id' );
-		return $cache->get( $key );
+		$key = $this->cache->makeKey( 'matomo', 'id' );
+		return $this->cache->get( $key );
+	}
+
+	public static function setCacheId( $id ) {
+		$key = $this->cache->makeKey( 'matomo', 'id' );
+		$this->cache->set( $key, $id );
+	}
+
+	public static function deleteCacheId() {
+		$key = $this->cache->makeKey( 'matomo', 'id' );
+		$this->cache->delete( $key );
 	}
 }
