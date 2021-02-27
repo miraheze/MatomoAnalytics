@@ -3,6 +3,8 @@
 use MediaWiki\MediaWikiServices;
 
 class MatomoAnalytics {
+	protected static $mACache = null;
+
 	public static function addSite( $dbname ) {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
 
@@ -129,7 +131,11 @@ class MatomoAnalytics {
 		if ( $config->get( 'MatomoAnalyticsUseDB' ) ) {
 			$cache = ObjectCache::getLocalClusterInstance();
 			$key = $cache->makeKey( 'matomo', 'id' );
-			$cacheId = $cache->get( $key );
+			$cacheId = static::$mACache;
+			if ( $cacheId === NULL ) {
+				$cacheId = (int)$cache->get( $key );
+			}
+
 			if ( $cacheId ) {
 				return $cacheId;
 			}
