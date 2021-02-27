@@ -1,5 +1,8 @@
 == ChangeLog for MatomoAnalytics ==
 
+=== 1.0.5.3 (27-02-2021) ===
+* MatomoAnalytics::getSiteID: Fix default value for when wiki isn't found 
+
 === 1.0.5.2 (08-02-2021) ===
 * Delete cache when deleting or renaming wikis.
 
