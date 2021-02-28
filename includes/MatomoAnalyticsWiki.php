@@ -7,7 +7,7 @@ class MatomoAnalyticsWiki {
 	private $siteId;
 
 	public function __construct( $id ) {
-		$this->siteId = $id);
+		$this->siteId = $id;
 	}
 
 	private function getData(
