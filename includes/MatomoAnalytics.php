@@ -48,7 +48,7 @@ class MatomoAnalytics {
 		$siteId = static::getSiteID( $dbname );
 
 		if ( $config->get( 'MatomoAnalyticsUseDB' ) &&
-		    $siteId === $config->get( 'MatomoAnalyticsSiteID' )
+		    (int)$siteId === (int)$config->get( 'MatomoAnalyticsSiteID' )
 		) {
 			return;
 		}
@@ -91,7 +91,7 @@ class MatomoAnalytics {
 		$siteId = static::getSiteID( $old );
 
 		if ( $config->get( 'MatomoAnalyticsUseDB' ) &&
-		    $siteId === $config->get( 'MatomoAnalyticsSiteID' )
+		    (int)$siteId === (int)$config->get( 'MatomoAnalyticsSiteID' )
 		) {
 			return;
 		}
