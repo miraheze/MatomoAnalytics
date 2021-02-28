@@ -142,7 +142,7 @@ class MatomoAnalytics {
 				__METHOD__
 			);
 
-			if ( !isset( $id ) ) {
+			if ( !isset( $id ) || !$id ) {
 				wfDebugLog( 'MatomoAnalytics', "could not find {$dbname} in matomo table" );
 
 				// Because the site is not found in the matomo table,
