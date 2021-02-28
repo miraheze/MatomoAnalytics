@@ -9,7 +9,17 @@ class MatomoAnalyticsViewer {
 			$context->getLanguage()->getDir()
 		);
 
-		$mA = new MatomoAnalyticsWiki( $context->getConfig()->get( 'DBname' ) );
+		$id = MatomoAnalytics::getSiteID( $context->getConfig()->get( 'DBname' ) );
+		
+		// If the id does not exist in the db,
+		// lets just return here as we will likely
+		// return inconsitent data or index
+		// errors will happen.
+		if ( $id == false ) {
+			return [];
+		}
+
+		$mA = new MatomoAnalyticsWiki( $id );
 
 		$descriptorData = [
 			'browser' => $mA->getBrowserTypes(),
