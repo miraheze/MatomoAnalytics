@@ -6,8 +6,8 @@ use MediaWiki\Http\HttpRequestFactory;
 class MatomoAnalyticsWiki {
 	private $siteId;
 
-	public function __construct( $wiki ) {
-		$this->siteId = MatomoAnalytics::getSiteID( $wiki );
+	public function __construct( $id ) {
+		$this->siteId = $id);
 	}
 
 	private function getData(
