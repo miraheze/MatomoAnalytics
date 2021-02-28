@@ -131,7 +131,7 @@ class MatomoAnalytics {
 		}
 	}
 
-	public static function getSiteID( string $dbname ){
+	public static function getSiteID( string $dbname ) {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
 
 		if ( $config->get( 'MatomoAnalyticsUseDB' ) ) {
