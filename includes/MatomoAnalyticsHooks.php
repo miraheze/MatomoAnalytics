@@ -49,7 +49,11 @@ class MatomoAnalyticsHooks {
 		}
 
 		$user = RequestContext::getMain()->getUser();
-		$mAId = MatomoAnalytics::getSiteID( $config->get( 'DBname' ) );
+		$id = MatomoAnalytics::getSiteID( $config->get( 'DBname' ) );
+		$id = $id == false ?
+			// siteID no longer returns a default ID,
+			// so we supply it here if it returns false.
+			$config->get( 'MatomoAnalyticsSiteID' ) : $id;
 
 		$permissionManager = MediaWikiServices::getInstance()->getPermissionManager();
 		if ( $permissionManager->userHasRight( $user, 'noanalytics' ) ) {
