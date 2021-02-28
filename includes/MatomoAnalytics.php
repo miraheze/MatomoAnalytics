@@ -42,15 +42,13 @@ class MatomoAnalytics {
 		return $siteJson['value'];
 	}
 
-	public static function deleteSite( $dbname ) {
+	public static function deleteSite( string $dbname ) {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
 
 		$siteId = static::getSiteID( $dbname );
 
-		if ( $config->get( 'MatomoAnalyticsUseDB' ) &&
-		    (int)$siteId === (int)$config->get( 'MatomoAnalyticsSiteID' )
-		) {
-			return;
+		if ( $siteId == false ) {
+			return true;
 		}
 
 		MediaWikiServices::getInstance()->getHttpRequestFactory()->get(
@@ -85,15 +83,13 @@ class MatomoAnalytics {
 		return true;
 	}
 
-	public static function renameSite( $old, $new ) {
+	public static function renameSite( string $old, string $new ) {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
 
 		$siteId = static::getSiteID( $old );
 
-		if ( $config->get( 'MatomoAnalyticsUseDB' ) &&
-		    (int)$siteId === (int)$config->get( 'MatomoAnalyticsSiteID' )
-		) {
-			return;
+		if ( $siteId == false ) {
+			return true;
 		}
 
 		MediaWikiServices::getInstance()->getHttpRequestFactory()->get(
@@ -135,7 +131,7 @@ class MatomoAnalytics {
 		}
 	}
 
-	public static function getSiteID( $dbname ) {
+	public static function getSiteID( string $dbname ){
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
 
 		if ( $config->get( 'MatomoAnalyticsUseDB' ) ) {
@@ -157,9 +153,9 @@ class MatomoAnalytics {
 			if ( !isset( $id ) || !$id ) {
 				wfDebugLog( 'MatomoAnalytics', "could not find {$dbname} in matomo table" );
 
-				// Because the site is not found in the matomo table,
-				// we default to a value set in 'MatomoAnalyticsSiteID' which is 1.
-				return $config->get( 'MatomoAnalyticsSiteID' );
+				// If the wiki does not exist, we do not return a default value,
+				// instead callers are expected to default to a value.
+				return false;
 			} else {
 				$cache->set( $key, $id );
 
