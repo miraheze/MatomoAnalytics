@@ -47,6 +47,12 @@ class MatomoAnalytics {
 
 		$siteId = static::getSiteID( $dbname );
 
+		if ( $config->get( 'MatomoAnalyticsUseDB' ) &&
+		    (int)$siteId === (int)$config->get( 'MatomoAnalyticsSiteID' )
+		) {
+			return;
+		}
+
 		MediaWikiServices::getInstance()->getHttpRequestFactory()->get(
 			wfAppendQuery(
 				$config->get( 'MatomoAnalyticsServerURL' ),
@@ -83,6 +89,12 @@ class MatomoAnalytics {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
 
 		$siteId = static::getSiteID( $old );
+
+		if ( $config->get( 'MatomoAnalyticsUseDB' ) &&
+		    (int)$siteId === (int)$config->get( 'MatomoAnalyticsSiteID' )
+		) {
+			return;
+		}
 
 		MediaWikiServices::getInstance()->getHttpRequestFactory()->get(
 			wfAppendQuery(
