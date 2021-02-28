@@ -1,5 +1,8 @@
 == ChangeLog for MatomoAnalytics ==
 
+=== 1.0.5.5 (28-02-2021) ===
+* MatomoAnalytics: Add check within rename/add site to prevent deleting default id
+
 === 1.0.5.4 (28-02-2021) ===
 * add extra check for $id
 
