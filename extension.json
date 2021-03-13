@@ -5,8 +5,9 @@
 		"Southparkfan"
 	],
 	"url": "https://github.com/miraheze/MatomoAnalytics",
-	"version": "1.0.5.5",
+	"version": "1.0.5.6",
 	"descriptionmsg": "matomoanalytics-desc",
+	"license-name": "GPL-3.0-or-later",
 	"type": "specialpage",
 	"AvailableRights": [
 		"noanalytics"
