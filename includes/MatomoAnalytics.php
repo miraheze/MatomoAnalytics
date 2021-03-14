@@ -40,14 +40,14 @@ class MatomoAnalytics {
 			return;
 		}
 
-		$id = $siteJson['value'];
+		$siteId = $siteJson['value'];
 		if ( $config->get( 'MatomoAnalyticsUseDB' ) ) {
 			$dbw = wfGetDB( DB_MASTER, [], $config->get( 'MatomoAnalyticsDatabase' ) );
 			try {
 				$dbw->insert(
 					'matomo',
 					[
-						'matomo_id' => $id,
+						'matomo_id' => $siteId,
 						'matomo_wiki' => $dbname,
 					],
 					__METHOD__
@@ -57,7 +57,7 @@ class MatomoAnalytics {
 			}
 		}
 
-		$logger->debug( "Successfully created id {$id} for {$dbname}." );
+		$logger->debug( "Successfully created {$dbname} with id {$siteId}." );
 	}
 
 	public static function deleteSite( $dbname ) {
@@ -185,7 +185,7 @@ class MatomoAnalytics {
 			);
 
 			if ( !isset( $id ) || !$id ) {
-				$logger->debug( "Could not find {$dbname} in matomo table." );
+				$logger->error( "Could not find {$dbname} in matomo table." );
 
 				// Because the site is not found in the matomo table,
 				// we default to a value set in 'MatomoAnalyticsSiteID' which is 1.
