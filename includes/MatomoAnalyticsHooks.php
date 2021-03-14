@@ -63,7 +63,7 @@ class MatomoAnalyticsHooks {
 			$jstitle = Xml::encodeJsVar( $title->getPrefixedText() );
 			$dbname = Xml::encodeJsVar( $config->get( 'DBname' ) );
 			$urltitle = $title->getPrefixedURL();
-			$userType = $user->isLoggedIn() ? "User" : "Anonymous";
+			$userType = $user->isRegistered() ? 'User' : 'Anonymous';
 			$cookieDisable = (int)$config->get( 'MatomoAnalyticsDisableCookie' );
 			$forceGetRequest = (int)$config->get( 'MatomoAnalyticsForceGetRequest' );
 			$text .= <<<SCRIPT
