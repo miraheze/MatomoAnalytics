@@ -1,5 +1,8 @@
 == ChangeLog for MatomoAnalytics ==
 
+=== 1.0.5.8 (14-03-2021) ===
+* Use User::isRegistered instead of User::isLoggedIn
+
 === 1.0.5.7 (14-03-2021) ===
 * Add some more logging and also disable cache when deleting/rename a wik
 
