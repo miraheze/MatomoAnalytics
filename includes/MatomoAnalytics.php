@@ -55,7 +55,7 @@ class MatomoAnalytics {
 				return null;
 			}
 		}
-		
+
 		$logger->debug( "Successfully created id {$id} for {$dbname}" );
 	}
 
