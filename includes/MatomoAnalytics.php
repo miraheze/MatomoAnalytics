@@ -188,7 +188,7 @@ class MatomoAnalytics {
 			->makeConfig( 'matomoanalytics' );
 	}
 
-	public static function getLogger() {
+	private static function getLogger() {
 		return \MediaWiki\Logger\LoggerFactory::getInstance( 'MatomoAnalytics' );
 	}
 }
