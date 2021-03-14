@@ -3,8 +3,20 @@
 use MediaWiki\MediaWikiServices;
 
 class MatomoAnalytics {
+	private static function getConfig() {
+		return MediaWikiServices::getInstance()
+			->getConfigFactory()
+			->makeConfig( 'matomoanalytics' );
+	}
+
+	private static function getLogger() {
+		return \MediaWiki\Logger\LoggerFactory::getInstance( 'MatomoAnalytics' );
+	}
+
 	public static function addSite( $dbname ) {
 		$config = static::getConfig();
+
+		$logger = static::getLogger();
 
 		$siteReply = MediaWikiServices::getInstance()->getHttpRequestFactory()->get(
 			wfAppendQuery(
@@ -23,13 +35,18 @@ class MatomoAnalytics {
 
 		$siteJson = FormatJson::decode( $siteReply, true );
 
+		if ( !$siteJson ) {
+			$logger->error( "Could not create id for {$dbname}" );
+		}
+
+		$id = $siteJson['value'];
 		if ( $config->get( 'MatomoAnalyticsUseDB' ) ) {
 			$dbw = wfGetDB( DB_MASTER, [], $config->get( 'MatomoAnalyticsDatabase' ) );
 			try {
 				$dbw->insert(
 					'matomo',
 					[
-						'matomo_id' => $siteJson['value'],
+						'matomo_id' => $id,
 						'matomo_wiki' => $dbname,
 					],
 					__METHOD__
@@ -38,8 +55,8 @@ class MatomoAnalytics {
 				return null;
 			}
 		}
-
-		return $siteJson['value'];
+		
+		$logger->debug( "Successfully created id {$id} for {$dbname}" );
 	}
 
 	public static function deleteSite( $dbname ) {
@@ -180,15 +197,5 @@ class MatomoAnalytics {
 		} else {
 			return $config->get( 'MatomoAnalyticsSiteID' );
 		}
-	}
-
-	private static function getConfig() {
-		return MediaWikiServices::getInstance()
-			->getConfigFactory()
-			->makeConfig( 'matomoanalytics' );
-	}
-
-	private static function getLogger() {
-		return \MediaWiki\Logger\LoggerFactory::getInstance( 'MatomoAnalytics' );
 	}
 }
