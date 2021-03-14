@@ -36,7 +36,8 @@ class MatomoAnalytics {
 		$siteJson = FormatJson::decode( $siteReply, true );
 
 		if ( !$siteJson ) {
-			$logger->error( "Could not create id for {$dbname}" );
+			$logger->error( "Could not create id for {$dbname}." );
+			return;
 		}
 
 		$id = $siteJson['value'];
@@ -56,7 +57,7 @@ class MatomoAnalytics {
 			}
 		}
 
-		$logger->debug( "Successfully created id {$id} for {$dbname}" );
+		$logger->debug( "Successfully created id {$id} for {$dbname}." );
 	}
 
 	public static function deleteSite( $dbname ) {
@@ -101,7 +102,7 @@ class MatomoAnalytics {
 			$cache->delete( $key );
 		}
 		
-		$logger->debug( "Successfully deleted {$dbname} with id {$siteId}" );
+		$logger->debug( "Successfully deleted {$dbname} with id {$siteId}." );
 
 		return true;
 	}
@@ -152,11 +153,11 @@ class MatomoAnalytics {
 		}
 
 		if ( (string)$siteId === (string)static::getSiteID( $newDb ) ) {
-			$logger->debug( "Successfully renamed {$oldDb} to {$newDb} with id {$siteId}" );
+			$logger->debug( "Successfully renamed {$oldDb} to {$newDb} with id {$siteId}." );
 
 			return true;
 		} else {
-			$logger->error( "Failed to rename {$oldDb} to {$newDb} with id {$siteId}" );
+			$logger->error( "Failed to rename {$oldDb} to {$newDb} with id {$siteId}." );
 
 			throw new MWException( 'Error in renaming Matomo references' );
 		}
