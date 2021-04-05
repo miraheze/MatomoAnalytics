@@ -98,7 +98,7 @@ class MatomoAnalytics {
 			);
 
 			$cache = ObjectCache::getLocalClusterInstance();
-			$key = $cache->makeKey( 'matomo', 'id' );
+			$key = $cache->makeGlobalKey( 'matomo', $dbname );
 			$cache->delete( $key );
 		}
 		
@@ -148,7 +148,7 @@ class MatomoAnalytics {
 			);
 
 			$cache = ObjectCache::getLocalClusterInstance();
-			$key = $cache->makeKey( 'matomo', 'id' );
+			$key = $cache->makeGlobalKey( 'matomo', $oldDb );
 			$cache->delete( $key );
 		}
 
@@ -170,7 +170,7 @@ class MatomoAnalytics {
 
 		if ( $config->get( 'MatomoAnalyticsUseDB' ) ) {
 			$cache = ObjectCache::getLocalClusterInstance();
-			$key = $cache->makeKey( 'matomo', 'id' );
+			$key = $cache->makeGlobalKey( 'matomo', $dbname );
 			$cacheId = $cache->get( $key );
 			if ( $cacheId && !$disableCache ) {
 				return $cacheId;
