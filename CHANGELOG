@@ -1,5 +1,8 @@
 == ChangeLog for MatomoAnalytics ==
 
+=== 1.0.5.9 (05-04-2021 ===
+* Add fixMissingMatomos script for syncing between cw_wikis and matomo on sites using CreateWiki
+
 === 1.0.5.8 (14-03-2021) ===
 * Use User::isRegistered instead of User::isLoggedIn
 
