@@ -1,4 +1,6 @@
 == ChangeLog for MatomoAnalytics ==
+=== 1.0.5.9 (08-04-2021) ===
+* Fix undefined variable
 
 === 1.0.5.8 (14-03-2021) ===
 * Use User::isRegistered instead of User::isLoggedIn
