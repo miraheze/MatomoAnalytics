@@ -128,7 +128,7 @@ class MatomoAnalytics {
 					'format' => 'json',
 					'method' => 'SitesManager.updateSite',
 					'idSite' => $siteId,
-					'siteName' => $new,
+					'siteName' => $newDb,
 					'token_auth' => $config->get( 'MatomoAnalyticsTokenAuth' )
 				]
 			),
