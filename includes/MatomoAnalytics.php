@@ -42,7 +42,7 @@ class MatomoAnalytics {
 
 		$siteId = $siteJson['value'];
 		if ( $config->get( 'MatomoAnalyticsUseDB' ) ) {
-			$dbw = wfGetDB( DB_MASTER, [], $config->get( 'MatomoAnalyticsDatabase' ) );
+			$dbw = wfGetDB( DB_PRIMARY, [], $config->get( 'MatomoAnalyticsDatabase' ) );
 			try {
 				$dbw->insert(
 					'matomo',
@@ -89,7 +89,7 @@ class MatomoAnalytics {
 		);
 
 		if ( $config->get( 'MatomoAnalyticsUseDB' ) ) {
-			$dbw = wfGetDB( DB_MASTER, [], $config->get( 'MatomoAnalyticsDatabase' ) );
+			$dbw = wfGetDB( DB_PRIMARY, [], $config->get( 'MatomoAnalyticsDatabase' ) );
 
 			$dbw->delete(
 				'matomo',
@@ -138,7 +138,7 @@ class MatomoAnalytics {
 
 
 		if ( $config->get( 'MatomoAnalyticsUseDB' ) ) {
-			$dbw = wfGetDB( DB_MASTER, [], $config->get( 'MatomoAnalyticsDatabase' ) );
+			$dbw = wfGetDB( DB_PRIMARY, [], $config->get( 'MatomoAnalyticsDatabase' ) );
 
 			$dbw->update(
 				'matomo',
