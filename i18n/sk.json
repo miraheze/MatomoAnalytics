@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Yardom78"
+		]
+	},
+	"analytics": "MatomoAnalytics",
+	"matomoanalytics-desc": "Integruje analytiku z Matomo a MédiaWiki",
+	"matomoanalytics-header": "Záložky nižšie môžete použiť na výber rôznych štatistík vytvorených pomocou Matomo. Všetky údaje sú pozbierané za obdobie posledných 30 dní počínajúc včerajškom (denne aktualizované).",
+	"matomoanalytics-labels-browser": "Prehliadače",
+	"matomoanalytics-labels-continent": "Kontinenty",
+	"matomoanalytics-labels-country": "Krajina",
+	"matomoanalytics-labels-devices": "Zariadenia",
+	"matomoanalytics-labels-os": "OS",
+	"matomoanalytics-labels-referrer": "Stránkové odporúčania",
+	"matomoanalytics-labels-resolution": "Rozhodnutie",
+	"matomoanalytics-labels-search": "Hľadať kľúčové slová",
+	"matomoanalytics-labels-social": "Sociálne siete",
+	"matomoanalytics-labels-visitday": "Dni",
+	"matomoanalytics-labels-visitduration": "Trvanie",
+	"matomoanalytics-labels-visithour": "Hodiny",
+	"matomoanalytics-labels-visitpages": "Unikátne stránky",
+	"matomoanalytics-labels-visitpass": "Uplynutý čas",
+	"matomoanalytics-labels-website": "Webové stránky",
+	"right-noanalytics": "Nesledovať cez Matomo"
+}
