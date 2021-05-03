@@ -67,6 +67,7 @@ class MatomoAnalyticsHooks {
 			$cookieDisable = (int)$config->get( 'MatomoAnalyticsDisableCookie' );
 			$forceGetRequest = (int)$config->get( 'MatomoAnalyticsForceGetRequest' );
 			$text .= <<<SCRIPT
+				<script type="text/javascript">
 				var _paq = window._paq = window._paq || [];
 				if ( {$cookieDisable} ) {
 					_paq.push(['disableCookies']);
