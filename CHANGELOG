@@ -1,5 +1,5 @@
 == ChangeLog for MatomoAnalytics ==
-=== 1.0.6.0 (11-05-2021) ===
+=== 1.0.5.10 (11-05-2021) ===
 * Stop outputting unnecessary HTML comments and "type="text/javascript""
 
 === 1.0.5.9 (08-04-2021) ===
