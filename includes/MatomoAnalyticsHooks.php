@@ -67,8 +67,7 @@ class MatomoAnalyticsHooks {
 			$cookieDisable = (int)$config->get( 'MatomoAnalyticsDisableCookie' );
 			$forceGetRequest = (int)$config->get( 'MatomoAnalyticsForceGetRequest' );
 			$text .= <<<SCRIPT
-				<!-- Matomo -->
-				<script type="text/javascript">
+				<script>
 				var _paq = window._paq = window._paq || [];
 				if ( {$cookieDisable} ) {
 					_paq.push(['disableCookies']);
@@ -88,13 +87,10 @@ class MatomoAnalyticsHooks {
 					    _paq.push(['addTracker', u + 'matomo.php', {$globalId}]);
 					}
 					var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-					g.type='text/javascript'; g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+					g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
 				})();
 				</script>
-				<!-- End Matomo Code -->
-				<!-- Matomo Image Tracker -->
 				<noscript><p><img src="{$serverurl}matomo.php?idsite={$id}&amp;rec=1&amp;action_name={$urltitle}" style="border:0;" alt="" /></p></noscript>
-				<!-- End Matomo -->
 SCRIPT;
 		}
 
