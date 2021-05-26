@@ -1,4 +1,9 @@
 == ChangeLog for MatomoAnalytics ==
+
+=== 1.0.5.12 (DD-MM-2021) ===
+* Require MediaWiki 1.36.0
+* DB_MASTER -> DB_PRIMARY
+
 === 1.0.5.9 (08-04-2021) ===
 * Fix undefined variable
 
