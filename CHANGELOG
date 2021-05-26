@@ -4,8 +4,14 @@
 * Require MediaWiki 1.36.0
 * DB_MASTER -> DB_PRIMARY
 
-=== 1.0.5.9 (08-04-2021) ===
+=== 1.0.5.11 (26-05-2021) ===
+* Stop outputting unnecessary HTML comments and 'type="text/javascript"'
+
+=== 1.0.5.10 (08-04-2021) ===
 * Fix undefined variable
+
+=== 1.0.5.9 (05-04-2021) ===
+* Add fixMissingMatomos script for syncing between cw_wikis and matomo on sites using CreateWiki
 
 === 1.0.5.8 (14-03-2021) ===
 * Use User::isRegistered instead of User::isLoggedIn
