@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"ArticleEditor404"
+		]
+	},
+	"matomoanalytics-labels-browser": "Браузеры",
+	"matomoanalytics-labels-continent": "Континенты",
+	"matomoanalytics-labels-country": "Страна",
+	"matomoanalytics-labels-devices": "Устройства",
+	"matomoanalytics-labels-os": "Операционная система",
+	"matomoanalytics-labels-visitday": "Дни",
+	"matomoanalytics-labels-visitduration": "Длительность",
+	"matomoanalytics-labels-visithour": "Часы"
+}
