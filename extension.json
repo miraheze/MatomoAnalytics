@@ -2,13 +2,17 @@
 	"name": "MatomoAnalytics",
 	"author": [
 		"John Lewis",
-		"Southparkfan"
+		"Southparkfan",
+		"Universal Omega"
 	],
 	"url": "https://github.com/miraheze/MatomoAnalytics",
-	"version": "1.0.5.11",
+	"version": "1.0.5.12",
 	"descriptionmsg": "matomoanalytics-desc",
 	"license-name": "GPL-3.0-or-later",
 	"type": "specialpage",
+	"requires": {
+		"MediaWiki": ">= 1.36.0"
+	},
 	"AvailableRights": [
 		"noanalytics"
 	],

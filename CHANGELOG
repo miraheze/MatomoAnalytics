@@ -1,4 +1,9 @@
 == ChangeLog for MatomoAnalytics ==
+
+=== 1.0.5.12 (15-06-2021) ===
+* Require MediaWiki 1.36.0
+* DB_MASTER -> DB_PRIMARY
+
 === 1.0.5.11 (26-05-2021) ===
 * Stop outputting unnecessary HTML comments and 'type="text/javascript"'
 
