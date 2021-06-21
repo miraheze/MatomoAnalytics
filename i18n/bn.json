@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Sourav Halder",
+			"Tahmid",
 			"আফতাবুজ্জামান"
 		]
 	},
@@ -20,5 +21,6 @@
 	"matomoanalytics-labels-visitduration": "স্থিতিকাল",
 	"matomoanalytics-labels-visithour": "ঘণ্টা",
 	"matomoanalytics-labels-visitpages": "স্বতন্ত্র পৃষ্ঠাগুলি",
+	"matomoanalytics-labels-website": "ওয়েবসাইট",
 	"right-noanalytics": "মাতোমো দিয়ে ট্র্যাক করা যাবে না"
 }
