@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joetaras"
+		]
+	},
+	"analytics": "MatomoAnalytics",
+	"matomoanalytics-desc": "Integre le analise da Matomo e MediaUicchi",
+	"matomoanalytics-header": "Puè ausà le schede aqquà sotte pe scacchià statisteche diverse da 'ndrucà ca nuje reggistrame ausanne Matomo. Tutte le date sò collezzionate sus a le 30 sciurne passate accumenzanne da ajere (aggiornate ogne sciurne).",
+	"matomoanalytics-labels-browser": "Browser",
+	"matomoanalytics-labels-continent": "Continende",
+	"matomoanalytics-labels-country": "Nazione",
+	"matomoanalytics-labels-devices": "Despositive",
+	"matomoanalytics-labels-os": "OS",
+	"matomoanalytics-labels-referrer": "Refereminde da le site",
+	"matomoanalytics-labels-resolution": "Resoluzione",
+	"matomoanalytics-labels-search": "Parole chiave de recerche",
+	"matomoanalytics-labels-social": "Rezze suggiale",
+	"matomoanalytics-labels-visitday": "Sciurne",
+	"matomoanalytics-labels-visitduration": "Durate",
+	"matomoanalytics-labels-visithour": "Ore",
+	"matomoanalytics-labels-visitpages": "Pàggene uniche",
+	"matomoanalytics-labels-visitpass": "Tiembe passate",
+	"matomoanalytics-labels-website": "Site web",
+	"right-noanalytics": "Non tracciate cu Matomo"
+}
