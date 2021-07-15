@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"MITO"
+		]
+	},
+	"matomoanalytics-labels-browser": "Selaimet",
+	"matomoanalytics-labels-continent": "Maanosat",
+	"matomoanalytics-labels-country": "Maa",
+	"matomoanalytics-labels-devices": "Laitteet",
+	"matomoanalytics-labels-os": "Käyttöjärjestelmä",
+	"matomoanalytics-labels-resolution": "Resoluutio",
+	"matomoanalytics-labels-social": "Sosiaaliset verkostot",
+	"matomoanalytics-labels-visitday": "Päivää",
+	"matomoanalytics-labels-visitduration": "Kesto",
+	"matomoanalytics-labels-visithour": "Tuntia",
+	"matomoanalytics-labels-website": "Nettisivut"
+}

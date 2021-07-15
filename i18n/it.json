@@ -2,13 +2,27 @@
 	"@metadata": {
 		"authors": [
 			"Ajeje Brazorf",
-			"Beta16"
+			"Beta16",
+			"Executive"
 		]
 	},
+	"analytics": "MatomoAnalytics",
+	"matomoanalytics-desc": "Integrare dati analitici da Matomo e MediaWiki",
+	"matomoanalytics-header": "Puoi usare le schede sotto per selezionare differenti statistiche da vedere che noi teniamo usando Matomo. Tutti i dati sono collezionati a partire da 30 giorni passati da ieri (aggiornato quotidianamente).",
+	"matomoanalytics-labels-browser": "Browsers",
 	"matomoanalytics-labels-continent": "Continenti",
 	"matomoanalytics-labels-country": "Nazione",
 	"matomoanalytics-labels-devices": "Dispositivi",
+	"matomoanalytics-labels-os": "SO",
+	"matomoanalytics-labels-referrer": "Riferimenti al Sito",
+	"matomoanalytics-labels-resolution": "Risoluzione",
+	"matomoanalytics-labels-search": "Parole chiave di Ricerca",
+	"matomoanalytics-labels-social": "Reti Social",
 	"matomoanalytics-labels-visitday": "Giorni",
 	"matomoanalytics-labels-visitduration": "Durata",
-	"matomoanalytics-labels-visithour": "Ore"
+	"matomoanalytics-labels-visithour": "Ore",
+	"matomoanalytics-labels-visitpages": "Pagine Uniche",
+	"matomoanalytics-labels-visitpass": "Tempo Passato",
+	"matomoanalytics-labels-website": "Siti internet",
+	"right-noanalytics": "Non è tracciato usando Matomo"
 }
