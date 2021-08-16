@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"analytics": "MatomoAnalytics",
+	"matomoanalytics-desc": "Integreert analyses van Matomo en MediaWiki",
+	"matomoanalytics-header": "U kunt de onderstaande tabbladen gebruiken om verschillende statistieken te bekijken die we met Matomo opslaan. Alle gegevens zijn verzameld over de afgelopen 30 dagen, te beginnen met gisteren (dagelijks bijgewerkt).",
+	"matomoanalytics-labels-browser": "Browsers",
+	"matomoanalytics-labels-continent": "Continenten",
+	"matomoanalytics-labels-country": "Land",
+	"matomoanalytics-labels-devices": "Apparaten",
+	"matomoanalytics-labels-os": "Besturingssysteem",
+	"matomoanalytics-labels-referrer": "Siteverwijzingen",
+	"matomoanalytics-labels-resolution": "Oplossing",
+	"matomoanalytics-labels-search": "Zoekwoorden",
+	"matomoanalytics-labels-social": "Sociale netwerken",
+	"matomoanalytics-labels-visitday": "Dagen",
+	"matomoanalytics-labels-visitduration": "Duur",
+	"matomoanalytics-labels-visithour": "Uren",
+	"matomoanalytics-labels-visitpages": "Unieke pagina's",
+	"matomoanalytics-labels-visitpass": "Verstreken tijd",
+	"matomoanalytics-labels-website": "Websites",
+	"right-noanalytics": "Niet gevolgd worden via Matomo"
+}

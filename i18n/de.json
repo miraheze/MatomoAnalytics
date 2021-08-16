@@ -3,15 +3,16 @@
 		"authors": [
 			"FF-11",
 			"FF11",
+			"McDutchie",
 			"Reception123"
 		]
 	},
 	"matomoanalytics-desc": "Integriert Analytik von Matomo und MediaWiki",
-	"matomoanalytics-header": "Sie können das folgende Formular verwenden um verschiedene Statistiken auszuwählen mit Matomo.",
+	"matomoanalytics-header": "Sie können die folgenden Tabs verwenden, um verschiedene Statistiken zur Ansicht auszuwählen, die wir mit Matomo speichern. Alle Daten wurden in den letzten 30 Tagen gesammelt, beginnend mit gestern (täglich aktualisiert).",
 	"matomoanalytics-labels-browser": "Browser",
 	"matomoanalytics-labels-continent": "Kontinente",
 	"matomoanalytics-labels-devices": "Geräte",
-	"matomoanalytics-labels-social": "Soziale Netvwerke",
+	"matomoanalytics-labels-social": "Soziale Netzwerke",
 	"matomoanalytics-labels-visitday": "Tage",
 	"matomoanalytics-labels-visitduration": "Dauer",
 	"matomoanalytics-labels-visithour": "Stunden",
