@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"לואיקה"
+		]
+	},
+	"analytics": "MatomoAnalytics",
+	"matomoanalytics-labels-browser": "דפדפנים",
+	"matomoanalytics-labels-continent": "יבשות",
+	"matomoanalytics-labels-country": "מדינה",
+	"matomoanalytics-labels-devices": "מכשירים",
+	"matomoanalytics-labels-os": "מערכת הפעלה",
+	"matomoanalytics-labels-referrer": "הפניות מאתרים",
+	"matomoanalytics-labels-resolution": "רזולוציה",
+	"matomoanalytics-labels-search": "מילות חיפוש",
+	"matomoanalytics-labels-social": "רשתות חברתיות",
+	"matomoanalytics-labels-visitday": "ימים",
+	"matomoanalytics-labels-visitduration": "משך זמן",
+	"matomoanalytics-labels-visithour": "שעות",
+	"matomoanalytics-labels-visitpages": "דפים שונים",
+	"matomoanalytics-labels-visitpass": "הזמן שעבר",
+	"matomoanalytics-labels-website": "אתרי אינטרנט",
+	"right-noanalytics": "לא למעקב על ידי Matomo"
+}
