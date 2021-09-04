@@ -8,7 +8,7 @@ require_once "$IP/maintenance/Maintenance.php";
 
 use MediaWiki\MediaWikiServices;
 
-class addMissingMatomos extends Maintenance {
+class AddMissingMatomos extends Maintenance {
   public function __construct() {
     parent::__construct();
     $this->addOption( 'default', 'Add missing matomo ids' );
