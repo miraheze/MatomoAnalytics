@@ -12,7 +12,7 @@ class AddMissingMatomos extends Maintenance {
 public function __construct() {
 	parent::__construct();
 	$this->addOption( 'default', 'Add missing matomo ids' );
-  }
+}
 
 public function execute() {
 	$config = MediaWikiServices::getInstance()
@@ -54,7 +54,7 @@ public function execute() {
 		continue;
 	  }
 	}
-  }
+}
 }
 
 $maintClass = 'addMissingMatomos';
