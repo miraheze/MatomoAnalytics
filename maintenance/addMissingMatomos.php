@@ -9,52 +9,52 @@ require_once "$IP/maintenance/Maintenance.php";
 use MediaWiki\MediaWikiServices;
 
 class AddMissingMatomos extends Maintenance {
-public function __construct() {
-	parent::__construct();
-	$this->addOption( 'default', 'Add missing matomo ids' );
-}
-
-public function execute() {
-	$config = MediaWikiServices::getInstance()
-	  ->getConfigFactory()
-	  ->makeConfig( 'matomoanalytics' );
-
-	$dbw = wfGetDB( DB_PRIMARY, [], $config->get( 'CreateWikiDatabase' ) );
-
-	$res = $dbw->select(
-	  'cw_wikis',
-	  '*',
-	  [],
-	  __METHOD__
-	);
-
-	if ( !$res || !is_object( $res ) ) {
-	  throw new MWException( '$res was not set to a valid array.' );
+	public function __construct() {
+		parent::__construct();
+		$this->addOption( 'default', 'Add missing matomo ids' );
 	}
 
-	foreach ( $res as $row ) {
-	  $DBname = $row->wiki_dbname;
+	public function execute() {
+		$config = MediaWikiServices::getInstance()
+			->getConfigFactory()
+			->makeConfig( 'matomoanalytics' );
 
-	  if ( $DBname === 'default' ) {
-			continue;
-	  }
+		$dbw = wfGetDB( DB_PRIMARY, [], $config->get( 'CreateWikiDatabase' ) );
 
-	  $id = $dbw->selectField(
-		'matomo',
-		'matomo_id',
-		[ 'matomo_wiki' => $DBname ],
-		__METHOD__
-	  );
+		$res = $dbw->select(
+			'cw_wikis',
+			'*',
+			[],
+			__METHOD__
+		);
 
-	  if ( !isset( $id ) || !$id ) {
-		$this->output( "Add matomo id to {$DBname}\n" );
+		if ( !$res || !is_object( $res ) ) {
+			throw new MWException( '$res was not set to a valid array.' );
+		}
 
-		MatomoAnalytics::addSite( $DBname );
-	  } else {
-		continue;
-	  }
+		foreach ( $res as $row ) {
+			$DBname = $row->wiki_dbname;
+
+			if ( $DBname === 'default' ) {
+				continue;
+			}
+
+			$id = $dbw->selectField(
+				'matomo',
+				'matomo_id',
+				[ 'matomo_wiki' => $DBname ],
+				__METHOD__
+			);
+
+			if ( !isset( $id ) || !$id ) {
+				$this->output( "Add matomo id to {$DBname}\n" );
+
+				MatomoAnalytics::addSite( $DBname );
+			} else {
+				continue;
+			}
+		}
 	}
-}
 }
 
 $maintClass = 'addMissingMatomos';
