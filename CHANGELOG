@@ -1,5 +1,8 @@
 == ChangeLog for MatomoAnalytics ==
 
+=== 1.0.5.13 (04-09-2021) ===
+* Lower minimum MediaWiki version requirement to 1.35.3
+
 === 1.0.5.12 (15-06-2021) ===
 * Require MediaWiki 1.36.0
 * DB_MASTER -> DB_PRIMARY
