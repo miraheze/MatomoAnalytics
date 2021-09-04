@@ -6,12 +6,12 @@
 		"Universal Omega"
 	],
 	"url": "https://github.com/miraheze/MatomoAnalytics",
-	"version": "1.0.5.12",
+	"version": "1.0.5.13",
 	"descriptionmsg": "matomoanalytics-desc",
 	"license-name": "GPL-3.0-or-later",
 	"type": "specialpage",
 	"requires": {
-		"MediaWiki": ">= 1.36.0"
+		"MediaWiki": ">= 1.35.3"
 	},
 	"AvailableRights": [
 		"noanalytics"
