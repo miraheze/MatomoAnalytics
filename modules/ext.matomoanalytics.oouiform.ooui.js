@@ -114,10 +114,10 @@
 			} else if ( hash.match( /^#mw-[\w-]+$/ ) ) {
 				matchedElement = document.getElementById( hash.slice( 1 ) );
 				$parentSection = $( matchedElement ).parent().closest( '[id^="mw-section-"]' );
-				if ( parentSection.length ) {
+				if ( $parentSection.length ) {
 					mw.storage.session.remove( 'mwbaseform-prevTab' );
 					// Switch to proper tab and scroll to selected item.
-					switchBaseFormTab( parentSection.attr( 'id' ).replace( 'mw-section-', '' ), true );
+					switchBaseFormTab( $parentSection.attr( 'id' ).replace( 'mw-section-', '' ), true );
 					matchedElement.scrollIntoView();
 				}
 			}
