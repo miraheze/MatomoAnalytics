@@ -5,6 +5,9 @@ class SpecialAnalytics extends SpecialPage {
 		parent::__construct( 'Analytics' );
 	}
 
+	/**
+	 * @param string $par
+	 */
 	public function execute( $par ) {
 		$this->setHeaders();
 		$this->outputHeader();
