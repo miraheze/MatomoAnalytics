@@ -6,4 +6,8 @@
 	<arg name="encoding" value="UTF-8"/>
 	<exclude-pattern>*/vendor/*</exclude-pattern>
 	<exclude-pattern>*/out/*</exclude-pattern>
+	<rule ref="./vendor/mediawiki/mediawiki-codesniffer/MediaWiki">
+		<exclude name="Generic.Files.LineLength.TooLong" />
+		<exclude name="MediaWiki.Commenting.FunctionComment" />
+	</rule>
 </ruleset>
