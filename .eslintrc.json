@@ -22,7 +22,8 @@
 		"es/no-object-entries": "off",
 		"no-jquery/no-global-selector": "off",
 		"no-jquery/no-sizzle": "off",
-		"max-len": "off"
+		"max-len": "off",
+		"mediawiki/class-doc": "off"
 	},
 	"parserOptions": {
 		"ecmaVersion": 2021
