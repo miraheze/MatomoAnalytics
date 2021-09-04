@@ -106,7 +106,7 @@
 		function detectHash() {
 			var matchedElement, $parentSection;
 
-			const hash = location.hash,
+			const hash = location.hash;
 
 			if ( hash.match( /^#mw-section-[\w]+$/ ) ) {
 				mw.storage.session.remove( 'mwbaseform-prevTab' );
