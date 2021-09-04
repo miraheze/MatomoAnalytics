@@ -1,9 +1,9 @@
 <?php
 
 class SpecialAnalytics extends SpecialPage {
-        public function __construct() {
+		public function __construct() {
 		parent::__construct( 'Analytics' );
-	}
+		}
 
 	/**
 	 * @param string $par

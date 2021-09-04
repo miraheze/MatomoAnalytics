@@ -1,6 +1,6 @@
 ( function () {
 	$( function () {
-		var switchingNoHash;
+		let switchingNoHash;
 
 		const $baseform = $( '#baseform' );
 
@@ -104,7 +104,7 @@
 		// Jump to correct section as indicated by the hash.
 		// This function is called onload and onhashchange.
 		function detectHash() {
-			var matchedElement, $parentSection;
+			let matchedElement, $parentSection;
 
 			const hash = location.hash;
 
@@ -124,7 +124,7 @@
 		}
 
 		$( window ).on( 'hashchange', function () {
-			var hash = location.hash;
+			const hash = location.hash;
 			if ( hash.match( /^#mw-[\w-]+/ ) ) {
 				detectHash();
 			} else if ( hash === '' ) {
@@ -143,7 +143,7 @@
 		}
 
 		$( '#mw-baseform-form' ).on( 'submit', function () {
-			var value = tabs.getCurrentTabPanelName();
+			const value = tabs.getCurrentTabPanelName();
 			mw.storage.session.set( 'mwbaseform-prevTab', value );
 		} );
 

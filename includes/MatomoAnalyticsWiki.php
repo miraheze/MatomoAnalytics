@@ -1,7 +1,6 @@
 <?php
 
 use MediaWiki\MediaWikiServices;
-use MediaWiki\Http\HttpRequestFactory;
 
 class MatomoAnalyticsWiki {
 	/** @var int */

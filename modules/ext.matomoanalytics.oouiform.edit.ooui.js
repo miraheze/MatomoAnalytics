@@ -1,6 +1,6 @@
 ( function () {
 	mw.hook( 'htmlform.enhance' ).add( function ( $root ) {
-		var widget, lastValue;
+		let widget, lastValue;
 
 		const $target = $root.find( '#mw-input-wpeditfont' );
 
