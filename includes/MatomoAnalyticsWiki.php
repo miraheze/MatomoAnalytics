@@ -41,9 +41,9 @@ class MatomoAnalyticsWiki {
 
 		foreach ( $siteJson as $key => $val ) {
 			if ( $flat ) {
-				$arrayOut[$key] = ( $val ) ? $val : '-';
+				$arrayOut[$key] = $val ?: '-';
 			} else {
-				$arrayOut[$val[$jsonLabel]] = ( $val[$jsonData] ) ? $val[$jsonData] : '-';
+				$arrayOut[$val[$jsonLabel]] = $val[$jsonData] ?: '-';
 			}
 		}
 
