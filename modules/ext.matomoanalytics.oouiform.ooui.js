@@ -1,8 +1,8 @@
 ( function () {
 	$( function () {
-		let switchingNoHash;
+		var $baseform, tabs, wrapper, previousTab, switchingNoHash;
 
-		const $baseform = $( '#baseform' );
+		$baseform = $( '#baseform' );
 
 		// Make sure the accessibility tip is selectable so that screen reader users take notice,
 		// but hide it by default to reduce visual clutter.
@@ -12,19 +12,21 @@
 			.attr( 'tabIndex', 0 )
 			.prependTo( '#mw-content-text' );
 
-		const tabs = new OO.ui.IndexLayout( {
+		tabs = new OO.ui.IndexLayout( {
 			expanded: false,
 			// Do not remove focus from the tabs menu after choosing a tab
 			autoFocus: false
 		} );
 
 		mw.config.get( 'wgMatomoAnalyticsOOUIFormTabs' ).forEach( function ( tabConfig ) {
-			const panel = new OO.ui.TabPanelLayout( tabConfig.name, {
+			var panel, $panelContents;
+
+			panel = new OO.ui.TabPanelLayout( tabConfig.name, {
 				expanded: false,
 				label: tabConfig.label
 			} );
 
-			const $panelContents = $( '#mw-section-' + tabConfig.name );
+			$panelContents = $( '#mw-section-' + tabConfig.name );
 
 			// Hide the unnecessary PHP PanelLayouts
 			// (Do not use .remove(), as that would remove event handlers for everything inside them)
@@ -39,7 +41,7 @@
 			$panelContents.attr( 'aria-labelledby', panel.getTabItem().getElementId() );
 		} );
 
-		const wrapper = new OO.ui.PanelLayout( {
+		wrapper = new OO.ui.PanelLayout( {
 			expanded: false,
 			padded: false,
 			framed: true
@@ -60,19 +62,21 @@
 		}
 
 		function onTabPanelSet( panel ) {
+			var scrollTop, active;
+
 			if ( switchingNoHash ) {
 				return;
 			}
 
 			// Handle hash manually to prevent jumping,
 			// therefore save and restore scrollTop to prevent jumping.
-			const scrollTop = $( window ).scrollTop();
+			scrollTop = $( window ).scrollTop();
 
 			// Changing the hash apparently causes keyboard focus to be lost?
 			// Save and restore it. This makes no sense though.
-			const active = document.activeElement;
-
+			active = document.activeElement;
 			location.hash = '#mw-section-' + panel.getName();
+
 			if ( active ) {
 				active.focus();
 			}
@@ -104,16 +108,15 @@
 		// Jump to correct section as indicated by the hash.
 		// This function is called onload and onhashchange.
 		function detectHash() {
-			let matchedElement, $parentSection;
-
-			const hash = location.hash;
-
+			var hash = location.hash,
+				matchedElement, $parentSection;
 			if ( hash.match( /^#mw-section-[\w]+$/ ) ) {
 				mw.storage.session.remove( 'mwbaseform-prevTab' );
 				switchBaseFormTab( hash.replace( '#mw-section-', '' ) );
 			} else if ( hash.match( /^#mw-[\w-]+$/ ) ) {
 				matchedElement = document.getElementById( hash.slice( 1 ) );
 				$parentSection = $( matchedElement ).parent().closest( '[id^="mw-section-"]' );
+
 				if ( $parentSection.length ) {
 					mw.storage.session.remove( 'mwbaseform-prevTab' );
 					// Switch to proper tab and scroll to selected item.
@@ -124,7 +127,7 @@
 		}
 
 		$( window ).on( 'hashchange', function () {
-			const hash = location.hash;
+			var hash = location.hash;
 			if ( hash.match( /^#mw-[\w-]+/ ) ) {
 				detectHash();
 			} else if ( hash === '' ) {
@@ -135,7 +138,7 @@
 			.trigger( 'hashchange' );
 
 		// Restore the active tab after saving
-		const previousTab = mw.storage.session.get( 'mwbaseform-prevTab' );
+		previousTab = mw.storage.session.get( 'mwbaseform-prevTab' );
 		if ( previousTab ) {
 			switchBaseFormTab( previousTab, true );
 			// Deleting the key, the tab states should be reset until we press Save
@@ -143,7 +146,7 @@
 		}
 
 		$( '#mw-baseform-form' ).on( 'submit', function () {
-			const value = tabs.getCurrentTabPanelName();
+			var value = tabs.getCurrentTabPanelName();
 			mw.storage.session.set( 'mwbaseform-prevTab', value );
 		} );
 
