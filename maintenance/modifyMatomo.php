@@ -24,5 +24,5 @@ class ModifyMatomo extends Maintenance {
 	}
 }
 
-$maintClass = 'ModifyMatomo';
+$maintClass = ModifyMatomo::class;
 require_once RUN_MAINTENANCE_IF_MAIN;
