@@ -57,5 +57,5 @@ class AddMissingMatomos extends Maintenance {
 	}
 }
 
-$maintClass = 'addMissingMatomos';
+$maintClass = AddMissingMatomos::class;
 require_once RUN_MAINTENANCE_IF_MAIN;
