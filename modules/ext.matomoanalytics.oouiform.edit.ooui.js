@@ -1,8 +1,7 @@
 ( function () {
 	mw.hook( 'htmlform.enhance' ).add( function ( $root ) {
-		let widget, lastValue;
-
-		const $target = $root.find( '#mw-input-wpeditfont' );
+		var widget, lastValue,
+			$target = $root.find( '#mw-input-wpeditfont' );
 
 		if (
 			!$target.length ||
@@ -32,6 +31,5 @@
 
 		widget.on( 'change', updateLabel );
 		updateLabel( widget.getValue() );
-
 	} );
 }() );
