@@ -1,6 +1,7 @@
 <?php
 
 class MatomoAnalyticsOOUIForm extends OOUIHTMLForm {
+	/** @var bool */
 	protected $mSubSectionBeforeFields = false;
 
 	public function wrapForm( $html ) {
@@ -55,7 +56,7 @@ class MatomoAnalyticsOOUIForm extends OOUIHTMLForm {
 	public function getBody() {
 		$fakeTabs = [];
 
-		foreach( $this->getFormSections() as $i => $key ) {
+		foreach ( $this->getFormSections() as $i => $key ) {
 			$fakeTabs[] = Html::rawElement(
 				'div',
 				[

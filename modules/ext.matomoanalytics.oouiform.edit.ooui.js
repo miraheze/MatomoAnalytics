@@ -31,6 +31,5 @@
 
 		widget.on( 'change', updateLabel );
 		updateLabel( widget.getValue() );
-
 	} );
 }() );

@@ -1,5 +1,8 @@
 == ChangeLog for MatomoAnalytics ==
 
+=== 1.0.5.14 (07-09-2021) ===
+* Add CI for MediaWiki standards and security
+
 === 1.0.5.13 (04-09-2021) ===
 * Lower minimum MediaWiki version requirement to 1.35.3
 

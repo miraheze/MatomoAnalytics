@@ -9,8 +9,8 @@ require_once "$IP/maintenance/Maintenance.php";
 class ModifyMatomo extends Maintenance {
 	public function __construct() {
 		parent::__construct();
-		$this->mDescription = "Adds or remove a wiki from matomo.";
-		$this->addOption( 'remove', 'Removes wiki from matomo', false, false );
+		$this->mDescription = 'Add or remove a wiki from matomo.';
+		$this->addOption( 'remove', 'Remove wiki from matomo', false, false );
 	}
 
 	public function execute() {
@@ -24,5 +24,5 @@ class ModifyMatomo extends Maintenance {
 	}
 }
 
-$maintClass = 'ModifyMatomo';
+$maintClass = ModifyMatomo::class;
 require_once RUN_MAINTENANCE_IF_MAIN;

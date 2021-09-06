@@ -11,9 +11,9 @@ class MatomoAnalyticsHooks {
 				__DIR__ . '/../sql/matomo.sql' );
 
 			$updater->modifyExtensionTable(
- 				'matomo',
-  				__DIR__ . '/../sql/patches/patch-matomo-add-indexes.sql'
- 			);
+				'matomo',
+				__DIR__ . '/../sql/patches/patch-matomo-add-indexes.sql'
+			);
 		}
 
 		return true;
@@ -32,14 +32,14 @@ class MatomoAnalyticsHooks {
 	}
 
 	/**
-	* Function to add Matomo JS to all MediaWiki pages
-	*
-	* Adds exclusion for users with 'noanalytics' userright
-	*
-	* @param Skin $skin Skin object
-	* @param string &$text Output text.
-	* @return bool
-	*/
+	 * Function to add Matomo JS to all MediaWiki pages
+	 *
+	 * Adds exclusion for users with 'noanalytics' userright
+	 *
+	 * @param Skin $skin Skin object
+	 * @param string &$text Output text.
+	 * @return bool
+	 */
 	public static function matomoScript( $skin, &$text = '' ) {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
 
@@ -97,4 +97,3 @@ SCRIPT;
 		return true;
 	}
 }
-

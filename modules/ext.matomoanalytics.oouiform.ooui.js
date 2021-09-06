@@ -25,6 +25,7 @@
 				expanded: false,
 				label: tabConfig.label
 			} );
+
 			$panelContents = $( '#mw-section-' + tabConfig.name );
 
 			// Hide the unnecessary PHP PanelLayouts
@@ -45,8 +46,11 @@
 			padded: false,
 			framed: true
 		} );
+
 		wrapper.$element.append( tabs.$element );
+
 		$baseform.prepend( wrapper.$element );
+
 		$( '.mw-baseform-faketabs' ).remove();
 
 		function enhancePanel( panel ) {
@@ -63,16 +67,20 @@
 			if ( switchingNoHash ) {
 				return;
 			}
+
 			// Handle hash manually to prevent jumping,
 			// therefore save and restore scrollTop to prevent jumping.
 			scrollTop = $( window ).scrollTop();
+
 			// Changing the hash apparently causes keyboard focus to be lost?
 			// Save and restore it. This makes no sense though.
 			active = document.activeElement;
 			location.hash = '#mw-section-' + panel.getName();
+
 			if ( active ) {
 				active.focus();
 			}
+
 			$( window ).scrollTop( scrollTop );
 		}
 
@@ -88,8 +96,10 @@
 			if ( noHash ) {
 				switchingNoHash = true;
 			}
+
 			tabs.setTabPanel( name );
 			enhancePanel( tabs.getCurrentTabPanel() );
+
 			if ( noHash ) {
 				switchingNoHash = false;
 			}
@@ -99,17 +109,18 @@
 		// This function is called onload and onhashchange.
 		function detectHash() {
 			var hash = location.hash,
-				matchedElement, parentSection;
+				matchedElement, $parentSection;
 			if ( hash.match( /^#mw-section-[\w]+$/ ) ) {
 				mw.storage.session.remove( 'mwbaseform-prevTab' );
 				switchBaseFormTab( hash.replace( '#mw-section-', '' ) );
 			} else if ( hash.match( /^#mw-[\w-]+$/ ) ) {
 				matchedElement = document.getElementById( hash.slice( 1 ) );
-				parentSection = $( matchedElement ).parent().closest( '[id^="mw-section-"]' );
-				if ( parentSection.length ) {
+				$parentSection = $( matchedElement ).parent().closest( '[id^="mw-section-"]' );
+
+				if ( $parentSection.length ) {
 					mw.storage.session.remove( 'mwbaseform-prevTab' );
 					// Switch to proper tab and scroll to selected item.
-					switchBaseFormTab( parentSection.attr( 'id' ).replace( 'mw-section-', '' ), true );
+					switchBaseFormTab( $parentSection.attr( 'id' ).replace( 'mw-section-', '' ), true );
 					matchedElement.scrollIntoView();
 				}
 			}
