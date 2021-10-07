@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"ArticleEditor404",
+			"DDPAT",
 			"Okras"
 		]
 	},
@@ -11,6 +12,7 @@
 	"matomoanalytics-labels-country": "Страна",
 	"matomoanalytics-labels-devices": "Устройства",
 	"matomoanalytics-labels-os": "Операционная система",
+	"matomoanalytics-labels-resolution": "Решение",
 	"matomoanalytics-labels-social": "Социальные сети",
 	"matomoanalytics-labels-visitday": "Дни",
 	"matomoanalytics-labels-visitduration": "Длительность",
