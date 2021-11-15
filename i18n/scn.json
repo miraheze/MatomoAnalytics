@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ajeje Brazorf"
+		]
+	},
+	"matomoanalytics-labels-browser": "Browser",
+	"matomoanalytics-labels-continent": "Cuntinenti",
+	"matomoanalytics-labels-country": "Paisi",
+	"matomoanalytics-labels-visitday": "Jorna",
+	"matomoanalytics-labels-visithour": "Uri"
+}
