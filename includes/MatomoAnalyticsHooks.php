@@ -7,10 +7,8 @@ class MatomoAnalyticsHooks {
 		$updater->addExtensionTable( 'matomo',
 			__DIR__ . '/../sql/matomo.sql' );
 
-		$updater->modifyExtensionTable(
-			'matomo',
-			__DIR__ . '/../sql/patches/patch-matomo-add-indexes.sql'
-		);
+		$updater->addExtensionIndex( 'matomo', 'matomo_wiki',
+			__DIR__ . '/../sql/patches/patch-matomo-add-indexes.sql' );
 	}
 
 	public static function wikiCreation( $dbname ) {
