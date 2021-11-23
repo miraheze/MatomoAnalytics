@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"John Lewis"
+			"John Lewis",
+			"Universal Omega"
 		]
 	},
+	"action-noanalytics": "not be tracked via Matomo",
 	"analytics": "MatomoAnalytics",
 	"matomoanalytics-desc": "Integrates analytics from Matomo and MediaWiki",
 	"matomoanalytics-header": "You can use the tabs below to select different statistics to view that we store using Matomo. All data is collected over the past 30 days starting from yesterday (updated daily).",

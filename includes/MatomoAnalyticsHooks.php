@@ -4,19 +4,11 @@ use MediaWiki\MediaWikiServices;
 
 class MatomoAnalyticsHooks {
 	public static function matomoAnalyticsSchemaUpdates( DatabaseUpdater $updater ) {
-		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
+		$updater->addExtensionTable( 'matomo',
+			__DIR__ . '/../sql/matomo.sql' );
 
-		if ( $config->get( 'MatomoAnalyticsUseDB' ) && $config->get( 'MatomoAnalyticsDatabase' ) === $config->get( 'DBname' ) ) {
-			$updater->addExtensionTable( 'matomo',
-				__DIR__ . '/../sql/matomo.sql' );
-
-			$updater->modifyExtensionTable(
-				'matomo',
-				__DIR__ . '/../sql/patches/patch-matomo-add-indexes.sql'
-			);
-		}
-
-		return true;
+		$updater->addExtensionIndex( 'matomo', 'matomo_wiki',
+			__DIR__ . '/../sql/patches/patch-matomo-add-indexes.sql' );
 	}
 
 	public static function wikiCreation( $dbname ) {
