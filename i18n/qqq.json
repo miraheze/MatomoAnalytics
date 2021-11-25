@@ -5,6 +5,7 @@
 			"Robby"
 		]
 	},
+	"action-noanalytics": "{{doc-action|noanalytics}}",
 	"matomoanalytics-desc": "Integrates analytics from Matomo and MediaWiki",
 	"matomoanalytics-header": "Information to show on Special:Analytics",
 	"matomoanalytics-labels-country": "{{identical|Country}}",

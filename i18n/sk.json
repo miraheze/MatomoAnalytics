@@ -4,6 +4,7 @@
 			"Yardom78"
 		]
 	},
+	"action-noanalytics": "neumožniť sledovať cez Matomo",
 	"analytics": "MatomoAnalytics",
 	"matomoanalytics-desc": "Integruje analytiku z Matomo a MédiaWiki",
 	"matomoanalytics-header": "Záložky nižšie môžete použiť na výber rôznych štatistík vytvorených pomocou Matomo. Všetky údaje sú pozbierané za obdobie posledných 30 dní počínajúc včerajškom (denne aktualizované).",

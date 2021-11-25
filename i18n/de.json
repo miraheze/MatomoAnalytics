@@ -4,10 +4,12 @@
 			"FF-11",
 			"FF11",
 			"McDutchie",
+			"Metalhead64",
 			"Reception123",
 			"Umlaut"
 		]
 	},
+	"action-noanalytics": "von der Web-Analytics-Verfolgung ausgenommen zu sein",
 	"matomoanalytics-desc": "Integriert Analytik von Matomo und MediaWiki",
 	"matomoanalytics-header": "Sie können die folgenden Tabs verwenden, um verschiedene Statistiken zur Ansicht auszuwählen, die wir mit Matomo speichern. Alle Daten wurden in den letzten 30 Tagen gesammelt, beginnend mit gestern (täglich aktualisiert).",
 	"matomoanalytics-labels-browser": "Browser",

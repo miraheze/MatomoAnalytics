@@ -1,11 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
+			"Destinid10 2",
 			"Fitoschido",
 			"Jakeukalane",
 			"Reception123"
 		]
 	},
+	"action-noanalytics": "exentado del seguimiento de análisis web",
 	"analytics": "MatomoAnalytics",
 	"matomoanalytics-desc": "Integra análisis de Matomo y MediaWiki",
 	"matomoanalytics-header": "Pueden utilizarse las pestañas siguientes para seleccionar estadísticas distintas provenientes de Matomo. Todos los datos recopilados corresponden a los 30 días anteriores a partir de ayer (se actualiza diariamente).",

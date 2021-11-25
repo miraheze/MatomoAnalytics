@@ -5,6 +5,7 @@
 			"Reception123"
 		]
 	},
+	"action-noanalytics": "non concerné par le suivi analytique du web",
 	"analytics": "MatomoAnalytics",
 	"matomoanalytics-desc": "Intègre les analytiques de Matomo et MediaWiki",
 	"matomoanalytics-header": "Vous pouvez utiliser le formulaire ci-dessous pour sélectionner des différentes statistiques à afficher de Matomo.",

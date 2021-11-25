@@ -4,6 +4,7 @@
 			"Joetaras"
 		]
 	},
+	"action-noanalytics": "scartate da 'u tracciamende de le analise web",
 	"analytics": "MatomoAnalytics",
 	"matomoanalytics-desc": "Integre le analise da Matomo e MediaUicchi",
 	"matomoanalytics-header": "Puè ausà le schede aqquà sotte pe scacchià statisteche diverse da 'ndrucà ca nuje reggistrame ausanne Matomo. Tutte le date sò collezzionate sus a le 30 sciurne passate accumenzanne da ajere (aggiornate ogne sciurne).",

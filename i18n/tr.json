@@ -4,6 +4,7 @@
 			"BaRaN6161 TURK"
 		]
 	},
+	"action-noanalytics": "web analitiği izlemesinden muaf",
 	"analytics": "MatomoAnalytics",
 	"matomoanalytics-desc": "Matomo ve MediaWiki'den analitiği entegre eder",
 	"matomoanalytics-header": "Matomo kullanarak kaydettiğimiz farklı istatistikleri seçmek için aşağıdaki sekmeleri kullanabilirsiniz. Tüm veriler dünden başlayarak son 30 gün içinde toplanır (günlük olarak güncellenir).",
