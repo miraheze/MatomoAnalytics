@@ -6,7 +6,6 @@
 			"Okras"
 		]
 	},
-	"action-noanalytics": "исключён из отслеживания веб-аналитики",
 	"analytics": "MatomoAnalytics",
 	"matomoanalytics-labels-browser": "Браузеры",
 	"matomoanalytics-labels-continent": "Континенты",

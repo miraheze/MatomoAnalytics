@@ -5,7 +5,6 @@
 			"McDutchie"
 		]
 	},
-	"action-noanalytics": "vrijgesteld te zijn van web analytics-tracking",
 	"analytics": "MatomoAnalytics",
 	"matomoanalytics-desc": "Integreert analyses van Matomo en MediaWiki",
 	"matomoanalytics-header": "U kunt de onderstaande tabbladen gebruiken om verschillende statistieken te bekijken die we met Matomo opslaan. Alle gegevens zijn verzameld over de afgelopen 30 dagen, te beginnen met gisteren (dagelijks bijgewerkt).",
