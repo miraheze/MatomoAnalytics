@@ -4,8 +4,9 @@
 			"Bjankuloski06"
 		]
 	},
-	"analytics": "Аналитика со Матамото",
-	"matomoanalytics-desc": "Ги здружува аналитиките од Матамото и МедијаВики",
+	"action-noanalytics": "не се следи со Матомо",
+	"analytics": "Аналитика на Матомо",
+	"matomoanalytics-desc": "Ги здружува аналитиките од Матомо и МедијаВики",
 	"matomoanalytics-header": "Послужете се со јазичињата подолу за да изберете преглед на различни статистики кои ги складираме со Матамото. Сите податоци се собрани во изминатите 30 дена, почнувајќи од вчера (се подновува секојдневно).",
 	"matomoanalytics-labels-browser": "Прелистувачи",
 	"matomoanalytics-labels-continent": "Континенти",
@@ -22,5 +23,5 @@
 	"matomoanalytics-labels-visitpages": "Поединечни страници",
 	"matomoanalytics-labels-visitpass": "Изминато време",
 	"matomoanalytics-labels-website": "Мреж. места",
-	"right-noanalytics": "Не се следи со Матамото"
+	"right-noanalytics": "Не се следи со Матомо"
 }
