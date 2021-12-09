@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"DDPAT",
 			"Piramidion",
 			"Vlad5250"
 		]
 	},
+	"action-noanalytics": "не відстежуватися через Matomo",
 	"analytics": "MatomoAnalytics",
 	"matomoanalytics-desc": "Інтегрує аналітику з Matomo та MediaWiki",
 	"matomoanalytics-header": "Можете скористатися вкладками нижче, щоб вибрати для перегляду різну статистику, яку ми зберігаємо за допомогою Matomo. Усі дані збираються за останні 30 днів, починаючи від вчора (оновлюються щоденно).",
