@@ -1,19 +1,27 @@
 {
 	"@metadata": {
 		"authors": [
-			"MITO"
+			"MITO",
+			"Veikk0.ma"
 		]
 	},
+	"action-noanalytics": "ei seurata Matomon kautta",
+	"analytics": "MatomoAnalytics",
+	"matomoanalytics-desc": "Integroi Matomon ja MediaWikin analytiikat",
+	"matomoanalytics-header": "Voit käyttää alla olevia välilehtiä Matomon avulla keräämiemme tilastojen selaamiseen. Kaikki tieto on kerätty viimeisen 30 päivän kuluessa, lähtien eilisestä (päivitetään vuorokauden välein).",
 	"matomoanalytics-labels-browser": "Selaimet",
 	"matomoanalytics-labels-continent": "Maanosat",
 	"matomoanalytics-labels-country": "Maa",
 	"matomoanalytics-labels-devices": "Laitteet",
 	"matomoanalytics-labels-os": "Käyttöjärjestelmä",
+	"matomoanalytics-labels-referrer": "Sivustoviittaukset (referrals)",
 	"matomoanalytics-labels-resolution": "Resoluutio",
 	"matomoanalytics-labels-search": "Hakusanat",
 	"matomoanalytics-labels-social": "Sosiaaliset verkostot",
 	"matomoanalytics-labels-visitday": "Päivää",
 	"matomoanalytics-labels-visitduration": "Kesto",
 	"matomoanalytics-labels-visithour": "Tuntia",
-	"matomoanalytics-labels-website": "Nettisivut"
+	"matomoanalytics-labels-visitpages": "Uniikit sivut",
+	"matomoanalytics-labels-website": "Nettisivut",
+	"right-noanalytics": "Ei seurata Matomon kautta"
 }
