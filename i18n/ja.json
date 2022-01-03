@@ -6,6 +6,7 @@
 			"そらたこ"
 		]
 	},
+	"action-noanalytics": "Matomoでは追跡できません。",
 	"analytics": "Matomo分析",
 	"matomoanalytics-desc": "Matomo と MediaWiki の統計を統合する",
 	"matomoanalytics-header": "以下のタブから、Matomo を使って収集している様々な統計が表示できます。すべてのデータは30日前から昨日までに収集されています（毎日更新）。",

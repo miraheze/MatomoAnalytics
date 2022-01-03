@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hydra"
+		]
+	},
+	"matomoanalytics-labels-browser": "浏览器",
+	"matomoanalytics-labels-continent": "洲",
+	"matomoanalytics-labels-country": "国家",
+	"matomoanalytics-labels-devices": "设备",
+	"matomoanalytics-labels-os": "操作系统",
+	"matomoanalytics-labels-search": "搜寻关键词",
+	"matomoanalytics-labels-social": "社交网站",
+	"matomoanalytics-labels-visitday": "天",
+	"matomoanalytics-labels-visitduration": "期间",
+	"matomoanalytics-labels-visithour": "小时",
+	"matomoanalytics-labels-visitpages": "独特页面",
+	"matomoanalytics-labels-website": "网站"
+}
