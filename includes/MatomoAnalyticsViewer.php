@@ -53,12 +53,7 @@ class MatomoAnalyticsViewer {
 
 		$htmlForm->setId( 'mw-baseform-analytics' );
 		$htmlForm->suppressDefaultSubmit();
-		$htmlForm->setSubmitCallback( [ $this, 'dummyProcess' ] );
 
 		return $htmlForm;
-	}
-
-	public function dummyProcess() {
-		return true;
 	}
 }
