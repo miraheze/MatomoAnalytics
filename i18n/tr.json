@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"BaRaN6161 TURK"
+			"BaRaN6161 TURK",
+			"Can"
 		]
 	},
+	"action-noanalytics": "Matomo üzerinden izlenmez",
 	"analytics": "MatomoAnalytics",
 	"matomoanalytics-desc": "Matomo ve MediaWiki'den analitiği entegre eder",
 	"matomoanalytics-header": "Matomo kullanarak kaydettiğimiz farklı istatistikleri seçmek için aşağıdaki sekmeleri kullanabilirsiniz. Tüm veriler dünden başlayarak son 30 gün içinde toplanır (günlük olarak güncellenir).",
