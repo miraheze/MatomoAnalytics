@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"ThisIsACreeper0101"
+		]
+	},
+	"action-noanalytics": "Matomo द्वारा ट्रैक नहीं किया जाना",
+	"analytics": "MatomoAnalytics",
+	"matomoanalytics-desc": "Matomo और मीडियाविकि से आँकड़ों को इंटिग्रेट करता है",
+	"matomoanalytics-header": "हम Matomo की मदद से जो आँकड़ें प्राप्त करते हैं, उनमें से अलग-अलग आँकड़ों को देखने के लिए नीचे के टैब्स का उपयोग करें। सभी डेटा को पिछले 30 दिनों के दौरान इकट्ठा किया गया है और इसकी शुरुआत कल से हुई थी (इसे हर रोज़ बदला जाता है)।",
+	"matomoanalytics-labels-browser": "ब्राउज़र",
+	"matomoanalytics-labels-continent": "महाद्वीप",
+	"matomoanalytics-labels-country": "देश",
+	"matomoanalytics-labels-devices": "डिवाइस",
+	"matomoanalytics-labels-os": "OS",
+	"matomoanalytics-labels-referrer": "साइट रेफ़रल्स",
+	"matomoanalytics-labels-resolution": "समाधान",
+	"matomoanalytics-labels-search": "खोज के कीवर्ड",
+	"matomoanalytics-labels-social": "सोशल नेटवर्क्स",
+	"matomoanalytics-labels-visitday": "दिन",
+	"matomoanalytics-labels-visitduration": "अवधि",
+	"matomoanalytics-labels-visithour": "घंटे",
+	"matomoanalytics-labels-visitpages": "अनोखे पृष्ठ",
+	"matomoanalytics-labels-visitpass": "बीता हुआ समय",
+	"matomoanalytics-labels-website": "वेबसाइट",
+	"right-noanalytics": "Matomo द्वारा ट्रैक न किया जाना"
+}
