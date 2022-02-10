@@ -3,7 +3,8 @@
 		"authors": [
 			"Ajeje Brazorf",
 			"Gomoko",
-			"Reception123"
+			"Reception123",
+			"Verdy p"
 		]
 	},
 	"action-noanalytics": "ne pas être tracé via Matomo",
@@ -14,7 +15,7 @@
 	"matomoanalytics-labels-continent": "Continents",
 	"matomoanalytics-labels-country": "Pays",
 	"matomoanalytics-labels-devices": "Appareils",
-	"matomoanalytics-labels-os": "OS",
+	"matomoanalytics-labels-os": "Système d’exploitation",
 	"matomoanalytics-labels-referrer": "Référents de site",
 	"matomoanalytics-labels-resolution": "Résolution",
 	"matomoanalytics-labels-search": "Mots-clés de recherche",
@@ -25,5 +26,5 @@
 	"matomoanalytics-labels-visitpages": "Pages uniques",
 	"matomoanalytics-labels-visitpass": "Temps passé",
 	"matomoanalytics-labels-website": "Sites web",
-	"right-noanalytics": "Ne pas tracer via Matomo"
+	"right-noanalytics": "Ne pas être tracé via Matomo"
 }
