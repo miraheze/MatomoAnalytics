@@ -1,17 +1,21 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ykhwong"
+			"Ykhwong",
+			"렌즈"
 		]
 	},
 	"matomoanalytics-labels-browser": "브라우저",
 	"matomoanalytics-labels-country": "국가",
 	"matomoanalytics-labels-devices": "장치",
 	"matomoanalytics-labels-os": "OS",
+	"matomoanalytics-labels-resolution": "해상도",
 	"matomoanalytics-labels-search": "검색 키워드",
 	"matomoanalytics-labels-social": "소셜 네트워크",
-	"matomoanalytics-labels-visitday": "일",
-	"matomoanalytics-labels-visitduration": "기간",
-	"matomoanalytics-labels-visithour": "시간",
+	"matomoanalytics-labels-visitday": "요일",
+	"matomoanalytics-labels-visitduration": "시간",
+	"matomoanalytics-labels-visithour": "시각",
+	"matomoanalytics-labels-visitpages": "순 페이지뷰",
+	"matomoanalytics-labels-visitpass": "보낸 시간",
 	"matomoanalytics-labels-website": "웹사이트"
 }
