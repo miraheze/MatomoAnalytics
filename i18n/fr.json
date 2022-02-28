@@ -10,7 +10,7 @@
 	"action-noanalytics": "ne pas être tracé via Matomo",
 	"analytics": "MatomoAnalytics",
 	"matomoanalytics-desc": "Intègre les analytiques de Matomo et MediaWiki",
-	"matomoanalytics-header": "Vous pouvez utiliser le formulaire ci-dessous pour sélectionner des différentes statistiques à afficher de Matomo.",
+	"matomoanalytics-header": "Vous pouvez utiliser les onglets ci-dessous pour sélectionner des différentes statistiques à afficher et que nous stockons en utilisant Matomo. Toutes les données sont collectées depuis les 30 derniers jours à compter d’hier (mises à jour quotidiennement).",
 	"matomoanalytics-labels-browser": "Navigateurs",
 	"matomoanalytics-labels-continent": "Continents",
 	"matomoanalytics-labels-country": "Pays",
