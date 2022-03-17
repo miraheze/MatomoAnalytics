@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sabelöga"
+		]
+	},
+	"action-noanalytics": "spåras inte via Matomo",
+	"matomoanalytics-labels-browser": "Webbläsare",
+	"matomoanalytics-labels-continent": "Kontinenter",
+	"matomoanalytics-labels-country": "Land",
+	"matomoanalytics-labels-devices": "Enheter",
+	"matomoanalytics-labels-os": "Operativsystem",
+	"matomoanalytics-labels-resolution": "Lösning",
+	"matomoanalytics-labels-search": "Sök efter nyckelord",
+	"matomoanalytics-labels-social": "Sociala nätverk",
+	"matomoanalytics-labels-visitday": "Dagar",
+	"matomoanalytics-labels-visitduration": "Varaktighet",
+	"matomoanalytics-labels-visithour": "Timmar",
+	"matomoanalytics-labels-visitpages": "Unika sidor",
+	"matomoanalytics-labels-visitpass": "Tid som har gått",
+	"matomoanalytics-labels-website": "Webbplatser",
+	"right-noanalytics": "Spåras inte via Matomo"
+}
