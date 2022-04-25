@@ -1,14 +1,21 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hydra"
+			"Hydra",
+			"StarrySky"
 		]
 	},
+	"action-noanalytics": "不通过 Matomo 追踪",
+	"analytics": "MatomoAnalytics",
+	"matomoanalytics-desc": "集成来自 Matomo 和 MediaWiki 的分析",
+	"matomoanalytics-header": "您可以使用下面的选项卡选择不同的统计数据来查看我们使用 Matomo 存储的数据。 所有数据都是从昨天开始的过去 30 天内收集的（每天更新）。",
 	"matomoanalytics-labels-browser": "浏览器",
 	"matomoanalytics-labels-continent": "洲",
 	"matomoanalytics-labels-country": "国家",
 	"matomoanalytics-labels-devices": "设备",
 	"matomoanalytics-labels-os": "操作系统",
+	"matomoanalytics-labels-referrer": "网站推荐",
+	"matomoanalytics-labels-resolution": "处理状况",
 	"matomoanalytics-labels-search": "搜寻关键词",
 	"matomoanalytics-labels-social": "社交网站",
 	"matomoanalytics-labels-visitday": "天",
