@@ -14,7 +14,7 @@ class SpecialAnalytics extends SpecialPage {
 
 		$out = $this->getOutput();
 		$out->addWikiMsg( 'matomoanalytics-header' );
-		$out->addModules( 'ext.matomoanalytics.oouiform' );
+		$out->addModules( [ 'ext.matomoanalytics.oouiform' ] );
 
 		$analyticsViewer = new MatomoAnalyticsViewer();
 		$htmlForm = $analyticsViewer->getForm( $this->getContext() );
