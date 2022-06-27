@@ -5,21 +5,29 @@
 			"FF11",
 			"McDutchie",
 			"Metalhead64",
+			"Nekky-chan",
 			"Reception123",
 			"Umlaut"
 		]
 	},
+	"action-noanalytics": "nicht über Matomo getrackt werden",
+	"analytics": "MatomoAnalytics",
 	"matomoanalytics-desc": "Integriert Analytik von Matomo und MediaWiki",
-	"matomoanalytics-header": "Sie können die folgenden Tabs verwenden, um verschiedene Statistiken zur Ansicht auszuwählen, die wir mit Matomo speichern. Alle Daten wurden in den letzten 30 Tagen gesammelt, beginnend mit gestern (täglich aktualisiert).",
+	"matomoanalytics-header": "Du kannst die folgenden Tabs verwenden, um verschiedene Statistiken zur Ansicht auszuwählen, die wir mit Matomo speichern. Alle Daten wurden in den letzten 30 Tagen gesammelt, beginnend mit gestern (täglich aktualisiert).",
 	"matomoanalytics-labels-browser": "Browser",
 	"matomoanalytics-labels-continent": "Kontinente",
 	"matomoanalytics-labels-country": "Land",
 	"matomoanalytics-labels-devices": "Geräte",
 	"matomoanalytics-labels-os": "Betriebssystem",
+	"matomoanalytics-labels-referrer": "Website-Empfehlungen",
+	"matomoanalytics-labels-resolution": "Lösung",
+	"matomoanalytics-labels-search": "Suchbegriffe",
 	"matomoanalytics-labels-social": "Soziale Netzwerke",
 	"matomoanalytics-labels-visitday": "Tage",
 	"matomoanalytics-labels-visitduration": "Dauer",
 	"matomoanalytics-labels-visithour": "Stunden",
+	"matomoanalytics-labels-visitpages": "Einzelne Seiten",
 	"matomoanalytics-labels-visitpass": "Vergangene Zeit",
-	"matomoanalytics-labels-website": "Websiten"
+	"matomoanalytics-labels-website": "Websiten",
+	"right-noanalytics": "Nicht über Matomo getrackt werden"
 }
