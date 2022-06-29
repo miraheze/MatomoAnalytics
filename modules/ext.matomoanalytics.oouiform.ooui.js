@@ -1,61 +1,23 @@
 ( function () {
 	$( function () {
-		var $baseform, tabs, wrapper, previousTab, switchingNoHash;
+		var tabs, previousTab, switchingNoHash;
 
-		$baseform = $( '#baseform' );
+		tabs = OO.ui.infuse( $( '.matomoanalytics-tabs' ) );
 
-		// Make sure the accessibility tip is selectable so that screen reader users take notice,
-		// but hide it by default to reduce visual clutter.
-		// Make sure it becomes visible when focused.
-		$( '<div>' ).addClass( 'mw-navigation-hint' )
-			.text( mw.msg( 'baseform-tabs-navigation-hint' ) )
-			.attr( 'tabIndex', 0 )
-			.prependTo( '#mw-content-text' );
-
-		tabs = new OO.ui.IndexLayout( {
-			expanded: false,
-			// Do not remove focus from the tabs menu after choosing a tab
-			autoFocus: false
-		} );
-
-		mw.config.get( 'wgMatomoAnalyticsOOUIFormTabs' ).forEach( function ( tabConfig ) {
-			var panel, $panelContents;
-
-			panel = new OO.ui.TabPanelLayout( tabConfig.name, {
-				expanded: false,
-				label: tabConfig.label
-			} );
-
-			$panelContents = $( '#mw-section-' + tabConfig.name );
-
-			// Hide the unnecessary PHP PanelLayouts
-			// (Do not use .remove(), as that would remove event handlers for everything inside them)
-			$panelContents.parent().detach();
-
-			panel.$element.append( $panelContents );
-			tabs.addTabPanels( [ panel ] );
-
-			// Remove duplicate labels
-			// (This must be after .addTabPanels(), otherwise the tab item doesn't exist yet)
-			$panelContents.children( 'legend' ).remove();
-			$panelContents.attr( 'aria-labelledby', panel.getTabItem().getElementId() );
-		} );
-
-		wrapper = new OO.ui.PanelLayout( {
-			expanded: false,
-			padded: false,
-			framed: true
-		} );
-
-		wrapper.$element.append( tabs.$element );
-
-		$baseform.prepend( wrapper.$element );
-
-		$( '.mw-baseform-faketabs' ).remove();
+		tabs.$element.addClass( 'matomoanalytics-tabs-infused' );
 
 		function enhancePanel( panel ) {
+			var $infuse = $( panel.$element ).find( '.matomoanalytics-infuse' );
+			$infuse.each( function () {
+				try {
+					OO.ui.infuse( this );
+				} catch ( error ) {
+					return;
+				}
+			} );
+
 			if ( !panel.$element.data( 'mw-section-infused' ) ) {
-				// mw-htmlform-autoinfuse-lazy class has been removed by replacing faketabs
+				panel.$element.removeClass( 'mw-htmlform-autoinfuse-lazy' );
 				mw.hook( 'htmlform.enhance' ).fire( panel.$element );
 				panel.$element.data( 'mw-section-infused', true );
 			}
@@ -67,20 +29,16 @@
 			if ( switchingNoHash ) {
 				return;
 			}
-
 			// Handle hash manually to prevent jumping,
 			// therefore save and restore scrollTop to prevent jumping.
 			scrollTop = $( window ).scrollTop();
-
 			// Changing the hash apparently causes keyboard focus to be lost?
 			// Save and restore it. This makes no sense though.
 			active = document.activeElement;
-			location.hash = '#mw-section-' + panel.getName();
-
+			location.hash = '#' + panel.getName();
 			if ( active ) {
 				active.focus();
 			}
-
 			$( window ).scrollTop( scrollTop );
 		}
 
@@ -88,18 +46,16 @@
 
 		/**
 		 * @ignore
-		 * @param {string} name the name of a tab without the prefix ("mw-section-")
+		 * @param {string} name The name of a tab
 		 * @param {boolean} [noHash] A hash will be set according to the current
 		 *  open section. Use this flag to suppress this.
 		 */
-		function switchBaseFormTab( name, noHash ) {
+		function switchMatomoAnalyticsTab( name, noHash ) {
 			if ( noHash ) {
 				switchingNoHash = true;
 			}
-
 			tabs.setTabPanel( name );
 			enhancePanel( tabs.getCurrentTabPanel() );
-
 			if ( noHash ) {
 				switchingNoHash = false;
 			}
@@ -110,17 +66,16 @@
 		function detectHash() {
 			var hash = location.hash,
 				matchedElement, $parentSection;
-			if ( hash.match( /^#mw-section-[\w]+$/ ) ) {
-				mw.storage.session.remove( 'mwbaseform-prevTab' );
-				switchBaseFormTab( hash.replace( '#mw-section-', '' ) );
+			if ( hash.match( /^#mw-section-[\w-]+$/ ) ) {
+				mw.storage.session.remove( 'matomoanalytics-prevTab' );
+				switchMatomoAnalyticsTab( hash.slice( 1 ) );
 			} else if ( hash.match( /^#mw-[\w-]+$/ ) ) {
 				matchedElement = document.getElementById( hash.slice( 1 ) );
-				$parentSection = $( matchedElement ).parent().closest( '[id^="mw-section-"]' );
-
+				$parentSection = $( matchedElement ).closest( '.matomoanalytics-section-fieldset' );
 				if ( $parentSection.length ) {
-					mw.storage.session.remove( 'mwbaseform-prevTab' );
+					mw.storage.session.remove( 'matomoanalytics-prevTab' );
 					// Switch to proper tab and scroll to selected item.
-					switchBaseFormTab( $parentSection.attr( 'id' ).replace( 'mw-section-', '' ), true );
+					switchMatomoAnalyticsTab( $parentSection.attr( 'id' ), true );
 					matchedElement.scrollIntoView();
 				}
 			}
@@ -131,24 +86,23 @@
 			if ( hash.match( /^#mw-[\w-]+/ ) ) {
 				detectHash();
 			} else if ( hash === '' ) {
-				switchBaseFormTab( 'personal', true );
+				switchMatomoAnalyticsTab( $( '[id*=mw-section-]' ).attr( 'id' ), true );
 			}
 		} )
 			// Run the function immediately to select the proper tab on startup.
 			.trigger( 'hashchange' );
 
 		// Restore the active tab after saving
-		previousTab = mw.storage.session.get( 'mwbaseform-prevTab' );
+		previousTab = mw.storage.session.get( 'matomoanalytics-prevTab' );
 		if ( previousTab ) {
-			switchBaseFormTab( previousTab, true );
+			switchMatomoAnalyticsTab( previousTab, true );
 			// Deleting the key, the tab states should be reset until we press Save
-			mw.storage.session.remove( 'mwbaseform-prevTab' );
+			mw.storage.session.remove( 'matomoanalytics-prevTab' );
 		}
 
-		$( '#mw-baseform-form' ).on( 'submit', function () {
+		$( '#matomoanalytics-form' ).on( 'submit', function () {
 			var value = tabs.getCurrentTabPanelName();
-			mw.storage.session.set( 'mwbaseform-prevTab', value );
+			mw.storage.session.set( 'matomoanalytics-prevTab', value );
 		} );
-
 	} );
 }() );
