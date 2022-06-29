@@ -6,8 +6,10 @@
 		"lint:fix:styles": "npm -s run lint:styles -- --fix",
 		"lint:js": "eslint --cache --max-warnings 0 .",
 		"lint:styles": "stylelint \"**/*.{less,css}\"",
-		"lint:i18n": "banana-checker --requireLowerCase=0 i18n/",
-		"fix": "npm -s run lint:fix:js && npm -s run lint:fix:styles"
+		"lint:i18n": "banana-checker --requireLowerCase=0 i18n/"
+	},
+	"peerDependencies": {
+		"postcss-less": "6.0.0"
 	},
 	"devDependencies": {
 		"eslint-config-wikimedia": "0.22.1",
