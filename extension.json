@@ -55,11 +55,11 @@
 	"ResourceModules": {
 		"ext.matomoanalytics.oouiform": {
 			"scripts": "ext.matomoanalytics.oouiform.ooui.js",
-			"targets": [ "desktop", "mobile" ]
+			"targets": [ "desktop", "mobile" ],
 			"dependencies": [
 				"mediawiki.storage",
 				"oojs-ui-widgets"
-			],
+			]
 		},
 		"ext.matomoanalytics.oouiform.styles": {
 			"targets": [ "desktop", "mobile" ],
