@@ -6,12 +6,12 @@
 		"Universal Omega"
 	],
 	"url": "https://github.com/miraheze/MatomoAnalytics",
-	"version": "1.0.5.14",
+	"version": "1.0.6",
 	"descriptionmsg": "matomoanalytics-desc",
 	"license-name": "GPL-3.0-or-later",
 	"type": "specialpage",
 	"requires": {
-		"MediaWiki": ">= 1.35.3"
+		"MediaWiki": ">= 1.38.0"
 	},
 	"AvailableRights": [
 		"noanalytics"
@@ -54,16 +54,16 @@
 	},
 	"ResourceModules": {
 		"ext.matomoanalytics.oouiform": {
-			"scripts": [
-				"ext.matomoanalytics.oouiform.edit.ooui.js",
-				"ext.matomoanalytics.oouiform.ooui.js"
-			],
-			"styles": "ext.matomoanalytics.oouiform.ooui.less",
+			"scripts": "ext.matomoanalytics.oouiform.ooui.js",
+			"targets": [ "desktop", "mobile" ],
 			"dependencies": [
-				"oojs-ui",
-				"mediawiki.editfont.styles"
-			],
-			"targets": [ "desktop", "mobile" ]
+				"mediawiki.storage",
+				"oojs-ui-widgets"
+			]
+		},
+		"ext.matomoanalytics.oouiform.styles": {
+			"targets": [ "desktop", "mobile" ],
+			"styles": "ext.matomoanalytics.oouiform.ooui.less"
 		}
 	},
 	"ResourceFileModulePaths": {

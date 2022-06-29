@@ -26,7 +26,7 @@ class MatomoAnalyticsViewer {
 			'visithour' => $mA->getVisitsPerServerHour(),
 			'visitpages' => $mA->getVisitPages(),
 			'visitduration' => $mA->getVisitDurations(),
-			'visitpass' => $mA->getVisitDaysPassed()
+			'visitpass' => $mA->getVisitDaysPassed(),
 		];
 
 		$formDescriptor = [];
@@ -36,7 +36,7 @@ class MatomoAnalyticsViewer {
 					'type' => 'info',
 					'label' => $label,
 					'default' => (string)$value,
-					'section' => $type
+					'section' => $type,
 				];
 			}
 		}
@@ -51,7 +51,7 @@ class MatomoAnalyticsViewer {
 
 		$htmlForm = new MatomoAnalyticsOOUIForm( $formDescriptor, $context, 'matomoanalytics-labels' );
 
-		$htmlForm->setId( 'mw-baseform-analytics' );
+		$htmlForm->setId( 'matomoanalytics-form' );
 		$htmlForm->suppressDefaultSubmit();
 
 		return $htmlForm;

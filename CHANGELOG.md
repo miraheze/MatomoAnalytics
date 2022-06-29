@@ -1,5 +1,9 @@
 ## ChangeLog for MatomoAnalytics
 
+### 1.0.6 (29-06-2022)
+* Require MediaWiki 1.38.0
+* Modernise MatomoAnalyticsOOUIForm
+
 ### 1.0.5.14 (07-09-2021)
 * Add CI for MediaWiki standards and security
 
