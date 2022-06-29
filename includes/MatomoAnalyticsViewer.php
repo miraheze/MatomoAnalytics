@@ -51,7 +51,7 @@ class MatomoAnalyticsViewer {
 
 		$htmlForm = new MatomoAnalyticsOOUIForm( $formDescriptor, $context, 'matomoanalytics-labels' );
 
-		$htmlForm->setId( 'mw-baseform-analytics' );
+		$htmlForm->setId( 'matomoanalytics-form' );
 		$htmlForm->suppressDefaultSubmit();
 
 		return $htmlForm;
