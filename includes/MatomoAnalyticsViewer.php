@@ -36,7 +36,8 @@ class MatomoAnalyticsViewer {
 					'type' => 'info',
 					'label' => $label,
 					'default' => (string)$value,
-					'section' => $type
+					'cssclass' => 'matomoanalytics-infuse',
+					'section' => $type,
 				];
 			}
 		}
