@@ -26,7 +26,7 @@ class MatomoAnalyticsViewer {
 			'visithour' => $mA->getVisitsPerServerHour(),
 			'visitpages' => $mA->getVisitPages(),
 			'visitduration' => $mA->getVisitDurations(),
-			'visitpass' => $mA->getVisitDaysPassed()
+			'visitpass' => $mA->getVisitDaysPassed(),
 		];
 
 		$formDescriptor = [];
@@ -36,7 +36,6 @@ class MatomoAnalyticsViewer {
 					'type' => 'info',
 					'label' => $label,
 					'default' => (string)$value,
-					'cssclass' => 'matomoanalytics-infuse',
 					'section' => $type,
 				];
 			}
