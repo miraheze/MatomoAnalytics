@@ -5,11 +5,8 @@
 	"homepage": "https://www.mediawiki.org/wiki/Extension:MatomoAnalytics",
 	"license": "GPL-3.0-or-later",
 	"require": {
-		"composer/installers": ">=1.0.1"
-	},
-	"config": {
-		"prepend-autoloader": false,
-		"optimize-autoloader": true
+		"composer/installers": "1.*,>=1.0.1",
+		"psr/log": "~1.0"
 	},
 	"require-dev": {
 		"mediawiki/mediawiki-codesniffer": "39.0.0",
