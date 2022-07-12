@@ -1,5 +1,8 @@
 ## ChangeLog for MatomoAnalytics
 
+### 1.0.7 (12-07-2022)
+* Fix installing via composer version 2.2.1 and later
+
 ### 1.0.6 (29-06-2022)
 * Require MediaWiki 1.38.0
 * Modernise MatomoAnalyticsOOUIForm
