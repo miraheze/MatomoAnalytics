@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"U.ayaao.p"
+		]
+	},
+	"matomoanalytics-labels-browser": "Браузерлер",
+	"matomoanalytics-labels-os": "ОЖ",
+	"matomoanalytics-labels-visitday": "Күндер",
+	"matomoanalytics-labels-visitduration": "Ұзақтық",
+	"matomoanalytics-labels-visithour": "Сағат",
+	"matomoanalytics-labels-visitpages": "Бірегей беттер"
+}
