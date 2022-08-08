@@ -1,5 +1,5 @@
 {
-	"name": "mediawiki/matomoanalytics",
+	"name": "mediawiki/matomo-analytics",
 	"type": "mediawiki-extension",
 	"description": "The MatomoAnalytics extension inserts tracking code for the Matomo analytics platform.",
 	"homepage": "https://www.mediawiki.org/wiki/Extension:MatomoAnalytics",
