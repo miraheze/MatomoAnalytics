@@ -17,7 +17,7 @@
 	],
 	"support": {
 		"issues": "https://phabricator.miraheze.org/tag/matomoanalytics/",
-		"wiki": "https://www.mediawiki.org/wiki/Extension:Data_Transfer"
+		"wiki": "https://www.mediawiki.org/wiki/Extension:MatomoAnalytics"
 	},
 	"require": {
 		"composer/installers": ">=1.0.1"
