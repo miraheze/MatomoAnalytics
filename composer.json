@@ -4,6 +4,21 @@
 	"description": "The MatomoAnalytics extension inserts tracking code for the Matomo analytics platform.",
 	"homepage": "https://www.mediawiki.org/wiki/Extension:MatomoAnalytics",
 	"license": "GPL-3.0-or-later",
+	"authors": [
+		{
+			"name": "John Lewis"
+		},
+		{
+			"name": "Southparkfan"
+		},
+		{
+			"name": "Universal Omega"
+		}
+	],
+	"support": {
+		"issues": "https://phabricator.miraheze.org/tag/matomoanalytics/",
+		"wiki": "https://www.mediawiki.org/wiki/Extension:Data_Transfer"
+	},
 	"require": {
 		"composer/installers": ">=1.0.1"
 	},
