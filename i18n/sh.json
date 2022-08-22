@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vlad5250"
+		]
+	},
+	"matomoanalytics-labels-browser": "Preglednici",
+	"matomoanalytics-labels-continent": "Kontinenti",
+	"matomoanalytics-labels-country": "Zemlja",
+	"matomoanalytics-labels-devices": "Uređaji",
+	"matomoanalytics-labels-os": "OS",
+	"matomoanalytics-labels-visitday": "Dani",
+	"matomoanalytics-labels-visitduration": "Trajanje",
+	"matomoanalytics-labels-visithour": "Sati",
+	"matomoanalytics-labels-visitpages": "Pojedinačne stranice",
+	"matomoanalytics-labels-website": "Mrežna mjesta"
+}
