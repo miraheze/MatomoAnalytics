@@ -4,6 +4,8 @@
 			"Vlad5250"
 		]
 	},
+	"action-noanalytics": "ne može se pratiti putem Matomo",
+	"analytics": "MatomoAnalytics",
 	"matomoanalytics-labels-browser": "Preglednici",
 	"matomoanalytics-labels-continent": "Kontinenti",
 	"matomoanalytics-labels-country": "Zemlja",
