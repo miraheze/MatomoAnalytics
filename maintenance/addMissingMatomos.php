@@ -11,7 +11,8 @@ use MediaWiki\MediaWikiServices;
 class AddMissingMatomos extends Maintenance {
 	public function __construct() {
 		parent::__construct();
-		$this->mDescription = 'Add missing matomo ids.';
+
+		$this->addDescription( 'Add missing matomo ids.' );
 	}
 
 	public function execute() {
