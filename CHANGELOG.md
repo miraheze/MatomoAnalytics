@@ -1,5 +1,8 @@
 ## ChangeLog for MatomoAnalytics
 
+### 1.0.8 (26-09-2022)
+* Don't use Maintenance::$mDescription directly
+
 ### 1.0.7 (12-07-2022)
 * Fix installing via composer version 2.2.1 and later
 
