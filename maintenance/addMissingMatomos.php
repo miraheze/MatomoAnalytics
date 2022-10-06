@@ -20,7 +20,7 @@ class AddMissingMatomos extends Maintenance {
 			->getConfigFactory()
 			->makeConfig( 'matomoanalytics' );
 
-		$dbw = wfGetDB( DB_PRIMARY, [], $config->get( 'CreateWikiDatabase' ) );
+		$dbw = $this->getDB( DB_PRIMARY, [], $config->get( 'CreateWikiDatabase' ) );
 
 		$res = $dbw->select(
 			'cw_wikis',
