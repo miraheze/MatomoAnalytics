@@ -53,7 +53,6 @@ class MatomoAnalyticsHooks {
 			$serverurl = $config->get( 'MatomoAnalyticsServerURL' );
 			$title = $skin->getRelevantTitle();
 
-			// @phan-suppress-next-line SecurityCheck-LikelyFalsePositive
 			$jstitle = Xml::encodeJsVar( $title->getPrefixedText() );
 			$dbname = Xml::encodeJsVar( $config->get( 'DBname' ) );
 			$urltitle = $title->getPrefixedURL();
