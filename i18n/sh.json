@@ -6,14 +6,18 @@
 	},
 	"action-noanalytics": "ne može se pratiti putem Matomo",
 	"analytics": "MatomoAnalytics",
+	"matomoanalytics-desc": "Integrira analitiku iz Matoma i MediaWikija",
+	"matomoanalytics-header": "Možete koristiti donje kartice za odabir prikaza različitih statistika koje pohranjujemo pomoću Matoma. Svi podaci prikupljaju se u zadnjih 30 dana, počevši od jučer (podnavlja se dnevno).",
 	"matomoanalytics-labels-browser": "Preglednici",
 	"matomoanalytics-labels-continent": "Kontinenti",
 	"matomoanalytics-labels-country": "Zemlja",
 	"matomoanalytics-labels-devices": "Uređaji",
 	"matomoanalytics-labels-os": "OS",
+	"matomoanalytics-labels-social": "Društvene mreže",
 	"matomoanalytics-labels-visitday": "Dani",
 	"matomoanalytics-labels-visitduration": "Trajanje",
 	"matomoanalytics-labels-visithour": "Sati",
 	"matomoanalytics-labels-visitpages": "Pojedinačne stranice",
-	"matomoanalytics-labels-website": "Mrežna mjesta"
+	"matomoanalytics-labels-website": "Mrežna mjesta",
+	"right-noanalytics": "Ne može se pratiti putem Matomo"
 }
