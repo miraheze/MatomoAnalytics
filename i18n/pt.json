@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hamilton Abreu"
+		]
+	},
+	"action-noanalytics": "não ser seguido via Matomo",
+	"analytics": "AnalíticaMatomo",
+	"matomoanalytics-desc": "Integra analítica do Matomo e do MediaWiki",
+	"matomoanalytics-header": "Pode usar os separadores abaixo para ver várias estatísticas que armazenamos usando o Matomo. Todos os dados foram coligidos nos últimos 30 dias começando ontem (atualizados diariamente).",
+	"matomoanalytics-labels-browser": "''Browsers''",
+	"matomoanalytics-labels-continent": "Continentes",
+	"matomoanalytics-labels-country": "País",
+	"matomoanalytics-labels-devices": "Dispositivos",
+	"matomoanalytics-labels-os": "Sistema operativo",
+	"matomoanalytics-labels-referrer": "Referências de ''sites''",
+	"matomoanalytics-labels-resolution": "Resolução",
+	"matomoanalytics-labels-search": "Palavras-chave de pesquisa",
+	"matomoanalytics-labels-social": "Redes sociais",
+	"matomoanalytics-labels-visitday": "Dias",
+	"matomoanalytics-labels-visitduration": "Duração",
+	"matomoanalytics-labels-visithour": "Horas",
+	"matomoanalytics-labels-visitpages": "Páginas únicas",
+	"matomoanalytics-labels-visitpass": "Tempo decorrido",
+	"matomoanalytics-labels-website": "''Sites'' na internet",
+	"right-noanalytics": "Não ser seguido via Matomo"
+}
