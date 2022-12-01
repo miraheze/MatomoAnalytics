@@ -1,10 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"לואיקה"
 		]
 	},
+	"action-noanalytics": "לא להיות במעקב על־ידי Matomo",
 	"analytics": "MatomoAnalytics",
+	"matomoanalytics-desc": "שילוב ניתוחים מ־Matomo ומדיה־ויקי",
+	"matomoanalytics-header": "באפשרותך להשתמש בלשוניות למטה כדי לבחור לראות נתונים סטטיסטיים שונים שאנו מאחסנים באמצעות Matomo. כל הנתונים נאספים במהלך 30 הימים האחרונים החל מאתמול (מתעדכן מדי יום).",
 	"matomoanalytics-labels-browser": "דפדפנים",
 	"matomoanalytics-labels-continent": "יבשות",
 	"matomoanalytics-labels-country": "מדינה",
