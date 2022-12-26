@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eleassar"
+		]
+	},
+	"action-noanalytics": "ni mogoče slediti z Matomojem",
+	"analytics": "MatomoAnalytics",
+	"matomoanalytics-desc": "Združuje analitiko Matomoja in MediaWikija",
+	"matomoanalytics-header": "S spodnjimi zavihki lahko za ogled izberete različne statistične podatke, ki jih shranjujemo z Matomojem. Vsi podatki so bili zbrani v zadnjih 30 dneh od včeraj (z dnevnim posodabljanjem).",
+	"matomoanalytics-labels-browser": "Brskalniki",
+	"matomoanalytics-labels-continent": "Celine",
+	"matomoanalytics-labels-country": "Država",
+	"matomoanalytics-labels-devices": "Naprave",
+	"matomoanalytics-labels-os": "Operacijski sistem",
+	"matomoanalytics-labels-referrer": "Priporočila spletnih mest",
+	"matomoanalytics-labels-resolution": "Ločljivost",
+	"matomoanalytics-labels-search": "Ključne besede iskanja",
+	"matomoanalytics-labels-social": "Družbena omrežja",
+	"matomoanalytics-labels-visitday": "Dnevi",
+	"matomoanalytics-labels-visitduration": "Trajanje",
+	"matomoanalytics-labels-visithour": "Ure",
+	"matomoanalytics-labels-visitpages": "Edinstvene strani",
+	"matomoanalytics-labels-visitpass": "Minuli čas",
+	"matomoanalytics-labels-website": "Spletna mesta",
+	"right-noanalytics": "Ni za sledenje z Matomojem"
+}
