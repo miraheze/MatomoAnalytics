@@ -2,13 +2,16 @@
 	"@metadata": {
 		"authors": [
 			"John Lewis",
+			"McDutchie",
 			"Robby"
 		]
 	},
+	"action-noanalytics": "{{doc-action|noanalytics}}",
 	"matomoanalytics-desc": "Integrates analytics from Matomo and MediaWiki",
 	"matomoanalytics-header": "Information to show on Special:Analytics",
 	"matomoanalytics-labels-country": "{{identical|Country}}",
 	"matomoanalytics-labels-visitday": "{{Identical|Day}}",
 	"matomoanalytics-labels-visitduration": "{{identical|Duration}}",
-	"matomoanalytics-labels-visithour": "{{identical|Hour}}"
+	"matomoanalytics-labels-visithour": "{{identical|Hour}}",
+	"right-noanalytics": "{{doc-right|noanalytics}}"
 }
