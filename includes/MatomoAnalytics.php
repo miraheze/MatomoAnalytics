@@ -42,7 +42,10 @@ class MatomoAnalytics {
 
 		$siteId = $siteJson['value'];
 		if ( $config->get( 'MatomoAnalyticsUseDB' ) ) {
-			$dbw = wfGetDB( DB_PRIMARY, [], $config->get( 'MatomoAnalyticsDatabase' ) );
+			$dbw = MediaWikiServices::getInstance()->getDBLoadBalancerFactory()
+				->getMainLB( $config->get( 'MatomoAnalyticsDatabase' ) )
+				->getMaintenanceConnectionRef( DB_PRIMARY, [], $config->get( 'MatomoAnalyticsDatabase' ) );
+
 			try {
 				$dbw->insert(
 					'matomo',
@@ -89,7 +92,9 @@ class MatomoAnalytics {
 		);
 
 		if ( $config->get( 'MatomoAnalyticsUseDB' ) ) {
-			$dbw = wfGetDB( DB_PRIMARY, [], $config->get( 'MatomoAnalyticsDatabase' ) );
+			$dbw = MediaWikiServices::getInstance()->getDBLoadBalancerFactory()
+				->getMainLB( $config->get( 'MatomoAnalyticsDatabase' ) )
+				->getMaintenanceConnectionRef( DB_PRIMARY, [], $config->get( 'MatomoAnalyticsDatabase' ) );
 
 			$dbw->delete(
 				'matomo',
@@ -137,7 +142,9 @@ class MatomoAnalytics {
 		);
 
 		if ( $config->get( 'MatomoAnalyticsUseDB' ) ) {
-			$dbw = wfGetDB( DB_PRIMARY, [], $config->get( 'MatomoAnalyticsDatabase' ) );
+			$dbw = MediaWikiServices::getInstance()->getDBLoadBalancerFactory()
+				->getMainLB( $config->get( 'MatomoAnalyticsDatabase' ) )
+				->getMaintenanceConnectionRef( DB_PRIMARY, [], $config->get( 'MatomoAnalyticsDatabase' ) );
 
 			$dbw->update(
 				'matomo',
@@ -175,7 +182,10 @@ class MatomoAnalytics {
 				return $cacheId;
 			}
 
-			$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'MatomoAnalyticsDatabase' ) );
+			$dbr = MediaWikiServices::getInstance()->getDBLoadBalancerFactory()
+				->getMainLB( $config->get( 'MatomoAnalyticsDatabase' ) )
+				->getMaintenanceConnectionRef( DB_REPLICA, [], $config->get( 'MatomoAnalyticsDatabase' ) );
+
 			$id = $dbr->selectField(
 				'matomo',
 				'matomo_id',
