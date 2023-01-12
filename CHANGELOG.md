@@ -1,5 +1,8 @@
 ## ChangeLog for MatomoAnalytics
 
+### 1.0.9 (12-01-2023)
+* Replace deprecated wfGetDB()
+
 ### 1.0.8 (27-09-2022)
 * Don't use Maintenance::$mDescription directly
 
