@@ -38,11 +38,11 @@ class MatomoAnalyticsHooks {
 		static $alreadyDone = false;
 
 		// Check if JS tracking is disabled or if the script has already been added and bow out early
-		if ( $alreadyDone || $config->get( 'MatomoAnalyticsDisableJS' ) === true ) {
+		if ( $alreadyDone || $config->get( 'MatomoAnalyticsDisableJS' ) ) {
 			return true;
 		}
 
-		$user = RequestContext::getMain()->getUser();
+		$user = $skin->getUser();
 		$mAId = MatomoAnalytics::getSiteID( $config->get( 'DBname' ) );
 
 		$permissionManager = MediaWikiServices::getInstance()->getPermissionManager();
@@ -58,7 +58,7 @@ class MatomoAnalyticsHooks {
 			$jstitle = Xml::encodeJsVar( $title->getPrefixedText() );
 			$dbname = Xml::encodeJsVar( $config->get( 'DBname' ) );
 			$urltitle = $title->getPrefixedURL();
-			$userType = $user->isRegistered() ? "User" : "Anonymous";
+			$userType = $user->isRegistered() ? 'User' : 'Anonymous';
 			$cookieDisable = (int)$config->get( 'MatomoAnalyticsDisableCookie' );
 			$forceGetRequest = (int)$config->get( 'MatomoAnalyticsForceGetRequest' );
 			$text .= <<<SCRIPT
