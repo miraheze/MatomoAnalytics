@@ -35,8 +35,10 @@ class MatomoAnalyticsHooks {
 	public static function matomoScript( $skin, &$text = '' ) {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
 
-		// Check if JS tracking is disabled and bow out early
-		if ( $config->get( 'MatomoAnalyticsDisableJS' ) === true ) {
+		static $alreadyDone = false;
+
+		// Check if JS tracking is disabled or if the script has already been added and bow out early
+		if ( $alreadyDone || $config->get( 'MatomoAnalyticsDisableJS' ) === true ) {
 			return true;
 		}
 
@@ -84,8 +86,10 @@ class MatomoAnalyticsHooks {
 				})();
 				</script>
 				<noscript><p><img src="{$serverurl}matomo.php?idsite={$id}&amp;rec=1&amp;action_name={$urltitle}" style="border:0;" alt="" /></p></noscript>
-SCRIPT;
+			SCRIPT;
 		}
+
+		$alreadyDone = true;
 
 		return true;
 	}
