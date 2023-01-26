@@ -84,7 +84,7 @@ class MatomoAnalyticsHooks {
 				})();
 				</script>
 				<noscript><p><img src="{$serverurl}matomo.php?idsite={$id}&amp;rec=1&amp;action_name={$urltitle}" style="border:0;" alt="" /></p></noscript>
-SCRIPT;
+				SCRIPT;
 		}
 
 		return true;
