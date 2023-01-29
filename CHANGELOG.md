@@ -1,6 +1,6 @@
 ## ChangeLog for MatomoAnalytics
 
-### 1.1.0 (26-01-2023)
+### 1.1.0 (29-01-2023)
 * Ensure matomo script isn't added more than once
 * Require MediaWiki 1.39.0
 
