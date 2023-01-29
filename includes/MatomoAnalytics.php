@@ -194,7 +194,7 @@ class MatomoAnalytics {
 			);
 
 			if ( !isset( $id ) || !$id ) {
-				$logger->error( "Could not find {$dbname} in matomo table." );
+				$logger->warning( "Could not find {$dbname} in matomo table." );
 
 				// Because the site is not found in the matomo table,
 				// we default to a value set in 'MatomoAnalyticsSiteID' which is 1.
