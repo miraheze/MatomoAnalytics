@@ -45,7 +45,8 @@ class MatomoAnalyticsHooks {
 
 		$permissionManager = MediaWikiServices::getInstance()->getPermissionManager();
 		if ( $permissionManager->userHasRight( $user, 'noanalytics' ) ) {
-			return '<!-- MatomoAnalytics: User right noanalytics is assigned. -->';
+			$text = '<!-- MatomoAnalytics: User right noanalytics is assigned. -->';
+			return true;
 		}
 
 		$id = strval( $mAId );
@@ -87,6 +88,6 @@ class MatomoAnalyticsHooks {
 			<noscript><p><img src="{$serverurl}matomo.php?idsite={$id}&amp;rec=1&amp;action_name={$urltitle}" style="border:0;" alt="" /></p></noscript>
 		SCRIPT;
 
-		return $text;
+		return true;
 	}
 }
