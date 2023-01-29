@@ -1,5 +1,8 @@
 ## ChangeLog for MatomoAnalytics
 
+### 1.1.1 (29-01-2023)
+* Don't override $text within MatomoAnalyticsHooks::matomoScript
+
 ### 1.1.0 (29-01-2023)
 * Ensure matomo script isn't added more than once
 * Change error to warning for "could not find db in matomo table" logging
