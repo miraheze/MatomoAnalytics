@@ -1,5 +1,9 @@
 ## ChangeLog for MatomoAnalytics
 
+### 1.1.0 (29-01-2023)
+* Ensure matomo script isn't added more than once
+* Require MediaWiki 1.39.0
+
 ### 1.0.9 (12-01-2023)
 * Replace deprecated wfGetDB()
 
