@@ -4,23 +4,21 @@ $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
   $IP = __DIR__ . '/../../..';
 }
-require_once "$IP/maintenance/Maintenance.php";
 
-use MediaWiki\MediaWikiServices;
+require_once "$IP/maintenance/Maintenance.php";
 
 class AddMissingMatomos extends Maintenance {
 	public function __construct() {
 		parent::__construct();
 
 		$this->addDescription( 'Add missing matomo ids.' );
+
+		$this->requireExtension( 'CreateWiki' );
+		$this->requireExtension( 'MatomoAnalytics' );
 	}
 
 	public function execute() {
-		$config = MediaWikiServices::getInstance()
-			->getConfigFactory()
-			->makeConfig( 'matomoanalytics' );
-
-		$dbw = $this->getDB( DB_PRIMARY, [], $config->get( 'CreateWikiDatabase' ) );
+		$dbw = $this->getDB( DB_PRIMARY, [], $this->getConfig()->get( 'CreateWikiDatabase' ) );
 
 		$res = $dbw->select(
 			'cw_wikis',
@@ -36,10 +34,6 @@ class AddMissingMatomos extends Maintenance {
 		foreach ( $res as $row ) {
 			$DBname = $row->wiki_dbname;
 
-			if ( $DBname === 'default' ) {
-				continue;
-			}
-
 			$id = $dbw->selectField(
 				'matomo',
 				'matomo_id',
@@ -49,10 +43,7 @@ class AddMissingMatomos extends Maintenance {
 
 			if ( !isset( $id ) || !$id ) {
 				$this->output( "Add matomo id to {$DBname}\n" );
-
 				MatomoAnalytics::addSite( $DBname );
-			} else {
-				continue;
 			}
 		}
 	}
