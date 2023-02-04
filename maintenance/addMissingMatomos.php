@@ -34,10 +34,6 @@ class AddMissingMatomos extends Maintenance {
 		foreach ( $res as $row ) {
 			$DBname = $row->wiki_dbname;
 
-			if ( $DBname === 'default' ) {
-				continue;
-			}
-
 			$id = $dbw->selectField(
 				'matomo',
 				'matomo_id',
@@ -47,10 +43,7 @@ class AddMissingMatomos extends Maintenance {
 
 			if ( !isset( $id ) || !$id ) {
 				$this->output( "Add matomo id to {$DBname}\n" );
-
 				MatomoAnalytics::addSite( $DBname );
-			} else {
-				continue;
 			}
 		}
 	}
