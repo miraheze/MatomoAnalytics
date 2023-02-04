@@ -4,9 +4,8 @@ $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
   $IP = __DIR__ . '/../../..';
 }
-require_once "$IP/maintenance/Maintenance.php";
 
-use MediaWiki\MediaWikiServices;
+require_once "$IP/maintenance/Maintenance.php";
 
 class CleanupMatomos extends Maintenance {
 	public function __construct() {
@@ -20,11 +19,7 @@ class CleanupMatomos extends Maintenance {
 	}
 
 	public function execute() {
-		$config = MediaWikiServices::getInstance()
-			->getConfigFactory()
-			->makeConfig( 'matomoanalytics' );
-
-		$dbw = $this->getDB( DB_PRIMARY, [], $config->get( 'CreateWikiDatabase' ) );
+		$dbw = $this->getDB( DB_PRIMARY, [], $this->getConfig()->get( 'CreateWikiDatabase' ) );
 
 		$res = $dbw->select(
 			'matomo',
@@ -40,10 +35,6 @@ class CleanupMatomos extends Maintenance {
 		foreach ( $res as $row ) {
 			$DBname = $row->matomo_wiki;
 
-			if ( $DBname === 'default' ) {
-				continue;
-			}
-
 			$wiki = $dbw->selectField(
 				'cw_wikis',
 				'wiki_dbname',
@@ -52,14 +43,13 @@ class CleanupMatomos extends Maintenance {
 			);
 
 			if ( !isset( $wiki ) || !$wiki ) {
-				if ( !$this->getOption( 'dry-run', false ) ) {
-					$this->output( "Remove matomo id from {$DBname}\n" );
-					MatomoAnalytics::deleteSite( $DBname );
-
+				if ( $this->getOption( 'dry-run', false ) ) {
+					$this->output( "[DRY RUN] Would remove matomo id from {$DBname}\n" );
 					continue;
 				}
 
-				$this->output( "[DRY RUN] Would remove matomo id from {$DBname}\n" );
+				$this->output( "Remove matomo id from {$DBname}\n" );
+				MatomoAnalytics::deleteSite( $DBname );
 			}
 		}
 	}
