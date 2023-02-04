@@ -14,6 +14,9 @@ class CleanupMatomos extends Maintenance {
 
 		$this->addDescription( 'Cleanup matomo ids that don\'t have corresponding cw_wikis entries.' );
 		$this->addOption( 'dry-run', 'Perform a dry run and do not actually remove any matomo ids.' );
+
+		$this->requireExtension( 'CreateWiki' );
+		$this->requireExtension( 'MatomoAnalytics' );
 	}
 
 	public function execute() {
