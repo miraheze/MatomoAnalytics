@@ -3,6 +3,8 @@
 ### 1.1.2 (04-02-2023)
 * Add a CleanupMatomos maintenance script
 * Add requireExtension() to all maintenance scripts
+* Cleanup the ModifyMatomo maintenance script, and use MatomoAnalytics
+      directly rather than going through MatomoAnalyticsHooks
 
 ### 1.1.1 (29-01-2023)
 * Don't override $text within MatomoAnalyticsHooks::matomoScript
