@@ -13,6 +13,9 @@ class AddMissingMatomos extends Maintenance {
 		parent::__construct();
 
 		$this->addDescription( 'Add missing matomo ids.' );
+
+		$this->requireExtension( 'CreateWiki' );
+		$this->requireExtension( 'MatomoAnalytics' );
 	}
 
 	public function execute() {
