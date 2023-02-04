@@ -4,9 +4,8 @@ $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
   $IP = __DIR__ . '/../../..';
 }
-require_once "$IP/maintenance/Maintenance.php";
 
-use MediaWiki\MediaWikiServices;
+require_once "$IP/maintenance/Maintenance.php";
 
 class AddMissingMatomos extends Maintenance {
 	public function __construct() {
@@ -19,11 +18,7 @@ class AddMissingMatomos extends Maintenance {
 	}
 
 	public function execute() {
-		$config = MediaWikiServices::getInstance()
-			->getConfigFactory()
-			->makeConfig( 'matomoanalytics' );
-
-		$dbw = $this->getDB( DB_PRIMARY, [], $config->get( 'CreateWikiDatabase' ) );
+		$dbw = $this->getDB( DB_PRIMARY, [], $this->getConfig()->get( 'CreateWikiDatabase' ) );
 
 		$res = $dbw->select(
 			'cw_wikis',
