@@ -12,6 +12,8 @@ class ModifyMatomo extends Maintenance {
 
 		$this->addDescription( 'Add or remove a wiki from matomo.' );
 		$this->addOption( 'remove', 'Remove wiki from matomo', false, false );
+
+		$this->requireExtension( 'MatomoAnalytics' );
 	}
 
 	public function execute() {
