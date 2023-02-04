@@ -12,7 +12,8 @@ class AddMissingMatomos extends Maintenance {
 	public function __construct() {
 		parent::__construct();
 
-		$this->addDescription( 'Cleanup matomo ids that don't have corresponding cw_wikis entries.' );
+		$this->addDescription( 'Cleanup matomo ids that don\'t have corresponding cw_wikis entries.' );
+		$this->addOption( 'dry-run', 'Perform a dry run and do not actually remove any matomo ids.' );
 	}
 
 	public function execute() {
@@ -48,11 +49,14 @@ class AddMissingMatomos extends Maintenance {
 			);
 
 			if ( !isset( $wiki ) || !$wiki ) {
-				$this->output( "Remove matomo id from {$DBname}\n" );
+				if ( !$this->getOption( 'dry-run', false ) ) {
+					$this->output( "Remove matomo id from {$DBname}\n" );
+					MatomoAnalytics::deleteSite( $DBname );
 
-				MatomoAnalytics::deleteSite( $DBname );
-			} else {
-				continue;
+					continue;
+				}
+
+				$this->output( "[DRY RUN] Would remove matomo id from {$DBname}\n" );
 			}
 		}
 	}
