@@ -4,6 +4,7 @@ $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
 	$IP = __DIR__ . '/../../..';
 }
+
 require_once "$IP/maintenance/Maintenance.php";
 
 class ModifyMatomo extends Maintenance {
@@ -11,19 +12,17 @@ class ModifyMatomo extends Maintenance {
 		parent::__construct();
 
 		$this->addDescription( 'Add or remove a wiki from matomo.' );
-		$this->addOption( 'remove', 'Remove wiki from matomo', false, false );
+		$this->addOption( 'remove', 'Remove wiki from matomo' );
 
 		$this->requireExtension( 'MatomoAnalytics' );
 	}
 
 	public function execute() {
-		global $wgDBname;
+		$dbname = $this->getConfig()->get( 'DBname' );
 
-		if ( $this->getOption( 'remove' ) ) {
-			MatomoAnalyticsHooks::wikiDeletion( null, $wgDBname );
-		} else {
-			MatomoAnalyticsHooks::wikiCreation( $wgDBname );
-		}
+		$this->getOption( 'remove', false ) ?
+			MatomoAnalytics::deleteSite( $dbname ) :
+			MatomoAnalytics::addSite( $dbname );
 	}
 }
 
