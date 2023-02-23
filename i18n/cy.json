@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Afalau"
+		]
+	},
+	"matomoanalytics-labels-browser": "Porwyr",
+	"matomoanalytics-labels-continent": "Cyfandiroedd",
+	"matomoanalytics-labels-country": "Gwlad",
+	"matomoanalytics-labels-devices": "Dyfeisiau",
+	"matomoanalytics-labels-os": "System Gweithredu",
+	"matomoanalytics-labels-visitday": "Diwrnodau",
+	"matomoanalytics-labels-visitduration": "Hyd",
+	"matomoanalytics-labels-visithour": "Oriau"
+}
