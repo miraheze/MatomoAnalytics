@@ -4,6 +4,7 @@
 			"Jon Harald Søby"
 		]
 	},
+	"action-noanalytics": "skal ikke spores via Matomo",
 	"analytics": "MatomoAnalytics",
 	"matomoanalytics-desc": "Integrerer analyse fra Matomo og MediaWiki",
 	"matomoanalytics-header": "Du kan bruke fanene nedenfor for å velge forskjellig statistikk å vise som vi lagrer med Matomo. Alle data samles over de siste 30 dagene fra og med i går (oppdateres daglig).",
