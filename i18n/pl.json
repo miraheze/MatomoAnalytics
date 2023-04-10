@@ -4,6 +4,7 @@
 			"Rail"
 		]
 	},
+	"action-noanalytics": "nie bycia śledzonym przez Matomo",
 	"analytics": "Dane analityczne Matomo",
 	"matomoanalytics-desc": "Integruje dane analityczne z Matomo i MediaWiki",
 	"matomoanalytics-header": "Możesz użyć poniższych zakładek do przeglądania różnych statystyk gromadzonych z użyciem Matomo. Dane są gromadzone na przestrzeni ostatnich 30 dni od wczoraj (lista odświeża się codziennie).",
