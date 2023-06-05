@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nokeoo"
+		]
+	},
+	"action-noanalytics": "nebūti sekamas per Matomo",
+	"matomoanalytics-desc": "Integruoja Matomo ir MediaWiki analitiką",
+	"matomoanalytics-header": "Galite naudoti toliau pateiktus skirtukus, kad pasirinktumėte skirtingą statistiką, kurią saugome naudodami Matomo, peržiūrai. Visi duomenys renkami per pastarąsias 30 dienų nuo vakar dienos (atnaujinami kasdien).",
+	"matomoanalytics-labels-browser": "Naršyklės",
+	"matomoanalytics-labels-continent": "Žemynai",
+	"matomoanalytics-labels-country": "Valstybė",
+	"matomoanalytics-labels-devices": "Įrenginiai",
+	"matomoanalytics-labels-os": "OS",
+	"matomoanalytics-labels-referrer": "Svetainių nukreipimai",
+	"matomoanalytics-labels-resolution": "Rezoliucija",
+	"matomoanalytics-labels-search": "Paieškos raktiniai žodžiai",
+	"matomoanalytics-labels-social": "Socialiniai tinklai",
+	"matomoanalytics-labels-visitday": "Dienos",
+	"matomoanalytics-labels-visitduration": "Trukmė",
+	"matomoanalytics-labels-visithour": "Valandos",
+	"matomoanalytics-labels-visitpages": "Unikalūs puslapiai",
+	"matomoanalytics-labels-visitpass": "Praėjęs laikas",
+	"matomoanalytics-labels-website": "Tinklalapiai",
+	"right-noanalytics": "Nebūti sekamas per Matomo"
+}
