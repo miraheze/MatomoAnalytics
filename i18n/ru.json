@@ -2,15 +2,30 @@
 	"@metadata": {
 		"authors": [
 			"ArticleEditor404",
+			"BerryAVGN",
 			"DDPAT",
 			"Ice bulldog",
 			"Okras"
 		]
 	},
+	"action-noanalytics": "не отслеживать через Matomo",
 	"analytics": "MatomoAnalytics",
+	"matomoanalytics-desc": "Интеграция аналитики из Matomo и MediaWiki",
+	"matomoanalytics-header": "На вкладках ниже вы можете выбрать различные статистические данные, которые мы храним с помощью Matomo. Все данные собраны за последние 30 дней, начиная со вчерашнего дня (обновляются ежедневно).",
+	"matomoanalytics-labels-browser": "Браузеры",
+	"matomoanalytics-labels-continent": "Континенты",
+	"matomoanalytics-labels-country": "Страна",
+	"matomoanalytics-labels-devices": "Устройства",
+	"matomoanalytics-labels-os": "ОС",
+	"matomoanalytics-labels-referrer": "Ссылки на сайт",
 	"matomoanalytics-labels-resolution": "Решение",
+	"matomoanalytics-labels-search": "Поиск ключевых слов",
 	"matomoanalytics-labels-social": "Социальные сети",
+	"matomoanalytics-labels-visitday": "Дней",
+	"matomoanalytics-labels-visitduration": "Длительность",
+	"matomoanalytics-labels-visithour": "Часов",
 	"matomoanalytics-labels-visitpages": "Уникальные страницы",
+	"matomoanalytics-labels-visitpass": "Времени проведено",
 	"matomoanalytics-labels-website": "Сайты",
 	"right-noanalytics": "Не отслеживать через Matomo"
 }
