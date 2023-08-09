@@ -1,8 +1,9 @@
 <?php
 
 use MediaWiki\MediaWikiServices;
+use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 
-class MatomoAnalytics {
+class MatomoAnalytics implements ExpirationAwareness {
 	private static function getConfig() {
 		return MediaWikiServices::getInstance()
 			->getConfigFactory()
@@ -103,8 +104,7 @@ class MatomoAnalytics {
 			);
 
 			$cache = ObjectCache::getLocalClusterInstance();
-			$key = $cache->makeKey( 'matomo', 'id' );
-			$cache->delete( $key );
+			$cache->delete( $cache->makeKey( 'matomo', 'id' ) );
 		}
 
 		$logger->debug( "Successfully deleted {$dbname} with id {$siteId}." );
@@ -154,8 +154,7 @@ class MatomoAnalytics {
 			);
 
 			$cache = ObjectCache::getLocalClusterInstance();
-			$key = $cache->makeKey( 'matomo', 'id' );
-			$cache->delete( $key );
+			$cache->delete( $cache->makeKey( 'matomo', 'id' ) );
 		}
 
 		if ( (string)$siteId === (string)static::getSiteID( $newDb ) ) {
@@ -176,9 +175,8 @@ class MatomoAnalytics {
 
 		if ( $config->get( 'MatomoAnalyticsUseDB' ) ) {
 			$cache = ObjectCache::getLocalClusterInstance();
-			$key = $cache->makeKey( 'matomo', 'id' );
-			$cacheId = $cache->get( $key );
-			if ( $cacheId && !$disableCache ) {
+			$cacheId = $cache->get( $cache->makeKey( 'matomo', 'id' ) );
+			if ( is_numeric( $cacheId ) && $cacheId >= 0 && !$disableCache ) {
 				return $cacheId;
 			}
 
@@ -193,14 +191,14 @@ class MatomoAnalytics {
 				__METHOD__
 			);
 
-			if ( !isset( $id ) || !$id ) {
+			if ( !isset( $id ) || $id === false ) {
 				$logger->warning( "Could not find {$dbname} in matomo table." );
 
 				// Because the site is not found in the matomo table,
 				// we default to a value set in 'MatomoAnalyticsSiteID' which is 1.
 				return $config->get( 'MatomoAnalyticsSiteID' );
 			} else {
-				$cache->set( $key, $id );
+				$cache->set( $cache->makeKey( 'matomo', 'id' ), $id, self::TTL_DAY );
 
 				return $id;
 			}
