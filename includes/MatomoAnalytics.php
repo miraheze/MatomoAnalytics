@@ -175,8 +175,8 @@ class MatomoAnalytics implements ExpirationAwareness {
 
 		if ( $config->get( 'MatomoAnalyticsUseDB' ) ) {
 			$cache = ObjectCache::getLocalClusterInstance();
-			$cacheId = $cache->get( $cache->makeKey( 'matomo', 'id' ) );
-			if ( is_numeric( $cacheId ) && $cacheId >= 0 && !$disableCache ) {
+			$cacheId = (int)$cache->get( $cache->makeKey( 'matomo', 'id' ) );
+			if ( $cacheId >= 0 && !$disableCache ) {
 				return $cacheId;
 			}
 
