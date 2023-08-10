@@ -78,7 +78,7 @@ class MatomoAnalyticsHooks {
 				_paq.push(['setDocumentTitle', {$dbname} + " - " + {$jstitle}]);
 				_paq.push(['setSiteId', {$id}]);
 				_paq.push(['setCustomVariable', 1, 'userType', "{$userType}", "visit"]);
-				if ( {$globalIdInt} ) {
+				if ( {$globalIdInt} >= 0 ) {
 					_paq.push(['addTracker', u + 'matomo.php', {$globalId}]);
 				}
 				var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
