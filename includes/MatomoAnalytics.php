@@ -165,7 +165,7 @@ class MatomoAnalytics {
 		} else {
 			$logger->error( "Failed to rename {$oldDb} to {$newDb} with id {$siteId}." );
 
-			throw new MWException( 'Error in renaming Matomo references' );
+			throw new RuntimeException( 'Error in renaming Matomo references' );
 		}
 	}
 
