@@ -3,7 +3,8 @@
 		"authors": [
 			"Hydra",
 			"StarrySky",
-			"Yining Chen"
+			"Yining Chen",
+			"铁桶"
 		]
 	},
 	"action-noanalytics": "不通过 Matomo 追踪",
@@ -17,7 +18,7 @@
 	"matomoanalytics-labels-os": "操作系统",
 	"matomoanalytics-labels-referrer": "网站推荐",
 	"matomoanalytics-labels-resolution": "处理状况",
-	"matomoanalytics-labels-search": "搜寻关键词",
+	"matomoanalytics-labels-search": "搜索关键词",
 	"matomoanalytics-labels-social": "社交网站",
 	"matomoanalytics-labels-visitday": "天",
 	"matomoanalytics-labels-visitduration": "期间",
