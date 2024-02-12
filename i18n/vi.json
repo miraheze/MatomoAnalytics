@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Pisceskaze"
+		]
+	},
+	"action-noanalytics": "không được theo dõi qua Matomo",
+	"analytics": "MatomoAnalytics",
+	"matomoanalytics-desc": "Tích hợp phân tích từ Matomo và MediaWiki",
+	"matomoanalytics-labels-browser": "Trình duyệt",
+	"matomoanalytics-labels-continent": "Lục địa",
+	"matomoanalytics-labels-country": "Quốc gia",
+	"matomoanalytics-labels-devices": "Thiết bị",
+	"matomoanalytics-labels-os": "Hệ điều hành",
+	"matomoanalytics-labels-search": "Từ khóa tìm kiếm",
+	"matomoanalytics-labels-social": "Mạng xã hội",
+	"matomoanalytics-labels-visitday": "Ngày",
+	"matomoanalytics-labels-visitduration": "Thời lượng",
+	"matomoanalytics-labels-visithour": "Giờ",
+	"matomoanalytics-labels-visitpages": "Trang duy nhất",
+	"matomoanalytics-labels-visitpass": "Thời gian trôi qua",
+	"matomoanalytics-labels-website": "Website",
+	"right-noanalytics": "Không được theo dõi qua Matomo"
+}
