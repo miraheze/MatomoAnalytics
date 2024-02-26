@@ -1,5 +1,9 @@
 ## ChangeLog for MatomoAnalytics
 
+### 1.1.3 (26-02-2024)
+* Replace deprecated Xml::encodeJsVar with Html::encodeJsVar
+* Now requires MediaWiki 1.41.0 or later
+
 ### 1.1.2 (04-02-2023)
 * Add a CleanupMatomos maintenance script
 * Add requireExtension() to all maintenance scripts
