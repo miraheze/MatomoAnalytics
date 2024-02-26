@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Html\Html;
 use MediaWiki\MediaWikiServices;
 
 class MatomoAnalyticsHooks {
@@ -55,8 +56,8 @@ class MatomoAnalyticsHooks {
 		$serverurl = $config->get( 'MatomoAnalyticsServerURL' );
 		$title = $skin->getRelevantTitle();
 
-		$jstitle = Xml::encodeJsVar( $title->getPrefixedText() );
-		$dbname = Xml::encodeJsVar( $config->get( 'DBname' ) );
+		$jstitle = Html::encodeJsVar( $title->getPrefixedText() );
+		$dbname = Html::encodeJsVar( $config->get( 'DBname' ) );
 		$urltitle = $title->getPrefixedURL();
 		$userType = $user->isRegistered() ? 'User' : 'Anonymous';
 		$cookieDisable = (int)$config->get( 'MatomoAnalyticsDisableCookie' );
