@@ -16,7 +16,7 @@
 		}
 	],
 	"support": {
-		"issues": "https://phabricator.miraheze.org/tag/matomoanalytics/",
+		"issues": "https://issue-tracker.miraheze.org/tag/matomoanalytics/",
 		"wiki": "https://www.mediawiki.org/wiki/Extension:MatomoAnalytics"
 	},
 	"require": {
