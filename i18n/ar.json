@@ -5,7 +5,7 @@
 		]
 	},
 	"action-noanalytics": "غير متعقب من قبل ماتومو",
-	"analytics": "MatomoAnalytics",
+	"analytics": "إحصاءات ماتومو",
 	"matomoanalytics-desc": "يدمج تحليلات ماتومو مع ميدياويكي",
 	"matomoanalytics-header": "بإمكانك استخدام القوائم أدناه لمعرفة البيانات التي نجمعها من خلال ماتومو جميع البيانات المخزنة هي للثلاثين يومًا الماضية بدءًا من البارحة (محدث يوميًا).",
 	"matomoanalytics-labels-browser": "المتصفحات",
