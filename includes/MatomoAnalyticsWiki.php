@@ -16,8 +16,7 @@ class MatomoAnalyticsWiki {
 		string $period = 'range',
 		string $jsonLabel = 'label',
 		string $jsonData = 'nb_visits',
-		int $flat = 0,
-		bool $flatArray = false
+		int $flat = 0
 	) {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
 
@@ -42,7 +41,7 @@ class MatomoAnalyticsWiki {
 		$arrayOut = [];
 
 		foreach ( $siteJson as $key => $val ) {
-			if ( $flatArray ) {
+			if ( $flat ) {
 				$arrayOut[$key] = $val ?: '-';
 			} else {
 				$arrayOut[$val[$jsonLabel]] = $val[$jsonData] ?: '-';
