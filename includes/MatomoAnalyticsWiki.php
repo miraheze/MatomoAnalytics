@@ -137,6 +137,6 @@ class MatomoAnalyticsWiki {
 
 	// Most visited pages
 	public function getMostVisistedPages() {
-		return $this->getData( 'Actions.getPageUrls', 'today', 'month', 'range', 'label', 'nb_visits', 1 );
+		return $this->getData( 'Actions.getPageUrls', 'today', 'month', 'label', 'nb_visits', 1 );
 	}
 }
