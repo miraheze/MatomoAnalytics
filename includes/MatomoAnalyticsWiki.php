@@ -29,10 +29,9 @@ class MatomoAnalyticsWiki {
 					'date' => $date,
 					'method' => $module,
 					'period' => $period,
-					'flat' => $flat,
 					'idSite' => $this->siteId,
 					'token_auth' => $config->get( 'MatomoAnalyticsTokenAuth' )
-				]
+				] + ( $flat ? [ 'flat' => $flat ] : [] )
 			)
 		);
 
