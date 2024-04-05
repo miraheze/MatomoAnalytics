@@ -27,7 +27,7 @@ class MatomoAnalyticsViewer {
 			'visitpages' => $mA->getVisitPages(),
 			'visitduration' => $mA->getVisitDurations(),
 			'visitpass' => $mA->getVisitDaysPassed(),
-			'mostvisited' => $mA->getMostVisistedPages(),
+			// 'mostvisited' => $mA->getMostVisistedPages(),
 		];
 
 		$formDescriptor = [];
