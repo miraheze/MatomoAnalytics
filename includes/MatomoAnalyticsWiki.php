@@ -23,7 +23,7 @@ class MatomoAnalyticsWiki {
 		$siteReply = MediaWikiServices::getInstance()->getHttpRequestFactory()->get(
 			wfAppendQuery(
 				$config->get( 'MatomoAnalyticsServerURL' ),
-				array_merge( [
+				[
 					'module' => 'API',
 					'format' => 'json',
 					'date' => $date,
@@ -31,7 +31,7 @@ class MatomoAnalyticsWiki {
 					'period' => $period,
 					'idSite' => $this->siteId,
 					'token_auth' => $config->get( 'MatomoAnalyticsTokenAuth' )
-				], ( $flat ? [ 'flat' => 1 ] : [] ) )
+				]
 			)
 		);
 
