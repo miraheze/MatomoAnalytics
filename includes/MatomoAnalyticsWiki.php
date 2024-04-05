@@ -134,4 +134,9 @@ class MatomoAnalyticsWiki {
 	public function getVisitDaysPassed() {
 		return $this->getData( 'VisitorInterest.getNumberOfVisitsByDaysSinceLast' );
 	}
+
+	// Most visited pages
+	public function getMostVisistedPages() {
+		return $this->getData( 'Actions.getPageUrls', 'today', 'month', 'range', 'label', 'nb_visits', 1 );
+	}
 }
