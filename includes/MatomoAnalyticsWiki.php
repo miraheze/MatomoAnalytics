@@ -12,6 +12,7 @@ class MatomoAnalyticsWiki {
 
 	private function getData(
 		string $module,
+		string $date = 'previous30',
 		string $period = 'range',
 		string $jsonLabel = 'label',
 		string $jsonData = 'nb_visits',
@@ -25,9 +26,10 @@ class MatomoAnalyticsWiki {
 				[
 					'module' => 'API',
 					'format' => 'json',
-					'date' => 'previous30',
+					'date' => $date,
 					'method' => $module,
 					'period' => $period,
+					'flat' => (int)$flat,
 					'idSite' => $this->siteId,
 					'token_auth' => $config->get( 'MatomoAnalyticsTokenAuth' )
 				]
