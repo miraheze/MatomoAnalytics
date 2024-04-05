@@ -16,7 +16,8 @@ class MatomoAnalyticsWiki {
 		string $period = 'range',
 		string $jsonLabel = 'label',
 		string $jsonData = 'nb_visits',
-		bool $flat = false
+		int $flat = 0,
+		bool $flatArray = false
 	) {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
 
@@ -29,6 +30,7 @@ class MatomoAnalyticsWiki {
 					'date' => $date,
 					'method' => $module,
 					'period' => $period,
+					'flat' => $flat,
 					'idSite' => $this->siteId,
 					'token_auth' => $config->get( 'MatomoAnalyticsTokenAuth' )
 				]
@@ -40,7 +42,7 @@ class MatomoAnalyticsWiki {
 		$arrayOut = [];
 
 		foreach ( $siteJson as $key => $val ) {
-			if ( $flat ) {
+			if ( $flatArray ) {
 				$arrayOut[$key] = $val ?: '-';
 			} else {
 				$arrayOut[$val[$jsonLabel]] = $val[$jsonData] ?: '-';
@@ -135,6 +137,6 @@ class MatomoAnalyticsWiki {
 
 	// Most visited pages
 	public function getMostVisistedPages() {
-		return $this->getData( 'Actions.getPageUrls', 'today', 'month', 'label', 'nb_visits' );
+		return $this->getData( 'Actions.getPageUrls', 'today', 'month', 'label', 'nb_visits', 1 );
 	}
 }
