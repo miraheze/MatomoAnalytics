@@ -12,10 +12,12 @@ class MatomoAnalyticsWiki {
 
 	private function getData(
 		string $module,
+		string $date = 'previous30',
 		string $period = 'range',
 		string $jsonLabel = 'label',
 		string $jsonData = 'nb_visits',
-		bool $flat = false
+		int $flat = 0,
+		bool $flatArray = false
 	) {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
 
@@ -25,9 +27,10 @@ class MatomoAnalyticsWiki {
 				[
 					'module' => 'API',
 					'format' => 'json',
-					'date' => 'previous30',
+					'date' => $date,
 					'method' => $module,
 					'period' => $period,
+					'flat' => $flat,
 					'idSite' => $this->siteId,
 					'token_auth' => $config->get( 'MatomoAnalyticsTokenAuth' )
 				]
@@ -39,7 +42,7 @@ class MatomoAnalyticsWiki {
 		$arrayOut = [];
 
 		foreach ( $siteJson as $key => $val ) {
-			if ( $flat ) {
+			if ( $flatArray ) {
 				$arrayOut[$key] = $val ?: '-';
 			} else {
 				$arrayOut[$val[$jsonLabel]] = $val[$jsonData] ?: '-';
@@ -130,5 +133,11 @@ class MatomoAnalyticsWiki {
 	// Days between visits
 	public function getVisitDaysPassed() {
 		return $this->getData( 'VisitorInterest.getNumberOfVisitsByDaysSinceLast' );
+	}
+
+	// Most visited pages
+	public function getMostVisistedPages() {
+		// We can also add support for linking to them through URLs with Actions.getPageUrls if we want
+		return $this->getData( 'Actions.getPageTitles', 'today', 'month', 'label', 'nb_visits', 1 );
 	}
 }
