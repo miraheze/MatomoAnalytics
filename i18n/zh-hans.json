@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Hydra",
+			"MangoFanFanw",
 			"StarrySky",
 			"Yining Chen",
 			"铁桶"
@@ -24,6 +25,7 @@
 	"matomoanalytics-labels-visitduration": "期间",
 	"matomoanalytics-labels-visithour": "小时",
 	"matomoanalytics-labels-visitpages": "独特页面",
+	"matomoanalytics-labels-visitpass": "时间流逝",
 	"matomoanalytics-labels-website": "网站",
 	"right-noanalytics": "不被 Matomo 追踪"
 }
