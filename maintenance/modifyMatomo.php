@@ -26,12 +26,11 @@ class ModifyMatomo extends Maintenance {
 		$mA = new MatomoAnalytics;
 
 		if ( $this->getOption( 'remove', false ) ) {
-			$mA->deleteSite( $DBname )
+			$mA->deleteSite( $DBname );
 		} else {
 			$mA->addSite( $DBname );
 		}
 	}
-}
 }
 
 $maintClass = ModifyMatomo::class;

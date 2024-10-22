@@ -45,7 +45,7 @@ class Main implements
 	 * @param string &$text Output text.
 	 * @return bool
 	 */
-	public static function onSkinAfterBottomScripts( $skin, &$text ) {
+	public function onSkinAfterBottomScripts( \Skin $skin, string &$text ) {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
 
 		// Check if JS tracking is disabled and bow out early
