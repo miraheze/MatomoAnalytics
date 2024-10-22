@@ -3,7 +3,6 @@
 namespace Miraheze\MatomoAnalytics\Maintenance;
 
 use Maintenance;
-use Miraheze\MatomoAnalytics\MatomoAnalytics;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
