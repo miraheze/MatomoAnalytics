@@ -48,6 +48,9 @@
 		"LoadExtensionSchemaUpdates": [
 			"MatomoAnalyticsHooks::matomoAnalyticsSchemaUpdates"
 		],
+		"InfoAction": [
+			"MatomoAnalyticsHooks::onInfoAction"
+		],
 		"SkinAfterBottomScripts": [
 			"MatomoAnalyticsHooks::matomoScript"
 		]
