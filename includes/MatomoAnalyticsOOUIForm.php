@@ -3,12 +3,6 @@
 namespace Miraheze\MatomoAnalytics;
 
 use MediaWiki\HTMLForm\OOUIHTMLForm;
-use OOUI\FieldsetLayout;
-use OOUI\HtmlSnippet;
-use OOUI\IndexLayout;
-use OOUI\PanelLayout;
-use OOUI\TabPanelLayout;
-use OOUI\Widget;
 use Xml;
 
 class MatomoAnalyticsOOUIForm extends OOUIHTMLForm {

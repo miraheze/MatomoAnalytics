@@ -2,9 +2,8 @@
 
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Hook\InfoActionHook;
-use MediaWiki\Hook\SkinAfterBottomScriptsHook;
-use MediaWiki\MainConfigNames;
 use MediaWiki\Html\Html;
+use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Message\Message;
 use Miraheze\CreateWiki\Hooks\CreateWikiCreationHook;
