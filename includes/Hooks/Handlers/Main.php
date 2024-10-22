@@ -4,6 +4,7 @@ namespace Miraheze\MatomoAnalytics\Hooks\Handlers;
 
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Hook\InfoActionHook;
+use MediaWiki\Hook\SkinAfterBottomScriptsHook;
 use MediaWiki\Html\Html;
 use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
@@ -18,16 +19,8 @@ class Main implements
 	CreateWikiDeletionHook,
 	CreateWikiRenameHook,
 	InfoActionHook,
-	SkinAfterBottomScripts
+	SkinAfterBottomScriptsHook
 {
-	public static function matomoAnalyticsSchemaUpdates( $updater ) {
-		$updater->addExtensionTable( 'matomo',
-			__DIR__ . '/../sql/matomo.sql' );
-
-		$updater->addExtensionIndex( 'matomo', 'matomo_wiki',
-			__DIR__ . '/../sql/patches/patch-matomo-add-indexes.sql' );
-	}
-
 	public static function onCreateWikiCreation( $dbname ) {
 		$mA = new MatomoAnalytics;
 		$mA->addSite( $dbname );

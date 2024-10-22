@@ -23,10 +23,13 @@ class ModifyMatomo extends Maintenance {
 
 	public function execute() {
 		$DBname = $this->getConfig()->get( 'DBname' );
+		$mA = new MatomoAnalytics;
 
-		$this->getOption( 'remove', false ) ?
-			Miraheze\MatomoAnalytics\MatomoAnalytics::deleteSite( $DBname ) :
-			Miraheze\MatomoAnalytics\MatomoAnalytics::addSite( $DBname );
+		if ( $this->getOption( 'remove', false ) ) {
+			$mA->deleteSite( $DBname )
+		} else 
+			$mA->addSite( $DBname );
+	}	
 	}
 }
 

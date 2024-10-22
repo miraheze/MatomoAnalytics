@@ -3,6 +3,7 @@
 namespace Miraheze\MatomoAnalytics;
 
 use Exception;
+use FormatJson;
 use MediaWiki\MediaWikiServices;
 use ObjectCache;
 use RuntimeException;
@@ -38,7 +39,7 @@ class MatomoAnalytics {
 			__METHOD__
 		);
 
-		$siteJson = MediaWiki\Json\FormatJson::decode( $siteReply, true );
+		$siteJson = FormatJson::decode( $siteReply, true );
 
 		if ( !$siteJson ) {
 			$logger->error( "Could not create id for {$dbname}." );
