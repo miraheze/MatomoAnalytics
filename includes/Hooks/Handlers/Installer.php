@@ -6,7 +6,7 @@ use MediaWiki\Installer\Hook\LoadExtensionSchemaUpdatesHook;
 
 class Installer implements LoadExtensionSchemaUpdatesHook {
 
-	public static function onLoadExtensionSchemaUpdates( DatabaseUpdater $updater ) {
+	public static function onLoadExtensionSchemaUpdates( $updater ) {
 		$updater->addExtensionTable( 'matomo',
 			__DIR__ . '/../sql/matomo.sql' );
 

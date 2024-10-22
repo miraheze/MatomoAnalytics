@@ -3,6 +3,7 @@
 namespace Miraheze\MatomoAnalytics\Maintenance;
 
 use Maintenance;
+use Miraheze\MatomoAnalytics\MatomoAnalytics;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
@@ -25,8 +26,8 @@ class ModifyMatomo extends Maintenance {
 		$DBname = $this->getConfig()->get( 'DBname' );
 
 		$this->getOption( 'remove', false ) ?
-			MatomoAnalytics::deleteSite( $DBname ) :
-			MatomoAnalytics::addSite( $DBname );
+			Miraheze\MatomoAnalytics\MatomoAnalytics::deleteSite( $DBname ) :
+			Miraheze\MatomoAnalytics\MatomoAnalytics::addSite( $DBname );
 	}
 }
 

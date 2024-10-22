@@ -1,5 +1,7 @@
 <?php
 
+namespace Miraheze\MatomoAnalytics\Hooks\Handlers;
+
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Hook\InfoActionHook;
 use MediaWiki\Html\Html;
@@ -9,6 +11,8 @@ use MediaWiki\Message\Message;
 use Miraheze\CreateWiki\Hooks\CreateWikiCreationHook;
 use Miraheze\CreateWiki\Hooks\CreateWikiDeletionHook;
 use Miraheze\CreateWiki\Hooks\CreateWikiRenameHook;
+use Miraheze\MatomoAnalytics\MatomoAnalytics;
+use Miraheze\MatomoAnalytics\MatomoAnalyticsWiki;
 
 class Main implements
 	CreateWikiCreationHook,
@@ -26,15 +30,18 @@ class Main implements
 	}
 
 	public static function onCreateWikiCreation( $dbname ) {
-		MatomoAnalytics::addSite( $dbname );
+		$mA = new MatomoAnalytics;
+		$mA->addSite( $dbname );
 	}
 
 	public static function onCreateWikiDeletion( $dbw, $dbname ) {
-		MatomoAnalytics::deleteSite( $dbname );
+		$mA = new MatomoAnalytics;
+		$mA->deleteSite( $dbname );
 	}
 
 	public static function onCreateWikiRename( $dbw, $old, $new ) {
-		MatomoAnalytics::renameSite( $old, $new );
+		$mA = new MatomoAnalytics;
+		$mA->renameSite( $old, $new );
 	}
 
 	/**
@@ -117,10 +124,9 @@ class Main implements
 		$data = $mA->getPageViews( $title );
 		$total = array_sum( $data );
 
-		$formatted = Message::numParams( $total );
 		$pageInfo['header-basic'][] = [
 			$context->msg( 'matomoanalytics-labels-pastmonth' ),
-			$context->msg( 'matomoanalytics-count', $formatted )->parse()
+			$context->msg( 'matomoanalytics-count' )->numParams( $total )->parse()
 		];
 	}
 }

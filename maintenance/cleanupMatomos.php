@@ -3,6 +3,8 @@
 namespace Miraheze\MatomoAnalytics\Maintenance;
 
 use Maintenance;
+use Miraheze\MatomoAnalytics\MatomoAnalytics;
+use UnexpectedValueException;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
@@ -53,7 +55,8 @@ class CleanupMatomos extends Maintenance {
 				}
 
 				$this->output( "Remove matomo id from {$DBname}\n" );
-				MatomoAnalytics::deleteSite( $DBname );
+				$mA = new MatomoAnalytics;
+				$mA->deleteSite( $DBname );
 			}
 		}
 	}

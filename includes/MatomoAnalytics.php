@@ -39,7 +39,7 @@ class MatomoAnalytics {
 			__METHOD__
 		);
 
-		$siteJson = FormatJson::decode( $siteReply, true );
+		$siteJson = MediaWiki\Json\FormatJson::decode( $siteReply, true );
 
 		if ( !$siteJson ) {
 			$logger->error( "Could not create id for {$dbname}." );
