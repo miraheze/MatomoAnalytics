@@ -35,13 +35,13 @@
 	},
 	"Hooks": {
 		"CreateWikiCreation": {
-			"handler": "Main"
+			"handler": "CreateWiki"
 		},
 		"CreateWikiDeletion": {
-			"handler": "Main"
+			"handler": "CreateWiki"
 		},
 		"CreateWikiRename": {
-			"handler": "Main"
+			"handler": "CreateWiki"
 		},
 		"LoadExtensionSchemaUpdates": {
 			"handler": "Installer"
@@ -54,6 +54,9 @@
 		}
 	},
 	"HookHandlers": {
+		"CreateWiki": {
+			"class": "Miraheze\\MatomoAnalytics\\Hooks\\Handlers\\CreateWiki"
+		},
 		"Installer": {
 			"class": "Miraheze\\MatomoAnalytics\\Hooks\\Handlers\\Installer"
 		},
