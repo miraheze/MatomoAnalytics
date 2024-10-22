@@ -8,7 +8,7 @@ use Miraheze\CreateWiki\Hooks\CreateWikiRenameHook;
 use Miraheze\MatomoAnalytics\MatomoAnalytics;
 use Wikimedia\Rdbms\DBConnRef;
 
-class Main implements
+class CreateWiki implements
 	CreateWikiCreationHook,
 	CreateWikiDeletionHook,
 	CreateWikiRenameHook
