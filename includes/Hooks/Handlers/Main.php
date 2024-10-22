@@ -14,6 +14,7 @@ use Miraheze\CreateWiki\Hooks\CreateWikiRenameHook;
 use Miraheze\MatomoAnalytics\MatomoAnalytics;
 use Miraheze\MatomoAnalytics\MatomoAnalyticsWiki;
 use Skin;
+use Wikimedia\Rdbms\DBConnRef;
 
 class Main implements
 	CreateWikiCreationHook,
@@ -27,12 +28,12 @@ class Main implements
 		$mA->addSite( $dbname );
 	}
 
-	public function onCreateWikiDeletion( $dbw, $dbname ) {
+	public function onCreateWikiDeletion( DBConnRef $cwdb, string $dbname ): void {
 		$mA = new MatomoAnalytics;
 		$mA->deleteSite( $dbname );
 	}
 
-	public function onCreateWikiRename( $dbw, $old, $new ) {
+	public function onCreateWikiRename( DBConnRef $cwdb, string $oldDbName, string $newDbName ): void {
 		$mA = new MatomoAnalytics;
 		$mA->renameSite( $old, $new );
 	}
