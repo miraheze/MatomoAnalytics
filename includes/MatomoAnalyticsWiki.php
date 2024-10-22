@@ -20,24 +20,26 @@ class MatomoAnalyticsWiki {
 	) {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
 
+		$query = [
+			'module' => 'API',
+			'format' => 'json',
+			'date' => 'previous30',
+			'method' => $module,
+			'period' => $period,
+			'idSite' => $this->siteId,
+			'token_auth' => $config->get( 'MatomoAnalyticsTokenAuth' )
+		];
+
+		if ( $title !== null ) {
+			$query['pageName'] = $title;
+		}
+
 		$siteReply = MediaWikiServices::getInstance()->getHttpRequestFactory()->get(
 			wfAppendQuery(
 				$config->get( 'MatomoAnalyticsServerURL' ),
-				[
-					'module' => 'API',
-					'format' => 'json',
-					'date' => 'previous30',
-					'method' => $module,
-					'period' => $period,
-					'idSite' => $this->siteId,
-					'token_auth' => $config->get( 'MatomoAnalyticsTokenAuth' )
-				]
+				$query
 			)
 		);
-
-		if ( $title !== null ) {
-			$siteReply['pageTitle'] = $title;
-		}
 
 		$siteJson = json_decode( $siteReply, true );
 
