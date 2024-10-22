@@ -58,13 +58,7 @@
 			"class": "Miraheze\\MatomoAnalytics\\Hooks\\Handlers\\Installer"
 		},
 		"Main": {
-			"class": "Miraheze\\MatomoAnalytics\\Hooks\\Handlers\\Main",
-			"services": [
-				"ConfigFactory",
-				"ConnectionProvider",
-				"CreateWikiDataFactory",
-				"RemoteWikiFactory"
-			]
+			"class": "Miraheze\\MatomoAnalytics\\Hooks\\Handlers\\Main"
 		}
 	},
 	"ResourceModules": {
