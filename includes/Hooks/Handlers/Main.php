@@ -21,17 +21,17 @@ class Main implements
 	InfoActionHook,
 	SkinAfterBottomScriptsHook
 {
-	public static function onCreateWikiCreation( $dbname ) {
+	public function onCreateWikiCreation( $dbname ) {
 		$mA = new MatomoAnalytics;
 		$mA->addSite( $dbname );
 	}
 
-	public static function onCreateWikiDeletion( $dbw, $dbname ) {
+	public function onCreateWikiDeletion( $dbw, $dbname ) {
 		$mA = new MatomoAnalytics;
 		$mA->deleteSite( $dbname );
 	}
 
-	public static function onCreateWikiRename( $dbw, $old, $new ) {
+	public function onCreateWikiRename( $dbw, $old, $new ) {
 		$mA = new MatomoAnalytics;
 		$mA->renameSite( $old, $new );
 	}
@@ -45,7 +45,7 @@ class Main implements
 	 * @param string &$text Output text.
 	 * @return bool
 	 */
-	public function onSkinAfterBottomScripts( \Skin $skin, string &$text ) {
+	public function onSkinAfterBottomScripts( $skin, &$text ) {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
 
 		// Check if JS tracking is disabled and bow out early
