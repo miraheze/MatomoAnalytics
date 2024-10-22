@@ -22,7 +22,7 @@ class Main implements
 	InfoActionHook,
 	SkinAfterBottomScriptsHook
 {
-	public function onCreateWikiCreation(string $dbname, bool $private): void {
+	public function onCreateWikiCreation( string $dbname, bool $private ): void {
 		$mA = new MatomoAnalytics;
 		$mA->addSite( $dbname );
 	}
