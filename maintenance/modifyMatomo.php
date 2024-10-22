@@ -27,10 +27,11 @@ class ModifyMatomo extends Maintenance {
 
 		if ( $this->getOption( 'remove', false ) ) {
 			$mA->deleteSite( $DBname )
-		} else 
+		} else {
 			$mA->addSite( $DBname );
-	}	
+		}
 	}
+}
 }
 
 $maintClass = ModifyMatomo::class;
