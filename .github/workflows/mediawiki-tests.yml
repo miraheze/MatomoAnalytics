@@ -18,6 +18,7 @@ jobs:
             php-docker: 82
             composer-test: true
             experimental: false
+            keepdependencies: true
 
           # Latest MediaWiki master - PHP 8.2
           - mw: 'master'
