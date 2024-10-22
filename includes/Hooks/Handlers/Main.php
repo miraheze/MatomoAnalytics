@@ -33,7 +33,7 @@ class Main implements
 		$mA->deleteSite( $dbname );
 	}
 
-	public function onCreateWikiRename( DBConnRef $cwdb, string $oldDbName, string $newDbName ): void {
+	public function onCreateWikiRename( DBConnRef $cwdb, string $old, string $new ): void {
 		$mA = new MatomoAnalytics;
 		$mA->renameSite( $old, $new );
 	}
