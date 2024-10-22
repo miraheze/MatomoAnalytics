@@ -13,6 +13,7 @@ use Miraheze\CreateWiki\Hooks\CreateWikiDeletionHook;
 use Miraheze\CreateWiki\Hooks\CreateWikiRenameHook;
 use Miraheze\MatomoAnalytics\MatomoAnalytics;
 use Miraheze\MatomoAnalytics\MatomoAnalyticsWiki;
+use Skin;
 
 class Main implements
 	CreateWikiCreationHook,
@@ -21,7 +22,7 @@ class Main implements
 	InfoActionHook,
 	SkinAfterBottomScriptsHook
 {
-	public function onCreateWikiCreation( $dbname ) {
+	public function onCreateWikiCreation( $dbname, $private ) {
 		$mA = new MatomoAnalytics;
 		$mA->addSite( $dbname );
 	}
