@@ -2,28 +2,29 @@
 
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
+use MediaWiki\Hook\InfoActionHook;
 use MediaWiki\MediaWikiServices;
 
 class MatomoAnalyticsHooks {
-public static function matomoAnalyticsSchemaUpdates( DatabaseUpdater $updater ) {
-	$updater->addExtensionTable( 'matomo',
-		__DIR__ . '/../sql/matomo.sql' );
+	public static function matomoAnalyticsSchemaUpdates( DatabaseUpdater $updater ) {
+		$updater->addExtensionTable( 'matomo',
+			__DIR__ . '/../sql/matomo.sql' );
 
-	$updater->addExtensionIndex( 'matomo', 'matomo_wiki',
-		__DIR__ . '/../sql/patches/patch-matomo-add-indexes.sql' );
-}
+		$updater->addExtensionIndex( 'matomo', 'matomo_wiki',
+			__DIR__ . '/../sql/patches/patch-matomo-add-indexes.sql' );
+	}
 
-public static function wikiCreation( $dbname ) {
-	MatomoAnalytics::addSite( $dbname );
-}
+	public static function wikiCreation( $dbname ) {
+		MatomoAnalytics::addSite( $dbname );
+	}
 
-public static function wikiDeletion( $dbw, $dbname ) {
-	MatomoAnalytics::deleteSite( $dbname );
-}
+	public static function wikiDeletion( $dbw, $dbname ) {
+		MatomoAnalytics::deleteSite( $dbname );
+	}
 
-public static function wikiRename( $dbw, $old, $new ) {
-	MatomoAnalytics::renameSite( $old, $new );
-}
+	public static function wikiRename( $dbw, $old, $new ) {
+		MatomoAnalytics::renameSite( $old, $new );
+	}
 
 	/**
 	 * Function to add Matomo JS to all MediaWiki pages
@@ -34,36 +35,36 @@ public static function wikiRename( $dbw, $old, $new ) {
 	 * @param string &$text Output text.
 	 * @return bool
 	 */
-public static function matomoScript( $skin, &$text ) {
-	$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
+	public static function matomoScript( $skin, &$text ) {
+		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
 
-	// Check if JS tracking is disabled and bow out early
-	if ( $config->get( 'MatomoAnalyticsDisableJS' ) === true ) {
-		return true;
-	}
+		// Check if JS tracking is disabled and bow out early
+		if ( $config->get( 'MatomoAnalyticsDisableJS' ) === true ) {
+			return true;
+		}
 
-	$user = $skin->getUser();
-	$mAId = MatomoAnalytics::getSiteID( $config->get( 'DBname' ) );
+		$user = $skin->getUser();
+		$mAId = MatomoAnalytics::getSiteID( $config->get( 'DBname' ) );
 
-	$permissionManager = MediaWikiServices::getInstance()->getPermissionManager();
-	if ( $permissionManager->userHasRight( $user, 'noanalytics' ) ) {
-		$text = '<!-- MatomoAnalytics: User right noanalytics is assigned. -->';
-		return true;
-	}
+		$permissionManager = MediaWikiServices::getInstance()->getPermissionManager();
+		if ( $permissionManager->userHasRight( $user, 'noanalytics' ) ) {
+			$text = '<!-- MatomoAnalytics: User right noanalytics is assigned. -->';
+			return true;
+		}
 
-	$id = strval( $mAId );
-	$globalId = (string)$config->get( 'MatomoAnalyticsGlobalID' );
-	$globalIdInt = (int)$globalId;
-	$serverurl = $config->get( 'MatomoAnalyticsServerURL' );
-	$title = $skin->getRelevantTitle();
+		$id = strval( $mAId );
+		$globalId = (string)$config->get( 'MatomoAnalyticsGlobalID' );
+		$globalIdInt = (int)$globalId;
+		$serverurl = $config->get( 'MatomoAnalyticsServerURL' );
+		$title = $skin->getRelevantTitle();
 
-	$jstitle = Html::encodeJsVar( $title->getPrefixedText() );
-	$dbname = Html::encodeJsVar( $config->get( 'DBname' ) );
-	$urltitle = $title->getPrefixedURL();
-	$userType = $user->isRegistered() ? 'User' : 'Anonymous';
-	$cookieDisable = (int)$config->get( 'MatomoAnalyticsDisableCookie' );
-	$forceGetRequest = (int)$config->get( 'MatomoAnalyticsForceGetRequest' );
-	$text = <<<SCRIPT
+		$jstitle = Html::encodeJsVar( $title->getPrefixedText() );
+		$dbname = Html::encodeJsVar( $config->get( 'DBname' ) );
+		$urltitle = $title->getPrefixedURL();
+		$userType = $user->isRegistered() ? 'User' : 'Anonymous';
+		$cookieDisable = (int)$config->get( 'MatomoAnalyticsDisableCookie' );
+		$forceGetRequest = (int)$config->get( 'MatomoAnalyticsForceGetRequest' );
+		$text = <<<SCRIPT
 			<script>
 			var _paq = window._paq = window._paq || [];
 			if ( {$cookieDisable} ) {
@@ -90,26 +91,26 @@ public static function matomoScript( $skin, &$text ) {
 			<noscript><p><img src="{$serverurl}matomo.php?idsite={$id}&amp;rec=1&amp;action_name={$urltitle}" style="border:0;" alt="" /></p></noscript>
 		SCRIPT;
 
-	return true;
-}
+		return true;
+	}
 
 		/**
-		 * Display total pageviews in the last 30 days and show a graph with details when clicked.
-		 * @param IContextSource $context
-		 * @param array &$pageInfo
-		 */
-public function onInfoAction( $context, &$pageInfo ) {
-	$mA = new MatomoAnalyticsWiki( $context->getConfig()->get( 'DBname' ) );
+	 * Display total pageviews in the last 30 days and show a graph with details when clicked.
+	 * @param IContextSource $context
+	 * @param array &$pageInfo
+	 */
+	public function onInfoAction( $context, &$pageInfo ) {
+		$mA = new MatomoAnalyticsWiki( $context->getConfig()->get( 'DBname' ) );
 
-	$title = $context->getTitle();
-	$data = $mA->getPageViews( $title );
-	$total = array_sum( $data );
+		$title = $context->getTitle();
+		$data = $mA->getPageViews( $title );
+		$total = array_sum( $data );
 
-	$lang = $context->getLanguage();
-	$formatted = $lang->formatNum( $total );
-	$pageInfo['header-basic'][] = [
-		$context->msg( 'matomoanalytics-labels-pastmonth' ),
-		$context->msg( 'matomoanalytics-count', $formatted )->parse()
-		)
-	];
+		$lang = $context->getLanguage();
+		$formatted = $lang->formatNum( $total );
+		$pageInfo['header-basic'][] = [
+			$context->msg( 'matomoanalytics-labels-pastmonth' ),
+			$context->msg( 'matomoanalytics-count', $formatted )->parse()
+			)
+		];
 }
