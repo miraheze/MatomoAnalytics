@@ -15,7 +15,8 @@ class MatomoAnalyticsWiki {
 		string $period = 'range',
 		string $jsonLabel = 'label',
 		string $jsonData = 'nb_visits',
-		bool $flat = false
+		bool $flat = false,
+		string $title = null
 	) {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
 
@@ -33,6 +34,10 @@ class MatomoAnalyticsWiki {
 				]
 			)
 		);
+
+		if ( $title !== null ) {
+			$query['pageTitle'] = $title;
+		}
 
 		$siteJson = json_decode( $siteReply, true );
 
@@ -131,4 +136,15 @@ class MatomoAnalyticsWiki {
 	public function getVisitDaysPassed() {
 		return $this->getData( 'VisitorInterest.getNumberOfVisitsByDaysSinceLast' );
 	}
+
+	// Visits by social network
+	public function getTopPages() {
+		return $this->getData( 'Actions.getPageTitles' );
+	}
+
+	// Visits by social network
+	public function getPageViews( $title ) {
+		return $this->getData( 'Actions.getPageTitle', 'range', 'label', 'nb_visits', false, $title );
+	}
+
 }

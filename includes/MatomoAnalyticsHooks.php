@@ -1,6 +1,8 @@
 <?php
 
+use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
+use MediaWiki\Hook\InfoActionHook;
 use MediaWiki\MediaWikiServices;
 
 class MatomoAnalyticsHooks {
@@ -91,4 +93,24 @@ class MatomoAnalyticsHooks {
 
 		return true;
 	}
+
+		/**
+	 * Display total pageviews in the last 30 days and show a graph with details when clicked.
+	 * @param IContextSource $context
+	 * @param array &$pageInfo
+	 */
+	public function onInfoAction( $context, &$pageInfo ) {
+		$mA = new MatomoAnalyticsWiki( $context->getConfig()->get( 'DBname' ) );
+
+		$title = $context->getTitle();
+		$data = $mA->getPageViews( $title );
+		$total = array_sum( $data );
+
+		$lang = $context->getLanguage();
+		$formatted = $lang->formatNum( $total );
+		$pageInfo['header-basic'][] = [
+			$context->msg( 'matomoanalytics-labels-pastmonth' ),
+			$context->msg( 'matomoanalytics-count', $formatted )->parse()
+			)
+		];
 }

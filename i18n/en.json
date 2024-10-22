@@ -2,11 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"John Lewis",
-			"Universal Omega"
+			"Universal Omega",
+			"Agent Isai"
 		]
 	},
 	"action-noanalytics": "not be tracked via Matomo",
-	"analytics": "MatomoAnalytics",
+	"analytics": "Wiki analytics",
+	"matomoanalytics-count": "$1",
 	"matomoanalytics-desc": "Integrates analytics from Matomo and MediaWiki",
 	"matomoanalytics-header": "You can use the tabs below to select different statistics to view that we store using Matomo. All data is collected over the past 30 days starting from yesterday (updated daily).",
 	"matomoanalytics-labels-browser": "Browsers",
@@ -14,6 +16,7 @@
 	"matomoanalytics-labels-country": "Country",
 	"matomoanalytics-labels-devices": "Devices",
 	"matomoanalytics-labels-os": "OS",
+	"matomoanalytics-labels-pastmonth": "Page views in the past month",
 	"matomoanalytics-labels-referrer": "Site Referrals",
 	"matomoanalytics-labels-resolution": "Resolution",
 	"matomoanalytics-labels-search": "Search Keywords",
