@@ -1,10 +1,10 @@
 <?php
 
 use MediaWiki\Context\IContextSource;
-use MediaWiki\Html\Html;
 use MediaWiki\Hook\InfoActionHook;
 use MediaWiki\Hook\SkinAfterBottomScriptsHook
 use MediaWiki\MainConfigNames;
+use MediaWiki\Html\Html;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Message\Message;
 use Miraheze\CreateWiki\Hooks\CreateWikiCreationHook;
@@ -16,7 +16,8 @@ class Main implements
 	CreateWikiDeletionHook,
 	CreateWikiRenameHook,
 	InfoActionHook,
-	SkinAfterBottomScripts {
+	SkinAfterBottomScripts
+{
 	public static function matomoAnalyticsSchemaUpdates( DatabaseUpdater $updater ) {
 		$updater->addExtensionTable( 'matomo',
 			__DIR__ . '/../sql/matomo.sql' );
@@ -106,10 +107,10 @@ class Main implements
 	}
 
 		/**
-	 * Display total pageviews in the last 30 days and show a graph with details when clicked.
-	 * @param IContextSource $context
-	 * @param array &$pageInfo
-	 */
+		 * Display total pageviews in the last 30 days and show a graph with details when clicked.
+		 * @param IContextSource $context
+		 * @param array &$pageInfo
+		 */
 	public function onInfoAction( $context, &$pageInfo ) {
 		$mA = new MatomoAnalyticsWiki( $context->getConfig()->get( MainConfigNames::DBname ) );
 
