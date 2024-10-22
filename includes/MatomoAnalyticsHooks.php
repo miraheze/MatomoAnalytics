@@ -2,6 +2,7 @@
 
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
+use MediaWiki\Hook\InfoActionHook;
 use MediaWiki\MediaWikiServices;
 
 class MatomoAnalyticsHooks {
@@ -94,10 +95,10 @@ class MatomoAnalyticsHooks {
 	}
 
 		/**
-		 * Display total pageviews in the last 30 days and show a graph with details when clicked.
-		 * @param IContextSource $context
-		 * @param array &$pageInfo
-		 */
+	 * Display total pageviews in the last 30 days and show a graph with details when clicked.
+	 * @param IContextSource $context
+	 * @param array &$pageInfo
+	 */
 	public function onInfoAction( $context, &$pageInfo ) {
 		$mA = new MatomoAnalyticsWiki( $context->getConfig()->get( 'DBname' ) );
 
