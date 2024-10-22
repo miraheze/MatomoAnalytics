@@ -2,7 +2,7 @@
 
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Hook\InfoActionHook;
-use MediaWiki\Hook\SkinAfterBottomScriptsHook
+use MediaWiki\Hook\SkinAfterBottomScriptsHook;
 use MediaWiki\MainConfigNames;
 use MediaWiki\Html\Html;
 use MediaWiki\MediaWikiServices;
@@ -18,7 +18,7 @@ class Main implements
 	InfoActionHook,
 	SkinAfterBottomScripts
 {
-	public static function matomoAnalyticsSchemaUpdates( DatabaseUpdater $updater ) {
+	public static function matomoAnalyticsSchemaUpdates( $updater ) {
 		$updater->addExtensionTable( 'matomo',
 			__DIR__ . '/../sql/matomo.sql' );
 

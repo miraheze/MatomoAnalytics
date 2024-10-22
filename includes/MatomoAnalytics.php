@@ -2,7 +2,12 @@
 
 namespace Miraheze\MatomoAnalytics;
 
+use Exception;
+use Miraheze\MatomoAnalytics\MatomoAnalyticsOOUIForm;
+use MediaWiki\Json\FormatJson;
 use MediaWiki\MediaWikiServices;
+use ObjectCache;
+use RuntimeException;
 
 class MatomoAnalytics {
 	private static function getConfig() {

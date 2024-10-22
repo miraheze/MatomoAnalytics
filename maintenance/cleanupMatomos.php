@@ -2,6 +2,8 @@
 
 namespace Miraheze\MatomoAnalytics\Maintenance;
 
+use Maintenance;
+
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
 	$IP = __DIR__ . '/../../..';

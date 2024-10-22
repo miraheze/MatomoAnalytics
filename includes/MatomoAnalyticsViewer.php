@@ -2,6 +2,10 @@
 
 namespace Miraheze\MatomoAnalytics;
 
+use Miraheze\MatomoAnalytics\MatomoAnalyticsOOUIForm;
+use MediaWiki\Context\IContextSource;
+use MediaWiki\Output\OutputPage;
+
 class MatomoAnalyticsViewer {
 	public function getFormDescriptor(
 		IContextSource $context
