@@ -1,5 +1,7 @@
 <?php
 
+namespace Miraheze\MatomoAnalytics;
+
 use MediaWiki\MediaWikiServices;
 
 class MatomoAnalytics {

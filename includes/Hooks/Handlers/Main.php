@@ -3,9 +3,20 @@
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
 use MediaWiki\Hook\InfoActionHook;
+use MediaWiki\Hook\SkinAfterBottomScriptsHook
+use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Message\Message;
+use Miraheze\CreateWiki\Hooks\CreateWikiCreationHook;
+use Miraheze\CreateWiki\Hooks\CreateWikiDeletionHook;
+use Miraheze\CreateWiki\Hooks\CreateWikiRenameHook;
 
-class MatomoAnalyticsHooks {
+class Main implements
+	CreateWikiCreationHook,
+	CreateWikiDeletionHook,
+	CreateWikiRenameHook,
+	InfoActionHook,
+	SkinAfterBottomScripts {
 	public static function matomoAnalyticsSchemaUpdates( DatabaseUpdater $updater ) {
 		$updater->addExtensionTable( 'matomo',
 			__DIR__ . '/../sql/matomo.sql' );
@@ -14,15 +25,15 @@ class MatomoAnalyticsHooks {
 			__DIR__ . '/../sql/patches/patch-matomo-add-indexes.sql' );
 	}
 
-	public static function wikiCreation( $dbname ) {
+	public static function onCreateWikiCreation( $dbname ) {
 		MatomoAnalytics::addSite( $dbname );
 	}
 
-	public static function wikiDeletion( $dbw, $dbname ) {
+	public static function onCreateWikiDeletion( $dbw, $dbname ) {
 		MatomoAnalytics::deleteSite( $dbname );
 	}
 
-	public static function wikiRename( $dbw, $old, $new ) {
+	public static function onCreateWikiRename( $dbw, $old, $new ) {
 		MatomoAnalytics::renameSite( $old, $new );
 	}
 
@@ -35,7 +46,7 @@ class MatomoAnalyticsHooks {
 	 * @param string &$text Output text.
 	 * @return bool
 	 */
-	public static function matomoScript( $skin, &$text ) {
+	public static function onSkinAfterBottomScripts( $skin, &$text ) {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
 
 		// Check if JS tracking is disabled and bow out early
@@ -100,14 +111,13 @@ class MatomoAnalyticsHooks {
 	 * @param array &$pageInfo
 	 */
 	public function onInfoAction( $context, &$pageInfo ) {
-		$mA = new MatomoAnalyticsWiki( $context->getConfig()->get( 'DBname' ) );
+		$mA = new MatomoAnalyticsWiki( $context->getConfig()->get( MainConfigNames::DBname ) );
 
 		$title = $context->getTitle();
 		$data = $mA->getPageViews( $title );
 		$total = array_sum( $data );
 
-		$lang = $context->getLanguage();
-		$formatted = $lang->formatNum( $total );
+		$formatted = Message::numParams( $total );
 		$pageInfo['header-basic'][] = [
 			$context->msg( 'matomoanalytics-labels-pastmonth' ),
 			$context->msg( 'matomoanalytics-count', $formatted )->parse()

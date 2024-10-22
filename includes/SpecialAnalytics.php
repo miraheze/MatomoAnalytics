@@ -1,5 +1,7 @@
 <?php
 
+namespace Miraheze\MatomoAnalytics;
+
 class SpecialAnalytics extends SpecialPage {
 	public function __construct() {
 		parent::__construct( 'Analytics' );

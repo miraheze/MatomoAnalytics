@@ -1,5 +1,7 @@
 <?php
 
+namespace Miraheze\MatomoAnalytics;
+
 class MatomoAnalyticsViewer {
 	public function getFormDescriptor(
 		IContextSource $context

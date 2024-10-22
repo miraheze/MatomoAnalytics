@@ -1,5 +1,7 @@
 <?php
 
+namespace Miraheze\MatomoAnalytics;
+
 use MediaWiki\MediaWikiServices;
 
 class MatomoAnalyticsWiki {
@@ -139,12 +141,12 @@ class MatomoAnalyticsWiki {
 		return $this->getData( 'VisitorInterest.getNumberOfVisitsByDaysSinceLast' );
 	}
 
-	// Visits by social network
+	// Visits by amount of views
 	public function getTopPages() {
 		return $this->getData( 'Actions.getPageTitles' );
 	}
 
-	// Visits by social network
+	// Get visits for specific pages
 	public function getPageViews( $title ) {
 		return $this->getData( 'Actions.getPageTitle', 'range', 'label', 'nb_visits', false, $title );
 	}

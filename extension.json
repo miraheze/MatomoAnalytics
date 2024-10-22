@@ -6,7 +6,7 @@
 		"Universal Omega"
 	],
 	"url": "https://github.com/miraheze/MatomoAnalytics",
-	"version": "1.1.3",
+	"version": "1.2",
 	"descriptionmsg": "matomoanalytics-desc",
 	"license-name": "GPL-3.0-or-later",
 	"type": "specialpage",
@@ -24,36 +24,48 @@
 	"ExtensionMessagesFiles": {
 		"MatomoAnalyticsAliases": "includes/MatomoAnalyticsAliases.php"
 	},
-	"AutoloadClasses": {
-		"MatomoAnalytics": "includes/MatomoAnalytics.php",
-		"MatomoAnalyticsHooks": "includes/MatomoAnalyticsHooks.php",
-		"MatomoAnalyticsOOUIForm": "includes/MatomoAnalyticsOOUIForm.php",
-		"MatomoAnalyticsViewer": "includes/MatomoAnalyticsViewer.php",
-		"MatomoAnalyticsWiki": "includes/MatomoAnalyticsWiki.php",
-		"SpecialAnalytics": "includes/SpecialAnalytics.php"
+	"AutoloadNamespaces": {
+		"Miraheze\\MatomoAnalytics\\": "includes/",
+		"Miraheze\\MatomoAnalytics\\Maintenance\\": "maintenance/"
 	},
 	"SpecialPages": {
-		"Analytics": "SpecialAnalytics"
+		"Analytics": {
+			"class": "Miraheze\\MatomoAnalytics\\SpecialAnalytics"
+		}
 	},
 	"Hooks": {
-		"CreateWikiCreation": [
-			"MatomoAnalyticsHooks::wikiCreation"
-		],
-		"CreateWikiDeletion": [
-			"MatomoAnalyticsHooks::wikiDeletion"
-		],
-		"CreateWikiRename": [
-			"MatomoAnalyticsHooks::wikiRename"
-		],
-		"LoadExtensionSchemaUpdates": [
-			"MatomoAnalyticsHooks::matomoAnalyticsSchemaUpdates"
-		],
-		"InfoAction": [
-			"MatomoAnalyticsHooks::onInfoAction"
-		],
-		"SkinAfterBottomScripts": [
-			"MatomoAnalyticsHooks::matomoScript"
-		]
+		"CreateWikiCreation": {
+			"handler": "Main"
+		},
+		"CreateWikiDeletion": {
+			"handler": "Main"
+		},
+		"CreateWikiRename": {
+			"handler": "Main"
+		},
+		"LoadExtensionSchemaUpdates": {
+			"handler": "Installer"
+		},
+		"InfoAction": {
+			"handler": "Main"
+		},
+		"SkinAfterBottomScripts": {
+			"handler": "Main"
+		}
+	},
+	"HookHandlers": {
+		"Installer": {
+			"class": "Miraheze\\MatomoAnalytics\\Hooks\\Handlers\\Installer"
+		},
+		"Main": {
+			"class": "Miraheze\\MatomoAnalytics\\Hooks\\Handlers\\Main",
+			"services": [
+				"ConfigFactory",
+				"ConnectionProvider",
+				"CreateWikiDataFactory",
+				"RemoteWikiFactory"
+			]
+		}
 	},
 	"ResourceModules": {
 		"ext.matomoanalytics.oouiform": {
