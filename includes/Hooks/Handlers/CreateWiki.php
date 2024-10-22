@@ -2,12 +2,10 @@
 
 namespace Miraheze\MatomoAnalytics\Hooks\Handlers;
 
-use MediaWiki\MediaWikiServices;
 use Miraheze\CreateWiki\Hooks\CreateWikiCreationHook;
 use Miraheze\CreateWiki\Hooks\CreateWikiDeletionHook;
 use Miraheze\CreateWiki\Hooks\CreateWikiRenameHook;
 use Miraheze\MatomoAnalytics\MatomoAnalytics;
-use Miraheze\MatomoAnalytics\MatomoAnalyticsWiki;
 use Wikimedia\Rdbms\DBConnRef;
 
 class Main implements
