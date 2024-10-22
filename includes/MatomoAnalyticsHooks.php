@@ -111,6 +111,6 @@ class MatomoAnalyticsHooks {
 		$pageInfo['header-basic'][] = [
 			$context->msg( 'matomoanalytics-labels-pastmonth' ),
 			$context->msg( 'matomoanalytics-count', $formatted )->parse()
-			)
 		];
+	}
 }

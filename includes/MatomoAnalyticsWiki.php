@@ -36,7 +36,7 @@ class MatomoAnalyticsWiki {
 		);
 
 		if ( $title !== null ) {
-			$query['pageTitle'] = $title;
+			$siteReply['pageTitle'] = $title;
 		}
 
 		$siteJson = json_decode( $siteReply, true );
