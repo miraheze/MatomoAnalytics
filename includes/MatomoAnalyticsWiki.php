@@ -18,7 +18,7 @@ class MatomoAnalyticsWiki {
 		string $jsonLabel = 'label',
 		string $jsonData = 'nb_visits',
 		bool $flat = false,
-		?string $title = null
+		?string $pageUrl = null
 	) {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
 
@@ -32,8 +32,8 @@ class MatomoAnalyticsWiki {
 			'token_auth' => $config->get( 'MatomoAnalyticsTokenAuth' )
 		];
 
-		if ( $title !== null ) {
-			$query['pageName'] = $title;
+		if ( $pageUrl !== null ) {
+			$query['pageUrl'] = $pageUrl;
 		}
 
 		$siteReply = MediaWikiServices::getInstance()->getHttpRequestFactory()->get(
@@ -147,8 +147,8 @@ class MatomoAnalyticsWiki {
 	}
 
 	// Get visits for specific pages
-	public function getPageViews( string $title ) {
-		return $this->getData( 'Actions.getPageTitle', 'range', 'label', 'nb_visits', false, $title );
+	public function getPageViews( string $pageUrl ) {
+		return $this->getData( 'Actions.getPageUrl', 'range', 'label', 'nb_visits', false, $pageUrl );
 	}
 
 }

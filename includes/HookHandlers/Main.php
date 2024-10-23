@@ -93,7 +93,8 @@ class Main implements
 		$mA = new MatomoAnalyticsWiki( $context->getConfig()->get( MainConfigNames::DBname ) );
 
 		$title = $context->getTitle();
-		$data = $mA->getPageViews( $title );
+		$url = $title->getFullURL();
+		$data = $mA->getPageViews( $url );
 		$total = array_sum( $data );
 
 		$pageInfo['header-basic'][] = [
