@@ -1,29 +1,21 @@
 <?php
 
+namespace Miraheze\MatomoAnalytics\HookHandlers;
+
+use MediaWiki\Context\IContextSource;
+use MediaWiki\Hook\InfoActionHook;
+use MediaWiki\Hook\SkinAfterBottomScriptsHook;
 use MediaWiki\Html\Html;
+use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
+use Miraheze\MatomoAnalytics\MatomoAnalytics;
+use Miraheze\MatomoAnalytics\MatomoAnalyticsWiki;
+use Skin;
 
-class MatomoAnalyticsHooks {
-	public static function matomoAnalyticsSchemaUpdates( DatabaseUpdater $updater ) {
-		$updater->addExtensionTable( 'matomo',
-			__DIR__ . '/../sql/matomo.sql' );
-
-		$updater->addExtensionIndex( 'matomo', 'matomo_wiki',
-			__DIR__ . '/../sql/patches/patch-matomo-add-indexes.sql' );
-	}
-
-	public static function wikiCreation( $dbname ) {
-		MatomoAnalytics::addSite( $dbname );
-	}
-
-	public static function wikiDeletion( $dbw, $dbname ) {
-		MatomoAnalytics::deleteSite( $dbname );
-	}
-
-	public static function wikiRename( $dbw, $old, $new ) {
-		MatomoAnalytics::renameSite( $old, $new );
-	}
-
+class Main implements
+	InfoActionHook,
+	SkinAfterBottomScriptsHook
+{
 	/**
 	 * Function to add Matomo JS to all MediaWiki pages
 	 *
@@ -33,7 +25,7 @@ class MatomoAnalyticsHooks {
 	 * @param string &$text Output text.
 	 * @return bool
 	 */
-	public static function matomoScript( $skin, &$text ) {
+	public function onSkinAfterBottomScripts( $skin, &$text ) {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
 
 		// Check if JS tracking is disabled and bow out early
@@ -90,5 +82,23 @@ class MatomoAnalyticsHooks {
 		SCRIPT;
 
 		return true;
+	}
+
+		/**
+		 * Display total pageviews in the last 30 days and show a graph with details when clicked.
+		 * @param IContextSource $context
+		 * @param array &$pageInfo
+		 */
+	public function onInfoAction( $context, &$pageInfo ) {
+		$mA = new MatomoAnalyticsWiki( $context->getConfig()->get( MainConfigNames::DBname ) );
+
+		$title = $context->getTitle();
+		$data = $mA->getPageViews( $title );
+		$total = array_sum( $data );
+
+		$pageInfo['header-basic'][] = [
+			$context->msg( 'matomoanalytics-labels-pastmonth' ),
+			$context->msg( 'matomoanalytics-count' )->numParams( $total )->parse()
+		];
 	}
 }

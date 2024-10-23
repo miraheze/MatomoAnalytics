@@ -1,5 +1,7 @@
 <?php
 
+namespace Miraheze\MatomoAnalytics;
+
 use MediaWiki\MediaWikiServices;
 
 class MatomoAnalyticsWiki {
@@ -15,22 +17,29 @@ class MatomoAnalyticsWiki {
 		string $period = 'range',
 		string $jsonLabel = 'label',
 		string $jsonData = 'nb_visits',
-		bool $flat = false
+		bool $flat = false,
+		?string $title = null
 	) {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
+
+		$query = [
+			'module' => 'API',
+			'format' => 'json',
+			'date' => 'previous30',
+			'method' => $module,
+			'period' => $period,
+			'idSite' => $this->siteId,
+			'token_auth' => $config->get( 'MatomoAnalyticsTokenAuth' )
+		];
+
+		if ( $title !== null ) {
+			$query['pageName'] = $title;
+		}
 
 		$siteReply = MediaWikiServices::getInstance()->getHttpRequestFactory()->get(
 			wfAppendQuery(
 				$config->get( 'MatomoAnalyticsServerURL' ),
-				[
-					'module' => 'API',
-					'format' => 'json',
-					'date' => 'previous30',
-					'method' => $module,
-					'period' => $period,
-					'idSite' => $this->siteId,
-					'token_auth' => $config->get( 'MatomoAnalyticsTokenAuth' )
-				]
+				$query
 			)
 		);
 
@@ -131,4 +140,15 @@ class MatomoAnalyticsWiki {
 	public function getVisitDaysPassed() {
 		return $this->getData( 'VisitorInterest.getNumberOfVisitsByDaysSinceLast' );
 	}
+
+	// Visits by amount of views
+	public function getTopPages() {
+		return $this->getData( 'Actions.getPageTitles' );
+	}
+
+	// Get visits for specific pages
+	public function getPageViews( string $title ) {
+		return $this->getData( 'Actions.getPageTitle', 'range', 'label', 'nb_visits', false, $title );
+	}
+
 }

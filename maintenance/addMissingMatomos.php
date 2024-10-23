@@ -1,5 +1,11 @@
 <?php
 
+namespace Miraheze\MatomoAnalytics\Maintenance;
+
+use Maintenance;
+use Miraheze\MatomoAnalytics\MatomoAnalytics;
+use UnexpectedValueException;
+
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
 	$IP = __DIR__ . '/../../..';
@@ -42,8 +48,10 @@ class AddMissingMatomos extends Maintenance {
 			);
 
 			if ( !isset( $id ) || !$id ) {
-				$this->output( "Add matomo id to {$DBname}\n" );
-				MatomoAnalytics::addSite( $DBname );
+				$this->output( "Adding matomo id to {$DBname}\n" );
+				$mA = new MatomoAnalytics;
+				$mA->addSite( $DBname );
+				$this->output( "Done!\n" );
 			}
 		}
 	}

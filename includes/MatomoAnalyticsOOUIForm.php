@@ -1,5 +1,10 @@
 <?php
 
+namespace Miraheze\MatomoAnalytics;
+
+use MediaWiki\HTMLForm\OOUIHTMLForm;
+use Xml;
+
 class MatomoAnalyticsOOUIForm extends OOUIHTMLForm {
 	/** @var bool */
 	protected $mSubSectionBeforeFields = false;

@@ -1,5 +1,10 @@
 <?php
 
+namespace Miraheze\MatomoAnalytics;
+
+use MediaWiki\Context\IContextSource;
+use MediaWiki\Output\OutputPage;
+
 class MatomoAnalyticsViewer {
 	public function getFormDescriptor(
 		IContextSource $context
