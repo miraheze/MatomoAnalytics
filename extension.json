@@ -6,7 +6,7 @@
 		"Universal Omega"
 	],
 	"url": "https://github.com/miraheze/MatomoAnalytics",
-	"version": "1.2",
+	"version": "1.2.0",
 	"descriptionmsg": "matomoanalytics-desc",
 	"license-name": "GPL-3.0-or-later",
 	"type": "specialpage",
@@ -55,13 +55,13 @@
 	},
 	"HookHandlers": {
 		"CreateWiki": {
-			"class": "Miraheze\\MatomoAnalytics\\Hooks\\Handlers\\CreateWiki"
+			"class": "Miraheze\\MatomoAnalytics\\HookHandlers\\CreateWiki"
 		},
 		"Installer": {
-			"class": "Miraheze\\MatomoAnalytics\\Hooks\\Handlers\\Installer"
+			"class": "Miraheze\\MatomoAnalytics\\HookHandlers\\Installer"
 		},
 		"Main": {
-			"class": "Miraheze\\MatomoAnalytics\\Hooks\\Handlers\\Main"
+			"class": "Miraheze\\MatomoAnalytics\\HookHandlers\\Main"
 		}
 	},
 	"ResourceModules": {

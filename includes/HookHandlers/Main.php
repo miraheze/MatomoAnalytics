@@ -1,6 +1,6 @@
 <?php
 
-namespace Miraheze\MatomoAnalytics\Hooks\Handlers;
+namespace Miraheze\MatomoAnalytics\HookHandlers;
 
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Hook\InfoActionHook;

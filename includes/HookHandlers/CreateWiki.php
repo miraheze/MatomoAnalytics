@@ -1,6 +1,6 @@
 <?php
 
-namespace Miraheze\MatomoAnalytics\Hooks\Handlers;
+namespace Miraheze\MatomoAnalytics\HookHandlers;
 
 use Miraheze\CreateWiki\Hooks\CreateWikiCreationHook;
 use Miraheze\CreateWiki\Hooks\CreateWikiDeletionHook;
