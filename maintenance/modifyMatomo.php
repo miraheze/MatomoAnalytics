@@ -14,7 +14,7 @@ require_once "$IP/maintenance/Maintenance.php";
 
 class ModifyMatomo extends Maintenance {
 
-	/** @var string */
+	/** @var MatomoAnalytics */
 	private $matomoAnalytics;
 
 	public function __construct( MatomoAnalytics $matomoAnalytics ) {

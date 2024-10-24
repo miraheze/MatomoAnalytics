@@ -13,7 +13,7 @@ class CreateWiki implements
 	CreateWikiDeletionHook,
 	CreateWikiRenameHook
 {
-	/** @var string */
+	/** @var MatomoAnalytics */
 	private $matomoAnalytics;
 
 	public function __construct( MatomoAnalytics $matomoAnalytics ) {
