@@ -19,7 +19,9 @@ class SpecialAnalytics extends SpecialPage {
 		$out = $this->getOutput();
 		$out->addWikiMsg( 'matomoanalytics-header' );
 
-		$out->addModules( [ 'ext.matomoanalytics.oouiform', 'ext.matomoanalytics.graphs' ] );
+		$out->addModules( [ 'ext.matomoanalytics.oouiform' ] );
+		$out->addModules( [ 'ext.matomoanalytics.charts' ] );
+		$out->addModules( [ 'ext.matomoanalytics.graphs' ] );
 		$out->addModuleStyles( [ 'ext.matomoanalytics.oouiform.styles' ] );
 		$out->addModuleStyles( [ 'oojs-ui-widgets.styles' ] );
 
