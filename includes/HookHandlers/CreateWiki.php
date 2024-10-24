@@ -16,9 +16,9 @@ class CreateWiki implements
 	/** @var string */
 	private $matomoAnalytics;
 
-	public function __construct(MatomoAnalytics $matomoAnalytics) {
-        $this->matomoAnalytics = $matomoAnalytics;
-    }
+	public function __construct( MatomoAnalytics $matomoAnalytics ) {
+		$this->matomoAnalytics = $matomoAnalytics;
+	}
 
 	public function onCreateWikiCreation( string $dbname, bool $private ): void {
 		$this->matomoAnalytics->addSite( $dbname );

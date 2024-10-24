@@ -2,9 +2,9 @@
 
 namespace Miraheze\MatomoAnalytics;
 
+use Html;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Output\OutputPage;
-use Html;
 
 class MatomoAnalyticsViewer {
 	public function getFormDescriptor(
@@ -59,15 +59,15 @@ class MatomoAnalyticsViewer {
 	public function getAnalyticsCanvasHtml( string $type ) {
 		$mwHtml = new Html();
 
-        $html = '';
+		$html = '';
 
-        $html .= $mwHtml->element( 'canvas', [
-            'id' => 'matomoanalytics-chart-'. $type,
-            'class' => 'matomoanalytics-chart chart-bar',
-        ] );
+		$html .= $mwHtml->element( 'canvas', [
+			'id' => 'matomoanalytics-chart-' . $type,
+			'class' => 'matomoanalytics-chart chart-bar',
+		] );
 
-        return $html;
-    }
+		return $html;
+	}
 
 	public function getForm(
 		IContextSource $context
