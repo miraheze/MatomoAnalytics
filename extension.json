@@ -65,6 +65,14 @@
 		}
 	},
 	"ResourceModules": {
+		"ext.matomoanalytics.charts": {
+			"scripts": "ext.matomoanalytics.charts.js",
+			"targets": [ "desktop", "mobile" ]
+		},
+		"ext.matomoanalytics.graphs": {
+			"scripts": "ext.matomoanalytics.graphs.js",
+			"targets": [ "desktop", "mobile" ]
+		},
 		"ext.matomoanalytics.oouiform": {
 			"scripts": "ext.matomoanalytics.oouiform.ooui.js",
 			"targets": [ "desktop", "mobile" ],
@@ -76,12 +84,6 @@
 		"ext.matomoanalytics.oouiform.styles": {
 			"targets": [ "desktop", "mobile" ],
 			"styles": "ext.matomoanalytics.oouiform.ooui.less"
-		},
-		"ext.matomoanalytics.charts": {
-			"scripts": [
-				"chart.js",
-				"graph.js"
-			]
 		}
 	},
 	"ResourceFileModulePaths": {
