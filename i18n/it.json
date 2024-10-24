@@ -6,7 +6,7 @@
 			"Executive"
 		]
 	},
-	"analytics": "MatomoAnalytics",
+	"analytics": "Analisi wiki",
 	"matomoanalytics-desc": "Integrare dati analitici da Matomo e MediaWiki",
 	"matomoanalytics-header": "Puoi usare le schede sotto per selezionare differenti statistiche da vedere che noi teniamo usando Matomo. Tutti i dati sono collezionati a partire da 30 giorni passati da ieri (aggiornato quotidianamente).",
 	"matomoanalytics-labels-browser": "Browsers",
@@ -14,6 +14,7 @@
 	"matomoanalytics-labels-country": "Nazione",
 	"matomoanalytics-labels-devices": "Dispositivi",
 	"matomoanalytics-labels-os": "SO",
+	"matomoanalytics-labels-pastmonth": "Visite alla pagina nell'ultimo mese",
 	"matomoanalytics-labels-referrer": "Riferimenti al Sito",
 	"matomoanalytics-labels-resolution": "Risoluzione",
 	"matomoanalytics-labels-search": "Parole chiave di Ricerca",
