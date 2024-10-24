@@ -46,7 +46,7 @@ function makeChart(canvas, labels, data, chartType) {
         data: {
             labels: Object.keys(labels),
             datasets: [{
-                label: '# of Votes',
+                label: 'Placeholder',
                 data: Object.values(data),
                 borderWidth: 1
             }]
@@ -62,5 +62,5 @@ function makeChart(canvas, labels, data, chartType) {
 }
 
 // Call the function to generate the chart
-const canvas = document.getElementById('myChart');
+const canvas = document.getElementById('matomoanalytics-chart-browser');
 extractDataAndMakeChart(canvas);
