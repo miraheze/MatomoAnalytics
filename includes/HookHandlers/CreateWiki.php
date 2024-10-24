@@ -13,18 +13,22 @@ class CreateWiki implements
 	CreateWikiDeletionHook,
 	CreateWikiRenameHook
 {
+	/** @var string */
+	private $matomoAnalytics;
+
+	public function __construct(MatomoAnalytics $matomoAnalytics) {
+        $this->matomoAnalytics = $matomoAnalytics;
+    }
+
 	public function onCreateWikiCreation( string $dbname, bool $private ): void {
-		$mA = new MatomoAnalytics;
-		$mA->addSite( $dbname );
+		$this->matomoAnalytics->addSite( $dbname );
 	}
 
 	public function onCreateWikiDeletion( DBConnRef $cwdb, string $dbname ): void {
-		$mA = new MatomoAnalytics;
-		$mA->deleteSite( $dbname );
+		$this->matomoAnalytics->deleteSite( $dbname );
 	}
 
 	public function onCreateWikiRename( DBConnRef $cwdb, string $old, string $new ): void {
-		$mA = new MatomoAnalytics;
-		$mA->renameSite( $old, $new );
+		$this->matomoAnalytics->renameSite( $old, $new );
 	}
 }

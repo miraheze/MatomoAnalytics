@@ -14,7 +14,11 @@ if ( $IP === false ) {
 require_once "$IP/maintenance/Maintenance.php";
 
 class CleanupMatomos extends Maintenance {
-	public function __construct() {
+
+	/** @var string */
+	private $matomoAnalytics;
+
+	public function __construct( MatomoAnalytics $matomoAnalytics ) {
 		parent::__construct();
 
 		$this->addDescription( 'Cleanup matomo ids that don\'t have corresponding cw_wikis entries.' );
@@ -22,6 +26,8 @@ class CleanupMatomos extends Maintenance {
 
 		$this->requireExtension( 'CreateWiki' );
 		$this->requireExtension( 'MatomoAnalytics' );
+
+		$this->matomoAnalytics = $matomoAnalytics;
 	}
 
 	public function execute() {
@@ -55,8 +61,7 @@ class CleanupMatomos extends Maintenance {
 				}
 
 				$this->output( "Remove matomo id from {$DBname}\n" );
-				$mA = new MatomoAnalytics;
-				$mA->deleteSite( $DBname );
+				$this->matomoAnalytics->deleteSite( $DBname );
 			}
 		}
 	}

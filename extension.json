@@ -76,6 +76,12 @@
 		"ext.matomoanalytics.oouiform.styles": {
 			"targets": [ "desktop", "mobile" ],
 			"styles": "ext.matomoanalytics.oouiform.ooui.less"
+		},
+		"ext.matomoanalytics.charts": {
+			"scripts": [
+				"chart.js",
+				"graph.js"
+			]
 		}
 	},
 	"ResourceFileModulePaths": {

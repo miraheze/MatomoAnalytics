@@ -13,23 +13,28 @@ if ( $IP === false ) {
 require_once "$IP/maintenance/Maintenance.php";
 
 class ModifyMatomo extends Maintenance {
-	public function __construct() {
+
+	/** @var string */
+	private $matomoAnalytics;
+
+	public function __construct( MatomoAnalytics $matomoAnalytics ) {
 		parent::__construct();
 
 		$this->addDescription( 'Add or remove a wiki from matomo.' );
 		$this->addOption( 'remove', 'Remove wiki from matomo' );
 
 		$this->requireExtension( 'MatomoAnalytics' );
+
+		$this->matomoAnalytics = $matomoAnalytics;
 	}
 
 	public function execute() {
 		$DBname = $this->getConfig()->get( 'DBname' );
-		$mA = new MatomoAnalytics;
 
 		if ( $this->getOption( 'remove', false ) ) {
-			$mA->deleteSite( $DBname );
+			$this->matomoAnalytics->deleteSite( $DBname );
 		} else {
-			$mA->addSite( $DBname );
+			$this->matomoAnalytics->addSite( $DBname );
 		}
 	}
 }

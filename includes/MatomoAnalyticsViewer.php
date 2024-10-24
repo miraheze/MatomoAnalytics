@@ -4,6 +4,7 @@ namespace Miraheze\MatomoAnalytics;
 
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Output\OutputPage;
+use Html;
 
 class MatomoAnalyticsViewer {
 	public function getFormDescriptor(
@@ -36,6 +37,12 @@ class MatomoAnalyticsViewer {
 
 		$formDescriptor = [];
 		foreach ( $descriptorData as $type => $data ) {
+			$formDescriptor["{$type}-chart"] = [
+				'type' => 'info',
+				'raw' => true,
+				'default' => $this->getAnalyticsCanvasHtml( $type ),
+				'section' => $type,
+			];
 			foreach ( $data as $label => $value ) {
 				$formDescriptor["{$type}-{$label}"] = [
 					'type' => 'info',
@@ -48,6 +55,19 @@ class MatomoAnalyticsViewer {
 
 		return $formDescriptor;
 	}
+
+	public function getAnalyticsCanvasHtml( string $type ) {
+		$mwHtml = new Html();
+
+        $html = '';
+
+        $html .= $mwHtml->element( 'canvas', [
+            'id' => 'matomoanalytics-chart-'. $type,
+            'class' => 'matomoanalytics-chart chart-bar',
+        ] );
+
+        return $html;
+    }
 
 	public function getForm(
 		IContextSource $context

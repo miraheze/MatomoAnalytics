@@ -1,5 +1,9 @@
 ## ChangeLog for MatomoAnalytics
 
+### 1.2.0 (23-10-2024)
+* Introduced support for viewing number of page views via ?action=info
+* Namespaced the extension
+
 ### 1.1.3 (26-02-2024)
 * Replace deprecated Xml::encodeJsVar with Html::encodeJsVar
 * Now requires MediaWiki 1.41.0 or later
