@@ -1,25 +1,27 @@
-function extractDataAndMakeChart(canvas) {
-    // Get the chart container div (assuming it has a custom class like 'chart-bar')
-    const chartContainer = document.querySelector('.matomoanalytics-chart');
+function extractDataAndMakeChart(fieldset) {
+    // Get the chart canvas inside the current fieldset
+    const canvas = fieldset.querySelector('#matomoanalytics-chart');
+    
+    if (!canvas) return; // If no canvas is found, skip this fieldset
 
-    // Determine the chart type based on the class (e.g., chart-bar, chart-line, etc.)
+    // Determine the chart type based on the class of the canvas
     let chartType = 'bar'; // default to 'bar'
-    if (chartContainer.classList.contains('chart-line')) {
+    if (canvas.classList.contains('chart-line')) {
         chartType = 'line';
-    } else if (chartContainer.classList.contains('chart-pie')) {
+    } else if (canvas.classList.contains('chart-pie')) {
         chartType = 'pie';
-    } else if (chartContainer.classList.contains('chart-doughnut')) {
+    } else if (canvas.classList.contains('chart-doughnut')) {
         chartType = 'doughnut';
     }
 
-    // Get all the elements with class 'oo-ui-fieldLayout-body'
-    const fieldLayouts = document.querySelectorAll('.oo-ui-fieldLayout-body');
+    // Get all the elements with class 'oo-ui-fieldLayout-body' inside the current fieldset
+    const fieldLayouts = fieldset.querySelectorAll('.oo-ui-fieldLayout-body');
     
     // Initialize empty objects for labels and data
     const labels = {};
     const data = {};
 
-    // Loop through each field layout
+    // Loop through each field layout to extract data
     fieldLayouts.forEach((fieldLayout) => {
         // Extract the label (inside the header span) and value (inside the field span)
         const labelElement = fieldLayout.querySelector('.oo-ui-fieldLayout-header label');
@@ -61,6 +63,7 @@ function makeChart(canvas, labels, data, chartType) {
     });
 }
 
-// Call the function to generate the chart
-const canvas = document.getElementById('matomoanalytics-chart-browser');
-extractDataAndMakeChart(canvas);
+// Loop through all fieldsets and apply the chart
+document.querySelectorAll('fieldset').forEach((fieldset) => {
+    extractDataAndMakeChart(fieldset);
+});
