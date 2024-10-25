@@ -66,7 +66,7 @@ class MatomoAnalyticsViewer {
 		$html = '';
 
 		$html .= Html::element( 'canvas', [
-			'id' => 'matomoanalytics-chart-' . $type,
+			'id' => 'matomoanalytics-chart',
 			'class' => 'matomoanalytics-chart matomoanalytics-chart-bar',
 			'height' => 200,
 			'width' => 500,
