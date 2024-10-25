@@ -30,8 +30,8 @@ class SpecialAnalytics extends SpecialPage {
 		$htmlForm = $analyticsViewer->getForm( $this->getContext() );
 
 		$createForm = HTMLForm::factory( 'ooui', $htmlForm, $this->getContext() );
-		$createForm->setId( 'matomoanalytics-form' ),
-			->suppressDefaultSubmit(),
+		$createForm->setId( 'matomoanalytics-form' )
+			->suppressDefaultSubmit()
 			->show();
 	}
 }
