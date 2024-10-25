@@ -3,15 +3,30 @@
 		"authors": [
 			"John Lewis",
 			"McDutchie",
-			"Robby"
+			"Robby",
+			"Universal Omega"
 		]
 	},
 	"action-noanalytics": "{{doc-action|noanalytics}}",
-	"matomoanalytics-desc": "Integrates analytics from Matomo and MediaWiki",
+	"analytics": "{{doc-special}}",
+	"matomoanalytics-count": "{{notranslate}}",
+	"matomoanalytics-desc": "{{desc|name=MatomoAnalytics|url=https://github.com/miraheze/MatomoAnalytics}}",
 	"matomoanalytics-header": "Information to show on Special:Analytics",
+	"matomoanalytics-labels-browser": "{{identical|Browser}}",
+	"matomoanalytics-labels-continent": "{{identical|Continent}}",
 	"matomoanalytics-labels-country": "{{identical|Country}}",
-	"matomoanalytics-labels-visitday": "{{Identical|Day}}",
+	"matomoanalytics-labels-devices": "{{identical|Device}}",
+	"matomoanalytics-labels-os": "Used as the section label for 'OS' in Special:Analytics",
+	"matomoanalytics-labels-pastmonth": "Shown in ?action=info as a label",
+	"matomoanalytics-labels-referrer": "Used as the section label for 'Site Referrals' in Special:Analytics",
+	"matomoanalytics-labels-resolution": "{{identical|Resolution}}",
+	"matomoanalytics-labels-search": "Used as the section label for 'Search Keywords' in Special:Analytics",
+	"matomoanalytics-labels-social": "Used as the section label for 'Social Networks' in Special:Analytics",
+	"matomoanalytics-labels-visitday": "{{identical|Day}}",
 	"matomoanalytics-labels-visitduration": "{{identical|Duration}}",
 	"matomoanalytics-labels-visithour": "{{identical|Hour}}",
+	"matomoanalytics-labels-visitpages": "Used as the section label for 'Unique Pages' in Special:Analytics",
+	"matomoanalytics-labels-visitpass": "Used as the section label for 'Time Passed' in Special:Analytics",
+	"matomoanalytics-labels-website": "{{identical|Websites}}",
 	"right-noanalytics": "{{doc-right|noanalytics}}"
 }
