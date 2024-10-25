@@ -40,7 +40,7 @@ class MatomoAnalyticsViewer {
 			$formDescriptor["{$type}-chart"] = [
 				'type' => 'info',
 				'raw' => true,
-				'default' => $this->getAnalyticsCanvasHtml( $type ),
+				'default' => $this->getAnalyticsCanvasHtml( $type, 'bar' ),
 				'section' => 'matomoanalytics-labels-' . $type,
 			];
 			$formDescriptor["{$type}-showdata"] = [
