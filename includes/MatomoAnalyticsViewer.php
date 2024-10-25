@@ -2,8 +2,8 @@
 
 namespace Miraheze\MatomoAnalytics;
 
-use MediaWiki\Html\Html;
 use MediaWiki\Context\IContextSource;
+use MediaWiki\Html\Html;
 use MediaWiki\Output\OutputPage;
 
 class MatomoAnalyticsViewer {
