@@ -2,6 +2,7 @@
 
 namespace Miraheze\MatomoAnalytics;
 
+use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\SpecialPage\SpecialPage;
 
 class SpecialAnalytics extends SpecialPage {
@@ -19,15 +20,18 @@ class SpecialAnalytics extends SpecialPage {
 		$out = $this->getOutput();
 		$out->addWikiMsg( 'matomoanalytics-header' );
 
-		$out->addModules( [ 'ext.matomoanalytics.oouiform' ] );
+		//$out->addModules( [ 'ext.matomoanalytics.oouiform' ] );
 		$out->addModules( [ 'ext.matomoanalytics.charts' ] );
 		$out->addModules( [ 'ext.matomoanalytics.graphs' ] );
-		$out->addModuleStyles( [ 'ext.matomoanalytics.oouiform.styles' ] );
+		//$out->addModuleStyles( [ 'ext.matomoanalytics.oouiform.styles' ] );
 		$out->addModuleStyles( [ 'oojs-ui-widgets.styles' ] );
 
 		$analyticsViewer = new MatomoAnalyticsViewer();
 		$htmlForm = $analyticsViewer->getForm( $this->getContext() );
 
-		$htmlForm->show();
+		$createForm = HTMLForm::factory( 'ooui', $htmlForm, $this->getContext() );
+		$createForm->setId( 'matomoanalytics-form' ),
+			->suppressDefaultSubmit(),
+			->show();
 	}
 }

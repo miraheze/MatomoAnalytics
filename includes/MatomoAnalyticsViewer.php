@@ -2,7 +2,7 @@
 
 namespace Miraheze\MatomoAnalytics;
 
-use Html;
+use MediaWiki\Html\Html;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Output\OutputPage;
 
@@ -41,14 +41,20 @@ class MatomoAnalyticsViewer {
 				'type' => 'info',
 				'raw' => true,
 				'default' => $this->getAnalyticsCanvasHtml( $type ),
-				'section' => $type,
+				'section' => 'matomoanalytics-labels-' . $type,
+			];
+			$formDescriptor["{$type}-showdata"] = [
+				'type' => 'check',
+				'label-message' => 'matomoanalytics-labels-showdata',
+				'section' => 'matomoanalytics-labels-' . $type,
 			];
 			foreach ( $data as $label => $value ) {
 				$formDescriptor["{$type}-{$label}"] = [
 					'type' => 'info',
 					'label' => $label,
+					'hide-if' => [ '!==', "{$type}-showdata", '1' ],
 					'default' => (string)$value,
-					'section' => $type,
+					'section' => 'matomoanalytics-labels-' . $type,
 				];
 			}
 		}
@@ -56,14 +62,14 @@ class MatomoAnalyticsViewer {
 		return $formDescriptor;
 	}
 
-	public function getAnalyticsCanvasHtml( string $type ) {
-		$mwHtml = new Html();
-
+	public function getAnalyticsCanvasHtml( string $type, string $chartType ) {
 		$html = '';
 
-		$html .= $mwHtml->element( 'canvas', [
+		$html .= Html::element( 'canvas', [
 			'id' => 'matomoanalytics-chart-' . $type,
-			'class' => 'matomoanalytics-chart chart-bar',
+			'class' => 'matomoanalytics-chart matomoanalytics-chart-bar',
+			'height' => 200,
+			'width' => 500,
 		] );
 
 		return $html;
@@ -74,11 +80,6 @@ class MatomoAnalyticsViewer {
 	) {
 		$formDescriptor = $this->getFormDescriptor( $context );
 
-		$htmlForm = new MatomoAnalyticsOOUIForm( $formDescriptor, $context, 'matomoanalytics-labels' );
-
-		$htmlForm->setId( 'matomoanalytics-form' );
-		$htmlForm->suppressDefaultSubmit();
-
-		return $htmlForm;
+		return $formDescriptor;
 	}
 }
