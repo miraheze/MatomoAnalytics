@@ -42,9 +42,15 @@ class MatomoAnalyticsViewer {
 			if ( $type === 'sitevisits' ) {
 				$chartType = 'line';
 			} else {
-				$chartType = 'bar';
+				$chartType = 'doughnut';
 			}
 
+			$formDescriptor["{$type}-info"] = [
+				'type' => 'info',
+				'class' => 'matomoanalytics-chart-noselect',
+				'label-message' => 'matomoanalytics-labels-' . $type . 'info',
+				'section' => 'matomoanalytics-labels-' . $type,
+			];
 			$formDescriptor["{$type}-chart"] = [
 				'type' => 'info',
 				'raw' => true,

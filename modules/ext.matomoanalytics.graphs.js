@@ -24,8 +24,8 @@ function extractDataAndMakeChart(fieldset) {
     // Loop through each field layout to extract data
     fieldLayouts.forEach((fieldLayout) => {
         // Extract the label (inside the header span) and value (inside the field span)
-        const labelElement = fieldLayout.querySelector('.oo-ui-fieldLayout-header label');
-        const dataElement = fieldLayout.querySelector('.oo-ui-fieldLayout-field label');
+        const labelElement = fieldLayout.querySelector('.oo-ui-fieldLayout-header label:not(.matomoanalytics-chart-noselect)');
+        const dataElement = fieldLayout.querySelector('.oo-ui-fieldLayout-field label:not(.matomoanalytics-chart-noselect)');
 
         if (labelElement && dataElement) {
             const label = labelElement.textContent.trim();
