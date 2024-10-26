@@ -49,7 +49,7 @@ class MatomoAnalyticsWiki {
 
 		foreach ( $siteJson as $key => $val ) {
 			if ( $flat ) {
-				$arrayOut[$key] = $val ?: '-';
+				$arrayOut[$key] = $val[$jsonLabel] ?: '-';
 			} else {
 				$arrayOut[$val[$jsonLabel]] = $val[$jsonData] ?: '-';
 			}
@@ -153,6 +153,6 @@ class MatomoAnalyticsWiki {
 
 	// Get number of visits to the site
 	public function getSiteVisits() {
-		return $this->getData( 'VisitsSummary.get' );
+		return $this->getData( 'VisitsSummary.get', 'day', 'nb_visits', 'nb_visits', true );
 	}
 }

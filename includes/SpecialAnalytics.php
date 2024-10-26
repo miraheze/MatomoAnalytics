@@ -21,10 +21,9 @@ class SpecialAnalytics extends SpecialPage {
 		$out->addWikiMsg( 'matomoanalytics-header' );
 
 		// $out->addModules( [ 'ext.matomoanalytics.oouiform' ] );
-		$out->addModules( [ 'ext.matomoanalytics.charts' ] );
-		$out->addModules( [ 'ext.matomoanalytics.graphs' ] );
+		$out->addModules( [ 'ext.matomoanalytics.charts', 'ext.matomoanalytics.graphs' ] );
 		// $out->addModuleStyles( [ 'ext.matomoanalytics.oouiform.styles' ] );
-		$out->addModuleStyles( [ 'oojs-ui-widgets.styles' ] );
+		$out->addModuleStyles( [ 'oojs-ui-widgets.styles', 'ext.matomoanalytics.special' ] );
 
 		$analyticsViewer = new MatomoAnalyticsViewer();
 		$htmlForm = $analyticsViewer->getForm( $this->getContext() );

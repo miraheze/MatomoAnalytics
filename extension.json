@@ -81,9 +81,9 @@
 				"oojs-ui-widgets"
 			]
 		},
-		"ext.matomoanalytics.oouiform.styles": {
+		"ext.matomoanalytics.special": {
 			"targets": [ "desktop", "mobile" ],
-			"styles": "ext.matomoanalytics.oouiform.ooui.less"
+			"styles": "ext.matomoanalytics.special.css"
 		}
 	},
 	"ResourceFileModulePaths": {

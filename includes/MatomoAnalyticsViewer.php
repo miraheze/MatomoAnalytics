@@ -39,10 +39,16 @@ class MatomoAnalyticsViewer {
 
 		$formDescriptor = [];
 		foreach ( $descriptorData as $type => $data ) {
+			if ( $type === 'sitevisits' ) {
+				$chartType = 'line';
+			} else {
+				$chartType = 'bar';
+			}
+
 			$formDescriptor["{$type}-chart"] = [
 				'type' => 'info',
 				'raw' => true,
-				'default' => $this->getAnalyticsCanvasHtml( $type, 'bar' ),
+				'default' => $this->getAnalyticsCanvasHtml( $type, $chartType ),
 				'section' => 'matomoanalytics-labels-' . $type,
 			];
 			$formDescriptor["{$type}-showdata"] = [
@@ -68,8 +74,8 @@ class MatomoAnalyticsViewer {
 		$html = '';
 
 		$html .= Html::element( 'canvas', [
-			'id' => 'matomoanalytics-chart',
-			'class' => 'matomoanalytics-chart matomoanalytics-chart-bar',
+			'id' => 'matomoanalytics-chart-' . $type,
+			'class' => 'matomoanalytics-chart matomoanalytics-chart-' . $chartType,
 			'height' => 200,
 			'width' => 500,
 		] );

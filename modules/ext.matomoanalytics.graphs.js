@@ -1,16 +1,16 @@
 function extractDataAndMakeChart(fieldset) {
     // Get the chart canvas inside the current fieldset
-    const canvas = fieldset.querySelector('#matomoanalytics-chart');
+    const canvas = fieldset.querySelector('[id^="matomoanalytics-chart"]');
     
     if (!canvas) return; // If no canvas is found, skip this fieldset
 
     // Determine the chart type based on the class of the canvas
     let chartType = 'bar'; // default to 'bar'
-    if (canvas.classList.contains('chart-line')) {
+    if (canvas.classList.contains('matomoanalytics-chart-line')) {
         chartType = 'line';
-    } else if (canvas.classList.contains('chart-pie')) {
+    } else if (canvas.classList.contains('matomoanalytics-chart-pie')) {
         chartType = 'pie';
-    } else if (canvas.classList.contains('chart-doughnut')) {
+    } else if (canvas.classList.contains('matomoanalytics-chart-doughnut')) {
         chartType = 'doughnut';
     }
 
