@@ -18,6 +18,8 @@ class MatomoAnalyticsViewer {
 		$mA = new MatomoAnalyticsWiki( $context->getConfig()->get( 'DBname' ) );
 
 		$descriptorData = [
+			'sitevisits' => $mA->getSiteVisits(),
+			'toppages' => $mA->getTopPages(),
 			'browser' => $mA->getBrowserTypes(),
 			'devices' => $mA->getDeviceTypes(),
 			'os' => $mA->getOSVersion(),

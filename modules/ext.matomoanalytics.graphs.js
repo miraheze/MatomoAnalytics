@@ -48,15 +48,14 @@ function makeChart(canvas, labels, data, chartType) {
         data: {
             labels: Object.keys(labels),
             datasets: [{
-                label: 'Placeholder',
                 data: Object.values(data),
                 borderWidth: 1
             }]
         },
         options: {
-            scales: {
-                y: {
-                    beginAtZero: true
+            plugins: {
+                legend: {
+                    display: false
                 }
             }
         }

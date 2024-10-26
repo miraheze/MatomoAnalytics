@@ -151,4 +151,8 @@ class MatomoAnalyticsWiki {
 		return $this->getData( 'Actions.getPageUrl', 'range', 'label', 'nb_visits', false, $pageUrl );
 	}
 
+	// Get number of visits to the site
+	public function getSiteVisits() {
+		return $this->getData( 'VisitsSummary.get' );
+	}
 }
