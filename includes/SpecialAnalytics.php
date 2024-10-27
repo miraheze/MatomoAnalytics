@@ -30,7 +30,7 @@ class SpecialAnalytics extends SpecialPage {
 		$selectionForm = [];
 
 		$selectionForm['info'] = [
-			'default' => $this->msg( 'matomoanalytics-header' )->text(),
+			'label-message' => 'matomoanalytics-header',
 			'type' => 'info',
 		];
 
@@ -48,7 +48,7 @@ class SpecialAnalytics extends SpecialPage {
 		];
 
 		$selectForm = HTMLForm::factory( 'ooui', $selectionForm, $this->getContext(), 'selectionForm' );
-		$selectForm->setId( 'matomoanalytics-form' )
+		$selectForm->setId( 'matomoanalytics-submit' )
 			->setWrapperLegendMsg( 'managewiki-permissions-select-header' )
 			->show();
 
