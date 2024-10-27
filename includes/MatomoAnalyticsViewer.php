@@ -47,7 +47,7 @@ class MatomoAnalyticsViewer {
 
 			$formDescriptor["{$type}-info"] = [
 				'type' => 'info',
-				'class' => 'matomoanalytics-chart-noselect',
+				'cssclass' => 'matomoanalytics-chart-noselect',
 				'label-message' => 'matomoanalytics-labels-' . $type . 'info',
 				'section' => 'matomoanalytics-labels-' . $type,
 			];
