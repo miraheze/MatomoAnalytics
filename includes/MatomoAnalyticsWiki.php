@@ -8,8 +8,12 @@ class MatomoAnalyticsWiki {
 	/** @var int */
 	private $siteId;
 
-	public function __construct( $wiki ) {
+	/** @var int */
+	private $periodSelected;
+
+	public function __construct( $wiki, int $periodSelected = 31 ) {
 		$this->siteId = MatomoAnalytics::getSiteID( $wiki );
+		$this->period = $periodSelected;
 	}
 
 	private function getData(
@@ -18,6 +22,7 @@ class MatomoAnalyticsWiki {
 		string $jsonLabel = 'label',
 		string $jsonData = 'nb_visits',
 		bool $flat = false,
+		int $date = $this->period ?? 31,
 		?string $pageUrl = null
 	) {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
@@ -25,7 +30,7 @@ class MatomoAnalyticsWiki {
 		$query = [
 			'module' => 'API',
 			'format' => 'json',
-			'date' => 'previous30',
+			'date' => 'previous' . $date,
 			'method' => $module,
 			'period' => $period,
 			'idSite' => $this->siteId,
@@ -148,7 +153,7 @@ class MatomoAnalyticsWiki {
 
 	// Get visits for specific pages
 	public function getPageViews( string $pageUrl ) {
-		return $this->getData( 'Actions.getPageUrl', 'range', 'label', 'nb_visits', false, $pageUrl );
+		return $this->getData( 'Actions.getPageUrl', 'range', 'label', 'nb_visits', false, '30', $pageUrl );
 	}
 
 	// Get number of visits to the site

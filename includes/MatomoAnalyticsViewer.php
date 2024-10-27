@@ -8,14 +8,15 @@ use MediaWiki\Output\OutputPage;
 
 class MatomoAnalyticsViewer {
 	public function getFormDescriptor(
-		IContextSource $context
+		IContextSource $context,
+		int $periodSelected
 	) {
 		OutputPage::setupOOUI(
 			strtolower( $context->getSkin()->getSkinName() ),
 			$context->getLanguage()->getDir()
 		);
 
-		$mA = new MatomoAnalyticsWiki( $context->getConfig()->get( 'DBname' ) );
+		$mA = new MatomoAnalyticsWiki( $context->getConfig()->get( 'DBname' ), $periodSelected );
 
 		$descriptorData = [
 			'sitevisits' => $mA->getSiteVisits(),
@@ -92,9 +93,10 @@ class MatomoAnalyticsViewer {
 	}
 
 	public function getForm(
-		IContextSource $context
+		IContextSource $context,
+		string $time
 	) {
-		$formDescriptor = $this->getFormDescriptor( $context );
+		$formDescriptor = $this->getFormDescriptor( $context, $time );
 
 		return $formDescriptor;
 	}
