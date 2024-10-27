@@ -39,7 +39,7 @@ class SpecialAnalytics extends SpecialPage {
 			'default' => (int)$period ?? '31',
 			'type' => 'select',
 			'options' => [
-				'1' =>  $this->msg( 'days' )->params( '1' )->text(),
+				'1' => $this->msg( 'days' )->params( '1' )->text(),
 				'7' => $this->msg( 'days' )->params( '7' )->text(),
 				'14' => $this->msg( 'days' )->params( '14' )->text(),
 				'21' => $this->msg( 'days' )->params( '21' )->text(),
