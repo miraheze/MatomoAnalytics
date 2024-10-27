@@ -52,7 +52,7 @@ class SpecialAnalytics extends SpecialPage {
 			->setWrapperLegendMsg( 'managewiki-permissions-select-header' )
 			->show();
 
-		$selectForm->setMethod( 'post' )->setSubmitCallback( [ $this, 'onSubmitRedirectToSelection' ] )->prepareForm()->show();
+		$selectForm->setMethod( 'post' )->setFormIdentifier( 'selectForm' )->setSubmitCallback( [ $this, 'onSubmitRedirectToSelection' ] )->prepareForm()->show();
 
 		$analyticsViewer = new MatomoAnalyticsViewer();
 		$htmlForm = $analyticsViewer->getForm( $this->getContext(), $period );
