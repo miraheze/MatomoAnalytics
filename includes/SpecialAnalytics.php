@@ -25,7 +25,7 @@ class SpecialAnalytics extends SpecialPage {
 		// $out->addModuleStyles( [ 'ext.matomoanalytics.oouiform.styles' ] );
 		$out->addModuleStyles( [ 'oojs-ui-widgets.styles', 'ext.matomoanalytics.special' ] );
 
-		$period = $this->getContext()->getRawVal( 'period' );
+		$period = $this->getContext()->getRequest()->getRawVal( 'period' );
 
 		$selectionForm = [];
 
