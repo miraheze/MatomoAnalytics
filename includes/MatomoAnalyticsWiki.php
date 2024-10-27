@@ -22,10 +22,11 @@ class MatomoAnalyticsWiki {
 		string $jsonLabel = 'label',
 		string $jsonData = 'nb_visits',
 		bool $flat = false,
-		int $date = $this->period ?? 31,
+		?int $date = null,
 		?string $pageUrl = null
 	) {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
+		$date = $date ?? $this->period;
 
 		$query = [
 			'module' => 'API',
