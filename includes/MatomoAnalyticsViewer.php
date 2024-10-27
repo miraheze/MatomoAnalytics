@@ -20,6 +20,7 @@ class MatomoAnalyticsViewer {
 		$descriptorData = [
 			'sitevisits' => $mA->getSiteVisits(),
 			'toppages' => $mA->getTopPages(),
+			'topsearches' => $mA->getSiteSearchKeywords(),
 			'browser' => $mA->getBrowserTypes(),
 			'devices' => $mA->getDeviceTypes(),
 			'os' => $mA->getOSVersion(),
@@ -35,6 +36,7 @@ class MatomoAnalyticsViewer {
 			'visitpages' => $mA->getVisitPages(),
 			'visitduration' => $mA->getVisitDurations(),
 			'visitpass' => $mA->getVisitDaysPassed(),
+			'campaigns' => $mA->getCampaigns(),
 		];
 
 		$formDescriptor = [];
@@ -42,13 +44,13 @@ class MatomoAnalyticsViewer {
 			if ( $type === 'sitevisits' ) {
 				$chartType = 'line';
 			} else {
-				$chartType = 'doughnut';
+				$chartType = 'pie';
 			}
 
 			$formDescriptor["{$type}-info"] = [
 				'type' => 'info',
 				'cssclass' => 'matomoanalytics-chart-noselect',
-				'label-message' => 'matomoanalytics-labels-' . $type . 'info',
+				'label-message' => 'matomoanalytics-labels-' . $type . '-info',
 				'section' => 'matomoanalytics-labels-' . $type,
 			];
 			$formDescriptor["{$type}-chart"] = [

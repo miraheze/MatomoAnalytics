@@ -155,4 +155,14 @@ class MatomoAnalyticsWiki {
 	public function getSiteVisits() {
 		return $this->getData( 'VisitsSummary.get', 'day', 'nb_visits', 'nb_visits', true );
 	}
+
+	// Get all keywords submitted to wiki search
+	public function getSiteSearchKeywords() {
+		return $this->getData( 'Actions.getSiteSearchKeywords' );
+	}
+
+	// Get all campaigns
+	public function getCampaigns() {
+		return $this->getData( 'Referrers.getCampaigns' );
+	}
 }
