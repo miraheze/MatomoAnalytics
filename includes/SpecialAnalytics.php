@@ -59,7 +59,7 @@ class SpecialAnalytics extends SpecialPage {
 
 		$selectForm = HTMLForm::factory( 'ooui', $selectionForm, $this->getContext(), 'selectionForm' );
 		$selectForm->setId( 'matomoanalytics-submit' )
-			->setWrapperLegendMsg( 'managewiki-permissions-select-header' )
+			->setWrapperLegendMsg( 'rcfilters-limit-title' )
 			->setMethod( 'post' )
 			->setFormIdentifier( 'selectForm' )
 			->setSubmitCallback( [ $this, 'onSubmitRedirectToSelection' ] )
