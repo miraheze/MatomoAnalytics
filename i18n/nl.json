@@ -6,7 +6,7 @@
 		]
 	},
 	"action-noanalytics": "niet te worden gevolgd via Matomo",
-	"analytics": "MatomoAnalytics",
+	"analytics": "Wiki-analyse",
 	"matomoanalytics-desc": "Integreert analyses van Matomo en MediaWiki",
 	"matomoanalytics-header": "U kunt de onderstaande tabbladen gebruiken om verschillende statistieken te bekijken die we met Matomo opslaan. Alle gegevens zijn verzameld over de afgelopen 30 dagen, te beginnen met gisteren (dagelijks bijgewerkt).",
 	"matomoanalytics-labels-browser": "Browsers",
@@ -14,6 +14,7 @@
 	"matomoanalytics-labels-country": "Land",
 	"matomoanalytics-labels-devices": "Apparaten",
 	"matomoanalytics-labels-os": "Besturingssysteem",
+	"matomoanalytics-labels-pastmonth": "Paginaweergaven in de afgelopen maand",
 	"matomoanalytics-labels-referrer": "Siteverwijzingen",
 	"matomoanalytics-labels-resolution": "Oplossing",
 	"matomoanalytics-labels-search": "Zoekwoorden",

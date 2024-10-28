@@ -4,7 +4,9 @@
 			"Kareyac"
 		]
 	},
+	"analytics": "Վիքի վերլուծություն",
 	"matomoanalytics-labels-country": "Երկիր",
+	"matomoanalytics-labels-pastmonth": "Անցած ամսվա էջի դիտումները",
 	"matomoanalytics-labels-visitday": "Օրեր",
 	"matomoanalytics-labels-visitduration": "Տևողություն",
 	"matomoanalytics-labels-visithour": "Ժամեր",

@@ -5,7 +5,8 @@
 		]
 	},
 	"action-noanalytics": "沒被經由 Matomo 追蹤",
-	"analytics": "MatomoAnalytics",
+	"analytics": "Wiki 分析",
+	"matomoanalytics-count": "$1",
 	"matomoanalytics-desc": "整合 Matomo 與 MediaWiki 的分析",
 	"matomoanalytics-header": "您可以使用以下的分頁來選擇查看我們使用 Matomo 儲存的各統計內容。所有資料是收集自從昨天算起的過去 30 天（每日更新）。",
 	"matomoanalytics-labels-browser": "瀏覽器",
@@ -13,6 +14,7 @@
 	"matomoanalytics-labels-country": "國家",
 	"matomoanalytics-labels-devices": "裝置",
 	"matomoanalytics-labels-os": "作業系統",
+	"matomoanalytics-labels-pastmonth": "過去一個月的頁面瀏覽量",
 	"matomoanalytics-labels-referrer": "站台推薦",
 	"matomoanalytics-labels-resolution": "分析",
 	"matomoanalytics-labels-search": "搜尋關鍵字",

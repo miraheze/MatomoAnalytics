@@ -5,7 +5,7 @@
 		]
 	},
 	"action-noanalytics": "не се следи со Матомо",
-	"analytics": "Аналитика на Матомо",
+	"analytics": "Викианалитика",
 	"matomoanalytics-desc": "Ги здружува аналитиките од Матомо и МедијаВики",
 	"matomoanalytics-header": "Послужете се со јазичињата подолу за да изберете преглед на различни статистики кои ги складираме со Матамото. Сите податоци се собрани во изминатите 30 дена, почнувајќи од вчера (се подновува секојдневно).",
 	"matomoanalytics-labels-browser": "Прелистувачи",
@@ -13,6 +13,7 @@
 	"matomoanalytics-labels-country": "Земја",
 	"matomoanalytics-labels-devices": "Уреди",
 	"matomoanalytics-labels-os": "ОС",
+	"matomoanalytics-labels-pastmonth": "Посети изминатиов месец",
 	"matomoanalytics-labels-referrer": "Упатувања",
 	"matomoanalytics-labels-resolution": "Разделност",
 	"matomoanalytics-labels-search": "Клучни зборови за пребарување",
