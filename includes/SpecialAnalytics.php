@@ -25,7 +25,17 @@ class SpecialAnalytics extends SpecialPage {
 		// $out->addModuleStyles( [ 'ext.matomoanalytics.oouiform.styles' ] );
 		$out->addModuleStyles( [ 'oojs-ui-widgets.styles', 'ext.matomoanalytics.special' ] );
 
-		$period = $this->getContext()->getRequest()->getRawVal( 'period' ) ?? 31;
+		$period = $this->getContext()->getRequest()->getRawVal( 'period' ) ?? 7;
+
+		if ( !is_numeric( $period ) || (int)$period <= 1 || (int)$period > 31 ) {
+			$period = 7;
+
+			$out->addHTML(
+				Html::errorBox( $this->msg( 'htmlform-select-badoption' )->escaped() )
+			);
+		} else {
+			$period = (int)$period;
+		}
 
 		$selectionForm = [];
 
@@ -35,8 +45,8 @@ class SpecialAnalytics extends SpecialPage {
 		];
 
 		$selectionForm['time'] = [
-			'label-message' => 'managewiki-permissions-select',
-			'default' => (int)$period ?? 31,
+			'label-message' => 'rcfilters-date-popup-title',
+			'default' => (int)$period ?? 7,
 			'type' => 'select',
 			'options' => [
 				$this->msg( 'days' )->params( '1' )->text() => 1,
@@ -53,7 +63,9 @@ class SpecialAnalytics extends SpecialPage {
 			->setMethod( 'post' )
 			->setFormIdentifier( 'selectForm' )
 			->setSubmitCallback( [ $this, 'onSubmitRedirectToSelection' ] )
-			->prepareForm()->show();
+			->setSubmitTextMsg( 'view' )
+			->prepareForm()
+			->show();
 
 		$analyticsViewer = new MatomoAnalyticsViewer();
 		$htmlForm = $analyticsViewer->getForm( $this->getContext(), $period );
@@ -61,6 +73,7 @@ class SpecialAnalytics extends SpecialPage {
 		$createForm = HTMLForm::factory( 'ooui', $htmlForm, $this->getContext() );
 		$createForm->setId( 'matomoanalytics-form' )
 			->suppressDefaultSubmit()
+			->setSubmitCallback( [ $this, 'onSubmitRedirectToSelection' ] )
 			->show();
 	}
 
