@@ -39,7 +39,7 @@ class SpecialAnalytics extends SpecialPage {
 			'default' => (int)$period ?? 31,
 			'type' => 'select',
 			'options' => [
-				'1' => $this->msg( 'days' )->params( '1' )->text(),
+				'test' => $this->msg( 'days' )->params( '1' )->text(),
 				'7' => $this->msg( 'days' )->params( '7' )->text(),
 				'14' => $this->msg( 'days' )->params( '14' )->text(),
 				'21' => $this->msg( 'days' )->params( '21' )->text(),
@@ -50,9 +50,10 @@ class SpecialAnalytics extends SpecialPage {
 		$selectForm = HTMLForm::factory( 'ooui', $selectionForm, $this->getContext(), 'selectionForm' );
 		$selectForm->setId( 'matomoanalytics-submit' )
 			->setWrapperLegendMsg( 'managewiki-permissions-select-header' )
-			->show();
-
-		$selectForm->setMethod( 'post' )->setFormIdentifier( 'selectForm' )->setSubmitCallback( [ $this, 'onSubmitRedirectToSelection' ] )->prepareForm()->show();
+			->setMethod( 'post' )
+			->setFormIdentifier( 'selectForm' )
+			->setSubmitCallback( [ $this, 'onSubmitRedirectToSelection' ] )
+			->prepareForm()->show();
 
 		$analyticsViewer = new MatomoAnalyticsViewer();
 		$htmlForm = $analyticsViewer->getForm( $this->getContext(), $period );
