@@ -79,4 +79,3 @@ class SpecialAnalytics extends SpecialPage {
 		return true;
 	}
 }
-
