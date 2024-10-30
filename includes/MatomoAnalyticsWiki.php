@@ -16,6 +16,10 @@ class MatomoAnalyticsWiki {
 		$this->periodSelected = $periodSelected;
 	}
 
+	public function getPeriodSelected(): int {
+		return $this->periodSelected;
+	}
+
 	private function getData(
 		string $module,
 		string $period = 'range',
@@ -26,7 +30,7 @@ class MatomoAnalyticsWiki {
 		?string $pageUrl = null
 	) {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
-		$date ??= $this->period
+		$date ??= $this->getPeriodSelected();
 
 		$query = [
 			'module' => 'API',
