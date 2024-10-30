@@ -1,6 +1,8 @@
+<?php
 
 namespace Miraheze\MatomoAnalytics;
 
+use MediaWiki\Html\Html;
 use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\SpecialPage\SpecialPage;
 
@@ -43,11 +45,11 @@ class SpecialAnalytics extends SpecialPage {
 			'default' => $period,
 			'type' => 'select',
 			'options' => [
-				$this->msg( 'days' )->numParams( 1 )->parse() => 1,
-				$this->msg( 'days' )->numParams( 7 )->parse() => 7,
-				$this->msg( 'days' )->numParams( 14 )->parse() => 14,
-				$this->msg( 'days' )->numParams( 21 )->parse() => 21,
-				$this->msg( 'days' )->numParams( 31 )->parse() => 31,
+				$this->msg( 'days' )->numParams( 1 )->text() => 1,
+				$this->msg( 'days' )->numParams( 7 )->text() => 7,
+				$this->msg( 'days' )->numParams( 14 )->text() => 14,
+				$this->msg( 'days' )->numParams( 21 )->text() => 21,
+				$this->msg( 'days' )->numParams( 31 )->text() => 31,
 			],
 		];
 
@@ -72,7 +74,7 @@ class SpecialAnalytics extends SpecialPage {
 	}
 
 	public function onSubmitRedirectToSelection( array $params ) {
-		$out->redirect( SpecialPage::getTitleFor( 'Analytics' )->getFullURL() . '?' . $params['time'] );
+		$out->redirect( SpecialPage::getTitleFor( 'Analytics' . '?' $params['time'] )->getFullURL() );
 
 		return true;
 	}
