@@ -18,8 +18,8 @@ function extractDataAndMakeChart(fieldset) {
     const fieldLayouts = fieldset.querySelectorAll('.oo-ui-fieldLayout-body');
 
     // Initialize empty objects for labels and data
-    const labels = {};
-    const data = {};
+    const labels = [];
+    const data = [];
 
     // Loop through each field layout to extract data
     fieldLayouts.forEach((fieldLayout) => {

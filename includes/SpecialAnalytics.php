@@ -1,4 +1,3 @@
-<?php
 
 namespace Miraheze\MatomoAnalytics;
 
@@ -18,23 +17,18 @@ class SpecialAnalytics extends SpecialPage {
 		$this->outputHeader();
 
 		$out = $this->getOutput();
-		$out->addWikiMsg( 'matomoanalytics-header' );
 
-		// $out->addModules( [ 'ext.matomoanalytics.oouiform' ] );
 		$out->addModules( [ 'ext.matomoanalytics.charts', 'ext.matomoanalytics.graphs' ] );
-		// $out->addModuleStyles( [ 'ext.matomoanalytics.oouiform.styles' ] );
 		$out->addModuleStyles( [ 'oojs-ui-widgets.styles', 'ext.matomoanalytics.special' ] );
 
-		$period = $this->getContext()->getRequest()->getRawVal( 'period' ) ?? 7;
+		$period = $this->getContext()->getRequest()->getInt( 'period', 7 );
 
-		if ( !is_numeric( $period ) || (int)$period <= 1 || (int)$period > 31 ) {
+		if ( $period <= 1 || $period > 31 ) {
 			$period = 7;
 
 			$out->addHTML(
 				Html::errorBox( $this->msg( 'htmlform-select-badoption' )->escaped() )
 			);
-		} else {
-			$period = (int)$period;
 		}
 
 		$selectionForm = [];
@@ -46,14 +40,14 @@ class SpecialAnalytics extends SpecialPage {
 
 		$selectionForm['time'] = [
 			'label-message' => 'rcfilters-date-popup-title',
-			'default' => (int)$period ?? 7,
+			'default' => $period,
 			'type' => 'select',
 			'options' => [
-				$this->msg( 'days' )->params( '1' )->text() => 1,
-				$this->msg( 'days' )->params( '7' )->text() => 7,
-				$this->msg( 'days' )->params( '14' )->text() => 14,
-				$this->msg( 'days' )->params( '21' )->text() => 21,
-				$this->msg( 'days' )->params( '31' )->text() => 31,
+				$this->msg( 'days' )->numParams( 1 )->parse() => 1,
+				$this->msg( 'days' )->numParams( 7 )->parse() => 7,
+				$this->msg( 'days' )->numParams( 14 )->parse() => 14,
+				$this->msg( 'days' )->numParams( 21 )->parse() => 21,
+				$this->msg( 'days' )->numParams( 31 )->parse() => 31,
 			],
 		];
 
@@ -78,8 +72,9 @@ class SpecialAnalytics extends SpecialPage {
 	}
 
 	public function onSubmitRedirectToSelection( array $params ) {
-		header( 'Location: ' . SpecialPage::getTitleFor( 'Analytics' )->getFullURL() . '?' . $params['time'] );
+		$out->redirect( SpecialPage::getTitleFor( 'Analytics' )->getFullURL() . '?' . $params['time'] );
 
 		return true;
 	}
 }
+

@@ -66,24 +66,10 @@
 	},
 	"ResourceModules": {
 		"ext.matomoanalytics.charts": {
-			"scripts": "ext.matomoanalytics.charts.js",
-			"targets": [ "desktop", "mobile" ]
+			"scripts": "ext.matomoanalytics.charts.js"
 		},
 		"ext.matomoanalytics.graphs": {
-			"scripts": "ext.matomoanalytics.graphs.js",
-			"targets": [ "desktop", "mobile" ]
-		},
-		"ext.matomoanalytics.oouiform": {
-			"scripts": "ext.matomoanalytics.oouiform.ooui.js",
-			"targets": [ "desktop", "mobile" ],
-			"dependencies": [
-				"mediawiki.storage",
-				"oojs-ui-widgets"
-			]
-		},
-		"ext.matomoanalytics.special": {
-			"targets": [ "desktop", "mobile" ],
-			"styles": "ext.matomoanalytics.special.css"
+			"scripts": "ext.matomoanalytics.graphs.js"
 		}
 	},
 	"ResourceFileModulePaths": {
