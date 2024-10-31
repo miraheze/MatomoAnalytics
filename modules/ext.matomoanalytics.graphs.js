@@ -44,8 +44,8 @@ function extractDataAndMakeChart( fieldset ) {
 
 // Function to create the chart
 function makeChart( canvas, labels, data, chartType ) {
-	// eslint-disable-next-line no-new no-undef
-	var chart = new Chart( canvas, {
+	// eslint-disable-next-line
+	new Chart( canvas, {
 		type: chartType, // Dynamic chart type based on custom class
 		data: {
 			labels: Object.keys(labels),
