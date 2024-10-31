@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 /**
  * Skipped minification because the original files appears to be already minified.
  * Original file: /npm/chart.js@4.4.5/dist/chart.umd.js
