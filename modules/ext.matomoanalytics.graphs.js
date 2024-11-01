@@ -29,6 +29,11 @@ Chart.register({
 
 			ctx.restore();
 		}
+
+		// Set display property of "matomoanalytics-chart" to "block"
+		if (chart.canvas.classList.contains('matomoanalytics-chart')) {
+			chart.canvas.style.display = 'block';
+		}
 	},
 });
 
@@ -39,6 +44,9 @@ function extractDataAndMakeChart( fieldset ) {
 	if ( !canvas ) {
 		return; // If no canvas is found, skip this fieldset
 	}
+
+	// Set the canvas display to "block" initially
+	canvas.style.display = 'block';
 
 	// Determine the chart type based on the class of the canvas
 	var chartType = 'bar'; // default to 'bar'
