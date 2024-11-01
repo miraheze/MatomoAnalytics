@@ -17,24 +17,22 @@ class ModifyMatomo extends Maintenance {
 	/** @var MatomoAnalytics */
 	private $matomoAnalytics;
 
-	public function __construct( MatomoAnalytics $matomoAnalytics ) {
+	public function __construct() {
 		parent::__construct();
 
 		$this->addDescription( 'Add or remove a wiki from matomo.' );
 		$this->addOption( 'remove', 'Remove wiki from matomo' );
 
 		$this->requireExtension( 'MatomoAnalytics' );
-
-		$this->matomoAnalytics = $matomoAnalytics;
 	}
 
 	public function execute() {
 		$DBname = $this->getConfig()->get( 'DBname' );
 
 		if ( $this->getOption( 'remove', false ) ) {
-			$this->matomoAnalytics->deleteSite( $DBname );
+			Miraheze\MatomoAnalytics\MatomoAnalytics::deleteSite( $DBname );
 		} else {
-			$this->matomoAnalytics->addSite( $DBname );
+			Miraheze\MatomoAnalytics\MatomoAnalytics::addSite( $DBname );
 		}
 	}
 }

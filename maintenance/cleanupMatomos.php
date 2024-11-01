@@ -18,7 +18,7 @@ class CleanupMatomos extends Maintenance {
 	/** @var MatomoAnalytics */
 	private $matomoAnalytics;
 
-	public function __construct( MatomoAnalytics $matomoAnalytics ) {
+	public function __construct() {
 		parent::__construct();
 
 		$this->addDescription( 'Cleanup matomo ids that don\'t have corresponding cw_wikis entries.' );
@@ -26,8 +26,6 @@ class CleanupMatomos extends Maintenance {
 
 		$this->requireExtension( 'CreateWiki' );
 		$this->requireExtension( 'MatomoAnalytics' );
-
-		$this->matomoAnalytics = $matomoAnalytics;
 	}
 
 	public function execute() {
@@ -61,7 +59,7 @@ class CleanupMatomos extends Maintenance {
 				}
 
 				$this->output( "Remove matomo id from {$DBname}\n" );
-				$this->matomoAnalytics->deleteSite( $DBname );
+				Miraheze\MatomoAnalytics\MatomoAnalytics::deleteSite( $DBname );
 			}
 		}
 	}

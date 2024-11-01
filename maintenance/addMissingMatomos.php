@@ -15,18 +15,13 @@ require_once "$IP/maintenance/Maintenance.php";
 
 class AddMissingMatomos extends Maintenance {
 
-	/** @var MatomoAnalytics */
-	private $matomoAnalytics;
-
-	public function __construct( MatomoAnalytics $matomoAnalytics ) {
+	public function __construct() {
 		parent::__construct();
 
 		$this->addDescription( 'Add missing matomo ids.' );
 
 		$this->requireExtension( 'CreateWiki' );
 		$this->requireExtension( 'MatomoAnalytics' );
-
-		$this->matomoAnalytics = $matomoAnalytics;
 	}
 
 	public function execute() {
@@ -55,7 +50,7 @@ class AddMissingMatomos extends Maintenance {
 
 			if ( !isset( $id ) || !$id ) {
 				$this->output( "Adding matomo id to {$DBname}\n" );
-				$this->matomoAnalytics->addSite( $DBname );
+				Miraheze\MatomoAnalytics\MatomoAnalytics::addSite( $DBname );
 				$this->output( "Done!\n" );
 			}
 		}
