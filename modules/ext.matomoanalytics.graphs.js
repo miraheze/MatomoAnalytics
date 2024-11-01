@@ -2,19 +2,19 @@
 Chart.register({
 	id: 'noData',
 	afterDraw: function (chart) {
-		const datasets = chart.data.datasets;
+		var datasets = chart.data.datasets;
 
 		// Improved data check to exclude NaN, null, undefined, or 0 values
-		const hasData = datasets.some(dataset => 
+		var hasData = datasets.some(dataset => 
 			dataset.data.length > 0 && 
 			dataset.data.some(value => value !== null && value !== undefined && value !== 0 && !isNaN(value))
 		);
 
 		// Display the message if there's no valid data
 		if (!hasData) {
-			const ctx = chart.ctx;
-			const width = chart.width;
-			const height = chart.height;
+			var ctx = chart.ctx;
+			var width = chart.width;
+			var height = chart.height;
 
 			// Clear the chart canvas
 			ctx.save();
