@@ -25,7 +25,7 @@ class SpecialAnalytics extends SpecialPage {
 
 		$period = $this->getContext()->getRequest()->getInt( 'period', 7 );
 
-		if ( $period <= 1 || $period > 31 ) {
+		if ( $period < 1 || $period > 31 ) {
 			$period = 7;
 
 			$out->addHTML(

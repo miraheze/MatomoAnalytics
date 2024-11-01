@@ -93,9 +93,9 @@ class MatomoAnalyticsViewer {
 
 	public function getForm(
 		IContextSource $context,
-		int $time
+		int $periodSelected
 	) {
-		$formDescriptor = $this->getFormDescriptor( $context, $time );
+		$formDescriptor = $this->getFormDescriptor( $context, $periodSelected );
 
 		return $formDescriptor;
 	}

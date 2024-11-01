@@ -50,7 +50,7 @@
 	"matomoanalytics-labels-visitpages": "Used as the section label for 'Unique Pages' in Special:Analytics",
 	"matomoanalytics-labels-visitpages-info": "Clarifying information for the 'Visited Pages' section. Displayed under label.",
 	"matomoanalytics-labels-visitpass": "Used as the section label for 'Time Passed' in Special:Analytics",
-	"matomoanalytics-labels-visitpass-info": "Clarifying information for the 'Unique Pages' section. Displayed under label.",
+	"matomoanalytics-labels-visitpass-info": "Clarifying information for the 'Time Passed' section. Displayed under label.",
 	"matomoanalytics-labels-website": "{{identical|Websites}}",
 	"matomoanalytics-labels-website-info": "Clarifying information for the 'Website Referrals' section. Displayed under label.",
 	"right-noanalytics": "{{doc-right|noanalytics}}"

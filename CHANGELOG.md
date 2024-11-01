@@ -1,5 +1,8 @@
 ## ChangeLog for MatomoAnalytics
 
+### 1.3.0 (1-11-2024)
+* Revamped Analytics UI and provided chart visualization support
+
 ### 1.2.0 (23-10-2024)
 * Introduced support for viewing number of page views via ?action=info
 * Namespaced the extension

@@ -14,10 +14,6 @@ if ( $IP === false ) {
 require_once "$IP/maintenance/Maintenance.php";
 
 class CleanupMatomos extends Maintenance {
-
-	/** @var MatomoAnalytics */
-	private $matomoAnalytics;
-
 	public function __construct() {
 		parent::__construct();
 
