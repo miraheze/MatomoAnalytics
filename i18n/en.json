@@ -13,6 +13,8 @@
 	"matomoanalytics-header": "You can use the tabs below to select different statistics to view that we store using Matomo. All data is collected over the past 30 days starting from yesterday (updated daily).",
 	"matomoanalytics-labels-browser": "Browsers",
 	"matomoanalytics-labels-browser-info": "Browsers are amalgamated by family and specific versions are not shown.",
+	"matomoanalytics-labels-campaigns": "Campaigns",
+	"matomoanalytics-labels-campaigns-info": "You can use targeted campaigns to measure audience and reach.",
 	"matomoanalytics-labels-continent": "Continents",
 	"matomoanalytics-labels-continent-info": "",
 	"matomoanalytics-labels-country": "Country",

@@ -1,3 +1,37 @@
+// eslint-disable-next-line no-undef
+Chart.register({
+	id: 'noData',
+	afterDraw: function (chart) {
+		const datasets = chart.data.datasets;
+
+		// Improved data check to exclude NaN, null, undefined, or 0 values
+		const hasData = datasets.some(dataset => 
+			dataset.data.length > 0 && 
+			dataset.data.some(value => value !== null && value !== undefined && value !== 0 && !isNaN(value))
+		);
+
+		// Display the message if there's no valid data
+		if (!hasData) {
+			const ctx = chart.ctx;
+			const width = chart.width;
+			const height = chart.height;
+
+			// Clear the chart canvas
+			ctx.save();
+			ctx.clearRect(0, 0, width, height);
+
+			// Set text properties and display the message
+			ctx.textAlign = 'center';
+			ctx.textBaseline = 'middle';
+			ctx.font = '16px Arial';
+			ctx.fillStyle = 'gray';
+			ctx.fillText('No data to display', width / 2, height / 2);
+
+			ctx.restore();
+		}
+	},
+});
+
 function extractDataAndMakeChart( fieldset ) {
 	// Get the chart canvas inside the current fieldset
 	var canvas = fieldset.querySelector('[id^="matomoanalytics-chart"]');
@@ -66,31 +100,6 @@ function makeChart( canvas, labels, data, chartType ) {
 	});
 }
 
-// eslint-disable-next-line no-undef
-Chart.register({
-	id: 'NoData',
-	afterDraw: function ( canvas ) {
-		if (
-			canvas.data.datasets
-			.map( (d) => d.data.length )
-			.reduce( (p, a) => p + a, 0 ) === 0
-		) {
-		// No data is present
-		var ctx = canvas.ctx;
-		var width = canvas.width;
-		var height = canvas.height;
-		canvas.clear();
-	
-		ctx.save();
-		ctx.textAlign = 'center';
-		ctx.textBaseline = 'middle';
-		ctx.font = `2.5rem ${window.getComputedStyle(document.body).fontFamily}`;
-		ctx.fillText('No data to display', width / 2, height / 2);
-		ctx.restore();
-		}
-	},
-});
-	
 // Loop through all fieldsets and apply the chart
 // eslint-disable-next-line mediawiki/no-nodelist-unsupported-methods
 document.querySelectorAll( 'fieldset' ).forEach( ( fieldset ) => {
