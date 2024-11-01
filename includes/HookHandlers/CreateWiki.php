@@ -5,6 +5,7 @@ namespace Miraheze\MatomoAnalytics\HookHandlers;
 use Miraheze\CreateWiki\Hooks\CreateWikiCreationHook;
 use Miraheze\CreateWiki\Hooks\CreateWikiDeletionHook;
 use Miraheze\CreateWiki\Hooks\CreateWikiRenameHook;
+use Miraheze\MatomoAnalytics\MatomoAnalytics;
 use Wikimedia\Rdbms\DBConnRef;
 
 class CreateWiki implements

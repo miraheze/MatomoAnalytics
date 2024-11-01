@@ -3,6 +3,7 @@
 namespace Miraheze\MatomoAnalytics\Maintenance;
 
 use Maintenance;
+use Miraheze\MatomoAnalytics\MatomoAnalytics;
 use UnexpectedValueException;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
