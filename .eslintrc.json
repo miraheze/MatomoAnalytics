@@ -14,7 +14,9 @@
 		"jquery": true,
 		"es6": true
 	},
-	"ignorePatterns": [ "vendor/**" ],
+	"ignorePatterns": [ 
+		"vendor/**",
+		"modules/ext.matomoanalytics.charts.js" ],
 	"rules": {
 		"one-var": "off",
 		"no-implicit-globals": "off",

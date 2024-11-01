@@ -54,10 +54,9 @@ class SpecialAnalytics extends SpecialPage {
 		];
 
 		$selectForm = HTMLForm::factory( 'ooui', $selectionForm, $this->getContext(), 'selectionForm' );
-		$selectForm->setId( 'matomoanalytics-submit' )
+		$selectForm->setMethod( 'post' )
 			->setWrapperLegendMsg( 'rcfilters-limit-title' )
-			->setMethod( 'post' )
-			->setFormIdentifier( 'selectForm' )
+			->setId( 'matomoanalytics-submit' )
 			->setSubmitCallback( [ $this, 'onSubmitRedirectToSelection' ] )
 			->setSubmitTextMsg( 'view' )
 			->prepareForm()
@@ -69,7 +68,6 @@ class SpecialAnalytics extends SpecialPage {
 		$createForm = HTMLForm::factory( 'ooui', $htmlForm, $this->getContext() );
 		$createForm->setId( 'matomoanalytics-form' )
 			->suppressDefaultSubmit()
-			->setSubmitCallback( [ $this, 'onSubmitRedirectToSelection' ] )
 			->show();
 	}
 
