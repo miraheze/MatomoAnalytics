@@ -4,7 +4,8 @@
 			"John Lewis",
 			"McDutchie",
 			"Robby",
-			"Universal Omega"
+			"Universal Omega",
+			"Agent Isai"
 		]
 	},
 	"action-noanalytics": "{{doc-action|noanalytics}}",
@@ -31,5 +32,23 @@
 	"matomoanalytics-labels-visitpages": "Used as the section label for 'Unique Pages' in Special:Analytics",
 	"matomoanalytics-labels-visitpass": "Used as the section label for 'Time Passed' in Special:Analytics",
 	"matomoanalytics-labels-website": "{{identical|Websites}}",
-	"right-noanalytics": "{{doc-right|noanalytics}}"
+	"right-noanalytics": "{{doc-right|noanalytics}}",
+	"matomoanalytics-labels-browser-info": "Clarifying information for the 'Browser' section. Displayed under label.",
+	"matomoanalytics-labels-continent-info": "Clarifying information for the 'Continent' section. Displayed under label.", 
+	"matomoanalytics-labels-country-info": "Clarifying information for the 'Country' section. Displayed under label.",
+	"matomoanalytics-labels-devices-info": "Clarifying information for the 'Devices' section. Displayed under label.",
+	"matomoanalytics-labels-os-info": "Clarifying information for the 'OS' section. Displayed under label.",
+	"matomoanalytics-labels-referrer-info": "Clarifying information for the 'Site Referals' section. Displayed under label.",
+	"matomoanalytics-labels-resolution-info": "Clarifying information for the 'Resolution' section. Displayed under label.",
+	"matomoanalytics-labels-search-info": "Clarifying information for the 'Search Keywords' section. Displayed under label.",
+	"matomoanalytics-labels-sitevisits-info": "Clarifying information for the 'Visits to your wiki' section. Displayed under label.",
+	"matomoanalytics-labels-social-info": "Clarifying information for the 'Social Networks' section. Displayed under label.",
+	"matomoanalytics-labels-topsearches-info": "Clarifying information for the 'Top Searches' section. Displayed under label.",
+	"matomoanalytics-labels-toppages-info": "Clarifying information for the 'Top Pages' section. Displayed under label.",
+	"matomoanalytics-labels-visitday-info": "Clarifying information for the 'Day' section. Displayed under label.",
+	"matomoanalytics-labels-visitduration-info": "Clarifying information for the 'Duration' section. Displayed under label.",
+	"matomoanalytics-labels-visithour-info": "Clarifying information for the 'Hour' section. Displayed under label.",
+	"matomoanalytics-labels-visitpages-info": "Clarifying information for the 'Visited Pages' section. Displayed under label.",
+	"matomoanalytics-labels-visitpass-info": "Clarifying information for the 'Unique Pages' section. Displayed under label.",
+	"matomoanalytics-labels-website-info": "Clarifying information for the 'Website Referrals' section. Displayed under label."
 }

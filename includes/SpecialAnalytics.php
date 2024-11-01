@@ -73,7 +73,7 @@ class SpecialAnalytics extends SpecialPage {
 	}
 
 	public function onSubmitRedirectToSelection( array $params ) {
-		$this->getOutput()->redirect( SpecialPage::getTitleFor( 'Analytics' )->getFullURL( [ 'days' => $params['time'] ] ) );
+		$this->getOutput()->redirect( SpecialPage::getTitleFor( 'Analytics' )->getFullURL( [ 'period' => $params['time'] ] ) );
 
 		return true;
 	}
@@ -81,5 +81,4 @@ class SpecialAnalytics extends SpecialPage {
 	public function onSubmitDummy( array $params ) {
 		return true;
 	}
-
 }

@@ -68,7 +68,7 @@ function makeChart( canvas, labels, data, chartType ) {
 // eslint-disable-next-line no-undef
 Chart.register({
 	id: 'NoData',
-	afterDraw: function ( chart ) {
+	afterDraw: function ( makeChart ) {
 		if (
 		chart.data.datasets
 			.map( (d) => d.data.length )
