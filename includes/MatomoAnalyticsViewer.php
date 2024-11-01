@@ -82,7 +82,7 @@ class MatomoAnalyticsViewer {
 	public function getAnalyticsCanvasHtml( string $type, string $chartType ) {
 		return Html::element( 'canvas', [
 			'id' => 'matomoanalytics-chart-' . $type,
-			'class' => [ 
+			'class' => [
 				'matomoanalytics-chart',
 				'matomoanalytics-chart-' . $chartType
 			],
