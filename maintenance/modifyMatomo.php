@@ -30,9 +30,9 @@ class ModifyMatomo extends Maintenance {
 		$DBname = $this->getConfig()->get( 'DBname' );
 
 		if ( $this->getOption( 'remove', false ) ) {
-			Miraheze\MatomoAnalytics\MatomoAnalytics::deleteSite( $DBname );
+			\Miraheze\MatomoAnalytics\MatomoAnalytics::deleteSite( $DBname );
 		} else {
-			Miraheze\MatomoAnalytics\MatomoAnalytics::addSite( $DBname );
+			\Miraheze\MatomoAnalytics\MatomoAnalytics::addSite( $DBname );
 		}
 	}
 }
