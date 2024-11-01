@@ -67,13 +67,13 @@ class SpecialAnalytics extends SpecialPage {
 
 		$createForm = HTMLForm::factory( 'ooui', $htmlForm, $this->getContext() );
 		$createForm->setId( 'matomoanalytics-form' )
-			->suppressDefaultSubmit()
 			->setSubmitCallback( [ $this, 'onSubmitDummy' ] )
+			->suppressDefaultSubmit()
 			->show();
 	}
 
 	public function onSubmitRedirectToSelection( array $params ) {
-		$this->getOutput()->redirect( SpecialPage::getTitleFor( 'Analytics' . '?' . $params['time'] )->getFullURL() );
+		$this->getOutput()->redirect( SpecialPage::getTitleFor( 'Analytics' )->getFullURL( [ 'days' => $params['time'] ] ) );
 
 		return true;
 	}
