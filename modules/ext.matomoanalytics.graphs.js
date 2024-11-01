@@ -7,7 +7,7 @@ Chart.register({
 		// Improved data check to exclude NaN, null, undefined, or 0 values
 		var hasData = datasets.some(dataset => 
 			dataset.data.length > 0 && 
-			dataset.data.some(value => value !== null && value !== undefined && value !== 0 && !Number.isNaN(value))
+			dataset.data.some(value => value !== null && value !== undefined && value !== 0 && !isNaN(value))
 		);
 
 		// Display the message if there's no valid data
