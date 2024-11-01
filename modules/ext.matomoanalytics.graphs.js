@@ -2,9 +2,10 @@ function extractDataAndMakeChart( fieldset ) {
 	// Get the chart canvas inside the current fieldset
 	var canvas = fieldset.querySelector('[id^="matomoanalytics-chart"]');
 
-	if (!canvas) {
+	if ( !canvas ) {
 		return; // If no canvas is found, skip this fieldset
 	}
+
 	// Determine the chart type based on the class of the canvas
 	var chartType = 'bar'; // default to 'bar'
 	if ( canvas.classList.contains( 'matomoanalytics-chart-line' ) ) {
@@ -68,17 +69,17 @@ function makeChart( canvas, labels, data, chartType ) {
 // eslint-disable-next-line no-undef
 Chart.register({
 	id: 'NoData',
-	afterDraw: function ( makeChart ) {
+	afterDraw: function ( canvas ) {
 		if (
-		chart.data.datasets
+			canvas.data.datasets
 			.map( (d) => d.data.length )
 			.reduce( (p, a) => p + a, 0 ) === 0
 		) {
 		// No data is present
-		var ctx = chart.ctx;
-		var width = chart.width;
-		var height = chart.height;
-		chart.clear();
+		var ctx = canvas.ctx;
+		var width = canvas.width;
+		var height = canvas.height;
+		canvas.clear();
 	
 		ctx.save();
 		ctx.textAlign = 'center';
@@ -88,7 +89,7 @@ Chart.register({
 		ctx.restore();
 		}
 	},
-	});
+});
 	
 // Loop through all fieldsets and apply the chart
 // eslint-disable-next-line mediawiki/no-nodelist-unsupported-methods
