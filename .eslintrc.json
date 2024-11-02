@@ -10,9 +10,7 @@
 		"module": "readonly"
 	},
 	"env": {
-		"browser": true,
-		"jquery": true,
-		"es6": true
+		"browser": true
 	},
 	"ignorePatterns": [ 
 		"vendor/**",
@@ -29,6 +27,6 @@
 		"mediawiki/class-doc": "off"
 	},
 	"parserOptions": {
-		"ecmaVersion": 2021
+		"ecmaVersion": 2024
 	}
 }
