@@ -2,11 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Amire80",
+			"YaronSh",
 			"לואיקה"
 		]
 	},
 	"action-noanalytics": "לא להיות במעקב על־ידי Matomo",
-	"analytics": "MatomoAnalytics",
+	"analytics": "ניתוח מידע של הוויקי",
+	"matomoanalytics-count": "$1",
 	"matomoanalytics-desc": "שילוב ניתוחים מ־Matomo ומדיה־ויקי",
 	"matomoanalytics-header": "באפשרותך להשתמש בלשוניות למטה כדי לבחור לראות נתונים סטטיסטיים שונים שאנו מאחסנים באמצעות Matomo. כל הנתונים נאספים במהלך 30 הימים האחרונים החל מאתמול (מתעדכן מדי יום).",
 	"matomoanalytics-labels-browser": "דפדפנים",
@@ -14,6 +16,7 @@
 	"matomoanalytics-labels-country": "מדינה",
 	"matomoanalytics-labels-devices": "מכשירים",
 	"matomoanalytics-labels-os": "מערכת הפעלה",
+	"matomoanalytics-labels-pastmonth": "צפיות עמודים בחודש האחרון",
 	"matomoanalytics-labels-referrer": "הפניות מאתרים",
 	"matomoanalytics-labels-resolution": "רזולוציה",
 	"matomoanalytics-labels-search": "מילות חיפוש",
