@@ -12,7 +12,7 @@
 	"env": {
 		"browser": true
 	},
-	"ignorePatterns": [ 
+	"ignorePatterns": [
 		"vendor/**",
 		"modules/ext.matomoanalytics.charts.js"
 	],

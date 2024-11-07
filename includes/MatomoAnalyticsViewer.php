@@ -7,6 +7,11 @@ use MediaWiki\Html\Html;
 use MediaWiki\Output\OutputPage;
 
 class MatomoAnalyticsViewer {
+	protected const CHART_TYPES = [  
+		'sitevisits' => 'line',  
+		'default' => 'pie'  
+	];
+
 	public function getFormDescriptor(
 		IContextSource $context,
 		int $periodSelected
@@ -42,11 +47,7 @@ class MatomoAnalyticsViewer {
 
 		$formDescriptor = [];
 		foreach ( $descriptorData as $type => $data ) {
-			if ( $type === 'sitevisits' ) {
-				$chartType = 'line';
-			} else {
-				$chartType = 'pie';
-			}
+			$chartType = self::CHART_TYPES[$type] ?? self::CHART_TYPES['default'];
 
 			$formDescriptor["{$type}-info"] = [
 				'type' => 'info',
@@ -86,8 +87,8 @@ class MatomoAnalyticsViewer {
 				'matomoanalytics-chart',
 				'matomoanalytics-chart-' . $chartType
 			],
-			'height' => 200,
-			'width' => 500,
+			'data-chart-type' => $chartType,
+			'style' => 'width: 100%; max-width: 500px;'
 		] );
 	}
 

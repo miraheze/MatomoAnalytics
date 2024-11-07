@@ -6,12 +6,12 @@ use MediaWiki\MediaWikiServices;
 
 class MatomoAnalyticsWiki {
 	/** @var int */
-	private $siteId;
+	private int $siteId;
 
 	/** @var int */
-	private $periodSelected;
+	private int $periodSelected;
 
-	public function __construct( $wiki, int $periodSelected = 7 ) {
+	public function __construct( string $wiki, int $periodSelected = 7 ) {
 		$this->siteId = MatomoAnalytics::getSiteID( $wiki );
 		$this->periodSelected = $periodSelected;
 	}

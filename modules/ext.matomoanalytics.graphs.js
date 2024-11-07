@@ -29,17 +29,12 @@ Chart.register({
 
 			ctx.restore();
 		}
-
-		// Set display property of "matomoanalytics-chart" to "block"
-		if (chart.canvas.classList.contains('matomoanalytics-chart')) {
-			chart.canvas.style.display = 'block';
-		}
 	},
 } );
 
 function extractDataAndMakeChart( fieldset ) {
 	// Get the chart canvas inside the current fieldset
-	var canvas = fieldset.querySelector('[id^="matomoanalytics-chart"]');
+	var canvas = fieldset.querySelector('[class^="matomoanalytics-chart"]');
 
 	if ( !canvas ) {
 		return; // If no canvas is found, skip this fieldset
@@ -61,7 +56,7 @@ function extractDataAndMakeChart( fieldset ) {
 	// Get all the elements with class 'oo-ui-fieldLayout-body' inside the current fieldset
 	var fieldLayouts = fieldset.querySelectorAll( '.oo-ui-fieldLayout-body' );
 
-	// Initialize empty objects for labels and data
+	// Initialize empty arrays for labels and data
 	var labels = [];
 	var data = [];
 
@@ -75,9 +70,10 @@ function extractDataAndMakeChart( fieldset ) {
 			var label = labelElement.textContent.trim();
 			var value = parseInt(dataElement.textContent.trim(), 10);
 
-			// Assign label as key and value as data
-			labels[label] = label;
-			data[label] = value;
+			if ( !isNaN( value ) ) {
+				labels.push( label );
+				data.push( value );
+			}
 		}
 	});
 
@@ -91,10 +87,9 @@ function makeChart( canvas, labels, data, chartType ) {
 	new Chart( canvas, {
 		type: chartType, // Dynamic chart type based on custom class
 		data: {
-			labels: Object.keys(labels),
+			labels: labels,
 			datasets: [{
-				// eslint-disable-next-line es-x/no-object-values
-				data: Object.values(data),
+				data: data,
 				borderWidth: 1
 			}]
 		},
@@ -112,4 +107,4 @@ function makeChart( canvas, labels, data, chartType ) {
 // eslint-disable-next-line mediawiki/no-nodelist-unsupported-methods
 document.querySelectorAll( 'fieldset' ).forEach( ( fieldset ) => {
 	extractDataAndMakeChart( fieldset );
-});
+} );
