@@ -1,12 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
+			"NguyenHung",
 			"Pisceskaze",
 			"SongNgu.xyz"
 		]
 	},
 	"action-noanalytics": "không được theo dõi qua Matomo",
-	"analytics": "Phân tích Mamoto",
+	"analytics": "Phân tích wiki",
 	"matomoanalytics-desc": "Tích hợp phân tích từ Matomo và MediaWiki",
 	"matomoanalytics-header": "Bạn có thể sử dụng các tab bên dưới để chọn các số liệu thống kê khác nhau được lưu trữ bằng Matomo. Tất cả dữ liệu được thu thập trong 30 ngày qua bắt đầu từ hôm qua (cập nhật hàng ngày).",
 	"matomoanalytics-labels-browser": "Trình duyệt",
