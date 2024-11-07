@@ -7,10 +7,28 @@ use MediaWiki\Html\Html;
 use MediaWiki\Output\OutputPage;
 
 class MatomoAnalyticsViewer {
-	protected const CHART_TYPES = [
-		'sitevisits' => 'line',
-		'default' => 'pie'
+	protected const CHART_TYPES = [  
+		'toppages' => 'bar',  
+		'topsearches' => 'bar',  
+		'browser' => 'pie',  
+		'devices' => 'pie',  
+		'os' => 'pie',  
+		'resolution' => 'pie',  
+		'referrer' => 'doughnut',  
+		'search' => 'bar',  
+		'social' => 'doughnut',  
+		'website' => 'doughnut',  
+		'continent' => 'doughnut',  
+		'country' => 'doughnut',  
+		'visitday' => 'bar',  
+		'visithour' => 'bar',  
+		'visitpages' => 'line',  
+		'visitduration' => 'line',  
+		'visitpass' => 'line',  
+		'campaigns' => 'doughnut',  
+		'default' => 'pie'  
 	];
+	
 
 	public function getFormDescriptor(
 		IContextSource $context,
