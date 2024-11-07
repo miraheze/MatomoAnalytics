@@ -23,9 +23,9 @@ class MatomoAnalyticsViewer {
 		'country' => 'bar',
 		'visitday' => 'bar',
 		'visithour' => 'bar',
-		'visitpages' => 'scatter',
-		'visitduration' => 'bubble',
-		'visitpass' => 'radar',
+		'visitpages' => 'radar',
+		'visitduration' => 'bar',
+		'visitpass' => 'bar',
 		'campaigns' => 'doughnut',
 		'default' => 'pie'
 	];
