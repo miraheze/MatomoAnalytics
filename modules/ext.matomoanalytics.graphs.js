@@ -47,10 +47,18 @@ function extractDataAndMakeChart( fieldset ) {
 	var chartType = 'bar'; // default to 'bar'
 	if ( canvas.classList.contains( 'matomoanalytics-chart-line' ) ) {
 		chartType = 'line';
+	} else if ( canvas.classList.contains( 'matomoanalytics-chart-bubble' ) ) {
+		chartType = 'bubble';
 	} else if ( canvas.classList.contains( 'matomoanalytics-chart-pie' ) ) {
 		chartType = 'pie';
 	} else if ( canvas.classList.contains( 'matomoanalytics-chart-doughnut' ) ) {
 		chartType = 'doughnut';
+	} else if ( canvas.classList.contains( 'matomoanalytics-chart-polarArea' ) ) {
+		chartType = 'polarArea';
+	} else if ( canvas.classList.contains( 'matomoanalytics-chart-scatter' ) ) {
+		chartType = 'scatter';
+	} else if ( canvas.classList.contains( 'matomoanalytics-chart-radar' ) ) {
+		chartType = 'radar';
 	}
 
 	// Get all the elements with class 'oo-ui-fieldLayout-body' inside the current fieldset

@@ -9,7 +9,7 @@ use MediaWiki\Output\OutputPage;
 class MatomoAnalyticsViewer {
 	protected const CHART_TYPES = [
 		'sitevisits' => 'line',
-		'toppages' => 'bar',
+		'toppages' => 'doughnut',
 		'topsearches' => 'bar',
 		'browser' => 'doughnut',
 		'devices' => 'doughnut',
