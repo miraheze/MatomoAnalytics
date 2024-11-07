@@ -7,9 +7,9 @@ use MediaWiki\Html\Html;
 use MediaWiki\Output\OutputPage;
 
 class MatomoAnalyticsViewer {
-	protected const CHART_TYPES = [  
-		'sitevisits' => 'line',  
-		'default' => 'pie'  
+	protected const CHART_TYPES = [
+		'sitevisits' => 'line',
+		'default' => 'pie'
 	];
 
 	public function getFormDescriptor(

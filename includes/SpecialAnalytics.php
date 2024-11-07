@@ -74,11 +74,11 @@ class SpecialAnalytics extends SpecialPage {
 
 	public function onSubmitRedirectToSelection( array $params ) {
 		$this->getOutput()->redirect(
-				SpecialPage::getTitleFor( 'Analytics' )->getFullURL( 
+				SpecialPage::getTitleFor( 'Analytics' )->getFullURL(
 						[
-							'period' => $params['time'] 
-						] 
-				) 
+							'period' => $params['time']
+						]
+		)
 		);
 
 		return true;
