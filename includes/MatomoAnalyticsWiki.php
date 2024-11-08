@@ -6,10 +6,18 @@ use MediaWiki\MediaWikiServices;
 
 class MatomoAnalyticsWiki {
 	/** @var int */
-	private $siteId;
+	private int $siteId;
 
-	public function __construct( $wiki ) {
+	/** @var int */
+	private int $periodSelected;
+
+	public function __construct( string $wiki, int $periodSelected = 7 ) {
 		$this->siteId = MatomoAnalytics::getSiteID( $wiki );
+		$this->periodSelected = $periodSelected;
+	}
+
+	public function getPeriodSelected(): int {
+		return $this->periodSelected;
 	}
 
 	private function getData(
@@ -18,14 +26,16 @@ class MatomoAnalyticsWiki {
 		string $jsonLabel = 'label',
 		string $jsonData = 'nb_visits',
 		bool $flat = false,
+		?int $date = null,
 		?string $pageUrl = null
 	) {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
+		$date ??= $this->getPeriodSelected();
 
 		$query = [
 			'module' => 'API',
 			'format' => 'json',
-			'date' => 'previous30',
+			'date' => 'previous' . $date,
 			'method' => $module,
 			'period' => $period,
 			'idSite' => $this->siteId,
@@ -49,7 +59,7 @@ class MatomoAnalyticsWiki {
 
 		foreach ( $siteJson as $key => $val ) {
 			if ( $flat ) {
-				$arrayOut[$key] = $val ?: '-';
+				$arrayOut[$key] = $val[$jsonLabel] ?: '-';
 			} else {
 				$arrayOut[$val[$jsonLabel]] = $val[$jsonData] ?: '-';
 			}
@@ -148,7 +158,21 @@ class MatomoAnalyticsWiki {
 
 	// Get visits for specific pages
 	public function getPageViews( string $pageUrl ) {
-		return $this->getData( 'Actions.getPageUrl', 'range', 'label', 'nb_visits', false, $pageUrl );
+		return $this->getData( 'Actions.getPageUrl', 'range', 'label', 'nb_visits', false, 30, $pageUrl );
 	}
 
+	// Get number of visits to the site
+	public function getSiteVisits() {
+		return $this->getData( 'VisitsSummary.get', 'day', 'nb_visits', 'nb_visits', true );
+	}
+
+	// Get all keywords submitted to wiki search
+	public function getSiteSearchKeywords() {
+		return $this->getData( 'Actions.getSiteSearchKeywords' );
+	}
+
+	// Get all campaigns
+	public function getCampaigns() {
+		return $this->getData( 'Referrers.getCampaigns' );
+	}
 }

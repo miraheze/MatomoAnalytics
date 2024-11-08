@@ -14,6 +14,7 @@ if ( $IP === false ) {
 require_once "$IP/maintenance/Maintenance.php";
 
 class AddMissingMatomos extends Maintenance {
+
 	public function __construct() {
 		parent::__construct();
 
@@ -49,8 +50,7 @@ class AddMissingMatomos extends Maintenance {
 
 			if ( !isset( $id ) || !$id ) {
 				$this->output( "Adding matomo id to {$DBname}\n" );
-				$mA = new MatomoAnalytics;
-				$mA->addSite( $DBname );
+				MatomoAnalytics::addSite( $DBname );
 				$this->output( "Done!\n" );
 			}
 		}

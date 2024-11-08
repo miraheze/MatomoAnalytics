@@ -14,17 +14,14 @@ class CreateWiki implements
 	CreateWikiRenameHook
 {
 	public function onCreateWikiCreation( string $dbname, bool $private ): void {
-		$mA = new MatomoAnalytics;
-		$mA->addSite( $dbname );
+		MatomoAnalytics::addSite( $dbname );
 	}
 
 	public function onCreateWikiDeletion( DBConnRef $cwdb, string $dbname ): void {
-		$mA = new MatomoAnalytics;
-		$mA->deleteSite( $dbname );
+		MatomoAnalytics::deleteSite( $dbname );
 	}
 
 	public function onCreateWikiRename( DBConnRef $cwdb, string $old, string $new ): void {
-		$mA = new MatomoAnalytics;
-		$mA->renameSite( $old, $new );
+		MatomoAnalytics::renameSite( $old, $new );
 	}
 }

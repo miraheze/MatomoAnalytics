@@ -55,8 +55,7 @@ class CleanupMatomos extends Maintenance {
 				}
 
 				$this->output( "Remove matomo id from {$DBname}\n" );
-				$mA = new MatomoAnalytics;
-				$mA->deleteSite( $DBname );
+				MatomoAnalytics::deleteSite( $DBname );
 			}
 		}
 	}
