@@ -25,5 +25,5 @@ class ConfigNames {
 
 	public const DisableCookie = 'MatomoAnalyticsDisableCookie';
 
-	public const GetRequest = 'MatomoAnalyticsForceGetRequest';
+	public const ForceGetRequest = 'MatomoAnalyticsForceGetRequest';
 }
