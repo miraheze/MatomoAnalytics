@@ -86,12 +86,12 @@ class MatomoAnalyticsWiki {
 		return $arrayOut;
 	}
 
-	private function getCacheKey(string $module, string $period, int $date, ?string $pageUrl): string {
-		$keyParts = [$module, $period, $date];
-		if ($pageUrl !== null) {
-			$keyParts[] = md5($pageUrl);
+	private function getCacheKey( string $module, string $period, int $date, ?string $pageUrl ): string {
+		$keyParts = [ $module, $period, $date ];
+		if ( $pageUrl !== null ) {
+			$keyParts[] = md5( $pageUrl );
 		}
-		return implode(':', $keyParts);
+		return implode( ':', $keyParts );
 	}
 
 	// Visits per browser type
