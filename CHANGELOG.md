@@ -1,5 +1,9 @@
 ## ChangeLog for MatomoAnalytics
 
+### 1.3.1 (9-11-2024)
+* Added caching support for results
+* Began using ConfigNames class
+
 ### 1.3.0 (1-11-2024)
 * Revamped Analytics UI and provided chart visualization support
 
