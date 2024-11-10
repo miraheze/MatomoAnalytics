@@ -5,7 +5,6 @@ namespace Miraheze\MatomoAnalytics;
 use Exception;
 use FormatJson;
 use MediaWiki\MediaWikiServices;
-use Miraheze\MatomoAnalytics\ConfigNames;
 use ObjectCache;
 use RuntimeException;
 
@@ -48,7 +47,7 @@ class MatomoAnalytics {
 		}
 
 		$siteId = $siteJson['value'];
-		if ( $config->get( ConfigNames::UseDB) ) {
+		if ( $config->get( ConfigNames::UseDB ) ) {
 			$dbw = MediaWikiServices::getInstance()->getDBLoadBalancerFactory()
 				->getMainLB( $config->get( ConfigNames::Database ) )
 				->getMaintenanceConnectionRef( DB_PRIMARY, [], $config->get( ConfigNames::Database ) );
@@ -77,7 +76,7 @@ class MatomoAnalytics {
 
 		$logger = static::getLogger();
 
-		if ( $config->get( ConfigNames::UseDB) &&
+		if ( $config->get( ConfigNames::UseDB ) &&
 			(string)$siteId === (string)$config->get( ConfigNames::SiteID )
 		) {
 			return;
@@ -98,7 +97,7 @@ class MatomoAnalytics {
 			__METHOD__
 		);
 
-		if ( $config->get( ConfigNames::UseDB) ) {
+		if ( $config->get( ConfigNames::UseDB ) ) {
 			$dbw = MediaWikiServices::getInstance()->getDBLoadBalancerFactory()
 				->getMainLB( $config->get( ConfigNames::Database ) )
 				->getMaintenanceConnectionRef( DB_PRIMARY, [], $config->get( ConfigNames::Database ) );
@@ -126,7 +125,7 @@ class MatomoAnalytics {
 
 		$logger = static::getLogger();
 
-		if ( $config->get( ConfigNames::UseDB) &&
+		if ( $config->get( ConfigNames::UseDB ) &&
 			(string)$siteId === (string)$config->get( ConfigNames::SiteID )
 		) {
 			return;
@@ -148,7 +147,7 @@ class MatomoAnalytics {
 			__METHOD__
 		);
 
-		if ( $config->get( ConfigNames::UseDB) ) {
+		if ( $config->get( ConfigNames::UseDB ) ) {
 			$dbw = MediaWikiServices::getInstance()->getDBLoadBalancerFactory()
 				->getMainLB( $config->get( ConfigNames::Database ) )
 				->getMaintenanceConnectionRef( DB_PRIMARY, [], $config->get( ConfigNames::Database ) );
@@ -181,7 +180,7 @@ class MatomoAnalytics {
 
 		$logger = static::getLogger();
 
-		if ( $config->get( ConfigNames::UseDB) ) {
+		if ( $config->get( ConfigNames::UseDB ) ) {
 			$cache = ObjectCache::getLocalClusterInstance();
 			$key = $cache->makeKey( 'matomo', 'id' );
 			$cacheId = $cache->get( $key );

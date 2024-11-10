@@ -4,10 +4,7 @@ namespace Miraheze\MatomoAnalytics;
 
 use DateTime;
 use DateTimeZone;
-use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
-use Miraheze\MatomoAnalytics\ConfigNames;
-use ObjectCache;
 
 class MatomoAnalyticsWiki {
 	/** @var int */
@@ -40,8 +37,8 @@ class MatomoAnalyticsWiki {
 		$cacheKey = $this->getCacheKey( $module, $period, $date, $pageUrl );
 		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
 		$cachedData = $cache->get( $cacheKey );
-	
-		if ( $cachedData !=== false ) {
+
+		if ( $cachedData !== = false ) {
 			return $cachedData;
 		}
 
@@ -82,7 +79,7 @@ class MatomoAnalyticsWiki {
 		$now = new DateTime( 'now', new DateTimeZone( 'UTC' ) );
 		$next1AM = ( clone $now )->modify( 'tomorrow 01:00' );
 		$secondsUntil1AM = $next1AM->getTimestamp() - $now->getTimestamp();
-	
+
 		// Store the result in cache until 1 AM
 		$cache->set( $cacheKey, $arrayOut, $expiration );
 
