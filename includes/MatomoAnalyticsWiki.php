@@ -2,6 +2,8 @@
 
 namespace Miraheze\MatomoAnalytics;
 
+use DateTime;
+use DateTimeZone;
 use MediaWiki\MediaWikiServices;
 
 class MatomoAnalyticsWiki {
@@ -32,6 +34,14 @@ class MatomoAnalyticsWiki {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
 		$date ??= $this->getPeriodSelected();
 
+		$cacheKey = $this->getCacheKey( $module, $period, $date, $pageUrl );
+		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
+		$cachedData = $cache->get( $cacheKey );
+
+		if ( $cachedData !== false ) {
+			return $cachedData;
+		}
+
 		$query = [
 			'module' => 'API',
 			'format' => 'json',
@@ -39,7 +49,7 @@ class MatomoAnalyticsWiki {
 			'method' => $module,
 			'period' => $period,
 			'idSite' => $this->siteId,
-			'token_auth' => $config->get( 'MatomoAnalyticsTokenAuth' )
+			'token_auth' => $config->get( ConfigNames::TokenAuth )
 		];
 
 		if ( $pageUrl !== null ) {
@@ -48,7 +58,7 @@ class MatomoAnalyticsWiki {
 
 		$siteReply = MediaWikiServices::getInstance()->getHttpRequestFactory()->get(
 			wfAppendQuery(
-				$config->get( 'MatomoAnalyticsServerURL' ),
+				$config->get( ConfigNames::ServerURL ),
 				$query
 			)
 		);
@@ -65,7 +75,23 @@ class MatomoAnalyticsWiki {
 			}
 		}
 
+		// Calculate time to 1 AM next day in configured timezone
+		$now = new DateTime( 'now', new DateTimeZone( 'UTC' ) );
+		$next1AM = ( clone $now )->modify( 'tomorrow 01:00' );
+		$expiration = $next1AM->getTimestamp() - $now->getTimestamp();
+
+		// Store the result in cache until 1 AM
+		$cache->set( $cacheKey, $arrayOut, $expiration );
+
 		return $arrayOut;
+	}
+
+	private function getCacheKey( string $module, string $period, int $date, ?string $pageUrl ): string {
+		$keyParts = [ $module, $period, $date ];
+		if ( $pageUrl !== null ) {
+			$keyParts[] = md5( $pageUrl );
+		}
+		return implode( ':', $keyParts );
 	}
 
 	// Visits per browser type
