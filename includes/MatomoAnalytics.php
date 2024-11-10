@@ -5,6 +5,7 @@ namespace Miraheze\MatomoAnalytics;
 use Exception;
 use FormatJson;
 use MediaWiki\MediaWikiServices;
+use Miraheze\MatomoAnalytics\ConfigNames;
 use ObjectCache;
 use RuntimeException;
 
@@ -26,13 +27,13 @@ class MatomoAnalytics {
 
 		$siteReply = MediaWikiServices::getInstance()->getHttpRequestFactory()->get(
 			wfAppendQuery(
-				$config->get( 'MatomoAnalyticsServerURL' ),
+				$config->get( ConfigNames::ServerURL ),
 				[
 					'module' => 'API',
 					'format' => 'json',
 					'method' => 'SitesManager.addSite',
 					'siteName' => $dbname,
-					'token_auth' => $config->get( 'MatomoAnalyticsTokenAuth' )
+					'token_auth' => $config->get( ConfigNames::TokenAuth )
 				]
 			),
 			[],
@@ -47,10 +48,10 @@ class MatomoAnalytics {
 		}
 
 		$siteId = $siteJson['value'];
-		if ( $config->get( 'MatomoAnalyticsUseDB' ) ) {
+		if ( $config->get( ConfigNames::UseDB) ) {
 			$dbw = MediaWikiServices::getInstance()->getDBLoadBalancerFactory()
-				->getMainLB( $config->get( 'MatomoAnalyticsDatabase' ) )
-				->getMaintenanceConnectionRef( DB_PRIMARY, [], $config->get( 'MatomoAnalyticsDatabase' ) );
+				->getMainLB( $config->get( ConfigNames::Database ) )
+				->getMaintenanceConnectionRef( DB_PRIMARY, [], $config->get( ConfigNames::Database ) );
 
 			try {
 				$dbw->insert(
@@ -76,31 +77,31 @@ class MatomoAnalytics {
 
 		$logger = static::getLogger();
 
-		if ( $config->get( 'MatomoAnalyticsUseDB' ) &&
-			(string)$siteId === (string)$config->get( 'MatomoAnalyticsSiteID' )
+		if ( $config->get( ConfigNames::UseDB) &&
+			(string)$siteId === (string)$config->get( ConfigNames::SiteID )
 		) {
 			return;
 		}
 
 		MediaWikiServices::getInstance()->getHttpRequestFactory()->get(
 			wfAppendQuery(
-				$config->get( 'MatomoAnalyticsServerURL' ),
+				$config->get( ConfigNames::ServerURL ),
 				[
 					'module' => 'API',
 					'format' => 'json',
 					'method' => 'SitesManager.deleteSite',
 					'idSite' => $siteId,
-					'token_auth' => $config->get( 'MatomoAnalyticsTokenAuth' )
+					'token_auth' => $config->get( ConfigNames::TokenAuth )
 				]
 			),
 			[],
 			__METHOD__
 		);
 
-		if ( $config->get( 'MatomoAnalyticsUseDB' ) ) {
+		if ( $config->get( ConfigNames::UseDB) ) {
 			$dbw = MediaWikiServices::getInstance()->getDBLoadBalancerFactory()
-				->getMainLB( $config->get( 'MatomoAnalyticsDatabase' ) )
-				->getMaintenanceConnectionRef( DB_PRIMARY, [], $config->get( 'MatomoAnalyticsDatabase' ) );
+				->getMainLB( $config->get( ConfigNames::Database ) )
+				->getMaintenanceConnectionRef( DB_PRIMARY, [], $config->get( ConfigNames::Database ) );
 
 			$dbw->delete(
 				'matomo',
@@ -125,32 +126,32 @@ class MatomoAnalytics {
 
 		$logger = static::getLogger();
 
-		if ( $config->get( 'MatomoAnalyticsUseDB' ) &&
-			(string)$siteId === (string)$config->get( 'MatomoAnalyticsSiteID' )
+		if ( $config->get( ConfigNames::UseDB) &&
+			(string)$siteId === (string)$config->get( ConfigNames::SiteID )
 		) {
 			return;
 		}
 
 		MediaWikiServices::getInstance()->getHttpRequestFactory()->get(
 			wfAppendQuery(
-				$config->get( 'MatomoAnalyticsServerURL' ),
+				$config->get( ConfigNames::ServerURL ),
 				[
 					'module' => 'API',
 					'format' => 'json',
 					'method' => 'SitesManager.updateSite',
 					'idSite' => $siteId,
 					'siteName' => $newDb,
-					'token_auth' => $config->get( 'MatomoAnalyticsTokenAuth' )
+					'token_auth' => $config->get( ConfigNames::TokenAuth )
 				]
 			),
 			[],
 			__METHOD__
 		);
 
-		if ( $config->get( 'MatomoAnalyticsUseDB' ) ) {
+		if ( $config->get( ConfigNames::UseDB) ) {
 			$dbw = MediaWikiServices::getInstance()->getDBLoadBalancerFactory()
-				->getMainLB( $config->get( 'MatomoAnalyticsDatabase' ) )
-				->getMaintenanceConnectionRef( DB_PRIMARY, [], $config->get( 'MatomoAnalyticsDatabase' ) );
+				->getMainLB( $config->get( ConfigNames::Database ) )
+				->getMaintenanceConnectionRef( DB_PRIMARY, [], $config->get( ConfigNames::Database ) );
 
 			$dbw->update(
 				'matomo',
@@ -180,7 +181,7 @@ class MatomoAnalytics {
 
 		$logger = static::getLogger();
 
-		if ( $config->get( 'MatomoAnalyticsUseDB' ) ) {
+		if ( $config->get( ConfigNames::UseDB) ) {
 			$cache = ObjectCache::getLocalClusterInstance();
 			$key = $cache->makeKey( 'matomo', 'id' );
 			$cacheId = $cache->get( $key );
@@ -189,8 +190,8 @@ class MatomoAnalytics {
 			}
 
 			$dbr = MediaWikiServices::getInstance()->getDBLoadBalancerFactory()
-				->getMainLB( $config->get( 'MatomoAnalyticsDatabase' ) )
-				->getMaintenanceConnectionRef( DB_REPLICA, [], $config->get( 'MatomoAnalyticsDatabase' ) );
+				->getMainLB( $config->get( ConfigNames::Database ) )
+				->getMaintenanceConnectionRef( DB_REPLICA, [], $config->get( ConfigNames::Database ) );
 
 			$id = $dbr->selectField(
 				'matomo',
@@ -204,14 +205,14 @@ class MatomoAnalytics {
 
 				// Because the site is not found in the matomo table,
 				// we default to a value set in 'MatomoAnalyticsSiteID' which is 1.
-				return $config->get( 'MatomoAnalyticsSiteID' );
+				return $config->get( ConfigNames::SiteID );
 			} else {
 				$cache->set( $key, $id );
 
 				return $id;
 			}
 		} else {
-			return $config->get( 'MatomoAnalyticsSiteID' );
+			return $config->get( ConfigNames::SiteID );
 		}
 	}
 }

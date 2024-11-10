@@ -86,31 +86,6 @@
 			"public": true,
 			"value": false
 		},
-		"MatomoAnalyticsServerURL": {
-			"description": "String. URL of the server to use for API queries.",
-			"public": true,
-			"value": false
-		},
-		"MatomoAnalyticsSiteID": {
-			"description": "Integer. If not using database, the site number to add all monitoring to.",
-			"public": true,
-			"value": 1
-		},
-		"MatomoAnalyticsGlobalID": {
-			"description": "Integer. If tracking more than one site, this is an ID to attach to all wikis for central aggregate statistics.",
-			"public": true,
-			"value": false
-		},
-		"MatomoAnalyticsTokenAuth": {
-			"description": "String. The API Token for authentication when making requests for data.",
-			"public": false,
-			"value": false
-		},
-		"MatomoAnalyticsUseDB": {
-			"description": "Boolean. Whether or not to use the database for tracking site IDs.",
-			"public": true,
-			"value": false
-		},
 		"MatomoAnalyticsDisableJS": {
 			"description": "Boolean. Whether or not to add Javascript tracking code to pages.",
 			"public": true,
@@ -122,7 +97,32 @@
 			"value": false
 		},
 		"MatomoAnalyticsForceGetRequest": {
-			"description": "Boolean. Whether or not you want to foce GET requests which also disables beacon. Reverts back to matomo 3 behaviour of tracking.",
+			"description": "Boolean. Whether or not you want to foce GET requests which also disables beacon. Reverts back to Matomo v3 tracking behavior.",
+			"public": true,
+			"value": false
+		},
+		"MatomoAnalyticsGlobalID": {
+			"description": "Integer. If tracking more than one site, this is an ID to attach to all wikis for central aggregate statistics.",
+			"public": true,
+			"value": false
+		},
+		"MatomoAnalyticsServerURL": {
+			"description": "String. URL of the Matomo installation to use for API queries.",
+			"public": true,
+			"value": false
+		},
+		"MatomoAnalyticsSiteID": {
+			"description": "Integer. If not using database, the site number to add all monitoring to.",
+			"public": true,
+			"value": 1
+		},
+		"MatomoAnalyticsTokenAuth": {
+			"description": "String. The API token for authentication when making requests for data.",
+			"public": false,
+			"value": false
+		},
+		"MatomoAnalyticsUseDB": {
+			"description": "Boolean. Whether or not to use the database for tracking site IDs.",
 			"public": true,
 			"value": false
 		}

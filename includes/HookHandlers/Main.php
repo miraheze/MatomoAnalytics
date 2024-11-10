@@ -8,6 +8,7 @@ use MediaWiki\Hook\SkinAfterBottomScriptsHook;
 use MediaWiki\Html\Html;
 use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
+use Miraheze\MatomoAnalytics\ConfigNames;
 use Miraheze\MatomoAnalytics\MatomoAnalytics;
 use Miraheze\MatomoAnalytics\MatomoAnalyticsWiki;
 use Skin;
@@ -29,7 +30,7 @@ class Main implements
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
 
 		// Check if JS tracking is disabled and bow out early
-		if ( $config->get( 'MatomoAnalyticsDisableJS' ) === true ) {
+		if ( $config->get( ConfigNames::DisableJS ) === true ) {
 			return true;
 		}
 
@@ -43,17 +44,17 @@ class Main implements
 		}
 
 		$id = strval( $mAId );
-		$globalId = (string)$config->get( 'MatomoAnalyticsGlobalID' );
+		$globalId = (string)$config->get( ConfigNames::GlobalID );
 		$globalIdInt = (int)$globalId;
-		$serverurl = $config->get( 'MatomoAnalyticsServerURL' );
+		$serverurl = $config->get( ConfigNames::ServerURL );
 		$title = $skin->getRelevantTitle();
 
 		$jstitle = Html::encodeJsVar( $title->getPrefixedText() );
 		$dbname = Html::encodeJsVar( $config->get( 'DBname' ) );
 		$urltitle = $title->getPrefixedURL();
 		$userType = $user->isRegistered() ? 'User' : 'Anonymous';
-		$cookieDisable = (int)$config->get( 'MatomoAnalyticsDisableCookie' );
-		$forceGetRequest = (int)$config->get( 'MatomoAnalyticsForceGetRequest' );
+		$cookieDisable = (int)$config->get( ConfigNames::DisableCookie );
+		$forceGetRequest = (int)$config->get( ConfigNames::ForceGetRequest );
 		$text = <<<SCRIPT
 			<script>
 			var _paq = window._paq = window._paq || [];
