@@ -78,12 +78,20 @@ class MatomoAnalyticsWiki {
 		// Calculate time to 1 AM next day in configured timezone
 		$now = new DateTime( 'now', new DateTimeZone( 'UTC' ) );
 		$next1AM = ( clone $now )->modify( 'tomorrow 01:00' );
-		$secondsUntil1AM = $next1AM->getTimestamp() - $now->getTimestamp();
+		$expiration = $next1AM->getTimestamp() - $now->getTimestamp();
 
 		// Store the result in cache until 1 AM
 		$cache->set( $cacheKey, $arrayOut, $expiration );
 
 		return $arrayOut;
+	}
+
+	private function getCacheKey(string $module, string $period, int $date, ?string $pageUrl): string {
+		$keyParts = [$module, $period, $date];
+		if ($pageUrl !== null) {
+			$keyParts[] = md5($pageUrl);
+		}
+		return implode(':', $keyParts);
 	}
 
 	// Visits per browser type
