@@ -38,7 +38,7 @@ class MatomoAnalyticsWiki {
 		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
 		$cachedData = $cache->get( $cacheKey );
 
-		if ( $cachedData !== = false ) {
+		if ( $cachedData !== false ) {
 			return $cachedData;
 		}
 
