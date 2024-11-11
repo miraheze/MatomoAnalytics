@@ -70,9 +70,9 @@ class MatomoAnalyticsWiki {
 		foreach ( $siteJson as $key => $val ) {
 			if ( $flat ) {
 				$arrayOut[$key] = $val[$jsonLabel] ?: '-';
-			} elseif ( $pageUrl !== null && $period == 'days' ) {
+			} elseif ( $pageUrl !== null && $period == 'day' ) {
 				// Support Actions.getPageUrl being such a special little snowflake
-				$arrayOut[$key] = $val[0][$jsonLabel] ?: '0';
+				$arrayOut[$key] = $val[0][$jsonLabel] ?: 0;
 			} else {
 				$arrayOut[$val[$jsonLabel]] = $val[$jsonData] ?: '-';
 			}

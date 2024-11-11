@@ -92,7 +92,7 @@ class Main implements
 
 		$title = $context->getTitle();
 		$url = $title->getFullURL();
-		$data = $mA->getPageViews( $url, 'days' );
+		$data = $mA->getPageViews( $url, 'day' );
 		$total = array_sum( array_filter( $data, 'is_numeric' ) );
 
 		$pageInfo['header-basic'][] = [
