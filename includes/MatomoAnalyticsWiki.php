@@ -70,6 +70,9 @@ class MatomoAnalyticsWiki {
 		foreach ( $siteJson as $key => $val ) {
 			if ( $flat ) {
 				$arrayOut[$key] = $val[$jsonLabel] ?: '-';
+			} elseif ( $pageUrl !== null && $period == 'days' ) {
+				// Support Actions.getPageUrl being such a special little snowflake
+				$arrayOut[$key] = $val[0][$jsonLabel] ?: '0';
 			} else {
 				$arrayOut[$val[$jsonLabel]] = $val[$jsonData] ?: '-';
 			}
@@ -183,8 +186,8 @@ class MatomoAnalyticsWiki {
 	}
 
 	// Get visits for specific pages
-	public function getPageViews( string $pageUrl, string $period = 'range' ) {
-		return $this->getData( 'Actions.getPageUrl', $period, 'label', 'nb_visits', false, 30, $pageUrl );
+	public function getPageViews( string $pageUrl, string $periodType = 'range', int $days = 31 ) {
+		return $this->getData( 'Actions.getPageUrl', $periodType, 'label', 'nb_visits', false, $days, $pageUrl );
 	}
 
 	// Get number of visits to the site

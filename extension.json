@@ -72,6 +72,12 @@
 		"ext.matomoanalytics.graphs": {
 			"scripts": "ext.matomoanalytics.graphs.js"
 		},
+		"ext.matomoanalytics.infochart": {
+			"scripts": "ext.matomoanalytics.infochart.js"
+		},
+		"ext.matomoanalytics.infopage": {
+			"styles": "ext.matomoanalytics.infopage.less"
+		},
 		"ext.matomoanalytics.special": {
 			"styles": "ext.matomoanalytics.special.less"
 		}

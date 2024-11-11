@@ -85,22 +85,25 @@ class Main implements
 		return true;
 	}
 
-		/**
-		 * Display total pageviews in the last 30 days and show a graph with details when clicked.
-		 * @param IContextSource $context
-		 * @param array &$pageInfo
-		 */
 	public function onInfoAction( $context, &$pageInfo ) {
 		$mA = new MatomoAnalyticsWiki( $context->getConfig()->get( MainConfigNames::DBname ) );
 
+		$context->getOutput()->addModules( [ 'ext.matomoanalytics.infocharts' ] );
+		$context->getOutput()->addModuleStyles( [ 'ext.matomoanalytics.infopage' ] );
+
 		$title = $context->getTitle();
 		$url = $title->getFullURL();
-		$data = $mA->getPageViews( $url );
-		$total = array_sum( $data );
+		$data = $mA->getPageViews( $url, 'days' );
+		$total = array_sum( array_filter( $data, 'is_numeric') );
 
 		$pageInfo['header-basic'][] = [
 			$context->msg( 'matomoanalytics-labels-pastmonth' ),
 			$context->msg( 'matomoanalytics-count' )->numParams( $total )->parse()
+		];
+
+		$pageInfo['header-raw'][] = [
+			$context->msg( 'matomoanalytics-labels-rawdata' ),
+			$context->msg( 'matomoanalytics-count' )->rawParams( json_encode( $data ) )->parse()
 		];
 	}
 }
