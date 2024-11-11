@@ -14,6 +14,7 @@
 	"matomoanalytics-desc": "Интеграция аналитики из Matomo и MediaWiki",
 	"matomoanalytics-header": "На вкладках ниже вы можете выбрать различные статистические данные, которые мы храним с помощью Matomo. Все данные собраны за последние 30 дней, начиная со вчерашнего дня (обновляются ежедневно).",
 	"matomoanalytics-labels-browser": "Браузеры",
+	"matomoanalytics-labels-campaigns": "Кампании",
 	"matomoanalytics-labels-continent": "Континенты",
 	"matomoanalytics-labels-country": "Страна",
 	"matomoanalytics-labels-devices": "Устройства",
