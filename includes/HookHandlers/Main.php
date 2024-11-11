@@ -87,7 +87,7 @@ class Main implements
 	public function onInfoAction( $context, &$pageInfo ) {
 		$mA = new MatomoAnalyticsWiki( $context->getConfig()->get( MainConfigNames::DBname ) );
 
-		$context->getOutput()->addModules( [ 'ext.matomoanalytics.charts', 'ext.matomoanalytics.infocharts' ] );
+		$context->getOutput()->addModules( [ 'ext.matomoanalytics.charts', 'ext.matomoanalytics.infochart' ] );
 		$context->getOutput()->addModuleStyles( [ 'ext.matomoanalytics.infopage' ] );
 
 		$title = $context->getTitle();
