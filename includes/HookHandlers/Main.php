@@ -2,7 +2,6 @@
 
 namespace Miraheze\MatomoAnalytics\HookHandlers;
 
-use MediaWiki\Context\IContextSource;
 use MediaWiki\Hook\InfoActionHook;
 use MediaWiki\Hook\SkinAfterBottomScriptsHook;
 use MediaWiki\Html\Html;
@@ -94,7 +93,7 @@ class Main implements
 		$title = $context->getTitle();
 		$url = $title->getFullURL();
 		$data = $mA->getPageViews( $url, 'days' );
-		$total = array_sum( array_filter( $data, 'is_numeric') );
+		$total = array_sum( array_filter( $data, 'is_numeric' ) );
 
 		$pageInfo['header-basic'][] = [
 			$context->msg( 'matomoanalytics-labels-pastmonth' ),
