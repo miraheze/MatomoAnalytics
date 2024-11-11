@@ -86,7 +86,7 @@ class MatomoAnalyticsWiki {
 		return $arrayOut;
 	}
 
-	private function getCacheKey( string $siteId, string $module, string $period, int $date, ?string $pageUrl ): string {
+	private function getCacheKey( int $siteId, string $module, string $period, int $date, ?string $pageUrl ): string {
 		$keyParts = [ $siteId, $module, $period, $date ];
 		if ( $pageUrl !== null ) {
 			$keyParts[] = md5( $pageUrl );
