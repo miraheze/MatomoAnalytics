@@ -100,7 +100,7 @@ class Main implements
 			$context->msg( 'matomoanalytics-count' )->numParams( $total )->parse()
 		];
 
-		$pageInfo['header-raw'][] = [
+		$pageInfo['header-basic'][] = [
 			$context->msg( 'matomoanalytics-labels-rawdata' ),
 			$context->msg( 'matomoanalytics-count' )->rawParams( json_encode( $data ) )->parse()
 		];
