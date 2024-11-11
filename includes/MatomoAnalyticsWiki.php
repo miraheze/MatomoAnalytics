@@ -187,7 +187,7 @@ class MatomoAnalyticsWiki {
 
 	// Get visits for specific pages
 	public function getPageViews( string $pageUrl, string $periodType = 'range', int $days = 31 ) {
-		return $this->getData( 'Actions.getPageUrl', $periodType, 'label', 'nb_visits', false, $days, $pageUrl );
+		return $this->getData( 'Actions.getPageUrl', $periodType, 'nb_visits', 'nb_visits', false, $days, $pageUrl );
 	}
 
 	// Get number of visits to the site

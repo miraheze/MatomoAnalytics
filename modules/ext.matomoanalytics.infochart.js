@@ -1,7 +1,7 @@
 // Portions of code derived from PageViewInfo extension by Wikimedia
 ( function ( $, mw ) {
 	$( function () {
-		var $count = $( '.mw-matomoanalytics-labels-rawdata' ),
+		var $count = $( '#mw-matomoanalytics-labels-rawdata' ),
 			count = $count.text();
 
 		// Turn it into an <a> tag so it's obvious you can click on it
