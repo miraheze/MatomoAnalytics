@@ -25,12 +25,12 @@ Chart.register({
 	},
 });
 
-// Function to parse JSON data from <tr> tag and create a chart
+// Function to parse JSON data from the second <td> tag and create a chart
 function parseJSONAndCreateChart() {
-	const trElement = document.getElementById("mw-matomoanalytics-labels-rawdata");
+	const trElement = document.getElementById("mw-matomoanalytics-labels-pastmonth");
 	if (!trElement) return;
 
-	// Select the second <td> element within the <tr>
+	// Select the second <td> element within the
 	const tdElements = trElement.querySelectorAll("td");
 	if (tdElements.length < 2) return;
 	const jsonData = JSON.parse(tdElements[1].textContent.trim());
@@ -43,22 +43,22 @@ function parseJSONAndCreateChart() {
 	document.body.appendChild(popup.$element[0]);
 	const chartWindow = new OO.ui.MessageDialog();
 	popup.addWindows([chartWindow]);
+
+	// Open the window and directly render the chart on success
 	popup.openWindow(chartWindow, {
 		title: 'Data Chart',
 		message: $('<canvas id="matomoanalytics-chart-info"></canvas>'),
 		size: 'large'
-	}).then(function (opened) {
-		opened.closed.then(function () {
-			document.body.removeChild(popup.$element[0]);
-		});
+	});
 
-		const canvas = document.getElementById("matomoanalytics-chart-info");
+	const canvas = document.getElementById("matomoanalytics-chart-info");
+	if (canvas) {
 		new Chart(canvas, {
-			type: 'line', // Set to desired chart type
+			type: 'line',
 			data: {
 				labels: labels,
 				datasets: [{
-					label: 'Page views over the past 30 days',
+					label: 'Data over Time',
 					data: data,
 					borderWidth: 1,
 					borderColor: 'blue',
@@ -79,11 +79,11 @@ function parseJSONAndCreateChart() {
 				}
 			}
 		});
-	});
+	}
 }
 
 // Add a clickable link to trigger the chart display
-document.querySelectorAll('#mw-matomoanalytics-labels-pastmonth').forEach(element => {
+document.querySelectorAll('#mw-matomoanalytics-labels-rawdata').forEach(element => {
 	element.style.cursor = 'pointer';
 	element.addEventListener('click', parseJSONAndCreateChart);
 });
