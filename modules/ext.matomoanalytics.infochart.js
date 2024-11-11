@@ -27,7 +27,7 @@ Chart.register({
 
 // Function to parse JSON data from the second <td> tag and create a chart
 function parseJSONAndCreateChart() {
-	const trElement = document.getElementById("mw-matomoanalytics-labels-pastmonth");
+	const trElement = document.getElementById("mw-matomoanalytics-labels-rawdata");
 	if (!trElement) return;
 
 	// Select the second <td> element within the
@@ -83,7 +83,7 @@ function parseJSONAndCreateChart() {
 }
 
 // Add a clickable link to trigger the chart display
-document.querySelectorAll('#mw-matomoanalytics-labels-rawdata').forEach(element => {
+document.querySelectorAll('#mw-matomoanalytics-labels-pastmonth').forEach(element => {
 	element.style.cursor = 'pointer';
 	element.addEventListener('click', parseJSONAndCreateChart);
 });
