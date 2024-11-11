@@ -34,7 +34,7 @@ class MatomoAnalyticsWiki {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
 		$date ??= $this->getPeriodSelected();
 
-		$cacheKey = $this->getCacheKey( $module, $period, $date, $pageUrl );
+		$cacheKey = $this->getCacheKey( $this->siteId, $module, $period, $date, $pageUrl );
 		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
 		$cachedData = $cache->get( $cacheKey );
 
@@ -86,8 +86,8 @@ class MatomoAnalyticsWiki {
 		return $arrayOut;
 	}
 
-	private function getCacheKey( string $module, string $period, int $date, ?string $pageUrl ): string {
-		$keyParts = [ $module, $period, $date ];
+	private function getCacheKey( string $siteId, string $module, string $period, int $date, ?string $pageUrl ): string {
+		$keyParts = [ $siteId, $module, $period, $date ];
 		if ( $pageUrl !== null ) {
 			$keyParts[] = md5( $pageUrl );
 		}
@@ -183,8 +183,8 @@ class MatomoAnalyticsWiki {
 	}
 
 	// Get visits for specific pages
-	public function getPageViews( string $pageUrl ) {
-		return $this->getData( 'Actions.getPageUrl', 'range', 'label', 'nb_visits', false, 30, $pageUrl );
+	public function getPageViews( string $pageUrl, string $period = 'range' ) {
+		return $this->getData( 'Actions.getPageUrl', $period, 'label', 'nb_visits', false, 30, $pageUrl );
 	}
 
 	// Get number of visits to the site
