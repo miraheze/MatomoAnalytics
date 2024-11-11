@@ -79,7 +79,7 @@ function parseJSONAndCreateChart() {
 }
 
 // Add a clickable link to trigger the chart display
-document.querySelectorAll('#mw-matomoanalytics-labels-rawdata').forEach(element => {
+document.querySelectorAll('.mw-matomoanalytics-labels-pastmonth').forEach(element => {
 	element.style.cursor = 'pointer';
 	element.addEventListener('click', parseJSONAndCreateChart);
 });
