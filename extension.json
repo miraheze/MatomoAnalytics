@@ -23,7 +23,7 @@
 		]
 	},
 	"ExtensionMessagesFiles": {
-		"MatomoAnalyticsAliases": "includes/MatomoAnalyticsAliases.php"
+		"MatomoAnalyticsAliases": "MatomoAnalyticsAliases.php"
 	},
 	"AutoloadNamespaces": {
 		"Miraheze\\MatomoAnalytics\\": "includes/",
