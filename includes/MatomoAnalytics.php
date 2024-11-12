@@ -4,6 +4,7 @@ namespace Miraheze\MatomoAnalytics;
 
 use Exception;
 use FormatJson;
+use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use ObjectCache;
 use RuntimeException;
@@ -16,12 +17,11 @@ class MatomoAnalytics {
 	}
 
 	private static function getLogger() {
-		return \MediaWiki\Logger\LoggerFactory::getInstance( 'MatomoAnalytics' );
+		return LoggerFactory::getInstance( 'MatomoAnalytics' );
 	}
 
 	public static function addSite( $dbname ) {
 		$config = static::getConfig();
-
 		$logger = static::getLogger();
 
 		$siteReply = MediaWikiServices::getInstance()->getHttpRequestFactory()->get(
@@ -71,10 +71,9 @@ class MatomoAnalytics {
 
 	public static function deleteSite( $dbname ) {
 		$config = static::getConfig();
+		$logger = static::getLogger();
 
 		$siteId = static::getSiteID( $dbname, true );
-
-		$logger = static::getLogger();
 
 		if ( $config->get( ConfigNames::UseDB ) &&
 			(string)$siteId === (string)$config->get( ConfigNames::SiteID )
@@ -120,10 +119,9 @@ class MatomoAnalytics {
 
 	public static function renameSite( $oldDb, $newDb ) {
 		$config = static::getConfig();
+		$logger = static::getLogger();
 
 		$siteId = static::getSiteID( $oldDb, true );
-
-		$logger = static::getLogger();
 
 		if ( $config->get( ConfigNames::UseDB ) &&
 			(string)$siteId === (string)$config->get( ConfigNames::SiteID )
@@ -177,7 +175,6 @@ class MatomoAnalytics {
 
 	public static function getSiteID( string $dbname, bool $disableCache = false ) {
 		$config = static::getConfig();
-
 		$logger = static::getLogger();
 
 		if ( $config->get( ConfigNames::UseDB ) ) {
