@@ -1,5 +1,8 @@
 ## ChangeLog for MatomoAnalytics
 
+### 1.3.2 (12-11-2024)
+* Introduced 'viewanalytics' right to fine-tune who can view analytics
+
 ### 1.3.1 (9-11-2024)
 * Added caching support for results
 * Began using ConfigNames class

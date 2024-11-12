@@ -7,7 +7,7 @@
 		"Agent Isai"
 	],
 	"url": "https://github.com/miraheze/MatomoAnalytics",
-	"version": "1.3.1",
+	"version": "1.3.2",
 	"descriptionmsg": "matomoanalytics-desc",
 	"license-name": "GPL-3.0-or-later",
 	"type": "specialpage",
@@ -15,8 +15,14 @@
 		"MediaWiki": ">= 1.42.0"
 	},
 	"AvailableRights": [
-		"noanalytics"
+		"noanalytics",
+		"viewanalytics"
 	],
+	"GroupPermissions": {
+		"*": {
+			"viewanalytics": true
+		}
+	},
 	"MessagesDirs": {
 		"MatomoAnalytics": [
 			"i18n"

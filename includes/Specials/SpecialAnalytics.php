@@ -10,7 +10,7 @@ use Miraheze\MatomoAnalytics\MatomoAnalyticsViewer;
 class SpecialAnalytics extends SpecialPage {
 
 	public function __construct() {
-		parent::__construct( 'Analytics' );
+		parent::__construct( 'Analytics', 'viewanalytics' );
 	}
 
 	/**
@@ -18,6 +18,7 @@ class SpecialAnalytics extends SpecialPage {
 	 */
 	public function execute( $par ) {
 		$this->setHeaders();
+		$this->checkPermissions();
 		$this->outputHeader();
 
 		$out = $this->getOutput();
