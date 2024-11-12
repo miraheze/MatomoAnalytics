@@ -44,7 +44,7 @@ class CleanupMatomos extends Maintenance {
 
 			if ( !in_array( $dbname, $databases ) ) {
 				if ( $this->getOption( 'dry-run', false ) ) {
-					$this->output( "[DRY RUN] Would remove matomo id from {$DBname}\n" );
+					$this->output( "[DRY RUN] Would remove matomo id from {$dbname}\n" );
 					continue;
 				}
 
