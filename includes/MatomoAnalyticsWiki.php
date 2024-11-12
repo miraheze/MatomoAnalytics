@@ -31,7 +31,7 @@ class MatomoAnalyticsWiki {
 		?int $date = null,
 		?string $pageUrl = null
 	) {
-		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
+		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'MatomoAnalytics' );
 		$date ??= $this->getPeriodSelected();
 
 		$cacheKey = $this->getCacheKey( $this->siteId, $module, $period, $date, $pageUrl );

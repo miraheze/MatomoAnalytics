@@ -128,7 +128,7 @@
 		}
 	},
 	"ConfigRegistry": {
-		"matomoanalytics": "MediaWiki\\Config\\GlobalVarConfig::newInstance"
+		"MatomoAnalytics": "MediaWiki\\Config\\GlobalVarConfig::newInstance"
 	},
 	"manifest_version": 2
 }

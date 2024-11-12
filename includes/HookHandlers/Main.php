@@ -27,7 +27,7 @@ class Main implements
 	 * @return bool
 	 */
 	public function onSkinAfterBottomScripts( $skin, &$text ) {
-		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
+		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'MatomoAnalytics' );
 
 		// Check if JS tracking is disabled and bow out early
 		if ( $config->get( ConfigNames::DisableJS ) === true ) {

@@ -13,7 +13,7 @@ class MatomoAnalytics {
 	private static function getConfig() {
 		return MediaWikiServices::getInstance()
 			->getConfigFactory()
-			->makeConfig( 'matomoanalytics' );
+			->makeConfig( 'MatomoAnalytics' );
 	}
 
 	private static function getLogger() {
