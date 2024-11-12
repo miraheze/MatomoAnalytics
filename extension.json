@@ -31,7 +31,7 @@
 	},
 	"SpecialPages": {
 		"Analytics": {
-			"class": "Miraheze\\MatomoAnalytics\\SpecialAnalytics"
+			"class": "Miraheze\\MatomoAnalytics\\Specials\\SpecialAnalytics"
 		}
 	},
 	"Hooks": {
