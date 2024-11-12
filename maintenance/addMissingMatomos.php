@@ -3,8 +3,9 @@
 namespace Miraheze\MatomoAnalytics\Maintenance;
 
 use Maintenance;
+use MediaWiki\MainConfigNames;
+use Miraheze\MatomoAnalytics\ConfigNames;
 use Miraheze\MatomoAnalytics\MatomoAnalytics;
-use UnexpectedValueException;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
@@ -19,38 +20,23 @@ class AddMissingMatomos extends Maintenance {
 		parent::__construct();
 
 		$this->addDescription( 'Add missing matomo ids.' );
-
-		$this->requireExtension( 'CreateWiki' );
 		$this->requireExtension( 'MatomoAnalytics' );
 	}
 
 	public function execute() {
-		$dbw = $this->getDB( DB_PRIMARY, [], $this->getConfig()->get( 'CreateWikiDatabase' ) );
-
-		$res = $dbw->select(
-			'cw_wikis',
-			'*',
-			[],
-			__METHOD__
-		);
-
-		if ( !$res || !is_object( $res ) ) {
-			throw new UnexpectedValueException( '$res was not set to a valid array.' );
-		}
-
-		foreach ( $res as $row ) {
-			$DBname = $row->wiki_dbname;
-
+		$dbw = $this->getDB( DB_PRIMARY, [], $this->getConfig()->get( ConfigNames::Database ) );
+		$databases = $this->getConfig()->get( MainConfigNames::LocalDatabases );
+		foreach ( $databases as $dbname ) {
 			$id = $dbw->selectField(
 				'matomo',
 				'matomo_id',
-				[ 'matomo_wiki' => $DBname ],
+				[ 'matomo_wiki' => $dbname ],
 				__METHOD__
 			);
 
 			if ( !isset( $id ) || !$id ) {
-				$this->output( "Adding matomo id to {$DBname}\n" );
-				MatomoAnalytics::addSite( $DBname );
+				$this->output( "Adding matomo id to {$dbname}\n" );
+				MatomoAnalytics::addSite( $dbname );
 				$this->output( "Done!\n" );
 			}
 		}
