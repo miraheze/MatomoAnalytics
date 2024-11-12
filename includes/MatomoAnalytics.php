@@ -21,8 +21,8 @@ class MatomoAnalytics {
 	}
 
 	public static function addSite( $dbname ) {
-		$config = static::getConfig();
-		$logger = static::getLogger();
+		$config = self::getConfig();
+		$logger = self::getLogger();
 
 		$siteReply = MediaWikiServices::getInstance()->getHttpRequestFactory()->get(
 			wfAppendQuery(
@@ -70,10 +70,10 @@ class MatomoAnalytics {
 	}
 
 	public static function deleteSite( $dbname ) {
-		$config = static::getConfig();
-		$logger = static::getLogger();
+		$config = self::getConfig();
+		$logger = self::getLogger();
 
-		$siteId = static::getSiteID( $dbname, true );
+		$siteId = self::getSiteID( $dbname, true );
 
 		if ( $config->get( ConfigNames::UseDB ) &&
 			(string)$siteId === (string)$config->get( ConfigNames::SiteID )
@@ -118,10 +118,10 @@ class MatomoAnalytics {
 	}
 
 	public static function renameSite( $oldDb, $newDb ) {
-		$config = static::getConfig();
-		$logger = static::getLogger();
+		$config = self::getConfig();
+		$logger = self::getLogger();
 
-		$siteId = static::getSiteID( $oldDb, true );
+		$siteId = self::getSiteID( $oldDb, true );
 
 		if ( $config->get( ConfigNames::UseDB ) &&
 			(string)$siteId === (string)$config->get( ConfigNames::SiteID )
@@ -162,7 +162,7 @@ class MatomoAnalytics {
 			$cache->delete( $key );
 		}
 
-		if ( (string)$siteId === (string)static::getSiteID( $newDb ) ) {
+		if ( (string)$siteId === (string)self::getSiteID( $newDb ) ) {
 			$logger->debug( "Successfully renamed {$oldDb} to {$newDb} with id {$siteId}." );
 
 			return true;
@@ -174,8 +174,8 @@ class MatomoAnalytics {
 	}
 
 	public static function getSiteID( string $dbname, bool $disableCache = false ) {
-		$config = static::getConfig();
-		$logger = static::getLogger();
+		$config = self::getConfig();
+		$logger = self::getLogger();
 
 		if ( $config->get( ConfigNames::UseDB ) ) {
 			$cache = ObjectCache::getLocalClusterInstance();
