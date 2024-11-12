@@ -7,6 +7,7 @@
 		]
 	},
 	"action-noanalytics": "not be tracked via Matomo",
+	"action-viewanalytics": "view Matomo-collected analytics",
 	"analytics": "Wiki analytics",
 	"matomoanalytics-count": "$1",
 	"matomoanalytics-desc": "Integrates analytics from Matomo and MediaWiki",
@@ -51,5 +52,6 @@
 	"matomoanalytics-labels-visitpass-info": "How much time passes before visitors revisit this wiki is displayed here.",
 	"matomoanalytics-labels-website": "Website referrals",
 	"matomoanalytics-labels-website-info": "Referrals from other websites are shown here. These are a good way to boost search engine visibility.",
-	"right-noanalytics": "Not be tracked via Matomo"
+	"right-noanalytics": "Not be tracked via Matomo",
+	"right-viewanalytics": "View wiki analytics and statistics collected by Matomo"
 }

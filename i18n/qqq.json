@@ -9,6 +9,7 @@
 		]
 	},
 	"action-noanalytics": "{{doc-action|noanalytics}}",
+	"action-viewanalytics": "{{doc-action|viewanalytics}}",
 	"analytics": "{{doc-special}}",
 	"matomoanalytics-count": "{{notranslate}}",
 	"matomoanalytics-desc": "Integrates analytics from Matomo and MediaWiki",
@@ -53,5 +54,6 @@
 	"matomoanalytics-labels-visitpass-info": "Clarifying information for the 'Time Passed' section. Displayed under label.",
 	"matomoanalytics-labels-website": "{{identical|Websites}}",
 	"matomoanalytics-labels-website-info": "Clarifying information for the 'Website Referrals' section. Displayed under label.",
-	"right-noanalytics": "{{doc-right|noanalytics}}"
+	"right-noanalytics": "{{doc-right|noanalytics}}",
+	"right-viewanalytics": "{{doc-right|viewanalytics}}"
 }
