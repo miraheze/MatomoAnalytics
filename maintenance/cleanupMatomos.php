@@ -25,6 +25,7 @@ class CleanupMatomos extends Maintenance {
 	}
 
 	public function execute() {
+		$databases = $this->getConfig()->get( MainConfigNames::LocalDatabases );
 		$dbw = $this->getDB( DB_PRIMARY, [], $this->getConfig()->get( ConfigNames::Database ) );
 
 		$res = $dbw->select(
@@ -39,7 +40,6 @@ class CleanupMatomos extends Maintenance {
 		}
 
 		foreach ( $res as $row ) {
-			$databases = $this->getConfig()->get( MainConfigNames::LocalDatabases );
 			$dbname = $row->matomo_wiki;
 
 			if ( !in_array( $dbname, $databases ) ) {
