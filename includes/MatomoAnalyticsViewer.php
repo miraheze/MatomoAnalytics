@@ -4,6 +4,7 @@ namespace Miraheze\MatomoAnalytics;
 
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
+use MediaWiki\MainConfigNames;
 use MediaWiki\Output\OutputPage;
 
 class MatomoAnalyticsViewer {
@@ -39,7 +40,10 @@ class MatomoAnalyticsViewer {
 			$context->getLanguage()->getDir()
 		);
 
-		$mA = new MatomoAnalyticsWiki( $context->getConfig()->get( 'DBname' ), $periodSelected );
+		$mA = new MatomoAnalyticsWiki(
+			$context->getConfig()->get( MainConfigNames::DBname ),
+			$periodSelected
+		);
 
 		$descriptorData = [
 			'sitevisits' => $mA->getSiteVisits(),

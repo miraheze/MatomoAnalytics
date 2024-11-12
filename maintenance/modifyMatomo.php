@@ -3,6 +3,7 @@
 namespace Miraheze\MatomoAnalytics\Maintenance;
 
 use Maintenance;
+use MediaWiki\MainConfigNames;
 use Miraheze\MatomoAnalytics\MatomoAnalytics;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
@@ -23,7 +24,7 @@ class ModifyMatomo extends Maintenance {
 	}
 
 	public function execute() {
-		$DBname = $this->getConfig()->get( 'DBname' );
+		$DBname = $this->getConfig()->get( MainConfigNames::DBname );
 
 		if ( $this->getOption( 'remove', false ) ) {
 			MatomoAnalytics::deleteSite( $DBname );

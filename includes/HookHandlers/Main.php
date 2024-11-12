@@ -35,7 +35,7 @@ class Main implements
 		}
 
 		$user = $skin->getUser();
-		$mAId = MatomoAnalytics::getSiteID( $config->get( 'DBname' ) );
+		$mAId = MatomoAnalytics::getSiteID( $config->get( MainConfigNames::DBname ) );
 
 		$permissionManager = MediaWikiServices::getInstance()->getPermissionManager();
 		if ( $permissionManager->userHasRight( $user, 'noanalytics' ) ) {
@@ -50,7 +50,7 @@ class Main implements
 		$title = $skin->getRelevantTitle();
 
 		$jstitle = Html::encodeJsVar( $title->getPrefixedText() );
-		$dbname = Html::encodeJsVar( $config->get( 'DBname' ) );
+		$dbname = Html::encodeJsVar( $config->get( MainConfigNames::DBname ) );
 		$urltitle = $title->getPrefixedURL();
 		$userType = $user->isRegistered() ? 'User' : 'Anonymous';
 		$cookieDisable = (int)$config->get( ConfigNames::DisableCookie );
