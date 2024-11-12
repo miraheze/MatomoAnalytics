@@ -1,12 +1,14 @@
 <?php
 
-namespace Miraheze\MatomoAnalytics;
+namespace Miraheze\MatomoAnalytics\Specials;
 
 use MediaWiki\Html\Html;
 use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\SpecialPage\SpecialPage;
+use Miraheze\MatomoAnalytics\MatomoAnalyticsViewer;
 
 class SpecialAnalytics extends SpecialPage {
+
 	public function __construct() {
 		parent::__construct( 'Analytics' );
 	}
@@ -74,11 +76,9 @@ class SpecialAnalytics extends SpecialPage {
 
 	public function onSubmitRedirectToSelection( array $params ) {
 		$this->getOutput()->redirect(
-				SpecialPage::getTitleFor( 'Analytics' )->getFullURL(
-						[
-							'period' => $params['time']
-						]
-		)
+			SpecialPage::getTitleFor( 'Analytics' )->getFullURL(
+				[ 'period' => $params['time'] ]
+			)
 		);
 
 		return true;
