@@ -7,6 +7,7 @@
 		]
 	},
 	"action-noanalytics": "לא להיות במעקב על־ידי Matomo",
+	"action-viewanalytics": "לצפות בניתוחים שנאספו על־ידי מטומו",
 	"analytics": "ניתוח מידע של הוויקי",
 	"matomoanalytics-desc": "שילוב ניתוחים מ־Matomo ומדיה־ויקי",
 	"matomoanalytics-header": "באפשרותך להשתמש בלשוניות למטה כדי לבחור לראות נתונים סטטיסטיים שונים שאנו מאחסנים באמצעות Matomo. כל הנתונים נאספים במהלך 30 הימים האחרונים החל מאתמול (מתעדכן מדי יום).",
@@ -50,5 +51,6 @@
 	"matomoanalytics-labels-visitpass-info": "כמה זמן עובר עד שמבקרים מבקרים שוב בוויקי הזה מוצג כאן.",
 	"matomoanalytics-labels-website": "הפניות מאתרים",
 	"matomoanalytics-labels-website-info": "הפניות מאתרים אחרים מוצגות כאן. הן דרך טובה להגביר את הנראות במנועי חיפוש.",
-	"right-noanalytics": "לא למעקב על ידי Matomo"
+	"right-noanalytics": "לא למעקב על ידי Matomo",
+	"right-viewanalytics": "צפייה בניתוחים וסטטיסטיקות שנאספו על־ידי מטומו"
 }

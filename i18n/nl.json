@@ -6,6 +6,7 @@
 		]
 	},
 	"action-noanalytics": "niet te worden gevolgd via Matomo",
+	"action-viewanalytics": "de door Matomo verzamelde analyses te bekijken",
 	"analytics": "Wiki-analyse",
 	"matomoanalytics-desc": "Integreert analyses van Matomo en MediaWiki",
 	"matomoanalytics-header": "U kunt de onderstaande tabbladen gebruiken om verschillende statistieken te bekijken die we met Matomo opslaan. Alle gegevens zijn verzameld over de afgelopen 30 dagen, te beginnen met gisteren (dagelijks bijgewerkt).",
@@ -49,5 +50,6 @@
 	"matomoanalytics-labels-visitpass-info": "Hier wordt weergegeven hoeveel tijd er verstrijkt voordat bezoekers deze wiki opnieuw bezoeken.",
 	"matomoanalytics-labels-website": "Websiteverwijzingen",
 	"matomoanalytics-labels-website-info": "Hier verschijnen de verwijzingen van andere websites. Ze zijn een goede manier om de zichtbaarheid voor zoekmachines te vergroten.",
-	"right-noanalytics": "Niet gevolgd worden via Matomo"
+	"right-noanalytics": "Niet gevolgd worden via Matomo",
+	"right-viewanalytics": "De door Matomo verzamelde wiki-analyses en -statistieken bekijken"
 }
