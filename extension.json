@@ -7,7 +7,7 @@
 		"Agent Isai"
 	],
 	"url": "https://github.com/miraheze/MatomoAnalytics",
-	"version": "1.3.2",
+	"version": "1.3.3",
 	"descriptionmsg": "matomoanalytics-desc",
 	"license-name": "GPL-3.0-or-later",
 	"type": "specialpage",
@@ -17,6 +17,9 @@
 	"AvailableRights": [
 		"noanalytics",
 		"viewanalytics"
+	],
+	"DatabaseVirtualDomains": [
+		"virtual-matomoanalytics"
 	],
 	"GroupPermissions": {
 		"*": {
@@ -87,11 +90,6 @@
 		"remoteExtPath": "MatomoAnalytics/modules"
 	},
 	"config": {
-		"MatomoAnalyticsDatabase": {
-			"description": "String. Database that the 'matomo' table is in.",
-			"public": true,
-			"value": false
-		},
 		"MatomoAnalyticsDisableJS": {
 			"description": "Boolean. Whether or not to add Javascript tracking code to pages.",
 			"public": true,
