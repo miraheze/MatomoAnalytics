@@ -4,7 +4,6 @@ namespace Miraheze\MatomoAnalytics\Maintenance;
 
 use Maintenance;
 use MediaWiki\MainConfigNames;
-use Miraheze\MatomoAnalytics\ConfigNames;
 use Miraheze\MatomoAnalytics\MatomoAnalytics;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
