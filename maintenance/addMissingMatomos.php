@@ -24,7 +24,7 @@ class AddMissingMatomos extends Maintenance {
 	}
 
 	public function execute() {
-		$dbw = $this->getDB( DB_PRIMARY, [], $this->getConfig()->get( ConfigNames::Database ) );
+		$dbw = $this->getDB( DB_PRIMARY, [], 'virtual-matomoanalytics' );
 		$databases = $this->getConfig()->get( MainConfigNames::LocalDatabases );
 		foreach ( $databases as $dbname ) {
 			$id = $dbw->selectField(
