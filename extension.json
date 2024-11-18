@@ -18,9 +18,6 @@
 		"noanalytics",
 		"viewanalytics"
 	],
-	"DatabaseVirtualDomains": [
-		"virtual-matomoanalytics"
-	],
 	"GroupPermissions": {
 		"*": {
 			"viewanalytics": true
@@ -134,5 +131,8 @@
 	"ConfigRegistry": {
 		"MatomoAnalytics": "MediaWiki\\Config\\GlobalVarConfig::newInstance"
 	},
+	"DatabaseVirtualDomains": [
+		"virtual-matomoanalytics"
+	],
 	"manifest_version": 2
 }
