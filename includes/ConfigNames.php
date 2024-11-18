@@ -9,7 +9,6 @@ namespace Miraheze\MatomoAnalytics;
  */
 class ConfigNames {
 
-
 	public const ServerURL = 'MatomoAnalyticsServerURL';
 
 	public const SiteID = 'MatomoAnalyticsSiteID';
