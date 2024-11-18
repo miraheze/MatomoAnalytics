@@ -4,7 +4,6 @@ namespace Miraheze\MatomoAnalytics\Maintenance;
 
 use Maintenance;
 use MediaWiki\MainConfigNames;
-use Miraheze\MatomoAnalytics\ConfigNames;
 use Miraheze\MatomoAnalytics\MatomoAnalytics;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
@@ -26,7 +25,7 @@ class CleanupMatomos extends Maintenance {
 
 	public function execute() {
 		$databases = $this->getConfig()->get( MainConfigNames::LocalDatabases );
-		$dbw = $this->getDB( DB_PRIMARY, [], $this->getConfig()->get( ConfigNames::Database ) );
+		$dbw = $this->getDB( DB_PRIMARY, [], 'virtual-matomoanalytics' );
 
 		$res = $dbw->select(
 			'matomo',
