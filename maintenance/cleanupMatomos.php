@@ -3,8 +3,9 @@
 namespace Miraheze\MatomoAnalytics\Maintenance;
 
 use Maintenance;
+use MediaWiki\MainConfigNames;
+use Miraheze\MatomoAnalytics\ConfigNames;
 use Miraheze\MatomoAnalytics\MatomoAnalytics;
-use UnexpectedValueException;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
@@ -20,12 +21,12 @@ class CleanupMatomos extends Maintenance {
 		$this->addDescription( 'Cleanup matomo ids that don\'t have corresponding cw_wikis entries.' );
 		$this->addOption( 'dry-run', 'Perform a dry run and do not actually remove any matomo ids.' );
 
-		$this->requireExtension( 'CreateWiki' );
 		$this->requireExtension( 'MatomoAnalytics' );
 	}
 
 	public function execute() {
-		$dbw = $this->getDB( DB_PRIMARY, [], $this->getConfig()->get( 'CreateWikiDatabase' ) );
+		$databases = $this->getConfig()->get( MainConfigNames::LocalDatabases );
+		$dbw = $this->getDB( DB_PRIMARY, [], $this->getConfig()->get( ConfigNames::Database ) );
 
 		$res = $dbw->select(
 			'matomo',
@@ -35,27 +36,20 @@ class CleanupMatomos extends Maintenance {
 		);
 
 		if ( !$res || !is_object( $res ) ) {
-			throw new UnexpectedValueException( '$res was not set to a valid array.' );
+			$this->fatalError( '$res was not set to a valid array.' );
 		}
 
 		foreach ( $res as $row ) {
-			$DBname = $row->matomo_wiki;
+			$dbname = $row->matomo_wiki;
 
-			$wiki = $dbw->selectField(
-				'cw_wikis',
-				'wiki_dbname',
-				[ 'wiki_dbname' => $DBname ],
-				__METHOD__
-			);
-
-			if ( !isset( $wiki ) || !$wiki ) {
+			if ( !in_array( $dbname, $databases ) ) {
 				if ( $this->getOption( 'dry-run', false ) ) {
-					$this->output( "[DRY RUN] Would remove matomo id from {$DBname}\n" );
+					$this->output( "[DRY RUN] Would remove matomo id from {$dbname}\n" );
 					continue;
 				}
 
-				$this->output( "Remove matomo id from {$DBname}\n" );
-				MatomoAnalytics::deleteSite( $DBname );
+				$this->output( "Remove matomo id from {$dbname}\n" );
+				MatomoAnalytics::deleteSite( $dbname );
 			}
 		}
 	}
