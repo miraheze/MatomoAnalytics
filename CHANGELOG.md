@@ -1,5 +1,9 @@
 ## ChangeLog for MatomoAnalytics
 
+### 1.3.3 (17-11-2024)
+* Added support for virtual database domains
+* Removed support for wgMatomoAnalyticsDatabase
+
 ### 1.3.2 (12-11-2024)
 * Introduced 'viewanalytics' right to fine-tune who can view analytics
 
