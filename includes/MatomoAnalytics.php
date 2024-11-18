@@ -96,9 +96,8 @@ class MatomoAnalytics {
 		);
 
 		if ( $config->get( ConfigNames::UseDB ) ) {
-			$dbw = MediaWikiServices::getInstance()->getDBLoadBalancerFactory()
-				->getMainLB( 'virtual-matomoanalytics' )
-				->getMaintenanceConnectionRef( DB_PRIMARY, [], 'virtual-matomoanalytics' );
+			$dbw = MediaWikiServices::getInstance()->getConnectionProvider()
+				->getPrimaryDatabase( 'virtual-matomoanalytics' );
 
 			$dbw->delete(
 				'matomo',
@@ -145,9 +144,8 @@ class MatomoAnalytics {
 		);
 
 		if ( $config->get( ConfigNames::UseDB ) ) {
-			$dbw = MediaWikiServices::getInstance()->getDBLoadBalancerFactory()
-				->getMainLB( 'virtual-matomoanalytics' )
-				->getMaintenanceConnectionRef( DB_PRIMARY, [], 'virtual-matomoanalytics' );
+			$dbw = MediaWikiServices::getInstance()->getConnectionProvider()
+				->getPrimaryDatabase( 'virtual-matomoanalytics' );
 
 			$dbw->update(
 				'matomo',
@@ -184,9 +182,8 @@ class MatomoAnalytics {
 				return $cacheId;
 			}
 
-			$dbr = MediaWikiServices::getInstance()->getDBLoadBalancerFactory()
-				->getMainLB( 'virtual-matomoanalytics' )
-				->getMaintenanceConnectionRef( DB_REPLICA, [], 'virtual-matomoanalytics' );
+			$dbr = MediaWikiServices::getInstance()->getConnectionProvider()
+				->getReplicaDatabase( 'virtual-matomoanalytics' );
 
 			$id = $dbr->selectField(
 				'matomo',
