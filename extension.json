@@ -18,6 +18,9 @@
 		"noanalytics",
 		"viewanalytics"
 	],
+	"DatabaseVirtualDomains": [
+		"virtual-matomoanalytics"
+	],
 	"GroupPermissions": {
 		"*": {
 			"viewanalytics": true
@@ -87,11 +90,6 @@
 		"remoteExtPath": "MatomoAnalytics/modules"
 	},
 	"config": {
-		"MatomoAnalyticsDatabase": {
-			"description": "String. Database that the 'matomo' table is in.",
-			"public": true,
-			"value": false
-		},
 		"MatomoAnalyticsDisableJS": {
 			"description": "Boolean. Whether or not to add Javascript tracking code to pages.",
 			"public": true,
