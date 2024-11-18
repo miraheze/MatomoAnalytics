@@ -48,9 +48,8 @@ class MatomoAnalytics {
 
 		$siteId = $siteJson['value'];
 		if ( $config->get( ConfigNames::UseDB ) ) {
-			$dbw = MediaWikiServices::getInstance()->getDBLoadBalancerFactory()
-				->getMainLB( 'virtual-matomoanalytics' )
-				->getMaintenanceConnectionRef( DB_PRIMARY, [], 'virtual-matomoanalytics' );
+			$dbw = MediaWikiServices::getInstance()->getConnectionProvider()
+				->getPrimaryDatabase( 'virtual-matomoanalytics' );
 
 			try {
 				$dbw->insert(
