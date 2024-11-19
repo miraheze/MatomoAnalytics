@@ -20,7 +20,7 @@ class AddMissingMatomos extends Maintenance {
 
 	public function execute(): void {
 		$connectionProvider = $this->getServiceContainer()->getConnectionProvider();
-		$dbr = $dbr->getReplicaDatabase( 'virtual-matomoanalytics' );
+		$dbr = $connectionProvider->getReplicaDatabase( 'virtual-matomoanalytics' );
 		$databases = $this->getConfig()->get( MainConfigNames::LocalDatabases );
 		foreach ( $databases as $dbname ) {
 			$id = $dbr->selectField(
