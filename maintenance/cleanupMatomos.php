@@ -2,18 +2,15 @@
 
 namespace Miraheze\MatomoAnalytics\Maintenance;
 
+$IP ??= getenv( 'MW_INSTALL_PATH' ) ?: dirname( __DIR__, 3 );
+require_once "$IP/maintenance/Maintenance.php";
+
 use Maintenance;
 use MediaWiki\MainConfigNames;
 use Miraheze\MatomoAnalytics\MatomoAnalytics;
 
-$IP = getenv( 'MW_INSTALL_PATH' );
-if ( $IP === false ) {
-	$IP = __DIR__ . '/../../..';
-}
-
-require_once "$IP/maintenance/Maintenance.php";
-
 class CleanupMatomos extends Maintenance {
+
 	public function __construct() {
 		parent::__construct();
 
@@ -24,10 +21,12 @@ class CleanupMatomos extends Maintenance {
 	}
 
 	public function execute() {
-		$databases = $this->getConfig()->get( MainConfigNames::LocalDatabases );
-		$dbw = $this->getDB( DB_PRIMARY, [], 'virtual-matomoanalytics' );
+		$connectionProvider = $this->getServiceContainer()->getConnectionProvider();
+		$dbr = $dbr->getReplicaDatabase( 'virtual-matomoanalytics' );
 
-		$res = $dbw->select(
+		$databases = $this->getConfig()->get( MainConfigNames::LocalDatabases );
+
+		$res = $dbr->select(
 			'matomo',
 			'*',
 			[],
