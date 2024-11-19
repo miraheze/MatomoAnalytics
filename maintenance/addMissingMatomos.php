@@ -18,7 +18,7 @@ class AddMissingMatomos extends Maintenance {
 		$this->requireExtension( 'MatomoAnalytics' );
 	}
 
-	public function execute() {
+	public function execute(): void {
 		$connectionProvider = $this->getServiceContainer()->getConnectionProvider();
 		$dbr = $dbr->getReplicaDatabase( 'virtual-matomoanalytics' );
 		$databases = $this->getConfig()->get( MainConfigNames::LocalDatabases );
