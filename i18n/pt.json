@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hamilton Abreu"
+			"Hamilton Abreu",
+			"Mbs262"
 		]
 	},
 	"action-noanalytics": "não ser seguido via Matomo",
@@ -14,7 +15,7 @@
 	"matomoanalytics-labels-devices": "Dispositivos",
 	"matomoanalytics-labels-os": "Sistema operativo",
 	"matomoanalytics-labels-referrer": "Referências de ''sites''",
-	"matomoanalytics-labels-resolution": "Resolução",
+	"matomoanalytics-labels-resolution": "Resolução do ecrã",
 	"matomoanalytics-labels-search": "Palavras-chave de pesquisa",
 	"matomoanalytics-labels-social": "Redes sociais",
 	"matomoanalytics-labels-visitday": "Dias",

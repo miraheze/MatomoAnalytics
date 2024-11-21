@@ -8,7 +8,7 @@
 			"そらたこ"
 		]
 	},
-	"action-noanalytics": "Matomoでは追跡できません。",
+	"action-noanalytics": "Matomoの追跡を無効化",
 	"action-viewanalytics": "Matomoが収集した分析情報の表示",
 	"analytics": "ウィキ分析",
 	"matomoanalytics-desc": "Matomo と MediaWiki の統計を統合する",
@@ -38,7 +38,7 @@
 	"matomoanalytics-labels-social": "SNSリファラ",
 	"matomoanalytics-labels-social-info": "登録すると、ソーシャル ネットワークからの紹介がここに表示されます。",
 	"matomoanalytics-labels-topsearches": "ウィキ検索トップ",
-	"matomoanalytics-labels-topsearches-info": "このウィキの検索エンジンに入力されたキーワードがここに反映されます。",
+	"matomoanalytics-labels-topsearches-info": "このウィキの検索に入力されたキーワードがここに反映されます。",
 	"matomoanalytics-labels-toppages": "最も閲覧されているページ",
 	"matomoanalytics-labels-toppages-info": "ここでページは、正規のデータベース ページ タイトルではなく、表示されるブラウザ タイトルで表示されます。",
 	"matomoanalytics-labels-visitday": "1日あたりの閲覧回数",
@@ -53,6 +53,6 @@
 	"matomoanalytics-labels-visitpass-info": "訪問者がこのウィキに再度アクセスするまでにどれくらいの時間が経過するかがここに表示されます。",
 	"matomoanalytics-labels-website": "ウェブサイトリファラ",
 	"matomoanalytics-labels-website-info": "他のウェブサイトからの参照がここに表示されます。これは検索エンジンでの可視性を高めるのに良い方法です。",
-	"right-noanalytics": "Matomo を使って追跡されていません",
+	"right-noanalytics": "Matomoの追跡を無効化",
 	"right-viewanalytics": "Matomoが収集したウィキ分析と統計情報を表示"
 }
