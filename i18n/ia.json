@@ -38,10 +38,17 @@
 	"matomoanalytics-labels-toppages": "Paginas le plus visitate",
 	"matomoanalytics-labels-toppages-info": "Le paginas appare hic con lor titulo monstrate in le navigator, e non le titulo de pagina canonic del base de datos.",
 	"matomoanalytics-labels-visitday": "Visitas per die",
+	"matomoanalytics-labels-visitday-info": "Le visitas es monstrate hic a base del numero total per die durante le periodo seligite.",
 	"matomoanalytics-labels-visitduration": "Duration de visitas",
+	"matomoanalytics-labels-visitduration-info": "Monstra quante tempore le visitatores passa interagente con iste wiki.",
 	"matomoanalytics-labels-visithour": "Horas",
+	"matomoanalytics-labels-visithour-info": "Monstra a qual horas le visitatores generalmente lege iste wiki.",
 	"matomoanalytics-labels-visitpages": "Paginas legite per visita",
+	"matomoanalytics-labels-visitpages-info": "Monstra le numero medie de paginas que le visitatores lege per session.",
 	"matomoanalytics-labels-visitpass": "Tempore passate inter visitas",
+	"matomoanalytics-labels-visitpass-info": "Monstra le tempore que passa ante que le visitatores revisita iste wiki.",
 	"matomoanalytics-labels-website": "Referimentos desde sitos web",
-	"right-noanalytics": "Non esser traciate via Matomo"
+	"matomoanalytics-labels-website-info": "Le referimentos desde altere sitos web appare hic. Illos es un bon maniera de meliorar le visibilitate sur le motores de recerca.",
+	"right-noanalytics": "Non esser traciate via Matomo",
+	"right-viewanalytics": "Consultar le analyses e statisticas colligite per Matomo"
 }
