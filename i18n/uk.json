@@ -4,7 +4,8 @@
 			"DDPAT",
 			"Ice bulldog",
 			"Piramidion",
-			"Vlad5250"
+			"Vlad5250",
+			"Ата"
 		]
 	},
 	"action-noanalytics": "не відстежуватися через Matomo",
@@ -19,6 +20,7 @@
 	"matomoanalytics-labels-referrer": "Референти сайтів",
 	"matomoanalytics-labels-resolution": "Роздільність",
 	"matomoanalytics-labels-search": "Пошукові запити",
+	"matomoanalytics-labels-sitevisits-info": "На діаграмі показано всі зареєстровані відвідування за вказаний період часу. Ця діаграма може бути неточною через відвідувачів, які блокують рекламу.",
 	"matomoanalytics-labels-social": "Соцмережі",
 	"matomoanalytics-labels-visitday": "Дні",
 	"matomoanalytics-labels-visitduration": "Тривалість",
