@@ -6,7 +6,6 @@ use Exception;
 use FormatJson;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
-use ObjectCache;
 use RuntimeException;
 
 class MatomoAnalytics {
@@ -105,7 +104,7 @@ class MatomoAnalytics {
 				__METHOD__
 			);
 
-			$cache = ObjectCache::getLocalClusterInstance();
+			$cache = MediaWikiServices::getInstance()->getObjectCacheFactory()->getLocalClusterInstance();
 			$key = $cache->makeKey( 'matomo', 'id' );
 			$cache->delete( $key );
 		}
@@ -154,7 +153,7 @@ class MatomoAnalytics {
 				__METHOD__
 			);
 
-			$cache = ObjectCache::getLocalClusterInstance();
+			$cache = MediaWikiServices::getInstance()->getObjectCacheFactory()->getLocalClusterInstance();
 			$key = $cache->makeKey( 'matomo', 'id' );
 			$cache->delete( $key );
 		}
@@ -175,7 +174,7 @@ class MatomoAnalytics {
 		$logger = self::getLogger();
 
 		if ( $config->get( ConfigNames::UseDB ) ) {
-			$cache = ObjectCache::getLocalClusterInstance();
+			$cache = MediaWikiServices::getInstance()->getObjectCacheFactory()->getLocalClusterInstance();
 			$key = $cache->makeKey( 'matomo', 'id' );
 			$cacheId = $cache->get( $key );
 			if ( $cacheId && !$disableCache ) {
