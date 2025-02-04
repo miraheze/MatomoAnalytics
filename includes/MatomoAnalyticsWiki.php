@@ -60,7 +60,9 @@ class MatomoAnalyticsWiki {
 			wfAppendQuery(
 				$config->get( ConfigNames::ServerURL ),
 				$query
-			)
+			),
+			[],
+			__METHOD__
 		);
 
 		$siteJson = json_decode( $siteReply, true );
