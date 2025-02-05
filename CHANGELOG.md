@@ -1,5 +1,8 @@
 ## ChangeLog for MatomoAnalytics
 
+### 1.3.4 (4-2-2025)
+* Dropped support for MediaWiki 1.42.
+
 ### 1.3.3 (17-11-2024)
 * Added support for virtual database domains
 * Removed support for wgMatomoAnalyticsDatabase
