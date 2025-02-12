@@ -191,7 +191,7 @@ class MatomoAnalytics {
 				__METHOD__
 			);
 
-			if ( !isset( $id ) || !$id ) {
+			if ( !$id ) {
 				$logger->warning( "Could not find {$dbname} in matomo table." );
 
 				// Because the site is not found in the matomo table,
