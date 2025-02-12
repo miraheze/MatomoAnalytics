@@ -30,7 +30,7 @@ class AddMissingMatomos extends Maintenance {
 				__METHOD__
 			);
 
-			if ( !isset( $id ) || !$id ) {
+			if ( !$id ) {
 				$this->output( "Adding matomo id to {$dbname}\n" );
 				MatomoAnalytics::addSite( $dbname );
 				$this->output( "Done!\n" );
