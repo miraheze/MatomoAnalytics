@@ -13,10 +13,13 @@
 		]
 	},
 	"action-noanalytics": "nicht über Matomo getrackt werden",
+	"action-viewanalytics": "Matomo-erfasste Analysen anzuzeigen",
 	"analytics": "Wiki-Analysen",
 	"matomoanalytics-desc": "Integriert Analytik von Matomo und MediaWiki",
 	"matomoanalytics-header": "Du kannst die folgenden Tabs verwenden, um verschiedene Statistiken zur Ansicht auszuwählen, die wir mit Matomo speichern. Alle Daten wurden in den letzten 30 Tagen gesammelt, beginnend mit gestern (täglich aktualisiert).",
 	"matomoanalytics-labels-browser": "Browser",
+	"matomoanalytics-labels-browser-info": "Browser werden nach Familie zusammengefasst, und spezifische Versionen werden nicht angezeigt.",
+	"matomoanalytics-labels-campaigns": "Kampagnen",
 	"matomoanalytics-labels-continent": "Kontinente",
 	"matomoanalytics-labels-country": "Land",
 	"matomoanalytics-labels-devices": "Geräte",
