@@ -1,24 +1,25 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fulup"
+			"Fulup",
+			"Huñvreüs"
 		]
 	},
-	"analytics": "MatomoAnalytics",
+	"analytics": "Dielfennadurioù ar wiki",
 	"matomoanalytics-labels-browser": "Merdeerioù",
 	"matomoanalytics-labels-continent": "Kevandirioù",
 	"matomoanalytics-labels-country": "Bro",
 	"matomoanalytics-labels-devices": "Ardivinkoù",
 	"matomoanalytics-labels-os": "OS",
-	"matomoanalytics-labels-referrer": "Tud dave al lec'hienn",
-	"matomoanalytics-labels-resolution": "Diskoulm",
-	"matomoanalytics-labels-search": "Gerioù-alc'hwez evit klask.",
-	"matomoanalytics-labels-social": "Rouedadoù sokioal",
-	"matomoanalytics-labels-visitday": "Deizioù",
-	"matomoanalytics-labels-visitduration": "Pad",
+	"matomoanalytics-labels-referrer": "Sertoù daveiñ",
+	"matomoanalytics-labels-resolution": "Pizhder ar skramm",
+	"matomoanalytics-labels-search": "Gerioù-alc'hwez al lusker enklask",
+	"matomoanalytics-labels-social": "Daveiñ rouedadoù sokial",
+	"matomoanalytics-labels-visitday": "Gweladennoù bep devezh",
+	"matomoanalytics-labels-visitduration": "Padelezh ar weladenn",
 	"matomoanalytics-labels-visithour": "Eurioù",
-	"matomoanalytics-labels-visitpages": "Pajennoù a-unan",
-	"matomoanalytics-labels-visitpass": "Amzer aet hebioù",
-	"matomoanalytics-labels-website": "Lec'hiennoù",
+	"matomoanalytics-labels-visitpages": "Pajennoù gwelet dre weladenn",
+	"matomoanalytics-labels-visitpass": "Amzer dremenet etre adweladennoù",
+	"matomoanalytics-labels-website": "Daveiñ lec'hienn gwiad",
 	"right-noanalytics": "Arbat heuliañ dre vMatomo"
 }
