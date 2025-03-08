@@ -2,11 +2,8 @@
 
 namespace Miraheze\MatomoAnalytics\Maintenance;
 
-$IP ??= getenv( 'MW_INSTALL_PATH' ) ?: dirname( __DIR__, 3 );
-require_once "$IP/maintenance/Maintenance.php";
-
-use Maintenance;
 use MediaWiki\MainConfigNames;
+use MediaWiki\Maintenance\Maintenance;
 use Miraheze\MatomoAnalytics\MatomoAnalytics;
 
 class ModifyMatomo extends Maintenance {
@@ -32,5 +29,6 @@ class ModifyMatomo extends Maintenance {
 	}
 }
 
-$maintClass = ModifyMatomo::class;
-require_once RUN_MAINTENANCE_IF_MAIN;
+// @codeCoverageIgnoreStart
+return ModifyMatomo::class;
+// @codeCoverageIgnoreEnd

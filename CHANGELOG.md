@@ -1,6 +1,9 @@
 ## ChangeLog for MatomoAnalytics
 
-### 1.3.4 (4-2-2025)
+### 1.3.5 (08-03-2025)
+* Maintenance scripts are now required to be ran with run.php.
+
+### 1.3.4 (04-02-2025)
 * Dropped support for MediaWiki 1.42.
 
 ### 1.3.3 (17-11-2024)

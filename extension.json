@@ -7,7 +7,7 @@
 		"Agent Isai"
 	],
 	"url": "https://www.mediawiki.org/wiki/Extension:MatomoAnalytics",
-	"version": "1.3.4",
+	"version": "1.3.5",
 	"descriptionmsg": "matomoanalytics-desc",
 	"license-name": "GPL-3.0-or-later",
 	"type": "specialpage",
