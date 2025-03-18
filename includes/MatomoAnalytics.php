@@ -3,7 +3,7 @@
 namespace Miraheze\MatomoAnalytics;
 
 use Exception;
-use FormatJson;
+use MediaWiki\Json\FormatJson;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use RuntimeException;
