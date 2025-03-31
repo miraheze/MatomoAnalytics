@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Tensama0415",
 			"Ykhwong",
 			"렌즈"
 		]
@@ -15,7 +16,7 @@
 	"matomoanalytics-labels-search": "검색 엔진 키워드",
 	"matomoanalytics-labels-showdata": "원시 데이터 표시",
 	"matomoanalytics-labels-sitevisits": "위키 방문 수",
-	"matomoanalytics-labels-social": "소셜 네트워크",
+	"matomoanalytics-labels-social": "소셜 네트워크 추천",
 	"matomoanalytics-labels-topsearches": "상위 위키 검색",
 	"matomoanalytics-labels-toppages": "조회수가 가장 많은 문서",
 	"matomoanalytics-labels-visitday": "일일 조회수",
