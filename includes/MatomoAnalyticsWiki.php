@@ -32,6 +32,11 @@ class MatomoAnalyticsWiki {
 		?string $pageUrl = null
 	) {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'MatomoAnalytics' );
+		if ( !$config->get( ConfigNames::ServerURL ) ) {
+			// Early exit if we don't have the ServerURL set.
+			return [];
+		}
+
 		$date ??= $this->getPeriodSelected();
 
 		$cacheKey = $this->getCacheKey( $this->siteId, $module, $period, $date, $pageUrl );
