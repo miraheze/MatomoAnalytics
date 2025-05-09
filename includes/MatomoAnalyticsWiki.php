@@ -49,23 +49,19 @@ class MatomoAnalyticsWiki {
 			'method' => $module,
 			'period' => $period,
 			'idSite' => $this->siteId,
-			'token_auth' => $config->get( ConfigNames::TokenAuth )
+			'token_auth' => $config->get( ConfigNames::TokenAuth ),
 		];
 
 		if ( $pageUrl !== null ) {
 			$query['pageUrl'] = $pageUrl;
 		}
 
-		$siteReply = MediaWikiServices::getInstance()->getHttpRequestFactory()->get(
-			wfAppendQuery(
-				$config->get( ConfigNames::ServerURL ),
-				$query
-			),
-			[],
-			__METHOD__
-		);
+		$url = wfAppendQuery( $config->get( ConfigNames::ServerURL ), $query );
+		$siteReply = MediaWikiServices::getInstance()->getHttpRequestFactory()->create(
+			$url, [ 'method' => 'GET' ], __METHOD__
+		)->execute();
 
-		$siteJson = json_decode( $siteReply, true );
+		$siteJson = json_decode( $siteReply->getContent(), true );
 
 		$arrayOut = [];
 
