@@ -59,8 +59,9 @@ class MatomoAnalyticsWiki {
 		$url = wfAppendQuery( $config->get( ConfigNames::ServerURL ), $query );
 		$siteReply = MediaWikiServices::getInstance()->getHttpRequestFactory()->create(
 			$url, [ 'method' => 'GET' ], __METHOD__
-		)->execute();
+		);
 
+		$siteReply->execute();
 		$siteJson = json_decode( $siteReply->getContent(), true );
 
 		$arrayOut = [];
