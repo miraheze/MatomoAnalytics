@@ -3,7 +3,8 @@
 		"authors": [
 			"BaRaN6161 TURK",
 			"Can",
-			"Joseph"
+			"Joseph",
+			"Slickdaddy"
 		]
 	},
 	"action-noanalytics": "Matomo üzerinden izlenmez",
@@ -21,6 +22,7 @@
 	"matomoanalytics-labels-showdata": "Ham veriyi göster",
 	"matomoanalytics-labels-sitevisits": "Vikinize yapılan ziyaretler",
 	"matomoanalytics-labels-social": "Sosyal ağ yönlendirmeleri",
+	"matomoanalytics-labels-toppages": "En çok görüntülenen sayfalar",
 	"matomoanalytics-labels-visitday": "Günlük görüntüleme sayısı",
 	"matomoanalytics-labels-visitduration": "Ziyaret süresi",
 	"matomoanalytics-labels-visithour": "Saatler",
