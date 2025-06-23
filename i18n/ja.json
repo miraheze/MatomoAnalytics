@@ -3,6 +3,7 @@
 		"authors": [
 			"Ant176",
 			"Kkairri",
+			"Shirayuki",
 			"Waki285",
 			"しぃ",
 			"そらたこ"
@@ -29,7 +30,7 @@
 	"matomoanalytics-labels-referrer": "リファラの種類",
 	"matomoanalytics-labels-referrer-info": "ユーザーがどのようにしてウェブサイトに誘導され、どの方法が最も多くのリファラを獲得しているかを確認します。",
 	"matomoanalytics-labels-resolution": "画面解像度",
-	"matomoanalytics-labels-resolution-info": "解像度は、デバイスの種類別のウィキの閲覧状況の概要を示します。それに合わせてページのスタイルを調整することができます。",
+	"matomoanalytics-labels-resolution-info": "解像度は、デバイスの種類ごとのウィキの閲覧状況のおおよその状況を示し、それに応じてページのスタイルを調整できます。",
 	"matomoanalytics-labels-search": "検索エンジンキーワード",
 	"matomoanalytics-labels-search-info": "検索エンジンのキーワード リファラーは、どの検索用語がユーザーをウィキに誘導したかを示します。このデータの可用性は、ブラウザーのプライバシー設定とリファラー ポリシーによって異なる場合があります。",
 	"matomoanalytics-labels-showdata": "生データを表示",
