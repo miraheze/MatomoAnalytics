@@ -1,5 +1,8 @@
 ## ChangeLog for MatomoAnalytics
 
+### 1.4.0 (xx-xx-2025)
+* Migrates from CustomVars to CustomDimensions. This is a breaking change.
+
 ### 1.3.5 (08-03-2025)
 * Maintenance scripts are now required to be ran with run.php.
 
