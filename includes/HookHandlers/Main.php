@@ -71,7 +71,7 @@ class Main implements
 				_paq.push(['setTrackerUrl', u+'matomo.php']);
 				_paq.push(['setDocumentTitle', {$dbname} + " - " + {$jstitle}]);
 				_paq.push(['setSiteId', {$id}]);
-				_paq.push(['setCustomVariable', 1, 'userType', "{$userType}", "visit"]);
+				_paq.push(['setCustomDimension', 1, "{$userType}"]);
 				if ( {$globalIdInt} ) {
 					_paq.push(['addTracker', u + 'matomo.php', {$globalId}]);
 				}
