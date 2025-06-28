@@ -24,4 +24,6 @@ class ConfigNames {
 	public const DisableCookie = 'MatomoAnalyticsDisableCookie';
 
 	public const ForceGetRequest = 'MatomoAnalyticsForceGetRequest';
+
+	public const EnableCustomDimensionsUserType = 'MatomoAnalyticsEnableCustomDimensionsUserType';
 }
