@@ -55,6 +55,7 @@ class Main implements
 		$userType = $user->isRegistered() ? 'User' : 'Anonymous';
 		$cookieDisable = (int)$config->get( ConfigNames::DisableCookie );
 		$forceGetRequest = (int)$config->get( ConfigNames::ForceGetRequest );
+		$enableCustomDimensionsUserType = (int)$config->get( ConfigNames::EnableCustomDimensionsUserType );
 		$text = <<<SCRIPT
 			<script>
 			var _paq = window._paq = window._paq || [];
@@ -71,7 +72,9 @@ class Main implements
 				_paq.push(['setTrackerUrl', u+'matomo.php']);
 				_paq.push(['setDocumentTitle', {$dbname} + " - " + {$jstitle}]);
 				_paq.push(['setSiteId', {$id}]);
-				_paq.push(['setCustomVariable', 1, 'userType', "{$userType}", "visit"]);
+				if ( {$enableCustomDimensionsUserType} ) {
+					_paq.push(['setCustomDimension', 1, "{$userType}"]);
+				}
 				if ( {$globalIdInt} ) {
 					_paq.push(['addTracker', u + 'matomo.php', {$globalId}]);
 				}

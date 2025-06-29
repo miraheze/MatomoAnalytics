@@ -7,7 +7,7 @@
 		"Agent Isai"
 	],
 	"url": "https://www.mediawiki.org/wiki/Extension:MatomoAnalytics",
-	"version": "1.3.5",
+	"version": "1.4.0",
 	"descriptionmsg": "matomoanalytics-desc",
 	"license-name": "GPL-3.0-or-later",
 	"type": "specialpage",
@@ -124,6 +124,11 @@
 		},
 		"MatomoAnalyticsUseDB": {
 			"description": "Boolean. Whether or not to use the database for tracking site IDs.",
+			"public": true,
+			"value": false
+		},
+		"MatomoAnalyticsEnableCustomDimensionsUserType": {
+			"description": "Boolean. Whether to fetch userType in Matomo using CustomDimensions. You must setup CustomDimensions to be able to use this.",
 			"public": true,
 			"value": false
 		}
