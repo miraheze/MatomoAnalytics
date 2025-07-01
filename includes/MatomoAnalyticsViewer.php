@@ -33,14 +33,11 @@ class MatomoAnalyticsViewer {
 
 	public function getFormDescriptor(
 		IContextSource $context,
-		int $periodSelected
+		int $period
 	): array {
 		$context->getOutput()->enableOOUI();
 		$mAId = MatomoAnalytics::getSiteID( WikiMap::getCurrentWikiId() );
-		$mA = new MatomoAnalyticsWiki(
-			period: $periodSelected,
-			siteId: $mAId
-		);
+		$mA = new MatomoAnalyticsWiki( period: $period, siteId: $mAId );
 
 		$descriptorData = [
 			'sitevisits' => $mA->getSiteVisits(),
@@ -116,9 +113,9 @@ class MatomoAnalyticsViewer {
 
 	public function getForm(
 		IContextSource $context,
-		int $periodSelected
+		int $period
 	): array {
-		$formDescriptor = $this->getFormDescriptor( $context, $periodSelected );
+		$formDescriptor = $this->getFormDescriptor( $context, $period );
 		return $formDescriptor;
 	}
 }

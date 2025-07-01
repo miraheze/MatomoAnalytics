@@ -9,13 +9,9 @@ use MediaWiki\MediaWikiServices;
 class MatomoAnalyticsWiki {
 
 	public function __construct(
-		private readonly int $periodSelected,
+		private readonly int $period,
 		private readonly int $siteId
 	) {
-	}
-
-	public function getPeriodSelected(): int {
-		return $this->periodSelected;
 	}
 
 	private function getData(
@@ -33,7 +29,7 @@ class MatomoAnalyticsWiki {
 			return [];
 		}
 
-		$date ??= $this->getPeriodSelected();
+		$date ??= $this->period;
 
 		$cacheKey = $this->getCacheKey( $this->siteId, $module, $period, $date, $pageUrl );
 		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
