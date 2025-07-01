@@ -5,14 +5,13 @@ namespace Miraheze\MatomoAnalytics\Maintenance;
 use MediaWiki\MainConfigNames;
 use MediaWiki\Maintenance\Maintenance;
 use Miraheze\MatomoAnalytics\MatomoAnalytics;
-use Wikimedia\Rdbms\Platform\ISQLPlatform;
 
 class CleanupMatomos extends Maintenance {
 
 	public function __construct() {
 		parent::__construct();
 
-		$this->addDescription( 'Cleanup matomo ids that don\'t have corresponding cw_wikis entries.' );
+		$this->addDescription( 'Cleanup matomo ids that don\'t have a corresponding wiki.' );
 		$this->addOption( 'dry-run', 'Perform a dry run and do not actually remove any matomo ids.' );
 
 		$this->requireExtension( 'MatomoAnalytics' );
@@ -21,11 +20,9 @@ class CleanupMatomos extends Maintenance {
 	public function execute(): void {
 		$connectionProvider = $this->getServiceContainer()->getConnectionProvider();
 		$dbr = $connectionProvider->getReplicaDatabase( 'virtual-matomoanalytics' );
-
 		$databases = $this->getConfig()->get( MainConfigNames::LocalDatabases );
-
 		$res = $dbr->newSelectQueryBuilder()
-			->select( ISQLPlatform::ALL_ROWS )
+			->select( 'matomo_wiki' )
 			->from( 'matomo' )
 			->caller( __METHOD__ )
 			->fetchResultSet();

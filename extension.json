@@ -50,11 +50,11 @@
 		"CreateWikiRename": {
 			"handler": "CreateWiki"
 		},
-		"LoadExtensionSchemaUpdates": {
-			"handler": "Installer"
-		},
 		"InfoAction": {
 			"handler": "Main"
+		},
+		"LoadExtensionSchemaUpdates": {
+			"handler": "Installer"
 		},
 		"SkinAfterBottomScripts": {
 			"handler": "Main"
@@ -87,49 +87,40 @@
 		"remoteExtPath": "MatomoAnalytics/modules"
 	},
 	"config": {
-		"MatomoAnalyticsDisableJS": {
-			"description": "Boolean. Whether or not to add Javascript tracking code to pages.",
-			"public": true,
-			"value": false
-		},
 		"MatomoAnalyticsDisableCookie": {
 			"description": "Boolean. Whether or not to disable cookies being set by Matomo.",
-			"public": true,
 			"value": false
 		},
-		"MatomoAnalyticsForceGetRequest": {
-			"description": "Boolean. Whether or not you want to foce GET requests which also disables beacon. Reverts back to Matomo v3 tracking behavior.",
-			"public": true,
-			"value": false
-		},
-		"MatomoAnalyticsGlobalID": {
-			"description": "Integer. If tracking more than one site, this is an ID to attach to all wikis for central aggregate statistics.",
-			"public": true,
-			"value": false
-		},
-		"MatomoAnalyticsServerURL": {
-			"description": "String. URL of the Matomo installation to use for API queries.",
-			"public": true,
-			"value": false
-		},
-		"MatomoAnalyticsSiteID": {
-			"description": "Integer. If not using database, the site number to add all monitoring to.",
-			"public": true,
-			"value": 1
-		},
-		"MatomoAnalyticsTokenAuth": {
-			"description": "String. The API token for authentication when making requests for data.",
-			"public": false,
-			"value": false
-		},
-		"MatomoAnalyticsUseDB": {
-			"description": "Boolean. Whether or not to use the database for tracking site IDs.",
-			"public": true,
+		"MatomoAnalyticsDisableJS": {
+			"description": "Boolean. Whether or not to add Javascript tracking code to pages.",
 			"value": false
 		},
 		"MatomoAnalyticsEnableCustomDimensionsUserType": {
 			"description": "Boolean. Whether to fetch userType in Matomo using CustomDimensions. You must setup CustomDimensions to be able to use this.",
-			"public": true,
+			"value": false
+		},
+		"MatomoAnalyticsForceGetRequest": {
+			"description": "Boolean. Whether or not you want to foce GET requests which also disables beacon. Reverts back to Matomo v3 tracking behavior.",
+			"value": false
+		},
+		"MatomoAnalyticsGlobalID": {
+			"description": "Integer. If tracking more than one site, this is an ID to attach to all wikis for central aggregate statistics.",
+			"value": 0
+		},
+		"MatomoAnalyticsServerURL": {
+			"description": "String. URL of the Matomo installation to use for API queries.",
+			"value": ""
+		},
+		"MatomoAnalyticsSiteID": {
+			"description": "Integer. If not using database, the site number to add all monitoring to.",
+			"value": 1
+		},
+		"MatomoAnalyticsTokenAuth": {
+			"description": "String. The API token for authentication when making requests for data.",
+			"value": ""
+		},
+		"MatomoAnalyticsUseDB": {
+			"description": "Boolean. Whether or not to use the database for tracking site IDs.",
 			"value": false
 		}
 	},

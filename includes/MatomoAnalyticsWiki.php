@@ -8,12 +8,10 @@ use MediaWiki\MediaWikiServices;
 
 class MatomoAnalyticsWiki {
 
-	private int $periodSelected;
-	private int $siteId;
-
-	public function __construct( string $dbname, int $periodSelected = 7 ) {
-		$this->siteId = MatomoAnalytics::getSiteID( $dbname );
-		$this->periodSelected = $periodSelected;
+	public function __construct(
+		private readonly int $periodSelected,
+		private readonly int $siteId
+	) {
 	}
 
 	public function getPeriodSelected(): int {

@@ -1,7 +1,7 @@
 ## ChangeLog for MatomoAnalytics
 
 
-### 1.5.0 (01-07-2025)
+### 1.5.0 (02-07-2025)
 * Migrate to QueryBuilder
 * Type hint all methods
 * General cleanup

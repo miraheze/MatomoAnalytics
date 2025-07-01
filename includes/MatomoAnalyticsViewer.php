@@ -4,8 +4,7 @@ namespace Miraheze\MatomoAnalytics;
 
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
-use MediaWiki\MainConfigNames;
-use MediaWiki\Output\OutputPage;
+use MediaWiki\WikiMap\WikiMap;
 
 class MatomoAnalyticsViewer {
 
@@ -36,14 +35,11 @@ class MatomoAnalyticsViewer {
 		IContextSource $context,
 		int $periodSelected
 	): array {
-		OutputPage::setupOOUI(
-			strtolower( $context->getSkin()->getSkinName() ),
-			$context->getLanguage()->getDir()
-		);
-
+		$context->getOutput()->enableOOUI();
+		$mAId = MatomoAnalytics::getSiteID( WikiMap::getCurrentWikiId() );
 		$mA = new MatomoAnalyticsWiki(
-			$context->getConfig()->get( MainConfigNames::DBname ),
-			$periodSelected
+			period: $periodSelected,
+			siteId: $mAId
 		);
 
 		$descriptorData = [

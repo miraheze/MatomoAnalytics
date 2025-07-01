@@ -2,8 +2,8 @@
 
 namespace Miraheze\MatomoAnalytics\Maintenance;
 
-use MediaWiki\MainConfigNames;
 use MediaWiki\Maintenance\Maintenance;
+use MediaWiki\WikiMap\WikiMap;
 use Miraheze\MatomoAnalytics\MatomoAnalytics;
 
 class ModifyMatomo extends Maintenance {
@@ -18,13 +18,13 @@ class ModifyMatomo extends Maintenance {
 	}
 
 	public function execute(): void {
-		$dbname = $this->getConfig()->get( MainConfigNames::DBname );
+		$wikiId = WikiMap::getCurrentWikiId();
 		if ( $this->hasOption( 'remove' ) ) {
-			MatomoAnalytics::deleteSite( $dbname );
+			MatomoAnalytics::deleteSite( $wikiId );
 			return;
 		}
 
-		MatomoAnalytics::addSite( $dbname );
+		MatomoAnalytics::addSite( $wikiId );
 	}
 }
 

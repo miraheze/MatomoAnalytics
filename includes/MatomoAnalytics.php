@@ -115,11 +115,14 @@ class MatomoAnalytics {
 		$logger->debug( "Successfully deleted $dbname with id $siteId." );
 	}
 
-	public static function renameSite( string $oldDb, string $newDb ): void {
+	public static function renameSite(
+		string $oldDbName,
+		string $newDbName
+	): void {
 		$config = self::getConfig();
 		$logger = self::getLogger();
 
-		$siteId = self::getSiteID( $oldDb, true );
+		$siteId = self::getSiteID( $oldDbName, true );
 
 		if ( $config->get( ConfigNames::UseDB ) &&
 			(string)$siteId === (string)$config->get( ConfigNames::SiteID )
@@ -135,8 +138,8 @@ class MatomoAnalytics {
 					'format' => 'json',
 					'method' => 'SitesManager.updateSite',
 					'idSite' => $siteId,
-					'siteName' => $newDb,
-					'token_auth' => $config->get( ConfigNames::TokenAuth )
+					'siteName' => $newDbName,
+					'token_auth' => $config->get( ConfigNames::TokenAuth ),
 				]
 			),
 			[],
@@ -150,7 +153,7 @@ class MatomoAnalytics {
 			$dbw->newUpdateQueryBuilder()
 				->update( 'matomo' )
 				->set( [ 'matomo_id' => $siteId ] )
-				->where( [ 'matomo_wiki' => $newDb ] )
+				->where( [ 'matomo_wiki' => $newDbName ] )
 				->caller( __METHOD__ )
 				->execute();
 
@@ -159,12 +162,12 @@ class MatomoAnalytics {
 			$cache->delete( $key );
 		}
 
-		if ( (string)$siteId === (string)self::getSiteID( $newDb ) ) {
-			$logger->debug( "Successfully renamed $oldDb to $newDb with id $siteId." );
+		if ( (string)$siteId === (string)self::getSiteID( $newDbName ) ) {
+			$logger->debug( "Successfully renamed $oldDbName to $newDbName with id $siteId." );
 			return;
 		}
 
-		$logger->error( "Failed to rename $oldDb to $newDb with id $siteId." );
+		$logger->error( "Failed to rename $oldDbName to $newDbName with id $siteId." );
 		throw new RuntimeException( 'Error in renaming Matomo references' );
 	}
 

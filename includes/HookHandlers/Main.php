@@ -6,7 +6,7 @@ use MediaWiki\Context\IContextSource;
 use MediaWiki\Hook\InfoActionHook;
 use MediaWiki\Hook\SkinAfterBottomScriptsHook;
 use MediaWiki\Html\Html;
-use MediaWiki\MainConfigNames;
+use MediaWiki\WikiMap\WikiMap;
 use Miraheze\MatomoAnalytics\ConfigNames;
 use Miraheze\MatomoAnalytics\MatomoAnalytics;
 use Miraheze\MatomoAnalytics\MatomoAnalyticsWiki;
@@ -32,7 +32,7 @@ class Main implements
 			return true;
 		}
 
-		$mAId = MatomoAnalytics::getSiteID( $config->get( MainConfigNames::DBname ) );
+		$mAId = MatomoAnalytics::getSiteID( WikiMap::getCurrentWikiId() );
 
 		if ( $skin->getAuthority()->isAllowed( 'noanalytics' ) ) {
 			$text = '<!-- MatomoAnalytics: User right noanalytics is assigned. -->';
@@ -46,7 +46,7 @@ class Main implements
 		$title = $skin->getRelevantTitle();
 
 		$jstitle = Html::encodeJsVar( $title->getPrefixedText() );
-		$dbname = Html::encodeJsVar( $config->get( MainConfigNames::DBname ) );
+		$wikiId = Html::encodeJsVar( WikiMap::getCurrentWikiId() );
 		$urltitle = $title->getPrefixedURL();
 		$userType = $skin->getUser()->isRegistered() ? 'User' : 'Anonymous';
 		$cookieDisable = (int)$config->get( ConfigNames::DisableCookie );
@@ -66,7 +66,7 @@ class Main implements
 			(function() {
 				var u = "{$serverurl}";
 				_paq.push(['setTrackerUrl', u+'matomo.php']);
-				_paq.push(['setDocumentTitle', {$dbname} + " - " + {$jstitle}]);
+				_paq.push(['setDocumentTitle', {$wikiId} + " - " + {$jstitle}]);
 				_paq.push(['setSiteId', {$id}]);
 				if ( {$enableCustomDimensionsUserType} ) {
 					_paq.push(['setCustomDimension', 1, "{$userType}"]);
@@ -90,7 +90,8 @@ class Main implements
 	 * @param array &$pageInfo
 	 */
 	public function onInfoAction( $context, &$pageInfo ) {
-		$mA = new MatomoAnalyticsWiki( $context->getConfig()->get( MainConfigNames::DBname ) );
+		$mAId = MatomoAnalytics::getSiteID( WikiMap::getCurrentWikiId() );
+		$mA = new MatomoAnalyticsWiki( period: 30, siteId: $mAId );
 
 		$title = $context->getTitle();
 		$url = $title->getFullURL();

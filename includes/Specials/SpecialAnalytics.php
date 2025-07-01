@@ -23,8 +23,15 @@ class SpecialAnalytics extends SpecialPage {
 
 		$out = $this->getOutput();
 
-		$out->addModules( [ 'ext.matomoanalytics.charts', 'ext.matomoanalytics.graphs' ] );
-		$out->addModuleStyles( [ 'oojs-ui-widgets.styles', 'ext.matomoanalytics.special' ] );
+		$out->addModules( [
+			'ext.matomoanalytics.charts',
+			'ext.matomoanalytics.graphs',
+		] );
+
+		$out->addModuleStyles( [
+			'oojs-ui-widgets.styles',
+			'ext.matomoanalytics.special',
+		] );
 
 		$period = $this->getContext()->getRequest()->getInt( 'period', 7 );
 
