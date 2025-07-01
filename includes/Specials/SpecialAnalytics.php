@@ -30,14 +30,12 @@ class SpecialAnalytics extends SpecialPage {
 
 		if ( $period < 1 || $period > 31 ) {
 			$period = 7;
-
 			$out->addHTML(
 				Html::errorBox( $this->msg( 'htmlform-select-badoption' )->escaped() )
 			);
 		}
 
 		$selectionForm = [];
-
 		$selectionForm['info'] = [
 			'label-message' => 'matomoanalytics-header',
 			'type' => 'info',
@@ -70,22 +68,16 @@ class SpecialAnalytics extends SpecialPage {
 
 		$createForm = HTMLForm::factory( 'ooui', $htmlForm, $this->getContext() );
 		$createForm->setId( 'matomoanalytics-form' )
-			->setSubmitCallback( [ $this, 'onSubmitDummy' ] )
 			->suppressDefaultSubmit()
-			->show();
+			->prepareForm()
+			->displayForm( false );
 	}
 
-	public function onSubmitRedirectToSelection( array $params ) {
+	public function onSubmitRedirectToSelection( array $formData ): void {
 		$this->getOutput()->redirect(
-			SpecialPage::getTitleFor( 'Analytics' )->getFullURL(
-				[ 'period' => $params['time'] ]
+			$this->getPageTitle()->getFullURL(
+				[ 'period' => $formData['time'] ]
 			)
 		);
-
-		return true;
-	}
-
-	public function onSubmitDummy( array $params ) {
-		return true;
 	}
 }
