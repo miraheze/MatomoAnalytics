@@ -6,6 +6,7 @@ use MediaWiki\Installer\Hook\LoadExtensionSchemaUpdatesHook;
 
 class Installer implements LoadExtensionSchemaUpdatesHook {
 
+	/** @inheritDoc */
 	public function onLoadExtensionSchemaUpdates( $updater ) {
 		$updater->addExtensionUpdateOnVirtualDomain( [
 			'virtual-matomoanalytics',

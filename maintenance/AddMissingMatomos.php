@@ -20,15 +20,15 @@ class AddMissingMatomos extends Maintenance {
 		$dbr = $connectionProvider->getReplicaDatabase( 'virtual-matomoanalytics' );
 		$databases = $this->getConfig()->get( MainConfigNames::LocalDatabases );
 		foreach ( $databases as $dbname ) {
-			$id = $dbr->selectField(
-				'matomo',
-				'matomo_id',
-				[ 'matomo_wiki' => $dbname ],
-				__METHOD__
-			);
+			$id = $dbr->newSelectQueryBuilder()
+				->select( 'matomo_id' )
+				->from( 'matomo' )
+				->where( [ 'matomo_wiki' => $dbname ] )
+				->caller( __METHOD__ )
+				->fetchField();
 
 			if ( !$id ) {
-				$this->output( "Adding matomo id to {$dbname}\n" );
+				$this->output( "Adding matomo id to $dbname\n" );
 				MatomoAnalytics::addSite( $dbname );
 				$this->output( "Done!\n" );
 			}

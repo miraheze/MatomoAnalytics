@@ -7,7 +7,6 @@ use MediaWiki\Hook\InfoActionHook;
 use MediaWiki\Hook\SkinAfterBottomScriptsHook;
 use MediaWiki\Html\Html;
 use MediaWiki\MainConfigNames;
-use MediaWiki\MediaWikiServices;
 use Miraheze\MatomoAnalytics\ConfigNames;
 use Miraheze\MatomoAnalytics\MatomoAnalytics;
 use Miraheze\MatomoAnalytics\MatomoAnalyticsWiki;
@@ -27,23 +26,20 @@ class Main implements
 	 * @return bool
 	 */
 	public function onSkinAfterBottomScripts( $skin, &$text ) {
-		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'MatomoAnalytics' );
-
+		$config = $skin->getConfig();
 		// Check if JS tracking is disabled and bow out early
 		if ( $config->get( ConfigNames::DisableJS ) === true ) {
 			return true;
 		}
 
-		$user = $skin->getUser();
 		$mAId = MatomoAnalytics::getSiteID( $config->get( MainConfigNames::DBname ) );
 
-		$permissionManager = MediaWikiServices::getInstance()->getPermissionManager();
-		if ( $permissionManager->userHasRight( $user, 'noanalytics' ) ) {
+		if ( $skin->getAuthority()->isAllowed( 'noanalytics' ) ) {
 			$text = '<!-- MatomoAnalytics: User right noanalytics is assigned. -->';
 			return true;
 		}
 
-		$id = strval( $mAId );
+		$id = (string)$mAId;
 		$globalId = (string)$config->get( ConfigNames::GlobalID );
 		$globalIdInt = (int)$globalId;
 		$serverurl = $config->get( ConfigNames::ServerURL );
@@ -52,7 +48,7 @@ class Main implements
 		$jstitle = Html::encodeJsVar( $title->getPrefixedText() );
 		$dbname = Html::encodeJsVar( $config->get( MainConfigNames::DBname ) );
 		$urltitle = $title->getPrefixedURL();
-		$userType = $user->isRegistered() ? 'User' : 'Anonymous';
+		$userType = $skin->getUser()->isRegistered() ? 'User' : 'Anonymous';
 		$cookieDisable = (int)$config->get( ConfigNames::DisableCookie );
 		$forceGetRequest = (int)$config->get( ConfigNames::ForceGetRequest );
 		$enableCustomDimensionsUserType = (int)$config->get( ConfigNames::EnableCustomDimensionsUserType );
@@ -88,11 +84,11 @@ class Main implements
 		return true;
 	}
 
-		/**
-		 * Display total pageviews in the last 30 days and show a graph with details when clicked.
-		 * @param IContextSource $context
-		 * @param array &$pageInfo
-		 */
+	/**
+	 * Display total pageviews in the last 30 days and show a graph with details when clicked.
+	 * @param IContextSource $context
+	 * @param array &$pageInfo
+	 */
 	public function onInfoAction( $context, &$pageInfo ) {
 		$mA = new MatomoAnalyticsWiki( $context->getConfig()->get( MainConfigNames::DBname ) );
 

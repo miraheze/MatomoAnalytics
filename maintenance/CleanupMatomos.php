@@ -5,6 +5,7 @@ namespace Miraheze\MatomoAnalytics\Maintenance;
 use MediaWiki\MainConfigNames;
 use MediaWiki\Maintenance\Maintenance;
 use Miraheze\MatomoAnalytics\MatomoAnalytics;
+use Wikimedia\Rdbms\Platform\ISQLPlatform;
 
 class CleanupMatomos extends Maintenance {
 
@@ -23,27 +24,25 @@ class CleanupMatomos extends Maintenance {
 
 		$databases = $this->getConfig()->get( MainConfigNames::LocalDatabases );
 
-		$res = $dbr->select(
-			'matomo',
-			'*',
-			[],
-			__METHOD__
-		);
+		$res = $dbr->newSelectQueryBuilder()
+			->select( ISQLPlatform::ALL_ROWS )
+			->from( 'matomo' )
+			->caller( __METHOD__ )
+			->fetchResultSet();
 
 		if ( !$res || !is_object( $res ) ) {
-			$this->fatalError( '$res was not set to a valid array.' );
+			$this->fatalError( '$res was not set to a valid object.' );
 		}
 
 		foreach ( $res as $row ) {
 			$dbname = $row->matomo_wiki;
-
 			if ( !in_array( $dbname, $databases ) ) {
-				if ( $this->getOption( 'dry-run', false ) ) {
-					$this->output( "[DRY RUN] Would remove matomo id from {$dbname}\n" );
+				if ( $this->hasOption( 'dry-run' ) ) {
+					$this->output( "[DRY RUN] Would remove matomo id from $dbname\n" );
 					continue;
 				}
 
-				$this->output( "Remove matomo id from {$dbname}\n" );
+				$this->output( "Remove matomo id from $dbname\n" );
 				MatomoAnalytics::deleteSite( $dbname );
 			}
 		}

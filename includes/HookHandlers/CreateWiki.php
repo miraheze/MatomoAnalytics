@@ -21,7 +21,11 @@ class CreateWiki implements
 		MatomoAnalytics::deleteSite( $dbname );
 	}
 
-	public function onCreateWikiRename( DBConnRef $cwdb, string $old, string $new ): void {
-		MatomoAnalytics::renameSite( $old, $new );
+	public function onCreateWikiRename(
+		DBConnRef $cwdb,
+		string $oldDbName,
+		string $newDbName
+	): void {
+		MatomoAnalytics::renameSite( $oldDbName, $newDbName );
 	}
 }

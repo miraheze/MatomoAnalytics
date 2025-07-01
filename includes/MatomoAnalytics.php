@@ -3,23 +3,26 @@
 namespace Miraheze\MatomoAnalytics;
 
 use Exception;
+use MediaWiki\Config\Config;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
+use Psr\Log\LoggerInterface;
 use RuntimeException;
 
 class MatomoAnalytics {
-	private static function getConfig() {
+
+	private static function getConfig(): Config {
 		return MediaWikiServices::getInstance()
 			->getConfigFactory()
 			->makeConfig( 'MatomoAnalytics' );
 	}
 
-	private static function getLogger() {
+	private static function getLogger(): LoggerInterface {
 		return LoggerFactory::getInstance( 'MatomoAnalytics' );
 	}
 
-	public static function addSite( $dbname ) {
+	public static function addSite( string $dbname ): void {
 		$config = self::getConfig();
 		$logger = self::getLogger();
 
@@ -31,7 +34,7 @@ class MatomoAnalytics {
 					'format' => 'json',
 					'method' => 'SitesManager.addSite',
 					'siteName' => $dbname,
-					'token_auth' => $config->get( ConfigNames::TokenAuth )
+					'token_auth' => $config->get( ConfigNames::TokenAuth ),
 				]
 			),
 			[],
@@ -41,7 +44,7 @@ class MatomoAnalytics {
 		$siteJson = FormatJson::decode( $siteReply, true );
 
 		if ( !$siteJson ) {
-			$logger->error( "Could not create id for {$dbname}." );
+			$logger->error( "Could not create id for $dbname." );
 			return;
 		}
 
@@ -51,23 +54,23 @@ class MatomoAnalytics {
 				->getPrimaryDatabase( 'virtual-matomoanalytics' );
 
 			try {
-				$dbw->insert(
-					'matomo',
-					[
+				$dbw->newInsertQueryBuilder()
+					->insertInto( 'matomo' )
+					->row( [
 						'matomo_id' => $siteId,
 						'matomo_wiki' => $dbname,
-					],
-					__METHOD__
-				);
+					] )
+					->caller( __METHOD__ )
+					->execute();
 			} catch ( Exception $e ) {
-				return null;
+				return;
 			}
 		}
 
-		$logger->debug( "Successfully created {$dbname} with id {$siteId}." );
+		$logger->debug( "Successfully created $dbname with id $siteId." );
 	}
 
-	public static function deleteSite( $dbname ) {
+	public static function deleteSite( string $dbname ): void {
 		$config = self::getConfig();
 		$logger = self::getLogger();
 
@@ -87,7 +90,7 @@ class MatomoAnalytics {
 					'format' => 'json',
 					'method' => 'SitesManager.deleteSite',
 					'idSite' => $siteId,
-					'token_auth' => $config->get( ConfigNames::TokenAuth )
+					'token_auth' => $config->get( ConfigNames::TokenAuth ),
 				]
 			),
 			[],
@@ -98,23 +101,21 @@ class MatomoAnalytics {
 			$dbw = MediaWikiServices::getInstance()->getConnectionProvider()
 				->getPrimaryDatabase( 'virtual-matomoanalytics' );
 
-			$dbw->delete(
-				'matomo',
-				[ 'matomo_id' => $siteId ],
-				__METHOD__
-			);
+			$dbw->newDeleteQueryBuilder()
+				->deleteFrom( 'matomo' )
+				->where( [ 'matomo_id' => $siteId ] )
+				->caller( __METHOD__ )
+				->execute();
 
 			$cache = MediaWikiServices::getInstance()->getObjectCacheFactory()->getLocalClusterInstance();
 			$key = $cache->makeKey( 'matomo', 'id' );
 			$cache->delete( $key );
 		}
 
-		$logger->debug( "Successfully deleted {$dbname} with id {$siteId}." );
-
-		return true;
+		$logger->debug( "Successfully deleted $dbname with id $siteId." );
 	}
 
-	public static function renameSite( $oldDb, $newDb ) {
+	public static function renameSite( string $oldDb, string $newDb ): void {
 		$config = self::getConfig();
 		$logger = self::getLogger();
 
@@ -146,12 +147,12 @@ class MatomoAnalytics {
 			$dbw = MediaWikiServices::getInstance()->getConnectionProvider()
 				->getPrimaryDatabase( 'virtual-matomoanalytics' );
 
-			$dbw->update(
-				'matomo',
-				[ 'matomo_wiki' => $newDb ],
-				[ 'matomo_id' => $siteId ],
-				__METHOD__
-			);
+			$dbw->newUpdateQueryBuilder()
+				->update( 'matomo' )
+				->set( [ 'matomo_id' => $siteId ] )
+				->where( [ 'matomo_wiki' => $newDb ] )
+				->caller( __METHOD__ )
+				->execute();
 
 			$cache = MediaWikiServices::getInstance()->getObjectCacheFactory()->getLocalClusterInstance();
 			$key = $cache->makeKey( 'matomo', 'id' );
@@ -159,17 +160,15 @@ class MatomoAnalytics {
 		}
 
 		if ( (string)$siteId === (string)self::getSiteID( $newDb ) ) {
-			$logger->debug( "Successfully renamed {$oldDb} to {$newDb} with id {$siteId}." );
-
-			return true;
-		} else {
-			$logger->error( "Failed to rename {$oldDb} to {$newDb} with id {$siteId}." );
-
-			throw new RuntimeException( 'Error in renaming Matomo references' );
+			$logger->debug( "Successfully renamed $oldDb to $newDb with id $siteId." );
+			return;
 		}
+
+		$logger->error( "Failed to rename $oldDb to $newDb with id $siteId." );
+		throw new RuntimeException( 'Error in renaming Matomo references' );
 	}
 
-	public static function getSiteID( string $dbname, bool $disableCache = false ) {
+	public static function getSiteID( string $dbname, bool $disableCache = false ): int {
 		$config = self::getConfig();
 		$logger = self::getLogger();
 
@@ -184,22 +183,21 @@ class MatomoAnalytics {
 			$dbr = MediaWikiServices::getInstance()->getConnectionProvider()
 				->getReplicaDatabase( 'virtual-matomoanalytics' );
 
-			$id = $dbr->selectField(
-				'matomo',
-				'matomo_id',
-				[ 'matomo_wiki' => $dbname ],
-				__METHOD__
-			);
+			$id = $dbr->newSelectQueryBuilder()
+				->select( 'matomo_id' )
+				->from( 'matomo' )
+				->where( [ 'matomo_wiki' => $dbname ] )
+				->caller( __METHOD__ )
+				->fetchField();
 
 			if ( !$id ) {
-				$logger->warning( "Could not find {$dbname} in matomo table." );
+				$logger->warning( "Could not find $dbname in matomo table." );
 
 				// Because the site is not found in the matomo table,
 				// we default to a value set in 'MatomoAnalyticsSiteID' which is 1.
 				return $config->get( ConfigNames::SiteID );
 			} else {
 				$cache->set( $key, $id );
-
 				return $id;
 			}
 		} else {

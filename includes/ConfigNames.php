@@ -9,21 +9,22 @@ namespace Miraheze\MatomoAnalytics;
  */
 class ConfigNames {
 
+	public const DisableCookie = 'MatomoAnalyticsDisableCookie';
+
+	public const DisableJS = 'MatomoAnalyticsDisableJS';
+
+	public const EnableCustomDimensionsUserType = 'MatomoAnalyticsEnableCustomDimensionsUserType';
+
+	public const ForceGetRequest = 'MatomoAnalyticsForceGetRequest';
+
+	public const GlobalID = 'MatomoAnalyticsGlobalID';
+
 	public const ServerURL = 'MatomoAnalyticsServerURL';
 
 	public const SiteID = 'MatomoAnalyticsSiteID';
-
-	public const GlobalID = 'MatomoAnalyticsGlobalID';
 
 	public const TokenAuth = 'MatomoAnalyticsTokenAuth';
 
 	public const UseDB = 'MatomoAnalyticsUseDB';
 
-	public const DisableJS = 'MatomoAnalyticsDisableJS';
-
-	public const DisableCookie = 'MatomoAnalyticsDisableCookie';
-
-	public const ForceGetRequest = 'MatomoAnalyticsForceGetRequest';
-
-	public const EnableCustomDimensionsUserType = 'MatomoAnalyticsEnableCustomDimensionsUserType';
 }

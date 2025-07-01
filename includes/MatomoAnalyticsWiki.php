@@ -7,14 +7,12 @@ use DateTimeZone;
 use MediaWiki\MediaWikiServices;
 
 class MatomoAnalyticsWiki {
-	/** @var int */
+
+	private int $periodSelected;
 	private int $siteId;
 
-	/** @var int */
-	private int $periodSelected;
-
-	public function __construct( string $wiki, int $periodSelected = 7 ) {
-		$this->siteId = MatomoAnalytics::getSiteID( $wiki );
+	public function __construct( string $dbname, int $periodSelected = 7 ) {
+		$this->siteId = MatomoAnalytics::getSiteID( $dbname );
 		$this->periodSelected = $periodSelected;
 	}
 
@@ -30,7 +28,7 @@ class MatomoAnalyticsWiki {
 		bool $flat = false,
 		?int $date = null,
 		?string $pageUrl = null
-	) {
+	): array {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'MatomoAnalytics' );
 		if ( !$config->get( ConfigNames::ServerURL ) ) {
 			// Early exit if we don't have the ServerURL set.
@@ -54,7 +52,7 @@ class MatomoAnalyticsWiki {
 			'method' => $module,
 			'period' => $period,
 			'idSite' => $this->siteId,
-			'token_auth' => $config->get( ConfigNames::TokenAuth )
+			'token_auth' => $config->get( ConfigNames::TokenAuth ),
 		];
 
 		if ( $pageUrl !== null ) {
@@ -73,7 +71,6 @@ class MatomoAnalyticsWiki {
 		$siteJson = json_decode( $siteReply, true );
 
 		$arrayOut = [];
-
 		foreach ( $siteJson as $key => $val ) {
 			if ( $flat ) {
 				$arrayOut[$key] = $val[$jsonLabel] ?: '-';
@@ -89,80 +86,86 @@ class MatomoAnalyticsWiki {
 
 		// Store the result in cache until 1 AM
 		$cache->set( $cacheKey, $arrayOut, $expiration );
-
 		return $arrayOut;
 	}
 
-	private function getCacheKey( int $siteId, string $module, string $period, int $date, ?string $pageUrl ): string {
+	private function getCacheKey(
+		int $siteId,
+		string $module,
+		string $period,
+		int $date,
+		?string $pageUrl
+	): string {
 		$keyParts = [ $siteId, $module, $period, $date ];
 		if ( $pageUrl !== null ) {
 			$keyParts[] = md5( $pageUrl );
 		}
+
 		return implode( ':', $keyParts );
 	}
 
 	// Visits per browser type
-	public function getBrowserTypes() {
+	public function getBrowserTypes(): array {
 		return $this->getData( 'DevicesDetection.getBrowsers' );
 	}
 
 	// Visits by devices
-	public function getDeviceTypes() {
+	public function getDeviceTypes(): array {
 		return $this->getData( 'DevicesDetection.getType' );
 	}
 
 	// Visits by OS
-	public function getOSVersion() {
+	public function getOSVersion(): array {
 		return $this->getData( 'DevicesDetection.getOsVersions' );
 	}
 
 	// Visits by screen resolution
-	public function getResolution() {
+	public function getResolution(): array {
 		return $this->getData( 'Resolution.getResolution' );
 	}
 
 	// Visits by referrer
-	public function getReferrerType() {
+	public function getReferrerType(): array {
 		return $this->getData( 'Referrers.getReferrerType' );
 	}
 
 	// List of search numbers
-	public function getSearchKeywords() {
+	public function getSearchKeywords(): array {
 		return $this->getData( 'Referrers.getKeywords' );
 	}
 
 	// Visits by social network
-	public function getSocialReferrals() {
+	public function getSocialReferrals(): array {
 		return $this->getData( 'Referrers.getSocials' );
 	}
 
 	// Visits from another website
-	public function getWebsiteReferrals() {
+	public function getWebsiteReferrals(): array {
 		return $this->getData( 'Referrers.getWebsites' );
 	}
 
 	// Visits per continent
-	public function getUsersContinent() {
+	public function getUsersContinent(): array {
 		return $this->getData( 'UserCountry.getContinent' );
 	}
 
 	// Visits per country
-	public function getUsersCountry() {
+	public function getUsersCountry(): array {
 		return $this->getData( 'UserCountry.getCountry' );
 	}
 
 	// Visits per day
-	public function getVisitsByDay() {
+	public function getVisitsByDay(): array {
 		return $this->getData( 'VisitTime.getByDayOfWeek' );
 	}
 
 	// Visits per server hour
-	public function getVisitsPerServerHour() {
+	public function getVisitsPerServerHour(): array {
 		$matomoData = $this->getData( 'VisitTime.getVisitInformationPerServerTime' );
 
 		$returnData = [];
 		foreach ( $matomoData as $hour => $count ) {
-			$labelHour = "{$hour}:00:00 - {$hour}:59:59";
+			$labelHour = "$hour:00:00 - $hour:59:59";
 			$returnData[$labelHour] = $count;
 		}
 
@@ -170,42 +173,42 @@ class MatomoAnalyticsWiki {
 	}
 
 	// Page groups per visit
-	public function getVisitPages() {
+	public function getVisitPages(): array {
 		return $this->getData( 'VisitorInterest.getNumberOfVisitsPerPage' );
 	}
 
 	// Time groups per visit
-	public function getVisitDurations() {
+	public function getVisitDurations(): array {
 		return $this->getData( 'VisitorInterest.getNumberOfVisitsPerVisitDuration' );
 	}
 
 	// Days between visits
-	public function getVisitDaysPassed() {
+	public function getVisitDaysPassed(): array {
 		return $this->getData( 'VisitorInterest.getNumberOfVisitsByDaysSinceLast' );
 	}
 
 	// Visits by amount of views
-	public function getTopPages() {
+	public function getTopPages(): array {
 		return $this->getData( 'Actions.getPageTitles' );
 	}
 
 	// Get visits for specific pages
-	public function getPageViews( string $pageUrl, string $period = 'range' ) {
+	public function getPageViews( string $pageUrl, string $period = 'range' ): array {
 		return $this->getData( 'Actions.getPageUrl', $period, 'label', 'nb_visits', false, 30, $pageUrl );
 	}
 
 	// Get number of visits to the site
-	public function getSiteVisits() {
+	public function getSiteVisits(): array {
 		return $this->getData( 'VisitsSummary.get', 'day', 'nb_visits', 'nb_visits', true );
 	}
 
 	// Get all keywords submitted to wiki search
-	public function getSiteSearchKeywords() {
+	public function getSiteSearchKeywords(): array {
 		return $this->getData( 'Actions.getSiteSearchKeywords' );
 	}
 
 	// Get all campaigns
-	public function getCampaigns() {
+	public function getCampaigns(): array {
 		return $this->getData( 'Referrers.getCampaigns' );
 	}
 }

@@ -19,8 +19,7 @@ class ModifyMatomo extends Maintenance {
 
 	public function execute(): void {
 		$dbname = $this->getConfig()->get( MainConfigNames::DBname );
-
-		if ( $this->getOption( 'remove', false ) ) {
+		if ( $this->hasOption( 'remove' ) ) {
 			MatomoAnalytics::deleteSite( $dbname );
 			return;
 		}
