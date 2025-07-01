@@ -30,8 +30,8 @@ class CleanupMatomos extends Maintenance {
 			->caller( __METHOD__ )
 			->fetchResultSet();
 
-		if ( !$res || !is_object( $res ) ) {
-			$this->fatalError( '$res was not set to a valid object.' );
+		if ( !$res->numRows() ) {
+			$this->fatalError( 'No valid rows found in result.' );
 		}
 
 		foreach ( $res as $row ) {
