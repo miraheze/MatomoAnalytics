@@ -21,27 +21,24 @@ class CleanupMatomos extends Maintenance {
 		$connectionProvider = $this->getServiceContainer()->getConnectionProvider();
 		$dbr = $connectionProvider->getReplicaDatabase( 'virtual-matomoanalytics' );
 		$databases = $this->getConfig()->get( MainConfigNames::LocalDatabases );
-		$res = $dbr->newSelectQueryBuilder()
+		$wikis = $dbr->newSelectQueryBuilder()
 			->select( 'matomo_wiki' )
 			->from( 'matomo' )
 			->caller( __METHOD__ )
-			->fetchResultSet();
+			->fetchFieldValues();
 
-		if ( !$res->numRows() ) {
-			$this->fatalError( 'No valid rows found in result.' );
-		}
-
-		foreach ( $res as $row ) {
-			$dbname = $row->matomo_wiki;
-			if ( !in_array( $dbname, $databases ) ) {
-				if ( $this->hasOption( 'dry-run' ) ) {
-					$this->output( "[DRY RUN] Would remove matomo id from $dbname\n" );
-					continue;
-				}
-
-				$this->output( "Remove matomo id from $dbname\n" );
-				MatomoAnalytics::deleteSite( $dbname );
+		foreach ( $wikis as $wiki ) {
+			if ( in_array( $wiki, $databases, true ) ) {
+				continue;
 			}
+
+			if ( $this->hasOption( 'dry-run' ) ) {
+				$this->output( "[DRY RUN] Would remove Matomo ID for $wiki\n" );
+				continue;
+			}
+
+			MatomoAnalytics::deleteSite( $wiki );
+			$this->output( "Removed Matomo ID for $wiki\n" );
 		}
 	}
 }
