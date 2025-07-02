@@ -14,7 +14,10 @@ class CreateWiki implements
 	CreateWikiRenameHook
 {
 
-	/** @param bool $private @phan-unused-param */
+	/**
+	 * @inheritDoc
+ 	 * @param bool $private @phan-unused-param
+	 */
 	public function onCreateWikiCreation( string $dbname, bool $private ): void {
 		MatomoAnalytics::addSite( $dbname );
 	}
