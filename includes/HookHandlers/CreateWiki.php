@@ -16,7 +16,7 @@ class CreateWiki implements
 
 	/**
 	 * @inheritDoc
- 	 * @param bool $private @phan-unused-param
+	 * @param bool $private @phan-unused-param
 	 */
 	public function onCreateWikiCreation( string $dbname, bool $private ): void {
 		MatomoAnalytics::addSite( $dbname );
