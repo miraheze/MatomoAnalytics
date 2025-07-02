@@ -1,13 +1,13 @@
 ## ChangeLog for MatomoAnalytics
 
 
-### 1.5.0 (02-07-2025)
+### 1.5.0 (03-07-2025)
 * Migrate to QueryBuilder
 * Remove optional parameters
 * Type hint all methods
 * General cleanup
 
-### 1.4.0 (xx-xx-2025)
+### 1.4.0 (30-06-2025)
 * Migrates from CustomVars to CustomDimensions. Also put behind a config allowing control over whether it is enabled or not. The change is breaking for those who use this.
 
 ### 1.3.5 (08-03-2025)
