@@ -3,6 +3,7 @@
 
 ### 1.5.0 (02-07-2025)
 * Migrate to QueryBuilder
+* Remove optional parameters
 * Type hint all methods
 * General cleanup
 
