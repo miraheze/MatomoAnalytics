@@ -14,42 +14,33 @@ class MatomoAnalyticsWiki {
 	) {
 	}
 
-	private function getData(
-		string $module,
-		string $period = 'range',
-		string $jsonLabel = 'label',
-		string $jsonData = 'nb_visits',
-		bool $flat = false,
-		?int $date = null,
-		?string $pageUrl = null
-	): array {
+	private function getData( string $module, string $period, string $pageUrl ): array {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'MatomoAnalytics' );
 		if ( !$config->get( ConfigNames::ServerURL ) ) {
 			// Early exit if we don't have the ServerURL set.
 			return [];
 		}
 
-		$date ??= $this->period;
-
-		$cacheKey = $this->getCacheKey( $this->siteId, $module, $period, $date, $pageUrl );
+		$cacheKey = $this->getCacheKey( $module, $period, $pageUrl );
 		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
 		$cachedData = $cache->get( $cacheKey );
 
-		if ( $cachedData !== false ) {
+		if ( is_array( $cachedData ) ) {
 			return $cachedData;
 		}
 
 		$query = [
 			'module' => 'API',
 			'format' => 'json',
-			'date' => 'previous' . $date,
+			'date' => "previous{$this->period}",
 			'method' => $module,
+			// Will be either day or range
 			'period' => $period,
 			'idSite' => $this->siteId,
 			'token_auth' => $config->get( ConfigNames::TokenAuth ),
 		];
 
-		if ( $pageUrl !== null ) {
+		if ( $pageUrl !== '' ) {
 			$query['pageUrl'] = $pageUrl;
 		}
 
@@ -66,11 +57,13 @@ class MatomoAnalyticsWiki {
 
 		$arrayOut = [];
 		foreach ( $siteJson as $key => $val ) {
-			if ( $flat ) {
-				$arrayOut[$key] = $val[$jsonLabel] ?: '-';
-			} else {
-				$arrayOut[$val[$jsonLabel]] = $val[$jsonData] ?: '-';
+			if ( $period === 'day' ) {
+				// Flat
+				$arrayOut[$key] = $val['nb_visits'] ?: '-';
+				continue;
 			}
+
+			$arrayOut[ $val['label'] ] = $val['nb_visits'] ?: '-';
 		}
 
 		// Calculate time to 1 AM next day in configured timezone
@@ -82,80 +75,86 @@ class MatomoAnalyticsWiki {
 		$cache->set( $cacheKey, $arrayOut, $expiration );
 		return $arrayOut;
 	}
+	
+	private function getRangeData( string $module ): array {
+		return $this->getData( $module, 'range', '' );
+	}
 
-	private function getCacheKey(
-		int $siteId,
-		string $module,
-		string $period,
-		int $date,
-		?string $pageUrl
-	): string {
-		$keyParts = [ $siteId, $module, $period, $date ];
-		if ( $pageUrl !== null ) {
+	private function getPageRangeData( string $module, string $pageUrl ): array {
+		return $this->getData( $module, 'range', $pageUrl );
+	}
+
+	private function getPerDayData( string $module ): array {
+		return $this->getData( $module, 'day', '' );
+	}
+
+	private function getCacheKey( string $module, string $period, string $pageUrl ): string {
+		$keyParts = [ $this->period, $this->siteId, $module, $period ];
+		if ( $pageUrl !== '' ) {
 			$keyParts[] = md5( $pageUrl );
 		}
 
 		return implode( ':', $keyParts );
 	}
 
-	// Visits per browser type
+	/** Visits per browser type */
 	public function getBrowserTypes(): array {
-		return $this->getData( 'DevicesDetection.getBrowsers' );
+		return $this->getRangeData( 'DevicesDetection.getBrowsers' );
 	}
 
-	// Visits by devices
+	/** Visits by devices */
 	public function getDeviceTypes(): array {
-		return $this->getData( 'DevicesDetection.getType' );
+		return $this->getRangeData( 'DevicesDetection.getType' );
 	}
 
-	// Visits by OS
+	/** Visits by OS */
 	public function getOSVersion(): array {
-		return $this->getData( 'DevicesDetection.getOsVersions' );
+		return $this->getRangeData( 'DevicesDetection.getOsVersions' );
 	}
 
-	// Visits by screen resolution
+	/** Visits by screen resolution */
 	public function getResolution(): array {
-		return $this->getData( 'Resolution.getResolution' );
+		return $this->getRangeData( 'Resolution.getResolution' );
 	}
 
-	// Visits by referrer
+	/** Visits by referrer */
 	public function getReferrerType(): array {
-		return $this->getData( 'Referrers.getReferrerType' );
+		return $this->getRangeData( 'Referrers.getReferrerType' );
 	}
 
-	// List of search numbers
+	/** List of search numbers */
 	public function getSearchKeywords(): array {
-		return $this->getData( 'Referrers.getKeywords' );
+		return $this->getRangeData( 'Referrers.getKeywords' );
 	}
 
-	// Visits by social network
+	/** Visits by social network */
 	public function getSocialReferrals(): array {
-		return $this->getData( 'Referrers.getSocials' );
+		return $this->getRangeData( 'Referrers.getSocials' );
 	}
 
-	// Visits from another website
+	/** Visits from another website */
 	public function getWebsiteReferrals(): array {
-		return $this->getData( 'Referrers.getWebsites' );
+		return $this->getRangeData( 'Referrers.getWebsites' );
 	}
 
-	// Visits per continent
+	/** Visits per continent */
 	public function getUsersContinent(): array {
-		return $this->getData( 'UserCountry.getContinent' );
+		return $this->getRangeData( 'UserCountry.getContinent' );
 	}
 
-	// Visits per country
+	/** Visits per country */
 	public function getUsersCountry(): array {
-		return $this->getData( 'UserCountry.getCountry' );
+		return $this->getRangeData( 'UserCountry.getCountry' );
 	}
 
-	// Visits per day
+	/** Visits per day */
 	public function getVisitsByDay(): array {
-		return $this->getData( 'VisitTime.getByDayOfWeek' );
+		return $this->getRangeData( 'VisitTime.getByDayOfWeek' );
 	}
 
-	// Visits per server hour
+	/** Visits per server hour */
 	public function getVisitsPerServerHour(): array {
-		$matomoData = $this->getData( 'VisitTime.getVisitInformationPerServerTime' );
+		$matomoData = $this->getRangeData( 'VisitTime.getVisitInformationPerServerTime' );
 
 		$returnData = [];
 		foreach ( $matomoData as $hour => $count ) {
@@ -166,43 +165,43 @@ class MatomoAnalyticsWiki {
 		return $returnData;
 	}
 
-	// Page groups per visit
+	/** Page groups per visit */
 	public function getVisitPages(): array {
-		return $this->getData( 'VisitorInterest.getNumberOfVisitsPerPage' );
+		return $this->getRangeData( 'VisitorInterest.getNumberOfVisitsPerPage' );
 	}
 
-	// Time groups per visit
+	/** Time groups per visit */
 	public function getVisitDurations(): array {
-		return $this->getData( 'VisitorInterest.getNumberOfVisitsPerVisitDuration' );
+		return $this->getRangeData( 'VisitorInterest.getNumberOfVisitsPerVisitDuration' );
 	}
 
-	// Days between visits
+	/** Days between visits */
 	public function getVisitDaysPassed(): array {
-		return $this->getData( 'VisitorInterest.getNumberOfVisitsByDaysSinceLast' );
+		return $this->getRangeData( 'VisitorInterest.getNumberOfVisitsByDaysSinceLast' );
 	}
 
-	// Visits by amount of views
+	/** Visits by amount of views */
 	public function getTopPages(): array {
-		return $this->getData( 'Actions.getPageTitles' );
+		return $this->getRangeData( 'Actions.getPageTitles' );
 	}
 
-	// Get visits for specific pages
-	public function getPageViews( string $pageUrl, string $period = 'range' ): array {
-		return $this->getData( 'Actions.getPageUrl', $period, 'label', 'nb_visits', false, 30, $pageUrl );
+	/** Get visits for specific pages */
+	public function getPageViews( string $pageUrl ): array {
+		return $this->getPageRangeData( 'Actions.getPageUrl', $pageUrl );
 	}
 
-	// Get number of visits to the site
+	/** Get number of visits to the site */
 	public function getSiteVisits(): array {
-		return $this->getData( 'VisitsSummary.get', 'day', 'nb_visits', 'nb_visits', true );
+		return $this->getPerDayData( 'VisitsSummary.get' );
 	}
 
-	// Get all keywords submitted to wiki search
+	/** Get all keywords submitted to wiki search */
 	public function getSiteSearchKeywords(): array {
-		return $this->getData( 'Actions.getSiteSearchKeywords' );
+		return $this->getRangeData( 'Actions.getSiteSearchKeywords' );
 	}
 
-	// Get all campaigns
+	/** Get all campaigns */
 	public function getCampaigns(): array {
-		return $this->getData( 'Referrers.getCampaigns' );
+		return $this->getRangeData( 'Referrers.getCampaigns' );
 	}
 }
