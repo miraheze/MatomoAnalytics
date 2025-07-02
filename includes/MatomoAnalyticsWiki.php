@@ -75,7 +75,7 @@ class MatomoAnalyticsWiki {
 		$cache->set( $cacheKey, $arrayOut, $expiration );
 		return $arrayOut;
 	}
-	
+
 	private function getRangeData( string $module ): array {
 		return $this->getData( $module, 'range', '' );
 	}
