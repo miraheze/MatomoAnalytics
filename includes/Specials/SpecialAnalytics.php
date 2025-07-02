@@ -13,32 +13,30 @@ class SpecialAnalytics extends SpecialPage {
 		parent::__construct( 'Analytics', 'viewanalytics' );
 	}
 
-	/**
-	 * @param ?string $par @phan-unused-param
-	 */
+	/** @param ?string $par @phan-unused-param */
 	public function execute( $par ) {
 		$this->setHeaders();
 		$this->checkPermissions();
 		$this->outputHeader();
 
-		$out = $this->getOutput();
-
-		$out->addModules( [
+		$this->getOutput()->addModules( [
 			'ext.matomoanalytics.charts',
 			'ext.matomoanalytics.graphs',
 		] );
 
-		$out->addModuleStyles( [
-			'oojs-ui-widgets.styles',
+		$this->getOutput()->addModuleStyles( [
 			'ext.matomoanalytics.special',
+			'oojs-ui-widgets.styles',
 		] );
 
-		$period = $this->getContext()->getRequest()->getInt( 'period', 7 );
+		$period = $this->getRequest()->getInt( 'period', 7 );
 
 		if ( $period < 1 || $period > 31 ) {
 			$period = 7;
-			$out->addHTML(
-				Html::errorBox( $this->msg( 'htmlform-select-badoption' )->escaped() )
+			$this->getOutput()->addHTML(
+				Html::errorBox(
+					$this->msg( 'htmlform-select-badoption' )->escaped()
+				)
 			);
 		}
 
@@ -62,7 +60,8 @@ class SpecialAnalytics extends SpecialPage {
 		];
 
 		$selectForm = HTMLForm::factory( 'ooui', $selectionForm, $this->getContext() );
-		$selectForm->setMethod( 'post' )
+		$selectForm
+			->setMethod( 'post' )
 			->setSubmitCallback( [ $this, 'onSubmitRedirectToSelection' ] )
 			->setWrapperLegendMsg( 'rcfilters-limit-title' )
 			->setId( 'matomoanalytics-submit' )
@@ -71,10 +70,11 @@ class SpecialAnalytics extends SpecialPage {
 			->show();
 
 		$analyticsViewer = new MatomoAnalyticsViewer();
-		$htmlForm = $analyticsViewer->getForm( $this->getContext(), $period );
+		$formDescriptor = $analyticsViewer->getFormDescriptor( $this->getContext(), $period );
 
-		$createForm = HTMLForm::factory( 'ooui', $htmlForm, $this->getContext() );
-		$createForm->setId( 'matomoanalytics-form' )
+		$createForm = HTMLForm::factory( 'ooui', $formDescriptor, $this->getContext() );
+		$createForm
+			->setId( 'matomoanalytics-form' )
 			->suppressDefaultSubmit()
 			->prepareForm()
 			->displayForm( false );

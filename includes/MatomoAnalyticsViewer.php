@@ -99,7 +99,7 @@ class MatomoAnalyticsViewer {
 		return $formDescriptor;
 	}
 
-	public function getAnalyticsCanvasHtml( string $type, string $chartType ): string {
+	private function getAnalyticsCanvasHtml( string $type, string $chartType ): string {
 		return Html::element( 'canvas', [
 			'id' => "matomoanalytics-chart-$type",
 			'class' => [
@@ -109,13 +109,5 @@ class MatomoAnalyticsViewer {
 			'data-chart-type' => $chartType,
 			'style' => 'width: 100%; max-width: 500px;',
 		] );
-	}
-
-	public function getForm(
-		IContextSource $context,
-		int $period
-	): array {
-		$formDescriptor = $this->getFormDescriptor( $context, $period );
-		return $formDescriptor;
 	}
 }

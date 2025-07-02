@@ -11,7 +11,7 @@ class AddMissingMatomos extends Maintenance {
 	public function __construct() {
 		parent::__construct();
 
-		$this->addDescription( 'Add missing matomo ids.' );
+		$this->addDescription( 'Add missing Matomo IDs.' );
 		$this->requireExtension( 'MatomoAnalytics' );
 	}
 
@@ -28,9 +28,8 @@ class AddMissingMatomos extends Maintenance {
 				->fetchField();
 
 			if ( !$id ) {
-				$this->output( "Adding matomo id to $dbname\n" );
 				MatomoAnalytics::addSite( $dbname );
-				$this->output( "Done!\n" );
+				$this->output( "Added Matomo ID to $dbname\n" );
 			}
 		}
 	}

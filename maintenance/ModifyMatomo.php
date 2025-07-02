@@ -11,8 +11,8 @@ class ModifyMatomo extends Maintenance {
 	public function __construct() {
 		parent::__construct();
 
-		$this->addDescription( 'Add or remove a wiki from matomo.' );
-		$this->addOption( 'remove', 'Remove wiki from matomo' );
+		$this->addDescription( 'Add or remove a wiki from Matomo.' );
+		$this->addOption( 'remove', 'Remove the wiki from Matomo' );
 
 		$this->requireExtension( 'MatomoAnalytics' );
 	}

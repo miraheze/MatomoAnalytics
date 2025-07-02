@@ -11,8 +11,8 @@ class CleanupMatomos extends Maintenance {
 	public function __construct() {
 		parent::__construct();
 
-		$this->addDescription( 'Cleanup matomo ids that don\'t have a corresponding wiki.' );
-		$this->addOption( 'dry-run', 'Perform a dry run and do not actually remove any matomo ids.' );
+		$this->addDescription( 'Cleanup Matomo IDs that don\'t have a corresponding wiki.' );
+		$this->addOption( 'dry-run', 'Perform a dry run and do not actually remove any Matomo IDs.' );
 
 		$this->requireExtension( 'MatomoAnalytics' );
 	}
@@ -33,12 +33,12 @@ class CleanupMatomos extends Maintenance {
 			}
 
 			if ( $this->hasOption( 'dry-run' ) ) {
-				$this->output( "[DRY RUN] Would remove Matomo ID for $wiki\n" );
+				$this->output( "[DRY RUN] Would remove Matomo ID from $wiki\n" );
 				continue;
 			}
 
 			MatomoAnalytics::deleteSite( $wiki );
-			$this->output( "Removed Matomo ID for $wiki\n" );
+			$this->output( "Removed Matomo ID from $wiki\n" );
 		}
 	}
 }
