@@ -33,7 +33,7 @@ class Main implements
 			return;
 		}
 
-		$siteId = (string)MatomoAnalytics::getSiteID( WikiMap::getCurrentWikiId() );
+		$siteId = (string)MatomoAnalytics::getSiteID( WikiMap::getCurrentWikiId(), disableCache: false );
 
 		$globalId = $config->get( ConfigNames::GlobalID );
 		$globalIdString = (string)$globalId;
@@ -87,7 +87,7 @@ class Main implements
 	 * @inheritDoc
 	 */
 	public function onInfoAction( $context, &$pageInfo ) {
-		$mAId = MatomoAnalytics::getSiteID( WikiMap::getCurrentWikiId() );
+		$mAId = MatomoAnalytics::getSiteID( WikiMap::getCurrentWikiId(), disableCache: false );
 		$mA = new MatomoAnalyticsWiki( period: 30, siteId: $mAId );
 
 		$title = $context->getTitle();

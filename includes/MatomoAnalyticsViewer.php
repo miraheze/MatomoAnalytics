@@ -36,7 +36,7 @@ class MatomoAnalyticsViewer {
 		int $period
 	): array {
 		$context->getOutput()->enableOOUI();
-		$mAId = MatomoAnalytics::getSiteID( WikiMap::getCurrentWikiId() );
+		$mAId = MatomoAnalytics::getSiteID( WikiMap::getCurrentWikiId(), disableCache: false );
 		$mA = new MatomoAnalyticsWiki( period: $period, siteId: $mAId );
 
 		$descriptorData = [

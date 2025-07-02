@@ -14,7 +14,7 @@ class SpecialAnalytics extends SpecialPage {
 	}
 
 	/**
-	 * @param string $par
+	 * @param ?string $par @phan-unused-param
 	 */
 	public function execute( $par ) {
 		$this->setHeaders();
