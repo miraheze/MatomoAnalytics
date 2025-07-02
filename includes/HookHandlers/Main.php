@@ -29,7 +29,7 @@ class Main implements
 		}
 
 		if ( $skin->getAuthority()->isAllowed( 'noanalytics' ) ) {
-			$text = '<!-- MatomoAnalytics: User right noanalytics is assigned. -->';
+			$text .= '<!-- MatomoAnalytics: User right noanalytics is assigned. -->';
 			return;
 		}
 
