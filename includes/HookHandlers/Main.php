@@ -5,59 +5,56 @@ namespace Miraheze\MatomoAnalytics\HookHandlers;
 use MediaWiki\Hook\InfoActionHook;
 use MediaWiki\Hook\SkinAfterBottomScriptsHook;
 use MediaWiki\Html\Html;
-use MediaWiki\MainConfigNames;
-use MediaWiki\MediaWikiServices;
+use MediaWiki\WikiMap\WikiMap;
 use Miraheze\MatomoAnalytics\ConfigNames;
 use Miraheze\MatomoAnalytics\MatomoAnalytics;
 use Miraheze\MatomoAnalytics\MatomoAnalyticsWiki;
-use Skin;
 
 class Main implements
 	InfoActionHook,
 	SkinAfterBottomScriptsHook
 {
+
 	/**
-	 * Function to add Matomo JS to all MediaWiki pages
+	 * Add Matomo JS to all MediaWiki pages
+	 * Exclude users with the 'noanalytics' userright
 	 *
-	 * Adds exclusion for users with 'noanalytics' userright
-	 *
-	 * @param Skin $skin Skin object
-	 * @param string &$text Output text.
-	 * @return bool
+	 * @inheritDoc
 	 */
 	public function onSkinAfterBottomScripts( $skin, &$text ) {
-		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'matomoanalytics' );
-
+		$config = $skin->getConfig();
 		// Check if JS tracking is disabled and bow out early
-		if ( $config->get( ConfigNames::DisableJS ) === true ) {
-			return true;
+		if ( $config->get( ConfigNames::DisableJS ) ) {
+			return;
 		}
 
-		$user = $skin->getUser();
-		$mAId = MatomoAnalytics::getSiteID( $config->get( 'DBname' ) );
-
-		$permissionManager = MediaWikiServices::getInstance()->getPermissionManager();
-		if ( $permissionManager->userHasRight( $user, 'noanalytics' ) ) {
-			$text = '<!-- MatomoAnalytics: User right noanalytics is assigned. -->';
-			return true;
+		if ( $skin->getAuthority()->isAllowed( 'noanalytics' ) ) {
+			$text .= '<!-- MatomoAnalytics: User right noanalytics is assigned. -->';
+			return;
 		}
 
-		$id = strval( $mAId );
-		$globalId = (string)$config->get( ConfigNames::GlobalID );
-		$globalIdInt = (int)$globalId;
-		$serverurl = $config->get( ConfigNames::ServerURL );
+		$siteId = (string)MatomoAnalytics::getSiteID( WikiMap::getCurrentWikiId(), disableCache: false );
+
+		$globalId = $config->get( ConfigNames::GlobalID );
+		$globalIdString = (string)$globalId;
+
+		$serverUrl = $config->get( ConfigNames::ServerURL );
 		$title = $skin->getRelevantTitle();
 
-		$jstitle = Html::encodeJsVar( $title->getPrefixedText() );
-		$dbname = Html::encodeJsVar( $config->get( 'DBname' ) );
-		$urltitle = $title->getPrefixedURL();
-		$userType = $user->isRegistered() ? 'User' : 'Anonymous';
-		$cookieDisable = (int)$config->get( ConfigNames::DisableCookie );
+		$jsTitle = Html::encodeJsVar( $title->getPrefixedText() );
+		$wikiId = Html::encodeJsVar( WikiMap::getCurrentWikiId() );
+
+		$urlTitle = $title->getPrefixedURL();
+		$userType = $skin->getUser()->isRegistered() ? 'User' : 'Anonymous';
+
+		$disableCookie = (int)$config->get( ConfigNames::DisableCookie );
 		$forceGetRequest = (int)$config->get( ConfigNames::ForceGetRequest );
-		$text = <<<SCRIPT
+		$enableCustomDimensionsUserType = (int)$config->get( ConfigNames::EnableCustomDimensionsUserType );
+
+		$text .= <<<SCRIPT
 			<script>
 			var _paq = window._paq = window._paq || [];
-			if ( {$cookieDisable} ) {
+			if ( {$disableCookie} ) {
 				_paq.push(['disableCookies']);
 			}
 			if ( {$forceGetRequest} ) {
@@ -66,28 +63,38 @@ class Main implements
 			_paq.push(['trackPageView']);
 			_paq.push(['enableLinkTracking']);
 			(function() {
-				var u = "{$serverurl}";
+				var u = "{$serverUrl}";
 				_paq.push(['setTrackerUrl', u+'matomo.php']);
-				_paq.push(['setDocumentTitle', {$dbname} + " - " + {$jstitle}]);
-				_paq.push(['setSiteId', {$id}]);
-				_paq.push(['setCustomVariable', 1, 'userType', "{$userType}", "visit"]);
-				if ( {$globalIdInt} ) {
-					_paq.push(['addTracker', u + 'matomo.php', {$globalId}]);
+				_paq.push(['setDocumentTitle', {$wikiId} + " - " + {$jsTitle}]);
+				_paq.push(['setSiteId', {$siteId}]);
+				if ( {$enableCustomDimensionsUserType} ) {
+					_paq.push(['setCustomDimension', 1, "{$userType}"]);
+				}
+				if ( {$globalId} ) {
+					_paq.push(['addTracker', u + 'matomo.php', {$globalIdString}]);
 				}
 				var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
 				g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
 			})();
 			</script>
-			<noscript><p><img src="{$serverurl}matomo.php?idsite={$id}&amp;rec=1&amp;action_name={$urltitle}" style="border:0;" alt="" /></p></noscript>
+			<noscript><p><img src="{$serverUrl}matomo.php?idsite={$siteId}&amp;rec=1&amp;action_name={$urlTitle}" style="border: 0;" alt="" /></p></noscript>
 		SCRIPT;
-
-		return true;
 	}
 
+	/**
+	 * Display total pageviews in the last 30 days and show a graph with details when clicked.
+	 *
+	 * @inheritDoc
+	 */
 	public function onInfoAction( $context, &$pageInfo ) {
-		$mA = new MatomoAnalyticsWiki( $context->getConfig()->get( MainConfigNames::DBname ) );
+		$mAId = MatomoAnalytics::getSiteID( WikiMap::getCurrentWikiId(), disableCache: false );
+		$mA = new MatomoAnalyticsWiki( period: 30, siteId: $mAId );
 
-		$context->getOutput()->addModules( [ 'ext.matomoanalytics.charts', 'ext.matomoanalytics.infochart' ] );
+		$context->getOutput()->addModules( [
+			'ext.matomoanalytics.charts',
+			'ext.matomoanalytics.infochart',
+		] );
+
 		$context->getOutput()->addModuleStyles( [ 'ext.matomoanalytics.infopage' ] );
 
 		$title = $context->getTitle();
@@ -97,12 +104,12 @@ class Main implements
 
 		$pageInfo['header-basic'][] = [
 			$context->msg( 'matomoanalytics-labels-pastmonth' ),
-			$context->msg( 'matomoanalytics-count' )->numParams( $total )->parse()
+			$context->msg( 'matomoanalytics-count' )->numParams( $total )->parse(),
 		];
 
 		$pageInfo['header-basic'][] = [
 			$context->msg( 'matomoanalytics-labels-rawdata' ),
-			$context->msg( 'matomoanalytics-count' )->rawParams( json_encode( $data ) )->parse()
+			$context->msg( 'matomoanalytics-count' )->rawParams( json_encode( $data ) )->parse(),
 		];
 	}
 }

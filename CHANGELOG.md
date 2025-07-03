@@ -1,5 +1,28 @@
 ## ChangeLog for MatomoAnalytics
 
+
+### 1.5.0 (03-07-2025)
+* Migrate to QueryBuilder
+* Remove optional parameters
+* Type hint all methods
+* General cleanup
+
+### 1.4.0 (30-06-2025)
+* Migrates from CustomVars to CustomDimensions. Also put behind a config allowing control over whether it is enabled or not. The change is breaking for those who use this.
+
+### 1.3.5 (08-03-2025)
+* Maintenance scripts are now required to be ran with run.php.
+
+### 1.3.4 (04-02-2025)
+* Dropped support for MediaWiki 1.42.
+
+### 1.3.3 (17-11-2024)
+* Added support for virtual database domains
+* Removed support for wgMatomoAnalyticsDatabase
+
+### 1.3.2 (12-11-2024)
+* Introduced 'viewanalytics' right to fine-tune who can view analytics
+
 ### 1.3.1 (9-11-2024)
 * Added caching support for results
 * Began using ConfigNames class

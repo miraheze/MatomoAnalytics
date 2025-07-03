@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"MITO",
+			"Samoasambia",
 			"Veikk0.ma"
 		]
 	},
@@ -14,14 +15,14 @@
 	"matomoanalytics-labels-country": "Maa",
 	"matomoanalytics-labels-devices": "Laitteet",
 	"matomoanalytics-labels-os": "Käyttöjärjestelmä",
-	"matomoanalytics-labels-referrer": "Sivustoviittaukset (referrals)",
-	"matomoanalytics-labels-resolution": "Resoluutio",
-	"matomoanalytics-labels-search": "Hakusanat",
-	"matomoanalytics-labels-social": "Sosiaaliset verkostot",
+	"matomoanalytics-labels-referrer": "Sivustoviittaustyypit",
+	"matomoanalytics-labels-resolution": "Näytön resoluutio",
+	"matomoanalytics-labels-search": "Hakukoneen hakusanat",
+	"matomoanalytics-labels-social": "Viittaukset sosiaalissa verkostoissa",
 	"matomoanalytics-labels-visitday": "Päivää",
 	"matomoanalytics-labels-visitduration": "Kesto",
 	"matomoanalytics-labels-visithour": "Tuntia",
 	"matomoanalytics-labels-visitpages": "Uniikit sivut",
-	"matomoanalytics-labels-website": "Nettisivut",
+	"matomoanalytics-labels-website": "Nettisivuviittaukset",
 	"right-noanalytics": "Ei seurata Matomon kautta"
 }

@@ -3,7 +3,8 @@
 		"authors": [
 			"Eduaddad",
 			"Eduardo Addad de Oliveira",
-			"Eduardoaddad"
+			"Eduardoaddad",
+			"YuriNikolai"
 		]
 	},
 	"analytics": "MatomoAnalytics",
@@ -18,11 +19,11 @@
 	"matomoanalytics-labels-resolution": "Resolução",
 	"matomoanalytics-labels-search": "Procurar palavras-chave",
 	"matomoanalytics-labels-social": "Redes sociais",
-	"matomoanalytics-labels-visitday": "Dias",
-	"matomoanalytics-labels-visitduration": "Duração",
+	"matomoanalytics-labels-visitday": "Visualizações por dia",
+	"matomoanalytics-labels-visitduration": "Duração de visitas",
 	"matomoanalytics-labels-visithour": "Horas",
-	"matomoanalytics-labels-visitpages": "Páginas exclusivas",
-	"matomoanalytics-labels-visitpass": "Tempo passou",
-	"matomoanalytics-labels-website": "Sites",
+	"matomoanalytics-labels-visitpages": "Páginas vistas por visita",
+	"matomoanalytics-labels-visitpass": "Tempo entre revisitas",
+	"matomoanalytics-labels-website": "Sites com ligações",
 	"right-noanalytics": "Não ser rastreado via Matomo"
 }

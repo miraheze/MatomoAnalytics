@@ -6,11 +6,23 @@ use MediaWiki\Installer\Hook\LoadExtensionSchemaUpdatesHook;
 
 class Installer implements LoadExtensionSchemaUpdatesHook {
 
+	/** @inheritDoc */
 	public function onLoadExtensionSchemaUpdates( $updater ) {
-		$updater->addExtensionTable( 'matomo',
-			__DIR__ . '/../../sql/matomo.sql' );
+		$updater->addExtensionUpdateOnVirtualDomain( [
+			'virtual-matomoanalytics',
+			'addTable',
+			'matomo',
+			__DIR__ . '/../../sql/matomo.sql',
+			true,
+		] );
 
-		$updater->addExtensionIndex( 'matomo', 'matomo_wiki',
-			__DIR__ . '/../../sql/patches/patch-matomo-add-indexes.sql' );
+		$updater->addExtensionUpdateOnVirtualDomain( [
+			'virtual-matomoanalytics',
+			'addIndex',
+			'matomo',
+			'matomo_wiki',
+			__DIR__ . '/../../sql/patches/patch-matomo-add-indexes.sql',
+			true,
+		] );
 	}
 }

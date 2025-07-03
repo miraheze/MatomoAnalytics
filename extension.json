@@ -6,24 +6,30 @@
 		"Universal Omega",
 		"Agent Isai"
 	],
-	"url": "https://github.com/miraheze/MatomoAnalytics",
-	"version": "1.3.1",
+	"url": "https://www.mediawiki.org/wiki/Extension:MatomoAnalytics",
+	"version": "1.5.0",
 	"descriptionmsg": "matomoanalytics-desc",
 	"license-name": "GPL-3.0-or-later",
 	"type": "specialpage",
 	"requires": {
-		"MediaWiki": ">= 1.41.0"
+		"MediaWiki": ">= 1.43.0"
 	},
 	"AvailableRights": [
-		"noanalytics"
+		"noanalytics",
+		"viewanalytics"
 	],
+	"GroupPermissions": {
+		"*": {
+			"viewanalytics": true
+		}
+	},
 	"MessagesDirs": {
 		"MatomoAnalytics": [
 			"i18n"
 		]
 	},
 	"ExtensionMessagesFiles": {
-		"MatomoAnalyticsAliases": "includes/MatomoAnalyticsAliases.php"
+		"MatomoAnalyticsAliases": "MatomoAnalyticsAliases.php"
 	},
 	"AutoloadNamespaces": {
 		"Miraheze\\MatomoAnalytics\\": "includes/",
@@ -31,7 +37,7 @@
 	},
 	"SpecialPages": {
 		"Analytics": {
-			"class": "Miraheze\\MatomoAnalytics\\SpecialAnalytics"
+			"class": "Miraheze\\MatomoAnalytics\\Specials\\SpecialAnalytics"
 		}
 	},
 	"Hooks": {
@@ -44,11 +50,11 @@
 		"CreateWikiRename": {
 			"handler": "CreateWiki"
 		},
-		"LoadExtensionSchemaUpdates": {
-			"handler": "Installer"
-		},
 		"InfoAction": {
 			"handler": "Main"
+		},
+		"LoadExtensionSchemaUpdates": {
+			"handler": "Installer"
 		},
 		"SkinAfterBottomScripts": {
 			"handler": "Main"
@@ -88,54 +94,48 @@
 		"remoteExtPath": "MatomoAnalytics/modules"
 	},
 	"config": {
-		"MatomoAnalyticsDatabase": {
-			"description": "String. Database that the 'matomo' table is in.",
-			"public": true,
+		"MatomoAnalyticsDisableCookie": {
+			"description": "Boolean. Whether or not to disable cookies being set by Matomo.",
 			"value": false
 		},
 		"MatomoAnalyticsDisableJS": {
 			"description": "Boolean. Whether or not to add Javascript tracking code to pages.",
-			"public": true,
 			"value": false
 		},
-		"MatomoAnalyticsDisableCookie": {
-			"description": "Boolean. Whether or not to disable cookies being set by Matomo.",
-			"public": true,
+		"MatomoAnalyticsEnableCustomDimensionsUserType": {
+			"description": "Boolean. Whether to fetch userType in Matomo using CustomDimensions. You must setup CustomDimensions to be able to use this.",
 			"value": false
 		},
 		"MatomoAnalyticsForceGetRequest": {
 			"description": "Boolean. Whether or not you want to foce GET requests which also disables beacon. Reverts back to Matomo v3 tracking behavior.",
-			"public": true,
 			"value": false
 		},
 		"MatomoAnalyticsGlobalID": {
 			"description": "Integer. If tracking more than one site, this is an ID to attach to all wikis for central aggregate statistics.",
-			"public": true,
-			"value": false
+			"value": 0
 		},
 		"MatomoAnalyticsServerURL": {
 			"description": "String. URL of the Matomo installation to use for API queries.",
-			"public": true,
-			"value": false
+			"value": ""
 		},
 		"MatomoAnalyticsSiteID": {
 			"description": "Integer. If not using database, the site number to add all monitoring to.",
-			"public": true,
 			"value": 1
 		},
 		"MatomoAnalyticsTokenAuth": {
 			"description": "String. The API token for authentication when making requests for data.",
-			"public": false,
-			"value": false
+			"value": ""
 		},
 		"MatomoAnalyticsUseDB": {
 			"description": "Boolean. Whether or not to use the database for tracking site IDs.",
-			"public": true,
 			"value": false
 		}
 	},
 	"ConfigRegistry": {
-		"matomoanalytics": "GlobalVarConfig::newInstance"
+		"MatomoAnalytics": "MediaWiki\\Config\\GlobalVarConfig::newInstance"
 	},
+	"DatabaseVirtualDomains": [
+		"virtual-matomoanalytics"
+	],
 	"manifest_version": 2
 }

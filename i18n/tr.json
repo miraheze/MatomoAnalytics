@@ -2,11 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"BaRaN6161 TURK",
-			"Can"
+			"Can",
+			"Joseph",
+			"Slickdaddy"
 		]
 	},
 	"action-noanalytics": "Matomo üzerinden izlenmez",
-	"analytics": "MatomoAnalytics",
+	"analytics": "Viki analitiği",
 	"matomoanalytics-desc": "Matomo ve MediaWiki'den analitiği entegre eder",
 	"matomoanalytics-header": "Matomo kullanarak kaydettiğimiz farklı istatistikleri seçmek için aşağıdaki sekmeleri kullanabilirsiniz. Tüm veriler dünden başlayarak son 30 gün içinde toplanır (günlük olarak güncellenir).",
 	"matomoanalytics-labels-browser": "Tarayıcılar",
@@ -14,15 +16,18 @@
 	"matomoanalytics-labels-country": "Ülke",
 	"matomoanalytics-labels-devices": "Cihazlar",
 	"matomoanalytics-labels-os": "İS",
-	"matomoanalytics-labels-referrer": "Site Tavsiyeleri",
-	"matomoanalytics-labels-resolution": "Çözüm",
-	"matomoanalytics-labels-search": "Arama Kelimeleri",
-	"matomoanalytics-labels-social": "Sosyal Ağlar",
-	"matomoanalytics-labels-visitday": "Günler",
-	"matomoanalytics-labels-visitduration": "Süre",
+	"matomoanalytics-labels-referrer": "Yönlendirme türleri",
+	"matomoanalytics-labels-resolution": "Ekran çözünürlüğü",
+	"matomoanalytics-labels-search": "Arama motoru anahtar sözcükleri",
+	"matomoanalytics-labels-showdata": "Ham veriyi göster",
+	"matomoanalytics-labels-sitevisits": "Vikinize yapılan ziyaretler",
+	"matomoanalytics-labels-social": "Sosyal ağ yönlendirmeleri",
+	"matomoanalytics-labels-toppages": "En çok görüntülenen sayfalar",
+	"matomoanalytics-labels-visitday": "Günlük görüntüleme sayısı",
+	"matomoanalytics-labels-visitduration": "Ziyaret süresi",
 	"matomoanalytics-labels-visithour": "Saatler",
-	"matomoanalytics-labels-visitpages": "Benzersiz Sayfalar",
-	"matomoanalytics-labels-visitpass": "Zaman Geçti",
-	"matomoanalytics-labels-website": "Web siteler",
+	"matomoanalytics-labels-visitpages": "Ziyaret başına görüntülenen sayfa sayısı",
+	"matomoanalytics-labels-visitpass": "Yinelenen ziyaretler arasında geçen süre",
+	"matomoanalytics-labels-website": "Web site yönlendirmeleri",
 	"right-noanalytics": "Matomo üzerinden izlenmez"
 }

@@ -1,14 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
+			"Agent Isai",
 			"John Lewis",
 			"McDutchie",
 			"Robby",
-			"Universal Omega",
-			"Agent Isai"
+			"Universal Omega"
 		]
 	},
 	"action-noanalytics": "{{doc-action|noanalytics}}",
+	"action-viewanalytics": "{{doc-action|viewanalytics}}",
 	"analytics": "{{doc-special}}",
 	"matomoanalytics-count": "{{notranslate}}",
 	"matomoanalytics-desc": "Integrates analytics from Matomo and MediaWiki",
@@ -37,10 +38,10 @@
 	"matomoanalytics-labels-sitevisits-info": "Clarifying information for the 'Visits to your wiki' section. Displayed under label.",
 	"matomoanalytics-labels-social": "Used as the section label for 'Social Networks' in Special:Analytics",
 	"matomoanalytics-labels-social-info": "Clarifying information for the 'Social Networks' section. Displayed under label.",
-	"matomoanalytics-labels-toppages": "Used as the section label in Special:Analytics",
-	"matomoanalytics-labels-toppages-info": "Clarifying information for the 'Top Pages' section. Displayed under label.",
 	"matomoanalytics-labels-topsearches": "Used as a section label for 'Top Searches' in Special:Analytics",
 	"matomoanalytics-labels-topsearches-info": "Clarifying information for the 'Top Searches' section. Displayed under label.",
+	"matomoanalytics-labels-toppages": "Used as the section label in Special:Analytics",
+	"matomoanalytics-labels-toppages-info": "Clarifying information for the 'Top Pages' section. Displayed under label.",
 	"matomoanalytics-labels-visitday": "{{identical|Day}}",
 	"matomoanalytics-labels-visitday-info": "Clarifying information for the 'Day' section. Displayed under label.",
 	"matomoanalytics-labels-visitduration": "{{identical|Duration}}",
@@ -53,5 +54,6 @@
 	"matomoanalytics-labels-visitpass-info": "Clarifying information for the 'Time Passed' section. Displayed under label.",
 	"matomoanalytics-labels-website": "{{identical|Websites}}",
 	"matomoanalytics-labels-website-info": "Clarifying information for the 'Website Referrals' section. Displayed under label.",
-	"right-noanalytics": "{{doc-right|noanalytics}}"
+	"right-noanalytics": "{{doc-right|noanalytics}}",
+	"right-viewanalytics": "{{doc-right|viewanalytics}}"
 }
