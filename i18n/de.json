@@ -29,6 +29,8 @@
 	"matomoanalytics-labels-referrer": "Verweisungsstypen",
 	"matomoanalytics-labels-resolution": "Bildschirmauflösung",
 	"matomoanalytics-labels-search": "Suchmaschinen-Schlüsselwörter",
+	"matomoanalytics-labels-showdata": "Zeige Rohdaten",
+	"matomoanalytics-labels-sitevisits-info": "Das Diagramm zeigt alle aufgezeichneten Besuche während des angegebenen Zeitraumes auf. Die Grafik kann aufgrund von Benutzern mit Werbeblockern ungenau sein.",
 	"matomoanalytics-labels-social": "Verweisungen in sozialen Netzwerken",
 	"matomoanalytics-labels-toppages": "Meist aufgerufene Seiten",
 	"matomoanalytics-labels-visitday": "Aufrufe pro Tag",
