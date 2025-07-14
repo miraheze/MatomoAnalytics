@@ -13,10 +13,12 @@
 	"matomoanalytics-labels-os": "ОС",
 	"matomoanalytics-labels-referrer": "Рефералийн тайпанаш",
 	"matomoanalytics-labels-resolution": "Экранан шоралла",
+	"matomoanalytics-labels-search": "Лехаман системин коьрта дешнаш",
 	"matomoanalytics-labels-showdata": "Кечбанза хаамаш гайта",
 	"matomoanalytics-labels-social": "Социалан машанашкара рефералаш",
 	"matomoanalytics-labels-toppages": "Сих-сиха хьовсу агӀонаш",
 	"matomoanalytics-labels-visitday": "Дийнахь хьажар",
+	"matomoanalytics-labels-visitduration": "Визитан хан",
 	"matomoanalytics-labels-visithour": "Сахьташ",
 	"matomoanalytics-labels-website": "Веб-сайтан тӀе хьажоргаш"
 }
