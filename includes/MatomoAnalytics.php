@@ -148,8 +148,8 @@ class MatomoAnalytics {
 
 			$dbw->newUpdateQueryBuilder()
 				->update( 'matomo' )
-				->set( [ 'matomo_id' => $siteId ] )
-				->where( [ 'matomo_wiki' => $newDbName ] )
+				->set( [ 'matomo_wiki' => $newDbName ] )
+				->where( [ 'matomo_id' => $siteId ] )
 				->caller( __METHOD__ )
 				->execute();
 
