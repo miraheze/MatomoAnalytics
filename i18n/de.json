@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"*surak*",
 			"FF-11",
 			"FF11",
 			"Justman10000",
@@ -21,12 +22,18 @@
 	"matomoanalytics-labels-browser": "Browser",
 	"matomoanalytics-labels-browser-info": "Browser werden nach Familie zusammengefasst, und spezifische Versionen werden nicht angezeigt.",
 	"matomoanalytics-labels-campaigns": "Kampagnen",
+	"matomoanalytics-labels-campaigns-info": "Du kannst gezielte Kampagnen verwenden, um Zielgruppe und Reichweite zu messen.",
 	"matomoanalytics-labels-continent": "Kontinente",
+	"matomoanalytics-labels-continent-info": "Schau dir die Verteilung der Besucher über die Kontinente hinweg an, um deine globale Reichweite zu verstehen.",
 	"matomoanalytics-labels-country": "Land",
+	"matomoanalytics-labels-country-info": "Schau dir die Verteilung der Besucher nach Ländern an, um dein regionales Publikum zu verstehen.",
 	"matomoanalytics-labels-devices": "Geräte",
+	"matomoanalytics-labels-devices-info": "Geräte werden nach Typ und nicht nach Modell gruppiert.",
 	"matomoanalytics-labels-os": "Betriebssystem",
+	"matomoanalytics-labels-os-info": "Schau dir detaillierte Daten zu den von den Benutzern dieser Website verwendeten Betriebssystemversionen an.",
 	"matomoanalytics-labels-pastmonth": "Seitenaufrufe im vergangenen Monat",
 	"matomoanalytics-labels-referrer": "Verweisungsstypen",
+	"matomoanalytics-labels-referrer-info": "Schau dir an, wie die Benutzer auf deine Website weitergeleitet werden und mit welchen Methoden die meisten Weiterleitungen erzielt werden.",
 	"matomoanalytics-labels-resolution": "Bildschirmauflösung",
 	"matomoanalytics-labels-search": "Suchmaschinen-Schlüsselwörter",
 	"matomoanalytics-labels-showdata": "Zeige Rohdaten",
