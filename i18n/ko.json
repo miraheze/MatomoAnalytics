@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Tensama0415",
+			"YeBoy371",
 			"Ykhwong",
 			"렌즈"
 		]
@@ -20,9 +21,9 @@
 	"matomoanalytics-labels-topsearches": "상위 위키 검색",
 	"matomoanalytics-labels-toppages": "조회수가 가장 많은 문서",
 	"matomoanalytics-labels-visitday": "일일 조회수",
-	"matomoanalytics-labels-visitduration": "시간",
+	"matomoanalytics-labels-visitduration": "방문 기간",
 	"matomoanalytics-labels-visithour": "시각",
 	"matomoanalytics-labels-visitpages": "방문당 조회된 문서",
-	"matomoanalytics-labels-visitpass": "보낸 시간",
+	"matomoanalytics-labels-visitpass": "재방문 경과 기간",
 	"matomoanalytics-labels-website": "웹사이트"
 }
