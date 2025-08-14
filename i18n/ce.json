@@ -5,6 +5,7 @@
 		]
 	},
 	"action-noanalytics": "Matomo тӀехула терго ма йе",
+	"action-viewanalytics": "хьажа Матомо-гулйина аналитика",
 	"analytics": "Вики-аналитика",
 	"matomoanalytics-desc": "Matomo а, MediaWiki а чуьра аналитикин интеграци",
 	"matomoanalytics-header": "Бухахь йолчу вкладкашкахь аша схьахаржа йиш йу тайп-тайпана статистика оха латтош йолу Matomo лелош. Берриге а хаамаш гулбо тӀаьххьарчу 30 дийнахь, селхана дуьйна (хӀор денна карлабоху).",
@@ -25,14 +26,18 @@
 	"matomoanalytics-labels-resolution": "Экранан шоралла",
 	"matomoanalytics-labels-search": "Лехаман системин коьрта дешнаш",
 	"matomoanalytics-labels-showdata": "Кечбанза хаамаш гайта",
+	"matomoanalytics-labels-sitevisits": "Хьан вики тӀе хьовсархой",
 	"matomoanalytics-labels-social": "Социалан машанашкара рефералаш",
 	"matomoanalytics-labels-topsearches": "Топ лехамаш Вики чохь",
 	"matomoanalytics-labels-toppages": "Сих-сиха хьовсу агӀонаш",
 	"matomoanalytics-labels-visitday": "Дийнахь хьажар",
 	"matomoanalytics-labels-visitduration": "Визитан хан",
 	"matomoanalytics-labels-visithour": "Сахьташ",
+	"matomoanalytics-labels-visithour-info": "Хьовса, муьлхачу хенахь йоьшуш бу хьеший хӀара вики.",
 	"matomoanalytics-labels-visitpages": "ХӀора хьажарехь хьаьжна агӀонаш",
+	"matomoanalytics-labels-visitpages-info": "ХӀора сеансехь хьешо йешначу агӀонийн йуккъера барам хьажа.",
 	"matomoanalytics-labels-visitpass": "Йуха а хьаьжначул тӀаьхьа йукъахь дӀайаьлла хан",
 	"matomoanalytics-labels-website": "Веб-сайтан тӀе хьажоргаш",
-	"right-noanalytics": "Matomo тӀехула терго ма йе"
+	"right-noanalytics": "Matomo тӀехула терго ма йе",
+	"right-viewanalytics": "Матомо гулйина вики-аналитика а, статистика а хьажа"
 }
