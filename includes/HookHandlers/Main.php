@@ -52,7 +52,7 @@ class Main implements
 		$enableCustomDimensionsUserType = (int)$config->get( ConfigNames::EnableCustomDimensionsUserType );
 
 		$text .= <<<SCRIPT
-			<script>
+			<script data-mw-cookieconsent="statistics">
 			var _paq = window._paq = window._paq || [];
 			if ( {$disableCookie} ) {
 				_paq.push(['disableCookies']);
