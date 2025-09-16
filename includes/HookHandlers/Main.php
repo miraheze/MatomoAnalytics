@@ -35,8 +35,8 @@ class Main implements
 		}
 
 		if ( $this->cookiePreferences !== null ) {
-			$cookie = CookiePreferences::COOKIES_STATISTICS;
-			$isGranted = $this->cookiePreferences->isConsentGranted( $cookie );
+			$category = CookiePreferences::COOKIES_STATISTICS;
+			$isGranted = $this->cookiePreferences->isConsentGranted( $category );
 			if ( !$isGranted ) {
 				return;
 			}
