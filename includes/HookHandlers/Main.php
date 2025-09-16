@@ -2,6 +2,7 @@
 
 namespace Miraheze\MatomoAnalytics\HookHandlers;
 
+use MediaWiki\Extension\CookieConsent\CookiePreferences;
 use MediaWiki\Hook\InfoActionHook;
 use MediaWiki\Hook\SkinAfterBottomScriptsHook;
 use MediaWiki\Html\Html;
@@ -15,6 +16,11 @@ class Main implements
 	SkinAfterBottomScriptsHook
 {
 
+	public function __construct(
+		private readonly ?CookiePreferences $cookiePreferences
+	) {
+	}
+
 	/**
 	 * Add Matomo JS to all MediaWiki pages
 	 * Exclude users with the 'noanalytics' userright
@@ -26,6 +32,14 @@ class Main implements
 		// Check if JS tracking is disabled and bow out early
 		if ( $config->get( ConfigNames::DisableJS ) ) {
 			return;
+		}
+
+		if ( $this->cookiePreferences !== null ) {
+			$cookie = CookiePreferences::COOKIES_STATISTICS;
+			$isGranted = $this->cookiePreferences->isConsentGranted( $cookie );
+			if ( !$isGranted ) {
+				return;
+			}
 		}
 
 		if ( $skin->getAuthority()->isAllowed( 'noanalytics' ) ) {
@@ -52,7 +66,7 @@ class Main implements
 		$enableCustomDimensionsUserType = (int)$config->get( ConfigNames::EnableCustomDimensionsUserType );
 
 		$text .= <<<SCRIPT
-			<script data-mw-cookieconsent="statistics">
+			<script>
 			var _paq = window._paq = window._paq || [];
 			if ( {$disableCookie} ) {
 				_paq.push(['disableCookies']);
