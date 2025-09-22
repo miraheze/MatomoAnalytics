@@ -22,14 +22,17 @@
 	"matomoanalytics-labels-referrer": "Các loại nguồn",
 	"matomoanalytics-labels-resolution": "Độ phân giải màn hình",
 	"matomoanalytics-labels-search": "Từ khóa công cụ tìm kiếm",
+	"matomoanalytics-labels-showdata": "Hiện dữ liệu thô",
+	"matomoanalytics-labels-sitevisits": "Lượt truy cập vào wiki của bạn",
 	"matomoanalytics-labels-social": "Nguồn mạng xã hội",
 	"matomoanalytics-labels-topsearches": "Tìm kiếm wiki hàng đầu",
 	"matomoanalytics-labels-toppages": "Trang được xem nhiều nhất",
 	"matomoanalytics-labels-visitday": "Lượt xem mỗi ngày",
 	"matomoanalytics-labels-visitduration": "Thời lượng ghé thăm",
 	"matomoanalytics-labels-visithour": "Giờ",
-	"matomoanalytics-labels-visitpages": "Trang duy nhất",
+	"matomoanalytics-labels-visitpages": "Số trang được xem mỗi lần truy cập",
 	"matomoanalytics-labels-visitpass": "Thời gian trôi qua",
 	"matomoanalytics-labels-website": "Nguồn trang web",
-	"right-noanalytics": "Không được theo dõi qua Matomo"
+	"right-noanalytics": "Không được theo dõi qua Matomo",
+	"right-viewanalytics": "Xem phân tích wiki và số liệu thống kê được Matomo thu thập"
 }
