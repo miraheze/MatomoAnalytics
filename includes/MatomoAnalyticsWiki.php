@@ -57,6 +57,12 @@ class MatomoAnalyticsWiki {
 
 		$arrayOut = [];
 		foreach ( $siteJson as $key => $val ) {
+			if ( $pageUrl !== null && $period === 'day' ) {
+				// Support Actions.getPageUrl being such a special little snowflake
+				$arrayOut[$key] = $val[0]['nb_visits'] ?: 0;
+				continue;
+			}
+
 			if ( $period === 'day' ) {
 				// Flat
 				$arrayOut[$key] = $val['nb_visits'] ?: '-';
@@ -86,6 +92,10 @@ class MatomoAnalyticsWiki {
 
 	private function getPerDayData( string $module ): array {
 		return $this->getData( $module, 'day', '' );
+	}
+
+	private function getPagePerDayData( string $module, string $pageUrl ): array {
+		return $this->getData( $module, 'day', $pageUrl );
 	}
 
 	private function getCacheKey( string $module, string $period, string $pageUrl ): string {
@@ -186,8 +196,12 @@ class MatomoAnalyticsWiki {
 	}
 
 	/** Get visits for specific pages */
-	public function getPageViews( string $pageUrl ): array {
-		return $this->getPageRangeData( 'Actions.getPageUrl', $pageUrl );
+	public function getPageViews( string $pageUrl, string $periodType ): array {
+		if ( $periodType === 'range' ) {
+			return $this->getPageRangeData( 'Actions.getPageUrl', $pageUrl );
+		}
+
+		return $this->getPagePerDayData( 'Actions.getPageUrl', $pageUrl );
 	}
 
 	/** Get number of visits to the site */
