@@ -3,6 +3,7 @@
 		"authors": [
 			"Bapham123",
 			"NguyenHung",
+			"Nvdtn19",
 			"Pisceskaze",
 			"SongNgu.xyz"
 		]
@@ -31,7 +32,7 @@
 	"matomoanalytics-labels-visitduration": "Thời lượng ghé thăm",
 	"matomoanalytics-labels-visithour": "Giờ",
 	"matomoanalytics-labels-visitpages": "Số trang được xem mỗi lần truy cập",
-	"matomoanalytics-labels-visitpass": "Thời gian trôi qua",
+	"matomoanalytics-labels-visitpass": "Thời gian trôi qua giữa các lần truy cập",
 	"matomoanalytics-labels-website": "Nguồn trang web",
 	"right-noanalytics": "Không được theo dõi qua Matomo",
 	"right-viewanalytics": "Xem phân tích wiki và số liệu thống kê được Matomo thu thập"
