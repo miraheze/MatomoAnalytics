@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Bartomelow",
 			"Eduaddad",
 			"Eduardo Addad de Oliveira",
 			"Eduardoaddad",
@@ -11,6 +12,7 @@
 	"matomoanalytics-desc": "Integra análises de Matomo e MediaWiki",
 	"matomoanalytics-header": "Você pode usar o formulário abaixo para selecionar diferentes estatísticas para ver que armazenamos usando o Matomo..",
 	"matomoanalytics-labels-browser": "Navegadores",
+	"matomoanalytics-labels-campaigns": "Campanhas",
 	"matomoanalytics-labels-continent": "Continentes",
 	"matomoanalytics-labels-country": "País",
 	"matomoanalytics-labels-devices": "Dispositivos",
@@ -18,6 +20,7 @@
 	"matomoanalytics-labels-referrer": "Referências ao site",
 	"matomoanalytics-labels-resolution": "Resolução",
 	"matomoanalytics-labels-search": "Procurar palavras-chave",
+	"matomoanalytics-labels-sitevisits": "Visitas para sua wiki",
 	"matomoanalytics-labels-social": "Redes sociais",
 	"matomoanalytics-labels-visitday": "Visualizações por dia",
 	"matomoanalytics-labels-visitduration": "Duração de visitas",
