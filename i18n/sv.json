@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sabelöga"
+			"Sabelöga",
+			"Stefan2255"
 		]
 	},
 	"action-noanalytics": "spåras inte via Matomo",
@@ -10,14 +11,14 @@
 	"matomoanalytics-labels-country": "Land",
 	"matomoanalytics-labels-devices": "Enheter",
 	"matomoanalytics-labels-os": "Operativsystem",
-	"matomoanalytics-labels-resolution": "Lösning",
-	"matomoanalytics-labels-search": "Sök efter nyckelord",
-	"matomoanalytics-labels-social": "Sociala nätverk",
-	"matomoanalytics-labels-visitday": "Dagar",
-	"matomoanalytics-labels-visitduration": "Varaktighet",
+	"matomoanalytics-labels-resolution": "Skärmupplösning",
+	"matomoanalytics-labels-search": "Sökmotorns nyckelord",
+	"matomoanalytics-labels-social": "Hänvisningar från sociala nätverk",
+	"matomoanalytics-labels-visitday": "Visningar per dag",
+	"matomoanalytics-labels-visitduration": "Besökslängd",
 	"matomoanalytics-labels-visithour": "Timmar",
-	"matomoanalytics-labels-visitpages": "Unika sidor",
-	"matomoanalytics-labels-visitpass": "Tid som har gått",
-	"matomoanalytics-labels-website": "Webbplatser",
+	"matomoanalytics-labels-visitpages": "Sidor som visas per besök",
+	"matomoanalytics-labels-visitpass": "Tid som förflutit mellan återbesök",
+	"matomoanalytics-labels-website": "Webbplatsrekommendationer",
 	"right-noanalytics": "Spåras inte via Matomo"
 }
