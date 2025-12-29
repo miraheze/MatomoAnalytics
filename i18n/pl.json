@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Rail"
+			"Rail",
+			"Woytecr"
 		]
 	},
 	"action-noanalytics": "nie bycia śledzonym przez Matomo",
@@ -17,7 +18,7 @@
 	"matomoanalytics-labels-resolution": "Rozdzielczość",
 	"matomoanalytics-labels-search": "Wyszukiwane słowa kluczowe",
 	"matomoanalytics-labels-social": "Sieci społecznościowe",
-	"matomoanalytics-labels-visitday": "Dni",
+	"matomoanalytics-labels-visitday": "Wyświetlenia dziennie",
 	"matomoanalytics-labels-visitduration": "Trwanie sesji",
 	"matomoanalytics-labels-visithour": "Godziny",
 	"matomoanalytics-labels-visitpages": "Unikatowe strony",
