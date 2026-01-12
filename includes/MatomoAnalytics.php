@@ -173,9 +173,11 @@ class MatomoAnalytics {
 		if ( $config->get( ConfigNames::UseDB ) ) {
 			$cache = MediaWikiServices::getInstance()->getObjectCacheFactory()->getLocalClusterInstance();
 			$key = $cache->makeKey( 'matomo', 'id' );
-			$cacheId = $cache->get( $key );
-			if ( $cacheId && !$disableCache ) {
-				return $cacheId;
+			if ( !$disableCache ) {
+				$cacheId = $cache->get( $key );
+				if ( $cacheId ) {
+					return $cacheId;
+				}
 			}
 
 			$dbr = MediaWikiServices::getInstance()->getConnectionProvider()
