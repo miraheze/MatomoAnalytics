@@ -1,3 +1,6 @@
+CookieConsent:
+  branch: auto
+  repo: auto
 CreateWiki:
   branch: main
   repo: https://github.com/miraheze/CreateWiki

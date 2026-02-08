@@ -68,7 +68,10 @@
 			"class": "Miraheze\\MatomoAnalytics\\HookHandlers\\Installer"
 		},
 		"Main": {
-			"class": "Miraheze\\MatomoAnalytics\\HookHandlers\\Main"
+			"class": "Miraheze\\MatomoAnalytics\\HookHandlers\\Main",
+			"optional_services": [
+				"CookieConsent.CookiePreferences"
+			]
 		}
 	},
 	"ResourceModules": {
