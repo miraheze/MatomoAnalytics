@@ -5,9 +5,10 @@
 			"ThisIsACreeper0101"
 		]
 	},
-	"action-noanalytics": "Matomo द्वारा ट्रैक नहीं किया जाना",
-	"analytics": "MatomoAnalytics",
-	"matomoanalytics-desc": "Matomo और मीडियाविकि से आँकड़ों को इंटिग्रेट करता है",
+	"action-noanalytics": "Matomo द्वारा ट्रैक न किए जाने",
+	"action-viewanalytics": "Matomo द्वारा इकट्ठा किया गया विश्लेषण देखने",
+	"analytics": "विकि विश्लेषण",
+	"matomoanalytics-desc": "Matomo और मीडियाविकि से विश्लेषण को एकीकृत करता है",
 	"matomoanalytics-header": "हम Matomo की मदद से जो आँकड़े प्राप्त करते हैं, उनमें से अलग-अलग आँकड़ों को देखने के लिए नीचे के टैब्स का उपयोग करें। सभी डेटा को पिछले 30 दिनों के दौरान इकट्ठा किया गया है और इसकी शुरुआत कल से हुई थी (इसे हर रोज़ बदला जाता है)।",
 	"matomoanalytics-labels-browser": "ब्राउज़र",
 	"matomoanalytics-labels-continent": "महाद्वीप",
@@ -24,5 +25,6 @@
 	"matomoanalytics-labels-visitpages": "अनोखे पृष्ठ",
 	"matomoanalytics-labels-visitpass": "बीता हुआ समय",
 	"matomoanalytics-labels-website": "वेबसाइट",
-	"right-noanalytics": "Matomo द्वारा ट्रैक न किया जाना"
+	"right-noanalytics": "Matomo द्वारा ट्रैक न किया जाना",
+	"right-viewanalytics": "Matomo द्वारा इकट्ठा किया गया विश्लेषण देखना"
 }
