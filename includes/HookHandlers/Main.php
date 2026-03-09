@@ -104,14 +104,26 @@ class Main implements
 		$mAId = MatomoAnalytics::getSiteID( WikiMap::getCurrentWikiId(), disableCache: false );
 		$mA = new MatomoAnalyticsWiki( period: 30, siteId: $mAId );
 
+		$context->getOutput()->addModules( [
+			'ext.matomoanalytics.charts',
+			'ext.matomoanalytics.infochart',
+		] );
+
+		$context->getOutput()->addModuleStyles( [ 'ext.matomoanalytics.infopage' ] );
+
 		$title = $context->getTitle();
 		$url = $title->getFullURL();
-		$data = $mA->getPageViews( $url );
-		$total = array_sum( $data );
+		$data = $mA->getPageViews( $url, 'day' );
+		$total = array_sum( array_filter( $data, 'is_numeric' ) );
 
 		$pageInfo['header-basic'][] = [
 			$context->msg( 'matomoanalytics-labels-pastmonth' ),
-			$context->msg( 'matomoanalytics-count' )->numParams( $total )->parse()
+			$context->msg( 'matomoanalytics-count' )->numParams( $total )->parse(),
+		];
+
+		$pageInfo['header-basic'][] = [
+			$context->msg( 'matomoanalytics-labels-rawdata' ),
+			$context->msg( 'matomoanalytics-count' )->rawParams( json_encode( $data ) )->parse(),
 		];
 	}
 }
