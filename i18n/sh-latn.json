@@ -8,7 +8,7 @@
 	"action-noanalytics": "ne može se pratiti putem Matomo",
 	"analytics": "MatomoAnalytics",
 	"matomoanalytics-desc": "Integrira analitiku iz Matoma i MediaWikija",
-	"matomoanalytics-header": "Možete koristiti donje kartice za izbor prikaza različitih statistika koje pohranjujemo pomoću Matoma. Svi podaci prikupljaju se u zadnjih 30 dana, počevši od jučer (podnavlja se dnevno).",
+	"matomoanalytics-header": "Možete koristiti donje kartice za izbor prikaza različitih statistika koje pohranjujemo pomoću Matoma. Svi podaci prikupljaju se u zadnjih 30 dana, počevši od jučer (ažurira se dnevno).",
 	"matomoanalytics-labels-browser": "Preglednici",
 	"matomoanalytics-labels-continent": "Kontinenti",
 	"matomoanalytics-labels-country": "Zemlja",
