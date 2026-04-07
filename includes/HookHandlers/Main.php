@@ -105,7 +105,7 @@ class Main implements
 		$mA = new MatomoAnalyticsWiki( period: 30, siteId: $mAId );
 
 		$title = $context->getTitle();
-		$url = $title->getFullURL();
+		$url = rawurldecode( $title->getFullURL() );
 		$data = $mA->getPageViews( $url );
 		$total = array_sum( $data );
 
