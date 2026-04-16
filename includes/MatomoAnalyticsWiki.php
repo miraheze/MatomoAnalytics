@@ -57,13 +57,12 @@ class MatomoAnalyticsWiki {
 
 		$arrayOut = [];
 		foreach ( $siteJson as $key => $val ) {
-			if ( $period === 'day' ) {
-				// Flat
-				$arrayOut[$key] = $val['nb_visits'] ?: '-';
-				continue;
+			$label = $key;
+			if ( $period !== 'day' ) {
+				$label = $val['label'];
 			}
 
-			$arrayOut[ $val['label'] ] = $val['nb_visits'] ?: '-';
+			$arrayOut[$label] = ( $val['nb_visits'] ?? null ) ?: '-';
 		}
 
 		// Calculate time to 1 AM next day in configured timezone
