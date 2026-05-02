@@ -48,7 +48,7 @@ class MatomoAnalyticsViewer {
 			'os' => $mA->getOSVersion(),
 			'resolution' => $mA->getResolution(),
 			'referrer' => $mA->getReferrerType(),
-			'search' => $mA->getSearchKeywords(),
+			// 'search' => $mA->getSearchKeywords(),
 			'social' => $mA->getSocialReferrals(),
 			'website' => $mA->getWebsiteReferrals(),
 			'continent' => $mA->getUsersContinent(),
