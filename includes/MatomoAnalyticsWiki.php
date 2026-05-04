@@ -57,6 +57,11 @@ class MatomoAnalyticsWiki {
 
 		$arrayOut = [];
 		foreach ( $siteJson as $key => $val ) {
+			if ( !is_array( $val ) ) {
+				$arrayOut[$key] = 'N/A';
+				continue;
+			}
+
 			if ( $period === 'day' ) {
 				// Flat
 				$arrayOut[$key] = $val['nb_visits'] ?: '-';
