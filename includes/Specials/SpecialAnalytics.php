@@ -10,7 +10,11 @@ use Miraheze\MatomoAnalytics\MatomoAnalyticsViewer;
 class SpecialAnalytics extends SpecialPage {
 
 	public function __construct() {
-		parent::__construct( 'Analytics', 'viewanalytics' );
+		if ( version_compare( MW_VERSION, '1.46', '>=' ) ) {
+			parent::__construct( 'Analytics' );
+		} else {
+			parent::__construct( 'Analytics', 'viewanalytics' );
+		}
 	}
 
 	/** @param ?string $par @phan-unused-param */
@@ -86,5 +90,10 @@ class SpecialAnalytics extends SpecialPage {
 				[ 'period' => $formData['time'] ]
 			)
 		);
+	}
+
+	/** @inheritDoc */
+	public function getRestriction(): string {
+		return 'viewanalytics';
 	}
 }
