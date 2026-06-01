@@ -31,7 +31,7 @@
 	"matomoanalytics-labels-resolution-info": "해상도는 기기 유형별 위키 보기 현황을 전반적으로 파악하고, 그에 맞춰 문서 스타일을 조정하는 데 도움이 됩니다.",
 	"matomoanalytics-labels-search": "검색 엔진 키워드",
 	"matomoanalytics-labels-search-info": "검색 엔진 키워드 리퍼러는 사용자가 어떤 검색어를 통해 위키에 접속했는지 보여줍니다. 단, 이 데이터의 제공 여부는 브라우저의 개인정보 보호 설정 및 리퍼러 정책에 따라 달라질 수 있습니다.",
-	"matomoanalytics-labels-showdata": "원시 데이터 표시",
+	"matomoanalytics-labels-showdata": "원본 데이터 표시",
 	"matomoanalytics-labels-sitevisits": "위키 방문 수",
 	"matomoanalytics-labels-sitevisits-info": "이 차트는 지정된 기간 동안 기록된 모든 방문을 반영합니다. 광고 차단 기능을 사용하는 방문자로 인해 차트의 정확도가 떨어질 수 있습니다.",
 	"matomoanalytics-labels-social": "소셜 네트워크 추천",
