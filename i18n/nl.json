@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Mainframe98",
-			"McDutchie"
+			"McDutchie",
+			"Siebrand"
 		]
 	},
 	"action-noanalytics": "niet te worden gevolgd via Matomo",
@@ -39,7 +40,7 @@
 	"matomoanalytics-labels-toppages": "Meest bekeken pagina’s",
 	"matomoanalytics-labels-toppages-info": "Pagina’s worden hier weergegeven op basis van de weergegeven browsertitel, niet op basis van de canonieke databasepaginatitel.",
 	"matomoanalytics-labels-visitday": "Weergaven per dag",
-	"matomoanalytics-labels-visitday-info": "Hier worden de weergaven getoond op basis van het totale aantal per dag tijdens de geselecteerde periode.",
+	"matomoanalytics-labels-visitday-info": "Hier worden de weergaven weergegeven op basis van het totale aantal per dag tijdens de geselecteerde periode.",
 	"matomoanalytics-labels-visitduration": "Duur bezoek",
 	"matomoanalytics-labels-visitduration-info": "Bekijk hoeveel tijd bezoekers hebben doorgebracht met deze wiki.",
 	"matomoanalytics-labels-visithour": "Uren",

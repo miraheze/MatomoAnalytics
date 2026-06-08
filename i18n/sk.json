@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Wizzard",
 			"Yardom78"
 		]
 	},
 	"action-noanalytics": "neumožniť sledovať cez Matomo",
-	"analytics": "MatomoAnalytics",
+	"analytics": "Analytika wiki",
 	"matomoanalytics-desc": "Integruje analytiku z Matomo a MediaWiki",
 	"matomoanalytics-header": "Záložky nižšie môžete použiť na výber rôznych štatistík vytvorených pomocou Matomo. Všetky údaje sú pozbierané za obdobie posledných 30 dní počínajúc včerajškom (denne aktualizované).",
 	"matomoanalytics-labels-browser": "Prehliadače",
@@ -13,15 +14,15 @@
 	"matomoanalytics-labels-country": "Krajina",
 	"matomoanalytics-labels-devices": "Zariadenia",
 	"matomoanalytics-labels-os": "OS",
-	"matomoanalytics-labels-referrer": "Stránkové odporúčania",
-	"matomoanalytics-labels-resolution": "Rozhodnutie",
-	"matomoanalytics-labels-search": "Hľadať kľúčové slová",
-	"matomoanalytics-labels-social": "Sociálne siete",
-	"matomoanalytics-labels-visitday": "Dni",
-	"matomoanalytics-labels-visitduration": "Trvanie",
+	"matomoanalytics-labels-referrer": "Typy odporúčaní",
+	"matomoanalytics-labels-resolution": "Rozlíšenie obrazovky",
+	"matomoanalytics-labels-search": "Kľúčové slová z vyhľadávačov",
+	"matomoanalytics-labels-social": "Odporúčania zo sociálnych sietí",
+	"matomoanalytics-labels-visitday": "Zobrazenia za deň",
+	"matomoanalytics-labels-visitduration": "Trvanie návštevy",
 	"matomoanalytics-labels-visithour": "Hodiny",
-	"matomoanalytics-labels-visitpages": "Unikátne stránky",
-	"matomoanalytics-labels-visitpass": "Uplynutý čas",
-	"matomoanalytics-labels-website": "Webové stránky",
+	"matomoanalytics-labels-visitpages": "Zobrazené stránky na návštevu",
+	"matomoanalytics-labels-visitpass": "Čas medzi opakovanými návštevami",
+	"matomoanalytics-labels-website": "Odporúčania z webových stránok",
 	"right-noanalytics": "Nesledovať cez Matomo"
 }
