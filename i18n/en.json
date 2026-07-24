@@ -12,7 +12,6 @@
 	"matomoanalytics-count": "$1",
 	"matomoanalytics-desc": "Integrates analytics from Matomo and MediaWiki",
 	"matomoanalytics-header": "You can use the tabs below to select different statistics to view that we store using Matomo. All data is collected over the past 30 days starting from yesterday (updated daily).",
-	"matomoanalytics-rest-permission-denied": "You do not have permission to view analytics data.",
 	"matomoanalytics-labels-browser": "Browsers",
 	"matomoanalytics-labels-browser-info": "Browsers are amalgamated by family and specific versions are not shown.",
 	"matomoanalytics-labels-campaigns": "Campaigns",
@@ -53,6 +52,7 @@
 	"matomoanalytics-labels-visitpass-info": "How much time passes before visitors revisit this wiki is displayed here.",
 	"matomoanalytics-labels-website": "Website referrals",
 	"matomoanalytics-labels-website-info": "Referrals from other websites are shown here. These are a good way to boost search engine visibility.",
+	"matomoanalytics-rest-permission-denied": "You do not have permission to view analytics data.",
 	"right-noanalytics": "Not be tracked via Matomo",
 	"right-viewanalytics": "View wiki analytics and statistics collected by Matomo"
 }
