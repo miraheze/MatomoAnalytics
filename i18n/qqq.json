@@ -54,6 +54,7 @@
 	"matomoanalytics-labels-visitpass-info": "Clarifying information for the 'Time Passed' section. Displayed under label.",
 	"matomoanalytics-labels-website": "{{identical|Websites}}",
 	"matomoanalytics-labels-website-info": "Clarifying information for the 'Website Referrals' section. Displayed under label.",
+	"matomoanalytics-rest-permission-denied": "Error shown (as a 403 REST response) when a user without the viewanalytics right calls the REST routes.",
 	"right-noanalytics": "{{doc-right|noanalytics}}",
 	"right-viewanalytics": "{{doc-right|viewanalytics}}"
 }
