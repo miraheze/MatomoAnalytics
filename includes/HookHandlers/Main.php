@@ -55,7 +55,7 @@ class Main implements
 		$serverUrl = $config->get( ConfigNames::ServerURL );
 		$title = $skin->getRelevantTitle();
 
-		$jsTitle = Html::encodeJsVar( $title->getPrefixedText() );
+		$jsTitle = Html::encodeJsVar( $title->getPrefixedDBkey() );
 		$wikiId = Html::encodeJsVar( WikiMap::getCurrentWikiId() );
 
 		$urlTitle = $title->getPrefixedURL();
