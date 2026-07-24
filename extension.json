@@ -74,6 +74,13 @@
 			]
 		}
 	},
+	"RestRoutes": [
+		{
+			"path": "/matomoanalytics/v0/top_pages",
+			"method": "GET",
+			"class": "Miraheze\\MatomoAnalytics\\Rest\\TopPagesHandler"
+		}
+	],
 	"ResourceModules": {
 		"ext.matomoanalytics.charts": {
 			"scripts": "ext.matomoanalytics.charts.js"
