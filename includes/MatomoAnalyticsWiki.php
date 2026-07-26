@@ -4,7 +4,9 @@ namespace Miraheze\MatomoAnalytics;
 
 use DateTime;
 use DateTimeZone;
+use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\Title;
 
 class MatomoAnalyticsWiki {
 
@@ -14,20 +16,14 @@ class MatomoAnalyticsWiki {
 	) {
 	}
 
-	private function getData(
-		string $module,
-		string $period,
-		string $pageUrl,
-		string $valueField = 'nb_visits',
-		array $extraParams = []
-	): array {
+	private function fetchReport( string $module, string $period, string $pageUrl, array $extraParams = [] ): array {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'MatomoAnalytics' );
 		if ( !$config->get( ConfigNames::ServerURL ) ) {
 			// Early exit if we don't have the ServerURL set.
 			return [];
 		}
 
-		$cacheKey = $this->getCacheKey( $module, $period, $pageUrl, $valueField, $extraParams );
+		$cacheKey = $this->getCacheKey( $module, $period, $pageUrl, $extraParams );
 		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
 		$cachedData = $cache->get( $cacheKey );
 
@@ -59,21 +55,7 @@ class MatomoAnalyticsWiki {
 			__METHOD__
 		);
 
-		$siteJson = json_decode( $siteReply, true );
-
-		$arrayOut = [];
-		foreach ( $siteJson as $key => $val ) {
-			$label = $key;
-			if ( $period !== 'day' ) {
-				$label = $val['label'];
-			}
-
-			if ( $valueField === 'nb_visits' ) {
-				$arrayOut[$label] = ( $val[$valueField] ?? null ) ?: '-';
-			} else {
-				$arrayOut[$label] = $val[$valueField] ?? '';
-			}
-		}
+		$rows = json_decode( $siteReply, true ) ?: [];
 
 		// Calculate time to 1 AM next day in configured timezone
 		$now = new DateTime( 'now', new DateTimeZone( 'UTC' ) );
@@ -81,7 +63,23 @@ class MatomoAnalyticsWiki {
 		$expiration = $next1AM->getTimestamp() - $now->getTimestamp();
 
 		// Store the result in cache until 1 AM
-		$cache->set( $cacheKey, $arrayOut, $expiration );
+		$cache->set( $cacheKey, $rows, $expiration );
+		return $rows;
+	}
+
+	private function getData( string $module, string $period, string $pageUrl ): array {
+		$rows = $this->fetchReport( $module, $period, $pageUrl );
+
+		$arrayOut = [];
+		foreach ( $rows as $key => $val ) {
+			$label = $key;
+			if ( $period !== 'day' ) {
+				$label = $val['label'];
+			}
+
+			$arrayOut[$label] = ( $val['nb_visits'] ?? null ) ?: '-';
+		}
+
 		return $arrayOut;
 	}
 
@@ -97,19 +95,8 @@ class MatomoAnalyticsWiki {
 		return $this->getData( $module, 'day', '' );
 	}
 
-	/** Page URL for each row of Actions.getPageUrls, flattened so folders are not grouped */
-	private function getPageUrlsData(): array {
-		return $this->getData( 'Actions.getPageUrls', 'range', '', 'url', [ 'flat' => 1 ] );
-	}
-
-	private function getCacheKey(
-		string $module,
-		string $period,
-		string $pageUrl,
-		string $valueField = 'nb_visits',
-		array $extraParams = []
-	): string {
-		$keyParts = [ $this->period, $this->siteId, $module, $period, $valueField ];
+	private function getCacheKey( string $module, string $period, string $pageUrl, array $extraParams = [] ): string {
+		$keyParts = [ $this->period, $this->siteId, $module, $period ];
 		if ( $pageUrl !== '' ) {
 			$keyParts[] = md5( $pageUrl );
 		}
@@ -119,6 +106,39 @@ class MatomoAnalyticsWiki {
 		}
 
 		return implode( ':', $keyParts );
+	}
+
+	/** Resolve the tracked url back to the wiki's own page title, rather than the title Matomo recorded */
+	private function resolveTitle( string $url ): ?string {
+		if ( $url === '' ) {
+			return null;
+		}
+
+		$mainConfig = MediaWikiServices::getInstance()->getMainConfig();
+		$serverHost = parse_url( (string)$mainConfig->get( MainConfigNames::CanonicalServer ), PHP_URL_HOST );
+		$urlHost = parse_url( $url, PHP_URL_HOST );
+
+		if ( $serverHost !== null && $urlHost !== null && strcasecmp( $serverHost, $urlHost ) !== 0 ) {
+			// Not a hit on this wiki's own domain, so there is no local title to resolve it to.
+			return null;
+		}
+
+		$path = (string)parse_url( $url, PHP_URL_PATH );
+		$prefix = str_replace( '$1', '', (string)$mainConfig->get( MainConfigNames::ArticlePath ) );
+
+		if ( $prefix !== '' && str_starts_with( $path, $prefix ) ) {
+			$titleText = substr( $path, strlen( $prefix ) );
+		} else {
+			parse_str( (string)parse_url( $url, PHP_URL_QUERY ), $query );
+			$titleText = $query['title'] ?? null;
+		}
+
+		if ( !$titleText ) {
+			return null;
+		}
+
+		$title = Title::newFromText( rawurldecode( $titleText ) );
+		return $title ? $title->getPrefixedText() : null;
 	}
 
 	/** Visits per browser type */
@@ -204,20 +224,19 @@ class MatomoAnalyticsWiki {
 		return $this->getRangeData( 'VisitorInterest.getNumberOfVisitsByDaysSinceLast' );
 	}
 
-	/** Visits by amount of views, paired with the page url */
+	/** Visits by amount of views, with the wiki's own page title and url for each row */
 	public function getTopPages(): array {
-		$titles = $this->getRangeData( 'Actions.getPageTitles' );
-		$urls = array_values( $this->getPageUrlsData() );
+		$rows = $this->fetchReport( 'Actions.getPageUrls', 'range', '', [ 'flat' => 1 ] );
 
 		$pages = [];
-		$index = 0;
-		foreach ( $titles as $title => $visits ) {
+		foreach ( $rows as $row ) {
+			$url = (string)( $row['url'] ?? '' );
+
 			$pages[] = [
-				'title' => (string)$title,
-				'url' => $urls[$index] ?? '',
-				'visits' => $visits,
+				'title' => $this->resolveTitle( $url ) ?? trim( (string)( $row['label'] ?? '' ) ),
+				'url' => $url,
+				'visits' => ( $row['nb_visits'] ?? null ) ?: 0,
 			];
-			$index++;
 		}
 
 		return $pages;
