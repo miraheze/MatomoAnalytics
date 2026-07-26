@@ -14,14 +14,20 @@ class MatomoAnalyticsWiki {
 	) {
 	}
 
-	private function getData( string $module, string $period, string $pageUrl ): array {
+	private function getData(
+		string $module,
+		string $period,
+		string $pageUrl,
+		string $valueField = 'nb_visits',
+		array $extraParams = []
+	): array {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'MatomoAnalytics' );
 		if ( !$config->get( ConfigNames::ServerURL ) ) {
 			// Early exit if we don't have the ServerURL set.
 			return [];
 		}
 
-		$cacheKey = $this->getCacheKey( $module, $period, $pageUrl );
+		$cacheKey = $this->getCacheKey( $module, $period, $pageUrl, $valueField, $extraParams );
 		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
 		$cachedData = $cache->get( $cacheKey );
 
@@ -38,7 +44,7 @@ class MatomoAnalyticsWiki {
 			'period' => $period,
 			'idSite' => $this->siteId,
 			'token_auth' => $config->get( ConfigNames::TokenAuth ),
-		];
+		] + $extraParams;
 
 		if ( $pageUrl !== '' ) {
 			$query['pageUrl'] = $pageUrl;
@@ -62,7 +68,11 @@ class MatomoAnalyticsWiki {
 				$label = $val['label'];
 			}
 
-			$arrayOut[$label] = ( $val['nb_visits'] ?? null ) ?: '-';
+			if ( $valueField === 'nb_visits' ) {
+				$arrayOut[$label] = ( $val[$valueField] ?? null ) ?: '-';
+			} else {
+				$arrayOut[$label] = $val[$valueField] ?? '';
+			}
 		}
 
 		// Calculate time to 1 AM next day in configured timezone
@@ -87,10 +97,25 @@ class MatomoAnalyticsWiki {
 		return $this->getData( $module, 'day', '' );
 	}
 
-	private function getCacheKey( string $module, string $period, string $pageUrl ): string {
-		$keyParts = [ $this->period, $this->siteId, $module, $period ];
+	/** Page URL for each row of Actions.getPageUrls, flattened so folders are not grouped */
+	private function getPageUrlsData(): array {
+		return $this->getData( 'Actions.getPageUrls', 'range', '', 'url', [ 'flat' => 1 ] );
+	}
+
+	private function getCacheKey(
+		string $module,
+		string $period,
+		string $pageUrl,
+		string $valueField = 'nb_visits',
+		array $extraParams = []
+	): string {
+		$keyParts = [ $this->period, $this->siteId, $module, $period, $valueField ];
 		if ( $pageUrl !== '' ) {
 			$keyParts[] = md5( $pageUrl );
+		}
+
+		if ( $extraParams ) {
+			$keyParts[] = md5( serialize( $extraParams ) );
 		}
 
 		return implode( ':', $keyParts );
@@ -179,9 +204,23 @@ class MatomoAnalyticsWiki {
 		return $this->getRangeData( 'VisitorInterest.getNumberOfVisitsByDaysSinceLast' );
 	}
 
-	/** Visits by amount of views */
+	/** Visits by amount of views, paired with the page url */
 	public function getTopPages(): array {
-		return $this->getRangeData( 'Actions.getPageTitles' );
+		$titles = $this->getRangeData( 'Actions.getPageTitles' );
+		$urls = array_values( $this->getPageUrlsData() );
+
+		$pages = [];
+		$index = 0;
+		foreach ( $titles as $title => $visits ) {
+			$pages[] = [
+				'title' => (string)$title,
+				'url' => $urls[$index] ?? '',
+				'visits' => $visits,
+			];
+			$index++;
+		}
+
+		return $pages;
 	}
 
 	/** Get visits for specific pages */
