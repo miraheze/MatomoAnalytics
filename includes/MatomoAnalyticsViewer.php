@@ -85,6 +85,25 @@ class MatomoAnalyticsViewer {
 				'section' => "matomoanalytics-labels-$type",
 			];
 
+			if ( $type === 'toppages' ) {
+				foreach ( $data as $index => $page ) {
+					$title = $page['title'];
+					$url = $page['url'];
+
+					$formDescriptor["$type-$index"] = [
+						'type' => 'info',
+						'label-raw' => $url !== ''
+							? Html::element( 'a', [ 'href' => $url, 'target' => '_blank', 'rel' => 'noopener' ], $title )
+							: htmlspecialchars( $title ),
+						'hide-if' => [ '!==', "$type-showdata", '1' ],
+						'default' => (string)$page['visits'],
+						'section' => "matomoanalytics-labels-$type",
+					];
+				}
+
+				continue;
+			}
+
 			foreach ( $data as $label => $value ) {
 				$formDescriptor["$type-$label"] = [
 					'type' => 'info',
