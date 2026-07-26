@@ -40,10 +40,11 @@ class TopPagesHandler extends SimpleHandler {
 		$matomoWiki = new MatomoAnalyticsWiki( period: $period, siteId: $siteId );
 
 		$response = [];
-		foreach ( $matomoWiki->getTopPages() as $title => $visits ) {
+		foreach ( $matomoWiki->getTopPagesWithUrls() as $page ) {
 			$response[] = [
-				'title' => (string)$title,
-				'views' => is_numeric( $visits ) ? (int)$visits : 0,
+				'title' => $page['title'],
+				'url' => $page['url'],
+				'views' => is_numeric( $page['visits'] ) ? (int)$page['visits'] : 0,
 			];
 		}
 
