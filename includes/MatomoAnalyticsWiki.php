@@ -224,8 +224,13 @@ class MatomoAnalyticsWiki {
 		return $this->getRangeData( 'VisitorInterest.getNumberOfVisitsByDaysSinceLast' );
 	}
 
-	/** Visits by amount of views, with the wiki's own page title and url for each row */
+	/** Visits by amount of views */
 	public function getTopPages(): array {
+		return $this->getRangeData( 'Actions.getPageTitles' );
+	}
+
+	/** Visits by amount of views, with the wiki's own page title and url for each row */
+	public function getTopPagesWithUrls(): array {
 		$rows = $this->fetchReport( 'Actions.getPageUrls', 'range', '', [ 'flat' => 1 ] );
 
 		$pages = [];
