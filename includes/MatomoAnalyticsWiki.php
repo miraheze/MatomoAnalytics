@@ -231,15 +231,35 @@ class MatomoAnalyticsWiki {
 		$pages = [];
 		foreach ( $rows as $row ) {
 			$url = (string)( $row['url'] ?? '' );
+			if ( $url === '' ) {
+				// Matomo rolls up the low-traffic tail of a folder that exceeded its archiving
+				// row limit into a synthetic "<folder> - Others" row with no real url attached.
+				// That is not an actual page, so it does not belong in a list of top pages.
+				continue;
+			}
 
-			$pages[] = [
-				'title' => $this->resolveTitle( $url ) ?? trim( (string)( $row['label'] ?? '' ) ),
+			$title = $this->resolveTitle( $url ) ?? trim( (string)( $row['label'] ?? '' ) );
+			$visits = ( $row['nb_visits'] ?? null ) ?: 0;
+
+			if ( isset( $pages[$title] ) ) {
+				$pages[$title]['visits'] += $visits;
+				// Same page hit through different query strings, e.g. plain view and ?action=edit.
+				// Keep the plain url as the one shown, since that is the page itself.
+				if ( parse_url( $url, PHP_URL_QUERY ) === null ) {
+					$pages[$title]['url'] = $url;
+				}
+
+				continue;
+			}
+
+			$pages[$title] = [
+				'title' => $title,
 				'url' => $url,
-				'visits' => ( $row['nb_visits'] ?? null ) ?: 0,
+				'visits' => $visits,
 			];
 		}
 
-		return $pages;
+		return array_values( $pages );
 	}
 
 	/** Get visits for specific pages */
