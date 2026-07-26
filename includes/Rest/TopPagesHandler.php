@@ -40,7 +40,7 @@ class TopPagesHandler extends SimpleHandler {
 		$matomoWiki = new MatomoAnalyticsWiki( period: $period, siteId: $siteId );
 
 		$response = [];
-		foreach ( $matomoWiki->getTopPagesWithUrls() as $page ) {
+		foreach ( $matomoWiki->getTopPagesWithUrls( $params['excludenamespaces'] ) as $page ) {
 			$response[] = [
 				'title' => $page['title'],
 				'url' => $page['url'],
@@ -71,6 +71,13 @@ class TopPagesHandler extends SimpleHandler {
 				ParamValidator::PARAM_TYPE => 'integer',
 				ParamValidator::PARAM_REQUIRED => false,
 				ParamValidator::PARAM_DEFAULT => self::DEFAULT_LIMIT,
+			],
+			'excludenamespaces' => [
+				self::PARAM_SOURCE => 'query',
+				ParamValidator::PARAM_TYPE => 'integer',
+				ParamValidator::PARAM_ISMULTI => true,
+				ParamValidator::PARAM_REQUIRED => false,
+				ParamValidator::PARAM_DEFAULT => '',
 			],
 		];
 	}
