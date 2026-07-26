@@ -108,8 +108,8 @@ class MatomoAnalyticsWiki {
 		return implode( ':', $keyParts );
 	}
 
-	/** Resolve the tracked url back to the wiki's own page title, rather than the title Matomo recorded */
-	private function resolveTitle( string $url ): ?string {
+	/** Resolve the tracked url back to the wiki's own page Title, rather than the title Matomo recorded */
+	private function resolveTitle( string $url ): ?Title {
 		if ( $url === '' ) {
 			return null;
 		}
@@ -138,7 +138,27 @@ class MatomoAnalyticsWiki {
 		}
 
 		$title = Title::newFromText( rawurldecode( $titleText ) );
-		return $title ? $title->getPrefixedText() : null;
+		if ( !$title ) {
+			return null;
+		}
+
+		return $this->resolveMyLanguageTarget( $title ) ?? $title;
+	}
+
+	/** Special:MyLanguage/X is just a redirecting wrapper around X, so count hits on it as hits on X */
+	private function resolveMyLanguageTarget( Title $title ): ?Title {
+		if ( !$title->inNamespace( NS_SPECIAL ) ) {
+			return null;
+		}
+
+		[ $name, $subpage ] = MediaWikiServices::getInstance()->getSpecialPageFactory()
+			->resolveAlias( $title->getDBkey() );
+
+		if ( $name !== 'MyLanguage' || $subpage === null ) {
+			return null;
+		}
+
+		return Title::newFromText( $subpage );
 	}
 
 	/** Visits per browser type */
@@ -230,7 +250,7 @@ class MatomoAnalyticsWiki {
 	}
 
 	/** Visits by amount of views, with the wiki's own page title and url for each row */
-	public function getTopPagesWithUrls(): array {
+	public function getTopPagesWithUrls( array $excludedNamespaces = [] ): array {
 		$rows = $this->fetchReport( 'Actions.getPageUrls', 'range', '', [ 'flat' => 1 ] );
 
 		$pages = [];
@@ -243,7 +263,12 @@ class MatomoAnalyticsWiki {
 				continue;
 			}
 
-			$title = $this->resolveTitle( $url ) ?? trim( (string)( $row['label'] ?? '' ) );
+			$resolved = $this->resolveTitle( $url );
+			if ( $resolved && in_array( $resolved->getNamespace(), $excludedNamespaces, true ) ) {
+				continue;
+			}
+
+			$title = $resolved ? $resolved->getPrefixedText() : trim( (string)( $row['label'] ?? '' ) );
 			$visits = ( $row['nb_visits'] ?? null ) ?: 0;
 
 			if ( isset( $pages[$title] ) ) {
