@@ -142,7 +142,8 @@ class MatomoAnalyticsWiki {
 			return null;
 		}
 
-		return $this->resolveMyLanguageTarget( $title ) ?? $title;
+		$title = $this->resolveMyLanguageTarget( $title ) ?? $title;
+		return $this->resolveRedirectTarget( $title ) ?? $title;
 	}
 
 	/** Special:MyLanguage/X is just a redirecting wrapper around X, so count hits on it as hits on X */
@@ -159,6 +160,11 @@ class MatomoAnalyticsWiki {
 		}
 
 		return Title::newFromText( $subpage );
+	}
+
+	private function resolveRedirectTarget( Title $title ): ?Title {
+		$target = MediaWikiServices::getInstance()->getRedirectLookup()->getRedirectTarget( $title );
+		return $target ? Title::castFromLinkTarget( $target ) : null;
 	}
 
 	/** Visits per browser type */
@@ -269,6 +275,12 @@ class MatomoAnalyticsWiki {
 			}
 
 			$title = $resolved ? $resolved->getPrefixedText() : trim( (string)( $row['label'] ?? '' ) );
+			if ( $title === '' || $title === '/' ) {
+				// Not a page. Just the bare domain root, e.g. someone hitting
+				// https://example.org/ with nothing after it to resolve to a title.
+				continue;
+			}
+
 			$visits = ( $row['nb_visits'] ?? null ) ?: 0;
 
 			if ( isset( $pages[$title] ) ) {
