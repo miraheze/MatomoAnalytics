@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"GuoPC",
 			"Hydra",
 			"Maitian MaiLin",
 			"MangoFanFanw",
@@ -56,6 +57,7 @@
 	"matomoanalytics-labels-visitpass-info": "此处显示访客再次访问此wiki之前经过的时间。",
 	"matomoanalytics-labels-website": "网站引荐",
 	"matomoanalytics-labels-website-info": "这里会显示来自其他网站的推荐。这是提高搜索引擎可见度的好方法。",
+	"matomoanalytics-rest-permission-denied": "您没有权限查看分析数据。",
 	"right-noanalytics": "不被Matomo追踪",
 	"right-viewanalytics": "查看Matomo收集的wiki分析和统计数据"
 }

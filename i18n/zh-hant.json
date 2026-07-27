@@ -50,6 +50,7 @@
 	"matomoanalytics-labels-visitpass-info": "此處顯示訪客再次造訪此 wiki 之前經過的時間。",
 	"matomoanalytics-labels-website": "網站引薦",
 	"matomoanalytics-labels-website-info": "此處會顯示來自其他網站的推薦。這是提升搜尋引擎可見度的好方法。",
+	"matomoanalytics-rest-permission-denied": "您沒有權限查看分析資料。",
 	"right-noanalytics": "不被 Matomo 追蹤",
 	"right-viewanalytics": "查看 Matomo 收集的 wiki 分析和統計數據"
 }

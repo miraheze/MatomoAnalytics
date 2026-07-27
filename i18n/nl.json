@@ -51,6 +51,7 @@
 	"matomoanalytics-labels-visitpass-info": "Hier wordt weergegeven hoeveel tijd er verstrijkt voordat bezoekers deze wiki opnieuw bezoeken.",
 	"matomoanalytics-labels-website": "Websiteverwijzingen",
 	"matomoanalytics-labels-website-info": "Hier verschijnen de verwijzingen van andere websites. Ze zijn een goede manier om de zichtbaarheid voor zoekmachines te vergroten.",
+	"matomoanalytics-rest-permission-denied": "U hebt geen toestemming om analysegegevens te bekijken.",
 	"right-noanalytics": "Niet gevolgd worden via Matomo",
 	"right-viewanalytics": "De door Matomo verzamelde wiki-analyses en -statistieken bekijken"
 }

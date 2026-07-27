@@ -49,6 +49,7 @@
 	"matomoanalytics-labels-visitpass-info": "Aquí móstrase o tempo que pasa ata que os visitantes volven visitar o wiki.",
 	"matomoanalytics-labels-website": "Referencias de sitios web",
 	"matomoanalytics-labels-website-info": "Aquí móstranse as referencias doutros sitios web. Son unha boa maneira de aumentar a visibilidade nos motores de busca.",
+	"matomoanalytics-rest-permission-denied": "Non tes permiso para ver os datos analíticos.",
 	"right-noanalytics": "Non ser rastrexado a través de Matomo",
 	"right-viewanalytics": "Ver as análises e estatísticas do wiki recollidas por Matomo"
 }

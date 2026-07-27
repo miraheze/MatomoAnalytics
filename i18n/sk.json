@@ -50,6 +50,7 @@
 	"matomoanalytics-labels-visitpass-info": "Tu sa zobrazuje, koľko času uplynie, kým návštevníci znova navštívia túto wiki.",
 	"matomoanalytics-labels-website": "Odporúčania z webových stránok",
 	"matomoanalytics-labels-website-info": "Odkazy z iných webov sa tu zobrazujú. Je to dobrý spôsob, ako zvýšiť viditeľnosť vo vyhľadávačoch.",
+	"matomoanalytics-rest-permission-denied": "Nemáte oprávnenie zobraziť analytické údaje.",
 	"right-noanalytics": "Nesledovať cez Matomo",
 	"right-viewanalytics": "Zobraziť analytiku a štatistiky wiki zhromažďované službou Matomo"
 }
