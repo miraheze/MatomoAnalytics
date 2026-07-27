@@ -163,6 +163,12 @@ class MatomoAnalyticsWiki {
 	}
 
 	private function resolveRedirectTarget( Title $title ): ?Title {
+		if ( !$title->canExist() ) {
+			// Special: and Media: pages aren't real rows in the page table, so there is
+			// nothing for RedirectLookup to query and it throws rather than saying no.
+			return null;
+		}
+
 		$target = MediaWikiServices::getInstance()->getRedirectLookup()->getRedirectTarget( $title );
 		return $target ? Title::castFromLinkTarget( $target ) : null;
 	}
