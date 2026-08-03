@@ -49,6 +49,7 @@
 	"matomoanalytics-labels-visitpass-info": "Тука е прикажано колку време изминува од една до друга посета на викито од исто лице",
 	"matomoanalytics-labels-website": "Упатувачки мрежни места",
 	"matomoanalytics-labels-website-info": "Тука се прикажани упатувањата од други мрежни места. Ова е добар начин да за подобрување на видливоста во пребарувачите",
+	"matomoanalytics-rest-permission-denied": "Немате дозвола да гледате аналитички податоци.",
 	"right-noanalytics": "Не се следи со Матомо",
 	"right-viewanalytics": "Гледање на аналитика и статистика собрана од Матомо"
 }
