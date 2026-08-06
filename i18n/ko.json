@@ -52,6 +52,7 @@
 	"matomoanalytics-labels-visitpass-info": "방문자가 이 위키를 다시 방문하기까지 걸리는 시간이 여기에 표시됩니다.",
 	"matomoanalytics-labels-website": "웹사이트 추천",
 	"matomoanalytics-labels-website-info": "다른 웹사이트에서 유입된 트래픽이 여기에 표시됩니다. 이는 검색 엔진 노출도를 높이는 좋은 방법입니다.",
+	"matomoanalytics-rest-permission-denied": "분석 데이터를 볼 권한이 없습니다.",
 	"right-noanalytics": "Matomo를 통해 추적되지 않음",
 	"right-viewanalytics": "마토모에서 수집한 위키 분석 및 통계를 확인"
 }
