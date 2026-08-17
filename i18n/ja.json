@@ -54,6 +54,7 @@
 	"matomoanalytics-labels-visitpass-info": "訪問者がこのウィキに再度アクセスするまでにどれくらいの時間が経過するかがここに表示されます。",
 	"matomoanalytics-labels-website": "ウェブサイトリファラ",
 	"matomoanalytics-labels-website-info": "他のウェブサイトからの参照がここに表示されます。これは検索エンジンでの可視性を高めるのに良い方法です。",
+	"matomoanalytics-rest-permission-denied": "分析データを閲覧する権限がありません。",
 	"right-noanalytics": "Matomoの追跡を無効化",
 	"right-viewanalytics": "Matomoが収集したウィキ分析と統計情報を表示"
 }
