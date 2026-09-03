@@ -1,20 +1,21 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fitoschido"
+			"Fitoschido",
+			"Qllach"
 		]
 	},
 	"matomoanalytics-labels-browser": "Navegadors",
 	"matomoanalytics-labels-country": "País",
 	"matomoanalytics-labels-devices": "Dispositius",
 	"matomoanalytics-labels-os": "SO",
-	"matomoanalytics-labels-referrer": "Referents al lloc",
-	"matomoanalytics-labels-resolution": "Resolució",
-	"matomoanalytics-labels-search": "Paraules clau de cerca",
-	"matomoanalytics-labels-social": "Xarxes socials",
-	"matomoanalytics-labels-visitday": "Dies",
-	"matomoanalytics-labels-visitduration": "Durada",
+	"matomoanalytics-labels-referrer": "Tipus de referència",
+	"matomoanalytics-labels-resolution": "Resolució de pantalla",
+	"matomoanalytics-labels-search": "Paraules clau del motor de cerca",
+	"matomoanalytics-labels-social": "Referents de xarxes socials",
+	"matomoanalytics-labels-visitday": "Visualitzacions per dia",
+	"matomoanalytics-labels-visitduration": "Durada de la visita",
 	"matomoanalytics-labels-visithour": "Hores",
-	"matomoanalytics-labels-visitpass": "Temps transcorregut",
+	"matomoanalytics-labels-visitpass": "Temps transcorregut entre visites",
 	"matomoanalytics-labels-website": "Llocs web"
 }
