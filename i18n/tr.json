@@ -5,6 +5,7 @@
 			"Can",
 			"HakanIST",
 			"Joseph",
+			"Leo",
 			"Slickdaddy"
 		]
 	},
@@ -53,6 +54,7 @@
 	"matomoanalytics-labels-visitpass-info": "Ziyaretçilerin bu vikiyi yeniden ziyaret etmeden önce ne kadar süre geçtiği burada gösterilir.",
 	"matomoanalytics-labels-website": "Web site yönlendirmeleri",
 	"matomoanalytics-labels-website-info": "Diğer web sitelerinden gelen yönlendirmeler burada gösterilir. Bunlar arama motoru görünürlüğünü artırmanın iyi bir yoludur.",
+	"matomoanalytics-rest-permission-denied": "Analiz verilerini görüntüleme izniniz yok.",
 	"right-noanalytics": "Matomo üzerinden izlenmez",
 	"right-viewanalytics": "Matomo tarafından toplanan viki analitiklerini ve istatistiklerini görüntüle"
 }
