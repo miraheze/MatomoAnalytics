@@ -10,11 +10,7 @@ use Miraheze\MatomoAnalytics\MatomoAnalyticsViewer;
 class SpecialAnalytics extends SpecialPage {
 
 	public function __construct() {
-		if ( version_compare( MW_VERSION, '1.46', '>=' ) ) {
-			parent::__construct( 'Analytics' );
-		} else {
-			parent::__construct( 'Analytics', 'viewanalytics' );
-		}
+		parent::__construct( 'Analytics' );
 	}
 
 	/** @param ?string $par @phan-unused-param */
