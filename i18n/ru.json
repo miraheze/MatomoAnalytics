@@ -8,7 +8,8 @@
 			"Kareyac",
 			"Okras",
 			"Pavel200071",
-			"Vonavy"
+			"Vonavy",
+			"Yurina Tatiana"
 		]
 	},
 	"action-noanalytics": "не отслеживать через Matomo",
@@ -56,6 +57,7 @@
 	"matomoanalytics-labels-visitpass-info": "Здесь отображается, сколько времени проходит до того, как посетители повторно посещают эту вики.",
 	"matomoanalytics-labels-website": "Ссылки на веб-сайт",
 	"matomoanalytics-labels-website-info": "Здесь показаны переходы с других сайтов. Это хороший способ повысить видимость в поисковых системах.",
+	"matomoanalytics-rest-permission-denied": "У вас нет разрешения на просмотр аналитических данных.",
 	"right-noanalytics": "Не отслеживать через Matomo",
 	"right-viewanalytics": "Просмотр аналитики и статистики вики, собранных Matomo"
 }
