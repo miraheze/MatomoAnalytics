@@ -24,6 +24,7 @@ class MatomoAnalyticsWiki {
 		}
 
 		$cacheKey = $this->getCacheKey( $module, $period, $pageUrl, $extraParams );
+		/** @phan-suppress-next-line PhanDeprecatedFunction Deprecated in 1.47 */
 		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
 		$cachedData = $cache->get( $cacheKey );
 
