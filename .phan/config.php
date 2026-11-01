@@ -19,6 +19,8 @@ $cfg['exclude_analysis_directory_list'] = array_merge(
 $cfg['suppress_issue_types'] = [
 	'PhanAccessMethodInternal',
 	'SecurityCheck-LikelyFalsePositive',
+	// Remove after CreateWiki requires 1.47
+	'UnusedPluginSuppression',
 ];
 
 return $cfg;
