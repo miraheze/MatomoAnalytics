@@ -34,6 +34,7 @@
 	"matomoanalytics-labels-visitpages": "Số trang được xem mỗi lần truy cập",
 	"matomoanalytics-labels-visitpass": "Thời gian trôi qua giữa các lần truy cập",
 	"matomoanalytics-labels-website": "Nguồn trang web",
+	"matomoanalytics-rest-permission-denied": "Bạn không được quyền xem dữ liệu phân tích.",
 	"right-noanalytics": "Không được theo dõi qua Matomo",
 	"right-viewanalytics": "Xem phân tích wiki và số liệu thống kê được Matomo thu thập"
 }
