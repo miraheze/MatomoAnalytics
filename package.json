@@ -9,7 +9,7 @@
 		"lint:i18n": "banana-checker --requireLowerCase=0 i18n/"
 	},
 	"peerDependencies": {
-		"postcss-less": "6.0.0"
+		"postcss-less": "7.1.1"
 	},
 	"devDependencies": {
 		"eslint-config-wikimedia": "0.33.1",
