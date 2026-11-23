@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"A100Star",
 			"Amire80",
 			"YaronSh",
 			"לואיקה"
@@ -51,6 +52,7 @@
 	"matomoanalytics-labels-visitpass-info": "כמה זמן עובר עד שמבקרים מבקרים שוב בוויקי הזה מוצג כאן.",
 	"matomoanalytics-labels-website": "הפניות מאתרים",
 	"matomoanalytics-labels-website-info": "הפניות מאתרים אחרים מוצגות כאן. הן דרך טובה להגביר את הנראות במנועי חיפוש.",
+	"matomoanalytics-rest-permission-denied": "אין הרשאה לצפות בנתוני ניתוח השימוש.",
 	"right-noanalytics": "לא למעקב על ידי Matomo",
 	"right-viewanalytics": "צפייה בניתוחים וסטטיסטיקות שנאספו על־ידי מטומו"
 }
